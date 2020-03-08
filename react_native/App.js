@@ -8,11 +8,15 @@
 
 import React, { Component } from 'react';
 
-const Navigate = require("./JavaScript/Navigation/Demo_1/App").default;
+const Module = require("~/JavaScript/Redux/Demo_3/App").default;
+
+const r = require("~/res/TryImport/Run").default;
+
 
 class App extends Component {
   render(){
-    return <Navigate/>
+    r();
+    return <Module/>
   }
 }
 
