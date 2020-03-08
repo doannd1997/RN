@@ -24,6 +24,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+console.disableYellowBox = true;
+
 const App: () => React$Node = () => {
   return (
     <>
