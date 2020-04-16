@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 
 const Main = require("~s/Main").default;
 
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
+
 export default class App extends Component{
   render(){
     return (

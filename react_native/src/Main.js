@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import createStore from './Store/CreateStore';
-import Appcontainer from './AppContainer'
+import createStore from './store/createStore';
+import AppContainer from './AppContainer/Index'
 
 import { View, Text } from 'react-native';
 
-const layoutStyles = require("./Screen/Main.style").default;
+// const layoutStyles = require("./Screen/Main.style").default;
 
 export default class Main extends Component {
     renderApp() {
@@ -12,8 +12,8 @@ export default class Main extends Component {
         const store = createStore(initialState);
 
         return (
-            <Appcontainer store={store}>
-            </Appcontainer>
+            <AppContainer store={store}>
+            </AppContainer>
         )
 
     }

@@ -3,10 +3,14 @@ import { View, Text } from 'react-native';
 
 class Home extends Component{
     render(){
+        console.log(111);
         return(
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{flex: 1, backgroundColor: 'red'}}>
                 <Text>Hello World</Text>
             </View>
-        )
+        );
+        
     }
 }
+
+export default Home;
