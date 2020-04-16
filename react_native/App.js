@@ -8,14 +8,11 @@
 
 import React, { Component } from 'react';
 
-const Module = require("~/JavaScript/Redux/Demo_3/App").default;
-
-const r = require("~/res/TryImport/Run").default;
+const Module = require("~/JavaScript/Network/Network").default;
 
 
 class App extends Component {
   render(){
-    r();
     return <Module/>
   }
 }
