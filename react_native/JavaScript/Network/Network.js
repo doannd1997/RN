@@ -1,44 +1,43 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import beautify from "json-beautify";
 
-import serverConfig from '~/res/Network/Network.json'
+import getUrl from "./getUrl";
+const hostUrl = getUrl();
+const staticUrl = hostUrl + "static/";
 
 export default class Newwork extends Component{
-    logJsonConfig = ()=>{
-        console.log(serverConfig);
-    };
     fetchJson = async function(){
-        const request = "http://time.jsontest.com./";
+        // const request = "https://reactnative.dev/movies.json";
+        const request = staticUrl + "package.json";
         try {
             let response = await fetch(request);
             let json = await response.json();
-            console.log(json);
+            console.info("server package.json:\n", beautify(json, null, 2, 80));
         }
         catch (e){
             console.error(e);
         }
     };
-    fetchJsonLocal = async ()=>{
-        const request = "192.168.1.10:8080/demo.json";
-        fetch(request)
-        .then(response => {
-          if (response.status === 200) {
-            return response.json();
-          } else {
-            throw new Error('Something went wrong on api server!');
-          }
-        })
-        .then(response => {
-          console.log(response);
-          // ...
-        }).catch(error => {
-          console.error(error);
-        });
+    requestLocal = async ()=>{
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = (e) => {
+        if (request.readyState !== 4) {
+          return;
+        }
+        if (request.status === 200) {
+          console.info('success:\n', request.responseText);
+        } else {
+          console.warn('error');
+        }
+      };
+      
+      request.open('GET', hostUrl);
+      request.send();
     };
     render(){
-        this.logJsonConfig();
         this.fetchJson();
-        // this.fetchJsonLocal();
+        this.requestLocal();
         return (
             <View>
                 <Text>
