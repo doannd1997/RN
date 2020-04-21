@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 
-const Module = require("~/JavaScript/Network/Network").default;
+const Module = require("./src/modules/login/Screen/LoginHome").default;
 
 
 class App extends Component {
