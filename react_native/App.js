@@ -8,12 +8,15 @@
 
 import React, { Component } from 'react';
 
-const Module = require("./src/modules/login/Screen/LoginHome").default;
+const InitialScript = require("./src/initial/script").default;
+InitialScript.init();
+
+const Screen = require("./src/modules/loading/screen/loadingscreen").default;
 
 
 class App extends Component {
   render(){
-    return <Module/>
+    return <Screen/>
   }
 }
 
