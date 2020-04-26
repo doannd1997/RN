@@ -9,6 +9,7 @@ const res = {
 }
 
 export default class LoadingScreen extends Component{
+    state = {loc: localization.poolLang}
     render(){
         return (
             <View style={styles.container}>
