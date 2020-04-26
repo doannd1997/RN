@@ -1,0 +1,5 @@
+{
+    "in": "localize.xlsx",
+    "out": "../../react_native/res/localize/current/",
+    "outOldPath": "../old"
+}

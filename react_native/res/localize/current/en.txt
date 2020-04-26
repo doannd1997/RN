@@ -1,0 +1,4 @@
+lang_login	=Login
+lang_register	=Register
+lang_click	=Click
+lang_more	=More
