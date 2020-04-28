@@ -6,7 +6,7 @@ export default class MainScreen extends Component{
         return (
             <View>
                 <Text>
-                    Main Screen
+                    {global.localization.getLang("lang_register")} in main screen context
                 </Text>
             </View>
         )

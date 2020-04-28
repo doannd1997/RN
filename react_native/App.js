@@ -8,17 +8,18 @@
 
 import React, { Component } from 'react';
 
-const InitialScript = require("./src/initial/script").default;
-InitialScript.init();
-
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
 const MainScreen = require("./src/modules/main/screen/MainScreen").default;
+
+const Inittial = require("./src/modules/data/Initial").default;
 
 class App extends Component {
   state= {
     loading: true
   }
   componentWillMount(){
+      
+
       var self = this;
       setTimeout(()=>{
         self.setState((state)=>{

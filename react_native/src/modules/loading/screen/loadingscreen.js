@@ -7,6 +7,8 @@ const res = {
     image: require("../../../../res/image/LoadingScreen/bus.png")
 }
 
+
+
 export default class LoadingScreen extends Component{
     render(){
         return (
@@ -15,7 +17,7 @@ export default class LoadingScreen extends Component{
                     <Image source={res.image} style={styles.imgageBus}/>
                 </View>
                 <Text style={styles.textContainer}>
-                    Bus Parent
+                    {global.localization.getLang("lang_login")}
                 </Text>
             </View>
         )

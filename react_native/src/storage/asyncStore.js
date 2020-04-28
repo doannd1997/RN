@@ -23,16 +23,15 @@ export default asyncStore = {
         try {
             let value = await AsyncStorage.getItem(key);
             if (value != null){
-                successCallback();
                 if (typeof successCallback == 'function')
-                    successCallback();
+                    successCallback(value);
                 return value;
             }
         }
         catch (e){
             console.error("get data from storage failed: " + key);
             if (typeof failCallback == 'function')
-                failCallback();
+                failCallback(e);
         }
     }
 }

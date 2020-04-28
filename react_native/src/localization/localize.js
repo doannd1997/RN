@@ -18,7 +18,6 @@ export default localization = {
     },
     initLang: function(){
         this.poolLang = resLang;
+        this.curLang = "vi";
     }
 }
-
-localization.initLang();
