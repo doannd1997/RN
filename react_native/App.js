@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import Initial from './src/modules/data/Initial';
 
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
 const MainScreen = require("./src/modules/main/screen/MainScreen").default;
@@ -19,7 +20,7 @@ class App extends Component {
   }
   componentWillMount(){
       
-
+      Initial.initAll();
       var self = this;
       setTimeout(()=>{
         self.setState((state)=>{

@@ -1,35 +1,38 @@
-import AsyncStorage from "react-native";
+import {AsyncStorage} from "react-native";
 
 
 export default asyncStore = {
-    async storeData: function(data, successCallback, failCallback){
-        let key = data.key;
-        let data = data.data;
+    storeData: async function(paramKey, paramData, successCallback, failCallback){
+        let key = paramKey;
+        let data = paramData;
         try {
             await AsyncStorage.setItem(key, data);
             if (typeof successCallback == 'funciton')
                 successCallback();
+            console.log("store data success: " + key + " : " + data);
+            return true;
         }
         catch (e){
-            console.error("set data to storage failed: " + key + " -> " + value);
+            console.log("set data to storage failed: " + key + " -> " + value);
             if (typeof failCallback == 'function')
                 failCallback();
+            return false;
         }
         
         
     },
 
-    async getData: function(key, successCallback, failCallback){
+    getData: async function(key, successCallback, failCallback){
         try {
             let value = await AsyncStorage.getItem(key);
             if (value != null){
                 if (typeof successCallback == 'function')
                     successCallback(value);
+                console.log("get data success: " + key + " : " + value)
                 return value;
             }
         }
         catch (e){
-            console.error("get data from storage failed: " + key);
             if (typeof failCallback == 'function')
                 failCallback(e);
         }
