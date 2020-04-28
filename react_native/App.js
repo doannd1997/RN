@@ -11,12 +11,30 @@ import React, { Component } from 'react';
 const InitialScript = require("./src/initial/script").default;
 InitialScript.init();
 
-const Screen = require("./src/modules/loading/screen/loadingscreen").default;
-
+const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
+const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 
 class App extends Component {
+  state= {
+    loading: true
+  }
+  componentWillMount(){
+      var self = this;
+      setTimeout(()=>{
+        self.setState((state)=>{
+          return {loading: false}
+        });
+      }, 3000)
+  }
   render(){
-    return <Screen/>
+    if (this.state.loading == true)
+        return (
+          <LoadingScreen/>
+        )
+    else
+        return (
+          <MainScreen/>
+        )
   }
 }
 

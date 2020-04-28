@@ -2,14 +2,12 @@ import React, {Component} from "react";
 import {View, Image, Text} from "react-native";
 const commonStyle = require("../../../common/style").default;
 const styles = require("../style/index").default;
-const localization = require(".././../../localization/localize").default;
 
 const res = {
     image: require("../../../../res/image/LoadingScreen/bus.png")
 }
 
 export default class LoadingScreen extends Component{
-    state = {loc: localization.poolLang}
     render(){
         return (
             <View style={styles.container}>
