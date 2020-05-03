@@ -1,5 +1,8 @@
 import {AsyncStorage} from "react-native";
 
+ASYNC_STORAGE = {
+    LOG_INFO_SET_GET: true          //  display in console data store and get
+}
 
 export default asyncStore = {
     storeData: async function(paramKey, paramData, successCallback, failCallback){
@@ -9,11 +12,13 @@ export default asyncStore = {
             await AsyncStorage.setItem(key, data);
             if (typeof successCallback == 'funciton')
                 successCallback();
-            console.log("store data success: " + key + " : " + data);
+            if (ASYNC_STORAGE.LOG_INFO_SET_GET)
+                console.log("store data success: " + key + " : " + data);
             return true;
         }
         catch (e){
-            console.log("set data to storage failed: " + key + " -> " + value);
+            if (ASYNC_STORAGE.LOG_INFO_SET_GET)
+                console.log("set data to storage failed: " + key + " -> " + value);
             if (typeof failCallback == 'function')
                 failCallback();
             return false;
@@ -28,7 +33,8 @@ export default asyncStore = {
             if (value != null){
                 if (typeof successCallback == 'function')
                     successCallback(value);
-                console.log("get data success: " + key + " : " + value)
+                if (ASYNC_STORAGE.LOG_INFO_SET_GET)
+                    console.log("get data success: " + key + " : " + value)
                 return value;
             }
         }
