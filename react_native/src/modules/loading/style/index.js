@@ -13,6 +13,10 @@ export default styles = StyleSheet.create({
       width: 230,
       height: 230
   },
+  imageParent: {
+      width: 90,
+      height: 90
+  },
   busContainer: {
       position: "absolute",
       width: "100%",
@@ -20,6 +24,13 @@ export default styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       bottom: "40%"
+  },
+  parentContainer: {
+    position: "absolute",
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      bottom: "5%"
   },
   textContainer: {
     position: "absolute",

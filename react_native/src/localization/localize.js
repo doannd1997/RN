@@ -6,6 +6,7 @@ const vi = require("../../res/localize/current/vi.json");
 export default localization = {
     curLang: null,
     getLang: (lang_id)=>{
+        console.log("get lang " + lang_id + " cur lang " + this.curLang + ":: " + vi[lang_id]) ;
         switch (this.curLang){
             case "vi":
                 return vi[lang_id];

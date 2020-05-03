@@ -14,19 +14,22 @@ const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 
 const Inittial = require("./src/modules/data/Initial").default;
 
+
+const setLoadingToTrue = (component)=>{
+  component.setState((state)=>{
+    return {loading: state}
+  });
+}
+
 class App extends Component {
   state= {
     loading: true
   }
   componentWillMount(){
-      
-      Initial.initAll();
       var self = this;
-      setTimeout(()=>{
-        self.setState((state)=>{
-          return {loading: false}
-        });
-      }, 3000)
+      Initial.initAll(()=>{
+        setLoadingToTrue(self);
+      });
   }
   render(){
     if (this.state.loading == true)

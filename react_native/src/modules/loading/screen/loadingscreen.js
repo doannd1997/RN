@@ -4,21 +4,23 @@ const commonStyle = require("../../../common/style").default;
 const styles = require("../style/index").default;
 
 const res = {
-    image: require("../../../../res/image/LoadingScreen/bus.png")
+    image: require("../../../../res/image/LoadingScreen/bus.png"),
+    parent: require("../../../../res/image/LoadingScreen/parent.png")
 }
 
 
 
 export default class LoadingScreen extends Component{
     render(){
+        console.log(global.localization.getLang("lang_app_title"))
         return (
             <View style={styles.container}>
                 <View style={styles.busContainer}>
                     <Image source={res.image} style={styles.imgageBus}/>
                 </View>
-                <Text style={styles.textContainer}>
-                    {global.localization.getLang("lang_login")}
-                </Text>
+                <View style={styles.parentContainer}>
+                    <Image source={res.parent} style={styles.imageParent}/>
+                </View>
             </View>
         )
     }
