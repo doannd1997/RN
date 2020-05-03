@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 class App extends Component{
     render(){
         return  (
-            <NavigationContainer>
+            // <NavigationContainer>
                 <Stack.Navigator
                     // screenOptions = { {title: "Màn hình từ navigator"} }
                 >
@@ -39,7 +39,7 @@ class App extends Component{
                         
                     />
                 </Stack.Navigator>
-            </NavigationContainer>
+            // </NavigationContainer>
         )
         
     }

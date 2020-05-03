@@ -6,11 +6,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const colors = require("../../../color/Colors").default;
 
+const HomeComponent = require("../../home/screen/HomeScreen").default;
+
 function Home() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <HomeComponent style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Home!</Text>
-    </View>
+    </HomeComponent>
   );
 }
 
