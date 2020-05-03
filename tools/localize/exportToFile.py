@@ -38,7 +38,7 @@ def export(path):
             langObj[l][key] = value
     
     for l in range(0, len(langFile)):
-        json.dump(langObj[l], langFile[l], ensure_ascii=False)
+        json.dump(langObj[l], langFile[l], ensure_ascii=False, indent=4, separators=(',', ': '))
 
     for l in langFile:
         l.close()

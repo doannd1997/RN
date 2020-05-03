@@ -14,6 +14,7 @@ const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 
 const Inittial = require("./src/modules/data/Initial").default;
 
+console.disableYellowBox = true
 
 const setLoadingToTrue = (component)=>{
   component.setState((state)=>{
