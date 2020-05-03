@@ -11,6 +11,10 @@ class App extends Component{
             // <NavigationContainer>
                 <Stack.Navigator
                     // screenOptions = { {title: "Màn hình từ navigator"} }
+                    mode="modal"
+                    // headerMode="none"
+                    // headerMode="float"
+                    // headerMode="screen"
                 >
                     <Stack.Screen 
                         name = "HomeScreen" 
@@ -20,7 +24,8 @@ class App extends Component{
                     <Stack.Screen 
                         name = "DetailScreen" 
                         component = { DetailScreen }
-                        options = { ({route})=>({title: route.params.title}) }
+                        // options = { ({route})=>({title: route.params.title}) }
+                        options = {({route})=>({title: route.params.title}), {headerShown: false }}
                         initialParams = { { _default: "default "}}
                     />
                     <Stack.Screen
@@ -34,7 +39,8 @@ class App extends Component{
                                   title="Info"
                                 //   color="#fff"
                                 />
-                              )
+                              ),
+                              headerBackTitle : ()=> "Button Back"
                         } }
                         
                     />
@@ -136,10 +142,13 @@ function DetailScreen({ route, navigation }){
 
 function LogoTitle(){
     return (
+        <View style={{flexDirection: "row"}}>
         <Image
             style = { {width: 60, height: 50} }
             source = { require("../../../../res/image/react.png") }
         />
+        <Button title="more button"/>
+        </View>
     )
 };
 function CustomHeaderScreen({ route, navigation }){
@@ -149,7 +158,7 @@ function CustomHeaderScreen({ route, navigation }){
                 title = " Back to Home"
                 onPress = { ()=> navigation.navigate("HomeScreen")}
             />
-
+            <Button title="more button"/>
 
         </View>
     )
