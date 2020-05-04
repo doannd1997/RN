@@ -31,5 +31,27 @@ export default styles = StyleSheet.create({
         borderWidth: 1, 
         borderColor: "grey",
         margin: 5
+    },
+    gridView: {
+        flex: 1,
+        // alignItems: "center",
+        // justifyContent: "center",
+        // backgroundColor: "cyan",
+        width: "100%",
+        padding: 5
+    },
+    buttonGrid: {
+        // flex: 1,
+        borderRadius: 4,
+        // backgroundColor: "orange",
+        width: "100%",
+        height: 160,
+        padding: 5,
+        flexDirection: "column-reverse"
+    },
+    buttonGridHeader: {
+        color: "#ffffff",
+        fontWeight: "bold",
+        fontSize: 18
     }
 })

@@ -1,1 +1,16 @@
-{"lang_login": "Login", "lang_register": "Register", "lang_click": "Click", "lang_more": "More", "lang_app_title": "App Parent", "lang_tab_home": "Home", "lang_tab_history": "History", "lang_tab_mail": "Mail", "lang_tab_account": "Account"}
+{
+    "lang_login": "Login",
+    "lang_register": "Register",
+    "lang_click": "Click",
+    "lang_more": "More",
+    "lang_app_title": "App Parent",
+    "lang_tab_home": "Home",
+    "lang_tab_history": "History",
+    "lang_tab_mail": "Mail",
+    "lang_tab_account": "Account",
+    "lang_student_traking": "BUS LOCATION TRACKING",
+    "lang_report_absentee": "REPORT ABSENTEE",
+    "lang_register_service": "REGISTER BUS SERVICE",
+    "lang_change_or_cancel_service": "UPDATE BUS SERVICE",
+    "lang_register_guardian": "REGISTER GUARDIANS"
+}

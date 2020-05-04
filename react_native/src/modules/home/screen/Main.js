@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, FlatList} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 
@@ -54,7 +54,7 @@ class HomeScreenCom extends Component{
     }
     render(){
         return (
-            <View style={commonStyles.fullViewCenterVertical}>
+            <View style={commonStyles.fullViewVerticalTopDown}>
                 <View style={commonStyles.toolBar}>
                     {!this.props.logedIn ? 
                         <TouchableOpacity 
@@ -77,7 +77,32 @@ class HomeScreenCom extends Component{
                         </View>
                      : null}
                 </View>
-                <Text>Home</Text>
+                <FlatList 
+                    style={styles.gridView} 
+                    showsVerticalScrollIndicator={false}
+                    bounces={true}
+                    data={[
+                        {color: '#2ecc71', lang: "lang_student_traking",},
+                        {color: '#3498db', lang: "lang_report_absentee"},
+                        {color: '#9b59b6', lang: "lang_register_service"},
+                        {color: '#34495e', lang: "lang_change_or_cancel_service"},
+                        {color: '#16a085', lang: "lang_register_guardian"},
+                    ]}
+                    renderItem={({item})=>{
+                        return (
+                            <View style={{paddingBottom: 8, paddingTop: 8, paddingLeft: 5, paddingRight: 5}}>
+                                <TouchableOpacity 
+                                    style={[styles.buttonGrid, {backgroundColor: item.color}]}
+                                    onPress={()=>{console.log(item.lang)}}
+                                >
+                                    <Text style={styles.buttonGridHeader}>
+                                        {global.localization.getLang(item.lang)}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }}
+                />
             </View>
         )
     }
