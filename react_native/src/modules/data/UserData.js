@@ -5,11 +5,12 @@ const asynStorage = require("../../storage/asyncStore").default;
 
 userData = {
     loadAllData: async ()=>{
-        var curLang = await asynStorage.getData(userData.KEY_LANG);
-        if (typeof curLang == 'undefined')
-            curLang = userData.DEFAULT_LANG;
-        this.curLang = curLang;
-        await asynStorage.storeData(userData.KEY_LANG, this.curLang);
+        this.curLang = await asynStorage.getData(userData.KEY_LANG);
+        if (typeof this.curLang == 'undefined'){
+            await asynStorage.storeData(userData.KEY_LANG, userData.DEFAULT_LANG);
+            this.curLang = userData.DEFAULT_LANG;
+        }
+        
         this.accessToken = await asyncStore.getData(userData.KEY_ACCESS_TOKEN);
         this.userName = await asyncStore.getData(userData.KEY_USER_NAME);
         this.passWord = await asyncStore.getData(userData.KEY_PASS_WORD);
