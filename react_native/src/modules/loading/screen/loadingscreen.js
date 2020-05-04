@@ -12,7 +12,6 @@ const res = {
 
 export default class LoadingScreen extends Component{
     render(){
-        console.log(global.localization.getLang("lang_app_title"))
         return (
             <View style={styles.container}>
                 <View style={styles.busContainer}>

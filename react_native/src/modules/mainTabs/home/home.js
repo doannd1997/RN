@@ -12,38 +12,38 @@ const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
 class App extends Component{
     render(){
         return  (
-                <Stack.Navigator
-                    mode="modal"
-                    headerMode="none"
-                >
-                    <Stack.Screen 
-                        name = "HomeScreen" 
-                        component = { HomeScreen }
-                        options = { {title: "Màn hình chính"} }
-                    />
-                    <Stack.Screen 
-                        name = "DetailScreen" 
-                        component = { DetailScreen }
-                        // options = { ({route})=>({title: route.params.title}) }
-                        initialParams = { { _default: "default "}}
-                    />
-                    <Stack.Screen
-                        name = "CustomHeaderScreen"
-                        component = { CustomHeaderScreen }
-                        options = { {
-                            headerTitle: props => <LogoTitle {...props} />,
-                            headerRight: () => (
-                                <Button
-                                  onPress={() => alert('This is a button!')}
-                                  title="Info"
-                                //   color="#fff"
-                                />
-                              ),
-                              headerBackTitle : ()=> "Button Back"
-                        } }
-                        
-                    />
-                </Stack.Navigator>
+            <Stack.Navigator
+                mode="modal"
+                headerMode="none"
+            >
+                <Stack.Screen 
+                    name = "HomeScreen" 
+                    component = { HomeScreen }
+                    options = { {title: "Màn hình chính"} }
+                />
+                <Stack.Screen 
+                    name = "DetailScreen" 
+                    component = { DetailScreen }
+                    // options = { ({route})=>({title: route.params.title}) }
+                    initialParams = { { _default: "default "}}
+                />
+                <Stack.Screen
+                    name = "CustomHeaderScreen"
+                    component = { CustomHeaderScreen }
+                    options = { {
+                        headerTitle: props => <LogoTitle {...props} />,
+                        headerRight: () => (
+                            <Button
+                                onPress={() => alert('This is a button!')}
+                                title="Info"
+                            //   color="#fff"
+                            />
+                            ),
+                            headerBackTitle : ()=> "Button Back"
+                    } }
+                    
+                />
+            </Stack.Navigator>
         )
         
     }
@@ -110,7 +110,7 @@ function LogoTitle(){
         <View style={{flexDirection: "row"}}>
         <Image
             style = { {width: 60, height: 50} }
-            source = { require("../../../../res/image/react.png") }
+            source = { require("../../../../res/image/HomeScreen/aquatic.png") }
         />
         <Button title="more button"/>
         </View>

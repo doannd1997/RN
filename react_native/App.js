@@ -11,8 +11,8 @@ import Initial from './src/modules/data/Initial';
 
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
 const MainScreen = require("./src/modules/main/screen/MainScreen").default;
+// const MainScreen = require("./JavaScript/Redux/Demo_2/App").default;
 
-const Inittial = require("./src/modules/data/Initial").default;
 
 console.disableYellowBox = true
 

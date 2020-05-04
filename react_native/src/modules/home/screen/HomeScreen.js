@@ -1,30 +1,18 @@
-import React, {Component} from "react";
-import {View, Text, TouchableHighlight} from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, {Component, useState} from "react";
+import { Provider } from "react-redux";
 
-const commonStyles = require("../../../common/style/index").default;
-const styles = require("../style/styles").default;
+const store = require("../redux/Redux").default;
+const Main = require("./Main").default;
 
-const createToolBar = ()=>{
-    return (
-        <View style={commonStyles.toolBar}>
-            <TouchableOpacity style={styles.btnLogin} onPress={()=>{alert("press log in")}}>
-                <Text style={[commonStyles.textBold, commonStyles.text]}>
-                    {global.localization.getLang("lang_login")}
-                </Text>
-            </TouchableOpacity>
-        </View>
-    )
-    
-}
+
+const Module = require("../../../../JavaScript/Redux/Demo_2/App").default;
 
 export default class HomeScreen extends Component{
     render(){
         return (
-            <View style={commonStyles.fullViewCenterVertical}>
-                {createToolBar()}
-                <Text>Home</Text>
-            </View>
+        <Provider store={store}>
+           <Main></Main> 
+        </Provider>
         )
     }
 }
