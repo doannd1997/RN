@@ -2,19 +2,19 @@ import React, { Component, useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput, Image } from 'react-native';
 
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
 const Stack = createStackNavigator();
+
+
+const commonStyles = require("../../../common/style/index").default;
+
+const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
 
 class App extends Component{
     render(){
         return  (
-            // <NavigationContainer>
                 <Stack.Navigator
-                    // screenOptions = { {title: "Màn hình từ navigator"} }
                     mode="modal"
                     headerMode="none"
-                    // headerMode="float"
-                    // headerMode="screen"
                 >
                     <Stack.Screen 
                         name = "HomeScreen" 
@@ -25,7 +25,6 @@ class App extends Component{
                         name = "DetailScreen" 
                         component = { DetailScreen }
                         // options = { ({route})=>({title: route.params.title}) }
-                        options = {({route})=>({title: route.params.title}), {headerShown: false }}
                         initialParams = { { _default: "default "}}
                     />
                     <Stack.Screen
@@ -45,7 +44,6 @@ class App extends Component{
                         
                     />
                 </Stack.Navigator>
-            // </NavigationContainer>
         )
         
     }
@@ -55,41 +53,8 @@ class App extends Component{
 function HomeScreen({ route, navigation }){
     var post = route.params?.post;
     return (
-        <View
-            style = { styles.fullScreen }
-        >
-            <Text>
-                Home Screen
-            </Text>
-            <Button
-                title = "Go to Detail"
-                onPress = { ()=> navigation.navigate("DetailScreen", { 
-                    id: "1",
-                    name: "Banana",
-                    title: "Detail screen, from Home"
-                }) }
-            />
-            <Text>
-                Result from Detail [{post}]
-            </Text>
-            <Button
-                title = "Set Option for Screen"
-                onPress = { ()=> navigation.setOptions({ 
-                    title: "Updated!",
-                    headerStyle: {
-                        backgroundColor: '#f4511e',
-                      },
-                      headerTintColor: '#fff',
-                      headerTitleStyle: {
-                        fontWeight: 'bold',
-                      }
-                }) }
-            />
-            <Button
-                title = "Navigate To Custom Header"
-                onPress = { ()=> navigation.navigate("CustomHeaderScreen") }
-            />
-
+        <View style={styles.fullScreen}>
+            <HomeScreenComponent></HomeScreenComponent>
         </View>
     )
 };

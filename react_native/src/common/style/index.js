@@ -13,6 +13,7 @@ export default styles = StyleSheet.create({
         flex: 1,
         alignContent: "center",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "center"
     },
 });

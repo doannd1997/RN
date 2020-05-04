@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const colors = require("../../../color/Colors").default;
 
-const HomeComponent = require("../../home/screen/HomeScreen").default;
+const HomeComponent = require("../../mainTabs/home/home").default;
 
 function Home() {
   return (
