@@ -14,6 +14,7 @@ export default localization = {
                 return en[lang_id]
                 break;
         };
+        return "[no_lang]" + lang_id
     },
     initConfigLang: ()=>{
         this.curLang = global.userData.getCurLang();
