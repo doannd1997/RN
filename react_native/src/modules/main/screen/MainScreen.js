@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -49,6 +49,7 @@ function MyTabs() {
     const tab_name_account = global.localization.getLang("lang_tab_account")
 
     return (
+      <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
         initialRouteName="Feed"
         tabBarOptions={{
@@ -98,6 +99,7 @@ function MyTabs() {
             }}
         />
         </Tab.Navigator>
+      </SafeAreaView>
     );
 }
 

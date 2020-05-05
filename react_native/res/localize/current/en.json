@@ -8,9 +8,13 @@
     "lang_tab_history": "History",
     "lang_tab_mail": "Mail",
     "lang_tab_account": "Account",
-    "lang_student_traking": "BUS LOCATION TRACKING",
+    "lang_student_tracking": "BUS LOCATION TRACKING",
     "lang_report_absentee": "REPORT ABSENTEE",
     "lang_register_service": "REGISTER BUS SERVICE",
     "lang_change_or_cancel_service": "UPDATE BUS SERVICE",
-    "lang_register_guardian": "REGISTER GUARDIANS"
+    "lang_register_guardian": "REGISTER GUARDIANS",
+    "lang_noti_header": "Notification!",
+    "lang_noti_login": "Login to continue",
+    "lang_confirm_ok": "Ok",
+    "lang_confirm_cancel": "Cancel"
 }

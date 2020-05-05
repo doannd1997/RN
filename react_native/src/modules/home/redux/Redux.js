@@ -1,21 +1,26 @@
 const {createStore} = require("redux");
 
-const defaultState = {
-    logedIn: false,
-    displayName: "Nguyễn Duy Đoàn"
+const getDefaultState= ()=>{
+    var defaultState = {
+        logedIn: global.userData.logedIn,
+        displayName: "Nguyễn Duy Đoàn"
+    }
+    return defaultState;
 }
 
 const reducer = (state, action)=>{
-    if (state == undefined)
-        return defaultState;
+    if (Object.keys(state).length == 0)
+        return getDefaultState();
     switch (action.type){
         case "LOG_IN":
+            global.userData.setLogedIn(true);
             return {...state, logedIn: true};
         case "LOG_OUT":
+            global.userData.setLogedIn(false);
             return {...state, logedIn: false};
     }
 
-    return defaultState;
+    return state;
 }
 
 const store = createStore(reducer, {});

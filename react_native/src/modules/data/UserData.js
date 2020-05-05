@@ -3,7 +3,12 @@ import { createIconSetFromFontello } from "react-native-vector-icons";
 
 const asynStorage = require("../../storage/asyncStore").default;
 
-userData = {
+ userData = {
+    logedIn: false,
+    userName: "null",
+    displayName: "Developer",
+    passWord: "123456",
+
     loadAllData: async ()=>{
         this.curLang = await asynStorage.getData(userData.KEY_LANG);
         if (typeof this.curLang == 'undefined'){
@@ -17,6 +22,13 @@ userData = {
     },
     getCurLang: ()=>{
         return this.curLang || userData.DEFAULT_LANG;
+    },
+
+    isLogedIn: ()=>{
+        return this.logedIn;
+    },
+    setLogedIn: (boo)=>{
+        this.logedIn = boo;
     },
     getAccessToken: ()=>{
         return this.accessToken;
