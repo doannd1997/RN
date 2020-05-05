@@ -2,48 +2,57 @@ import React, {Component} from "react";
 import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from "react-redux";
+import { useNavigation } from '@react-navigation/native';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
-const Gridder = props => {
-    pressOnGrid = (langItem)=>{
-        if (!props.logedIn) {
-          var header = global.localization.getLang(
-            'lang_noti_header',
-          );
-          var okLabel = global.localization.getLang(
-            'lang_confirm_ok',
-          );
-          var cancelLabel = global.localization.getLang(
-            'lang_confirm_cancel',
-          );
-          var content = global.localization.getLang(
-            'lang_noti_login',
-          );
-          Alert.alert(
-            header,
-            content,
-            [
-              {
-                text: global.localization.getLang(langItem),
-                onPress: () => console.log('May be Pressed'),
-              },
-              {
-                text: okLabel,
-                onPress: () => console.log('Yes Pressed'),
-              },
-              {
-                text: cancelLabel,
-                onPress: () => console.log('OK Pressed'),
-              },
-            ],
-            {cancelable: true},
-          );
-        }
+
+var navigateToLogIn = (navigation)=>{
+  navigation.navigate("MainLogin")
+}
+var pressOnGrid = (props, langItem, navigation)=>{
+    if (!props.logedIn) {
+      var header = global.localization.getLang(
+        'lang_noti_header',
+      );
+      var okLabel = global.localization.getLang(
+        'lang_confirm_ok',
+      );
+      var cancelLabel = global.localization.getLang(
+        'lang_confirm_cancel',
+      );
+      var content = global.localization.getLang(
+        'lang_noti_login',
+      );
+      Alert.alert(
+        header,
+        content,
+        [
+          {
+            // text: global.localization.getLang(langItem),
+            // onPress: () => console.log('May be Pressed'),
+          },
+          {
+            text: okLabel,
+            onPress: () => {navigateToLogIn(navigation)},
+          },
+          {
+            text: cancelLabel,
+            onPress: () => {console.log('Cancel login')},
+          },
+        ],
+        {cancelable: true},
+      );
+    }
+    else {
         
     }
+    
+}
 
+const Gridder = props => {
+    const navigation = useNavigation();
     return (
         <FlatList 
                     style={styles.gridView} 
@@ -62,7 +71,7 @@ const Gridder = props => {
                                 <TouchableOpacity 
                                     style={[styles.buttonGrid, {backgroundColor: item.color}]}
                                     onPress={()=>{
-                                        pressOnGrid(item.lang)
+                                        pressOnGrid(props, item.lang, navigation)
                                     }}
                                 >
                                     <Text style={styles.buttonGridHeader}>

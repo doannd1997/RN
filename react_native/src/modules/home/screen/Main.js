@@ -11,7 +11,9 @@ const ToolBar = require("../Components/ToolBar").default;
 const Gridder = require("../Components/Gridder").default;
 
 class HomeScreenCom extends Component{
-    
+    constructor(props){
+        super(props);
+    }
     render(){
         return (
             <View style={commonStyles.fullViewVerticalTopDown}>

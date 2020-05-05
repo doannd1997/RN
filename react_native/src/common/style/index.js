@@ -15,6 +15,19 @@ export default styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.8, 
     },
+    fullViewVerticalBottomUp: {
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        // alignContent: "center",
+        // flexDirection: "column",
+        alignItems: "center",
+        // justifyContent: "center",
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8, 
+        flexDirection: "column-reverse"
+    },
     fullViewCenterHorizontal: {
         flex: 1,
         alignContent: "center",
