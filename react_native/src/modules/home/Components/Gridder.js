@@ -9,9 +9,15 @@ const styles = require("../style/styles").default;
 
 
 var navigateToLogIn = (navigation)=>{
-  navigation.navigate("MainLogin")
+  navigation.navigate("MainLogin");
 }
-var pressOnGrid = (props, langItem, navigation)=>{
+var navigationToMethod = (methodName, navigation)=>{
+  switch (methodName){
+    case METHOD_CHILDREN_TRAKCING:
+      navigation.navigate("ChildrenTracking");
+  }
+}
+var pressOnGrid = (props, methodName, navigation)=>{
     if (!props.logedIn) {
       var header = global.localization.getLang(
         'lang_noti_header',
@@ -46,7 +52,7 @@ var pressOnGrid = (props, langItem, navigation)=>{
       );
     }
     else {
-        
+        navigationToMethod(methodName, navigation)
     }
     
 }
@@ -59,11 +65,11 @@ const Gridder = props => {
                     showsVerticalScrollIndicator={false}
                     bounces={true}
                     data={[
-                        {color: '#2ecc71', lang: "lang_student_tracking",},
-                        {color: '#3498db', lang: "lang_report_absentee"},
-                        {color: '#9b59b6', lang: "lang_register_service"},
-                        {color: '#34495e', lang: "lang_change_or_cancel_service"},
-                        {color: '#16a085', lang: "lang_register_guardian"},
+                        {color: '#2ecc71', lang: "lang_student_tracking", methodName: METHOD_CHILDREN_TRAKCING},
+                        {color: '#3498db', lang: "lang_report_absentee", methodName: METHOD_REPORT_ABSENTEE},
+                        {color: '#9b59b6', lang: "lang_register_service", methodName: METHOD_REGISTER_SERVICE},
+                        {color: '#34495e', lang: "lang_change_or_cancel_service", methodName: METHOD_CHANGE_CANCEL_SERVICE},
+                        {color: '#16a085', lang: "lang_register_guardian", methodName: METHOD_REGISTER_GUARDIAN},
                     ]}
                     renderItem={({item, index})=>{
                         return (
@@ -71,7 +77,7 @@ const Gridder = props => {
                                 <TouchableOpacity 
                                     style={[styles.buttonGrid, {backgroundColor: item.color}]}
                                     onPress={()=>{
-                                        pressOnGrid(props, item.lang, navigation)
+                                        pressOnGrid(props, item.methodName, navigation)
                                     }}
                                 >
                                     <Text style={styles.buttonGridHeader}>
@@ -89,5 +95,11 @@ const Gridder = props => {
 const mapStateToProps = state => ({
   logedIn: state.logedIn
 });
+
+const METHOD_CHILDREN_TRAKCING = "METHOD_CHILDREN_TRAKCING"
+const METHOD_REGISTER_SERVICE = "METHOD_REGISTER_SERVICE"
+const METHOD_REPORT_ABSENTEE = "METHOD_REPORT_ABSENTEE"
+const METHOD_REGISTER_GUARDIAN = "METHOD_REGISTER_GUARDIAN"
+const METHOD_CHANGE_CANCEL_SERVICE = "METHOD_CHANGE_CANCEL_SERVICE"
 
 export default connect(mapStateToProps)(Gridder);

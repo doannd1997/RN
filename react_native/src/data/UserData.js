@@ -1,7 +1,7 @@
-import asyncStore from "../../storage/asyncStore";
-import { createIconSetFromFontello } from "react-native-vector-icons";
+import asyncStore from "../storage/asyncStore";
+import { NativeModules, Platform } from "react-native"
 
-const asynStorage = require("../../storage/asyncStore").default;
+const asynStorage = require("../storage/asyncStore").default;
 
  userData = {
     logedIn: false,
@@ -45,6 +45,15 @@ const asynStorage = require("../../storage/asyncStore").default;
         asynStorage.storeData(userData.KEY_LANG, lang);
     }
 }
+
+
+// userData.DEFAULT_LANG =
+//   Platform.OS === 'ios'
+//     ? NativeModules.SettingsManager.settings.AppleLocale ||
+//       NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
+//     : NativeModules.I18nManager.localeIdentifier;
+
+// console.log("language: " + userData.DEFAULT_LANG);
 
 userData.DEFAULT_LANG = "vi";
 

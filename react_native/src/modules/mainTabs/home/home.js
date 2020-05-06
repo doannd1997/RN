@@ -8,6 +8,7 @@ const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
 const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default;
 const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
 const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
+const ChildrenTrackingComponent = require("../../childrenTracking/screen/ChildrenTracking").default;
 
 class App extends Component{
     render(){
@@ -19,22 +20,26 @@ class App extends Component{
                 <Stack.Screen 
                     name = "HomeScreen" 
                     component = { HomeScreen }
-                    options = { {title: "Màn hình chính"} }
+                    // options = { {title: "Màn hình chính"} }
                 />
                 <Stack.Screen 
                     name = "MainLogin" 
                     component = { MainLogin }
-                    // options = { {title: "Màn hình chính"} }
+                    // options = { {title: "Màn hình đăng nhập"} }
                 />
                 <Stack.Screen 
                     name = "GetInfoLogin" 
                     component = { GetInfoLogin }
-                    // options = { {title: "Màn hình chính"} }
+                    // options = { {title: "Màn hình lấy thông tin đăng nhập"} }
                 />
                 <Stack.Screen 
                     name = "FogetPassword" 
                     component = { ForgetPassword }
-                    // options = { {title: "Màn hình chính"} }
+                    // options = { {title: "Màn hình quên mật khẩu"} }
+                />
+                <Stack.Screen
+                    name = "ChildrenTracking"
+                    component =  { ChildrenTracking }
                 />
             </Stack.Navigator>
         )
@@ -71,6 +76,14 @@ function ForgetPassword({route, navigation}){
     return (
         <View style={styles.fullScreen}>
             <ForgetPasswordComponent route={route} navigation={navigation}></ForgetPasswordComponent>
+        </View>
+    )
+}
+
+function ChildrenTracking({route, navigation}){
+    return (
+        <View style={styles.fullScreen}>
+            <ChildrenTrackingComponent route={route} navigation={navigation}></ChildrenTrackingComponent>
         </View>
     )
 }

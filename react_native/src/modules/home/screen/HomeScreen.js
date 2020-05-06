@@ -1,5 +1,4 @@
 import React, {Component, useState} from "react";
-import { Provider } from "react-redux";
 
 const Main = require("./Main").default;
 

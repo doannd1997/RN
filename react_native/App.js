@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import Initial from './src/modules/data/Initial';
+import Initial from './src/data/Initial';
 
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
 const MainScreen = require("./src/modules/main/screen/MainBottomNavScreen").default;

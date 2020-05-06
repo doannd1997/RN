@@ -1,7 +1,7 @@
 import { call } from "react-native-reanimated";
 
-const userData = require("../data/UserData").default;
-const localize = require("../../localization/localize").default;
+const userData = require("./UserData").default;
+const localize = require("../localization/localize").default;
 
 const DELAY = 100; //ms loading -> main screen
 

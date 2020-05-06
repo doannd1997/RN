@@ -41,7 +41,7 @@ class MainLogInCom extends Component{
             <TouchableOpacity
               style={[styles.input, styles.button]}
               onPress={() => {
-                self.props.dispatch({type: 'TOGGLE_LOG_IN'});
+                self.props.dispatch({type: 'LOG_IN'});
                 self.props.navigation.navigate('HomeScreen', {
                   // logedIn: false,
                 });
