@@ -1,12 +1,17 @@
 import React, {Component} from "react";
 import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useRoute } from '@react-navigation/native';
+
 import { connect } from "react-redux";
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
 const ToolBar = props=>{
+    const route = useRoute();
+    if (route.params != undefined && route.params.logedIn === true)
+      props.dispatch({type: "LOG_IN"})
     return (
       <View style={commonStyles.toolBar}>
         {!props.logedIn ? (

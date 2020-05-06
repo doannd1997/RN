@@ -34,7 +34,7 @@ class App extends Component{
 function HomeScreen({ route, navigation }){
     return (
         <View style={styles.fullScreen}>
-            <HomeScreenComponent nav={{route: route, navigation: navigation}}></HomeScreenComponent>
+            <HomeScreenComponent route={route} navigation={navigation}></HomeScreenComponent>
         </View>
     )
 };
@@ -42,7 +42,7 @@ function HomeScreen({ route, navigation }){
 function MainLogin({route, navigation}){
     return (
         <View style={styles.fullScreen}>
-            <MainLogInComponent nav={{route: route, navigation: navigation}}></MainLogInComponent>
+            <MainLogInComponent route={route} navigation={navigation}></MainLogInComponent>
         </View>
     )
 }
