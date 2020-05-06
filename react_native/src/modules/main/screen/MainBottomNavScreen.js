@@ -3,15 +3,16 @@ import { Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Provider } from "react-redux";
 
+const store = require("../redux/Redux").default;
 const colors = require("../../../color/Colors").default;
 
 const HomeComponent = require("../../mainTabs/home/home").default;
 
-function Home() {
+function Home(props) {
   return (
-    <HomeComponent style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
+    <HomeComponent {...props} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     </HomeComponent>
   );
 }
@@ -49,7 +50,7 @@ function MyTabs() {
     const tab_name_account = global.localization.getLang("lang_tab_account")
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <Provider store={store}>
         <Tab.Navigator
         initialRouteName="Feed"
         tabBarOptions={{
@@ -99,7 +100,7 @@ function MyTabs() {
             }}
         />
         </Tab.Navigator>
-      </SafeAreaView>
+      </Provider>
     );
 }
 

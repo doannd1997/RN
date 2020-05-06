@@ -20,8 +20,8 @@ const ToolBar = props=>{
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={() => {
-              // props.dispatch({type: 'LOG_IN'});
-              navigation.navigate("MainLogin");
+              props.dispatch({type: 'LOG_IN'});
+              // navigation.navigate("MainLogin");
             }}>
             <Text style={[commonStyles.textBold, commonStyles.text]}>
               {global.localization.getLang('lang_login')}

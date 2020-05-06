@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput, Image } from 'react-native';
-
+import { connect } from 'react-redux';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
@@ -76,4 +76,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default App;
+const mapStateToProps = (state)=>{
+    return {
+        logedIn: state.logedIn
+    }
+}
+
+export default connect(mapStateToProps)(App)

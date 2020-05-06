@@ -43,7 +43,7 @@ class MainLogInCom extends Component{
               onPress={() => {
                 self.props.dispatch({type: 'TOGGLE_LOG_IN'});
                 self.props.navigation.navigate('HomeScreen', {
-                  logedIn: false,
+                  // logedIn: false,
                 });
               }}>
               <Text

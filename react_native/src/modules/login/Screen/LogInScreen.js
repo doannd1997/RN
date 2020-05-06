@@ -1,7 +1,6 @@
 import React, {Component, useState} from "react";
 import { Provider } from "react-redux";
 
-const store = require("../redux/Redux").default;
 const Main = require("./Main").default;
 
 export default class LogInScreen extends Component{
@@ -10,9 +9,7 @@ export default class LogInScreen extends Component{
     }
     render(){
         return (
-        <Provider store={store}>
-           <Main {...this.props}></Main> 
-        </Provider>
+            <Main {...this.props}></Main> 
         )
     }
 }
