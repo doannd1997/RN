@@ -19,7 +19,7 @@ class MainLogInCom extends Component{
           <View style={commonStyles.fullViewVerticalCenter}>
             <Fumi
               style={styles.input}
-              label={global.localization.getLang('lang_account')}
+              label={global.localization.getLang('lang_phone_number')}
               iconClass={FontAwesomeIcon}
               iconName={'user-circle'}
               iconColor={'#f95a25'}
@@ -30,7 +30,17 @@ class MainLogInCom extends Component{
             <Fumi
               style={styles.input}
               secureTextEntry={true}
-              label={global.localization.getLang('lang_password')}
+              label={global.localization.getLang('lang_type_new_password')}
+              iconClass={FontAwesomeIcon}
+              iconName={'lock'}
+              iconColor={'#f95a25'}
+              iconSize={20}
+              iconWidth={40}
+              inputPadding={16}
+            />
+            <Fumi
+              style={styles.input}
+              label={global.localization.getLang('lang_confirm_new_password')}
               iconClass={FontAwesomeIcon}
               iconName={'lock'}
               iconColor={'#f95a25'}
@@ -41,27 +51,9 @@ class MainLogInCom extends Component{
             <TouchableOpacity
               style={[styles.input, styles.button]}
               onPress={() => {
-                self.props.dispatch({type: 'TOGGLE_LOG_IN'});
-                self.props.navigation.navigate('HomeScreen', {
-                  // logedIn: false,
+                self.props.navigation.navigate('MainLogin', {
+                  
                 });
-              }}>
-              <Text
-                style={[
-                  commonStyles.text,
-                  commonStyles.textBold,
-                  styles.text,
-                ]}>
-                {global.localization.getLang('lang_login')}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.input, styles.button]}
-              onPress={() => {
-                // self.props.dispatch({type: 'TOGGLE_LOG_IN'});
-                // self.props.navigation.navigate('HomeScreen', {
-                //   logedIn: false,
-                // });
               }}>
               <Text
                 style={[
@@ -75,7 +67,7 @@ class MainLogInCom extends Component{
             <TouchableOpacity
               style={[styles.input, styles.button]}
               onPress={() => {
-                self.props.navigation.navigate('GetInfoLogin', {
+                self.props.navigation.navigate('MainLogin', {
                   
                 });
               }}>
@@ -85,7 +77,7 @@ class MainLogInCom extends Component{
                   commonStyles.textBold,
                   styles.text,
                 ]}>
-                {global.localization.getLang('lang_forget_password')}
+                {global.localization.getLang('lang_back_to_login')}
               </Text>
             </TouchableOpacity>
           </View>

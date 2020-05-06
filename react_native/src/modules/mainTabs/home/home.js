@@ -5,8 +5,9 @@ import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
-const MainLogInComponent = require("../../login/Screen/LogInScreen").default;
-const GetInfoLogInComponent = require("../../getInfoLogIn/Screen/GetInfoLogInScreen").default;
+const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default;
+const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
+const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
 
 class App extends Component{
     render(){
@@ -28,6 +29,11 @@ class App extends Component{
                 <Stack.Screen 
                     name = "GetInfoLogin" 
                     component = { GetInfoLogin }
+                    // options = { {title: "Màn hình chính"} }
+                />
+                <Stack.Screen 
+                    name = "FogetPassword" 
+                    component = { ForgetPassword }
                     // options = { {title: "Màn hình chính"} }
                 />
             </Stack.Navigator>
@@ -57,6 +63,14 @@ function GetInfoLogin({route, navigation}){
     return (
         <View style={styles.fullScreen}>
             <GetInfoLogInComponent route={route} navigation={navigation}></GetInfoLogInComponent>
+        </View>
+    )
+}
+
+function ForgetPassword({route, navigation}){
+    return (
+        <View style={styles.fullScreen}>
+            <ForgetPasswordComponent route={route} navigation={navigation}></ForgetPasswordComponent>
         </View>
     )
 }

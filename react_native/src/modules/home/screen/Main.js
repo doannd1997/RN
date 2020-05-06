@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
-const ToolBar = require("../Components/ToolBar").default;
-const Gridder = require("../Components/Gridder").default;
+const ToolBar = require("../components/ToolBar").default;
+const Gridder = require("../components/Gridder").default;
 
 class HomeScreenCom extends Component{
     constructor(props){
