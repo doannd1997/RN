@@ -10,18 +10,18 @@ const styles = require("../style/styles").default;
 
 const ToolBar = props=>{
     const route = useRoute();
-    if (route.params != undefined && route.params.logedIn === true)
-      props.dispatch({type: "LOG_IN"})
+    // if (route.params != undefined && route.params.logedIn === true)
+    //   props.dispatch({type: "LOG_IN"})
     
-      const navigation = useNavigation();
+    const navigation = useNavigation();
     return (
       <View style={commonStyles.toolBar}>
         {!props.logedIn ? (
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={() => {
-              props.dispatch({type: 'LOG_IN'});
-              // navigation.navigate("MainLogin");
+              // props.dispatch({type: 'LOG_IN'});
+              navigation.navigate("MainLogin");
             }}>
             <Text style={[commonStyles.textBold, commonStyles.text]}>
               {global.localization.getLang('lang_login')}
