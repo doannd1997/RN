@@ -1,6 +1,14 @@
 {
     "lang_login": "Login",
+    "lang_change_password": "Change Password",
+    "lang_forget_password": "Forget Password",
     "lang_register": "Register",
+    "lang_phone_number": "Phone number",
+    "lang_email_receive_password": "Address receive password",
+    "lang_student_code": "Student ID",
+    "lang_send_get_login_info": "Request Log In Info",
+    "lang_back_to_login": "Back To LogIn Page",
+    "": "",
     "lang_click": "Click",
     "lang_more": "More",
     "lang_app_title": "App Parent",
@@ -16,5 +24,7 @@
     "lang_noti_header": "Notification!",
     "lang_noti_login": "Login to continue",
     "lang_confirm_ok": "Ok",
-    "lang_confirm_cancel": "Cancel"
+    "lang_confirm_cancel": "Cancel",
+    "lang_account": "Account",
+    "lang_password": "Password"
 }

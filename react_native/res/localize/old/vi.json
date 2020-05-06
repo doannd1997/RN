@@ -1,6 +1,14 @@
 {
     "lang_login": "Đăng Nhập",
+    "lang_change_password": "Đổi Mật Khẩu",
+    "lang_forget_password": "Chưa Có/ Quên Mật Khẩu",
     "lang_register": "Đăng Kí",
+    "lang_phone_number": "Số điện thoại",
+    "lang_email_receive_password": "Địa chỉ email nhận mật khẩu",
+    "lang_student_code": "Mã số sinh viên",
+    "lang_send_get_login_info": "Gửi Thông Tin Xác Thực",
+    "lang_back_to_login": "Quay Về Trang Đăng Nhập",
+    "": "",
     "lang_click": "Nhấn vào",
     "lang_more": "Nhiều hơn",
     "lang_app_title": "App Phụ Huynh",
@@ -8,7 +16,7 @@
     "lang_tab_history": "Lịch Sử",
     "lang_tab_mail": "Hộp Thư",
     "lang_tab_account": "Tài Khoản",
-    "lang_student_traking": "THEO DÕI VỊ TRÍ XE",
+    "lang_student_tracking": "THEO DÕI VỊ TRÍ XE",
     "lang_report_absentee": "BÁO NGHỈ CHO CON",
     "lang_register_service": "ĐĂNG KÍ DỊCH VỤ XE BUÝT",
     "lang_change_or_cancel_service": "THAY ĐỔI DỊCH VỤ XE BUÝT",
@@ -16,5 +24,7 @@
     "lang_noti_header": "Thông Báo!",
     "lang_noti_login": "Bạn cần đăng nhập để tiếp tục",
     "lang_confirm_ok": "Đồng ý",
-    "lang_confirm_cancel": "Hủy bỏ"
+    "lang_confirm_cancel": "Hủy bỏ",
+    "lang_account": "Tài khoản",
+    "lang_password": "Mật khẩu"
 }

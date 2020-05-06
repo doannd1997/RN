@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 import { connect } from "react-redux";
 
@@ -12,13 +12,16 @@ const ToolBar = props=>{
     const route = useRoute();
     if (route.params != undefined && route.params.logedIn === true)
       props.dispatch({type: "LOG_IN"})
+    
+      const navigation = useNavigation();
     return (
       <View style={commonStyles.toolBar}>
         {!props.logedIn ? (
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={() => {
-              props.dispatch({type: 'LOG_IN'});
+              // props.dispatch({type: 'LOG_IN'});
+              navigation.navigate("MainLogin");
             }}>
             <Text style={[commonStyles.textBold, commonStyles.text]}>
               {global.localization.getLang('lang_login')}

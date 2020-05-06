@@ -3,6 +3,18 @@ const colors = require("../../color/Colors").default;
 
 
 export default styles = StyleSheet.create({
+    fullViewVerticalCenter: {
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        alignContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8, 
+    },
     fullViewVerticalTopDown: {
         flex: 1,
         width: "100%",

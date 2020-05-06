@@ -6,6 +6,7 @@ const Stack = createStackNavigator();
 
 const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
 const MainLogInComponent = require("../../login/Screen/LogInScreen").default;
+const GetInfoLogInComponent = require("../../getInfoLogIn/Screen/GetInfoLogInScreen").default;
 
 class App extends Component{
     render(){
@@ -22,6 +23,11 @@ class App extends Component{
                 <Stack.Screen 
                     name = "MainLogin" 
                     component = { MainLogin }
+                    // options = { {title: "Màn hình chính"} }
+                />
+                <Stack.Screen 
+                    name = "GetInfoLogin" 
+                    component = { GetInfoLogin }
                     // options = { {title: "Màn hình chính"} }
                 />
             </Stack.Navigator>
@@ -43,6 +49,14 @@ function MainLogin({route, navigation}){
     return (
         <View style={styles.fullScreen}>
             <MainLogInComponent route={route} navigation={navigation}></MainLogInComponent>
+        </View>
+    )
+}
+
+function GetInfoLogin({route, navigation}){
+    return (
+        <View style={styles.fullScreen}>
+            <GetInfoLogInComponent route={route} navigation={navigation}></GetInfoLogInComponent>
         </View>
     )
 }
