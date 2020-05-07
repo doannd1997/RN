@@ -3,26 +3,20 @@ import {View, Text} from "react-native";
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
+
+const MapViewCom = require("../component/MapView").default;
 
 class ChildrenTrackingCom extends Component{
     render(){
         var self = this;
         return (
           <View style={commonStyles.fullViewVerticalCenter}>
-            <MapView
-              style={[commonStyles.fullViewVerticalCenter, styles.map]}
-              initialRegion={{
-                latitude: 21.005042,
-                longitude: 105.843597,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-            />
+            <MapViewCom/>
             {this.props.CHILDREN_TRACKING_showingDivInfo ? (
               <View style={styles.divInfo}>
                 <View
@@ -70,7 +64,7 @@ class ChildrenTrackingCom extends Component{
                   <Icon
                     name="angle-double-up"
                     size={30}
-                    color={colors.commonButton}
+                    color={"#ffffff"}
                   />
                 </TouchableOpacity>
               </View>

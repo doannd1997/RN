@@ -54,7 +54,7 @@ export default styles = StyleSheet.create({
         width: 50,
         height: 35,
         bottom: 3,
-        backgroundColor: "cyan",
+        backgroundColor: "#1c1c1c",
         borderRadius: 3,
         opacity: 0.8
     },
