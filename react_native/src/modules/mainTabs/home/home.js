@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { View, StyleSheet, Text, Button, TextInput, Image } from 'react-native';
+import { View, StyleSheet, Text, Button, TextInput, Image, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 const Stack = createStackNavigator();
@@ -13,6 +13,7 @@ const ChildrenTrackingComponent = require("../../childrenTracking/screen/Childre
 class App extends Component{
     render(){
         return  (
+            <SafeAreaView style={{flex: 1}}>
             <Stack.Navigator
                 mode="modal"
                 headerMode="none"
@@ -42,6 +43,7 @@ class App extends Component{
                     component =  { ChildrenTracking }
                 />
             </Stack.Navigator>
+            </SafeAreaView>
         )
         
     }
