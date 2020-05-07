@@ -24,9 +24,11 @@
     "lang_change_or_cancel_service": "UPDATE BUS SERVICE",
     "lang_register_guardian": "REGISTER GUARDIANS",
     "lang_noti_header": "Notification!",
-    "lang_noti_login": "Login to continue",
+    "lang_noti_login": "Please login to continue",
     "lang_confirm_ok": "Ok",
     "lang_confirm_cancel": "Cancel",
     "lang_account": "Account",
-    "lang_password": "Password"
+    "lang_password": "Password",
+    "lang_on_bus": "Waiting for bus",
+    "lang_out_bus": "On bus"
 }

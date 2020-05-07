@@ -4,7 +4,7 @@ import { NativeModules, Platform } from "react-native"
 const asynStorage = require("../storage/asyncStore").default;
 
  userData = {
-    logedIn: false,
+    logedIn: true,
     userName: "null",
     displayName: "Developer",
     passWord: "123456",
@@ -43,6 +43,32 @@ const asynStorage = require("../storage/asyncStore").default;
     setCurLang: async (lang)=>{
         this.curLang = lang;
         asynStorage.storeData(userData.KEY_LANG, lang);
+    },
+
+    getChildName: ()=>{
+        return "Kids";
+    },
+     
+    isChildOnBus: ()=>{
+        return false;
+    },
+
+    getBusCoordinate: (busIndex)=>{
+        var listCoor = [
+            {
+                latitude:20.996669, 
+                longitude: 105.842007
+            },
+            {
+                latitude:20.997129, 
+                longitude: 105.845494
+            },
+            {
+                latitude:20.998341, 
+                longitude: 105.839003
+            },
+        ]
+        return listCoor[busIndex]
     }
 }
 

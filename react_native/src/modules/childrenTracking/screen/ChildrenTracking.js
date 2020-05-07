@@ -60,6 +60,9 @@ class ChildrenTrackingCom extends Component{
                     self.props.dispatch({
                       type: 'CHILDREN_TRACKING_showingDivInfo__SHOW',
                     });
+                    self.props.dispatch({
+                      type: 'MAP_VIEW_RESET_REGION',
+                    });
                   }}>
                   <Icon
                     name="angle-double-up"

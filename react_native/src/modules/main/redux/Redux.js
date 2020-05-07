@@ -4,7 +4,13 @@ const getDefaultState= ()=>{
     var defaultState = {
         logedIn: global.userData.logedIn,
         displayName: "Nguyễn Duy Đoàn",
-        CHILDREN_TRACKING_showingDivInfo: true,
+        CHILDREN_TRACKING_showingDivInfo: false,
+        region: {
+            latitude: 21.005042,
+            longitude: 105.843597,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }
     }
     return defaultState;
 }
@@ -26,6 +32,10 @@ const reducer = (state, action)=>{
             return {...state, CHILDREN_TRACKING_showingDivInfo: true}
         case "CHILDREN_TRACKING_showingDivInfo__HIDE":
             return {...state, CHILDREN_TRACKING_showingDivInfo: false}
+        case "MAP_VIEW_UPDATE_REGION":
+            return {...state, region: action.region}
+        case "MAP_VIEW_RESET_REGION":
+            return {...state, region: getDefaultState().region}
     }
 
     return state;

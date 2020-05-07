@@ -28,5 +28,7 @@
     "lang_confirm_ok": "Đồng ý",
     "lang_confirm_cancel": "Hủy bỏ",
     "lang_account": "Tài khoản",
-    "lang_password": "Mật khẩu"
+    "lang_password": "Mật khẩu",
+    "lang_out_bus": "Chưa lên xe",
+    "lang_on_bus": "Đã lên xe"
 }
