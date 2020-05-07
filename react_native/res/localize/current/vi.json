@@ -30,5 +30,6 @@
     "lang_account": "Tài khoản",
     "lang_password": "Mật khẩu",
     "lang_out_bus": "Chưa lên xe",
-    "lang_on_bus": "Đã lên xe"
+    "lang_on_bus": "Đã lên xe",
+    "lang_bus_transport": "Xe đưa đón"
 }

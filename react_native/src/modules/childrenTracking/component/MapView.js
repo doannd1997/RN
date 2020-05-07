@@ -16,11 +16,9 @@ class BusComponent extends Component {
         coordinate={global.userData.getBusCoordinate(this.props.index)}
         title={""+this.props.index}
         description={
-          global.userData.isChildOnBus()
-            ? global.localization.getLang('lang_on_bus')
-            : global.localization.getLang('lang_out_bus')
+            global.localization.getLang('lang_bus_transport')
         }
-        image={require('../../../../res/image/HomeScreen/education.png')}
+        image={require('../../../../res/image/HomeScreen/transport.png')}
       />
     );
   }
@@ -35,9 +33,9 @@ class MapViewComponent extends Component {
         provider={PROVIDER_GOOGLE}
         initialRegion={this.props.region}
         region={this.props.region}
-        // onRegionChange={(region)=>{
-        //   self.props.dispatch({type: "MAP_VIEW_UPDATE_REGION", region: region})
-        // }}
+        onRegionChange={(region)=>{
+          self.props.dispatch({type: "MAP_VIEW_UPDATE_REGION", region: region})
+        }}
       >
         <Marker
           // draggable
