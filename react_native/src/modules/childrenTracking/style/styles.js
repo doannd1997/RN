@@ -7,7 +7,8 @@ export default styles = StyleSheet.create({
         height: 130,
         bottom: 3,
         flexDirection: "row-reverse",
-        alignItems: "flex-end"
+        alignItems: "flex-end",
+        borderRadius: 6
     },
     panelInfo: {
         flex: 1,
@@ -15,12 +16,14 @@ export default styles = StyleSheet.create({
         height: "100%",
         opacity: 0.7,
         backgroundColor: "#1c1c1c",
-        position: "absolute"
+        position: "absolute",
+        borderRadius: 6
     },
     viewInfo: {
         position: "absolute",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        borderRadius: 6
     },
     btnExpandDivInfo: {
         position: "relative",
