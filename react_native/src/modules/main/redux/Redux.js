@@ -3,7 +3,8 @@ const {createStore} = require("redux");
 const getDefaultState= ()=>{
     var defaultState = {
         logedIn: global.userData.logedIn,
-        displayName: "Nguyễn Duy Đoàn"
+        displayName: "Nguyễn Duy Đoàn",
+        CHILDREN_TRACKING_showingDivInfo: true,
     }
     return defaultState;
 }
@@ -21,6 +22,10 @@ const reducer = (state, action)=>{
         case "TOGGLE_LOG_IN":
             global.userData.setLogedIn(!global.userData.logedIn);
             return {...state, logedIn: !state.logedIn}
+        case "CHILDREN_TRACKING_showingDivInfo__SHOW":
+            return {...state, CHILDREN_TRACKING_showingDivInfo: true}
+        case "CHILDREN_TRACKING_showingDivInfo__HIDE":
+            return {...state, CHILDREN_TRACKING_showingDivInfo: false}
     }
 
     return state;
