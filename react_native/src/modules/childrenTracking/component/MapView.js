@@ -3,7 +3,7 @@ import {View, Text, useS, Image} from "react-native";
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
-import MapView, {Marker, PROVIDER_GOOGLE, Callout} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE, Callout} from 'react-native-maps';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -30,7 +30,7 @@ class MapViewComponent extends Component {
     return (
       <MapView
         style={[commonStyles.fullViewVerticalCenter, styles.map]}
-        provider={PROVIDER_GOOGLE}
+        provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}
         region={this.props.region}
         onRegionChange={(region)=>{
