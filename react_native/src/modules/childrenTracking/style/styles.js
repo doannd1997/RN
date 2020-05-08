@@ -6,8 +6,9 @@ export default styles = StyleSheet.create({
         width: "98%",
         height: 130,
         bottom: 3,
-        flexDirection: "row-reverse",
+        flexDirection: "column-reverse",
         alignItems: "flex-end",
+        justifyContent: "flex-start",
         borderRadius: 6
     },
     panelInfo: {
@@ -27,13 +28,14 @@ export default styles = StyleSheet.create({
     },
     btnExpandDivInfo: {
         position: "relative",
-        width: 50,
+        width: 45,
         height: 35,
         bottom: 0,
         alignItems: "center",
-        backgroundColor: "transparent",
+        backgroundColor: "#dbdbdb",
         borderRadius: 3,
         // opacity: 0.6
+        margin: 3
     },
     btnCollapseDivInfo: {
         position: "absolute",

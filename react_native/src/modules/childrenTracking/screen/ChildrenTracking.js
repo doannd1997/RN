@@ -30,11 +30,6 @@ class ChildrenTrackingCom extends Component{
                     commonStyles.fullViewVerticalTopDown,
                     styles.viewInfo,
                   ]}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      self.props.navigation.navigate('HomeScreen');
-                    }}
-                  />
                 </View>
                 <TouchableOpacity
                   style={styles.btnExpandDivInfo}
@@ -44,9 +39,22 @@ class ChildrenTrackingCom extends Component{
                     });
                   }}>
                   <Icon
-                    name="angle-double-down"
+                    name="remove"
                     size={30}
-                    color={'#ffffff'}
+                    color={'#424242'}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.btnExpandDivInfo}
+                  onPress={() => {
+                    self.props.dispatch({
+                      type: 'SWITCH_MAP_TYPE',
+                    });
+                  }}>
+                  <Icon
+                    name="adjust"
+                    size={30}
+                    color={'#424242'}
                   />
                 </TouchableOpacity>
               </View>
@@ -65,7 +73,7 @@ class ChildrenTrackingCom extends Component{
                     });
                   }}>
                   <Icon
-                    name="angle-double-up"
+                    name="arrow-up"
                     size={30}
                     color={"#ffffff"}
                   />

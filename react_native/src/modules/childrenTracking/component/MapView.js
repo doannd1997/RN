@@ -29,6 +29,8 @@ class MapViewComponent extends Component {
     var self = this;
     return (
       <MapView
+        showsUserLocation={true}
+        mapType={this.props.mapType}
         style={[commonStyles.fullViewVerticalCenter, styles.map]}
         provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}
@@ -61,7 +63,8 @@ const mapStateToProps = (state)=>{
     return {
         logedIn: state.logedIn,
         CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo,
-        region: state.region
+        region: state.region,
+        mapType: state.mapType
     }
 }
 

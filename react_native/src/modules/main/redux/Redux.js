@@ -1,18 +1,22 @@
 const {createStore} = require("redux");
 
+const defaultRegion = {
+    latitude: 21.005042,
+    longitude: 105.843597,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+}
 const defaultState = {
     logedIn: global.userData.logedIn,
     displayName: "Nguyễn Duy Đoàn",
     CHILDREN_TRACKING_showingDivInfo: false,
     region: {
-        latitude: 21.005042,
-        longitude: 105.843597,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        ...defaultRegion
         },
     _region: {
-
-    }
+        ...defaultRegion
+        },
+    mapType: "standard"
 }
 
 const reducer = (state, action)=>{
@@ -36,6 +40,9 @@ const reducer = (state, action)=>{
             return {...state, _region: action.region };
         case "MAP_VIEW_RESET_REGION":
             return {...state, region: {...state._region}};
+        case "SWITCH_MAP_TYPE":{
+            return {...state, mapType: (state.mapType == "standard") ? "satellite" : "standard"}
+        }
     }
     
     return state;
