@@ -9,7 +9,14 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 
+// Bản đồ 
 const MapViewCom = require("../component/MapView").default;
+// Component chứa thông tin cơ bản của học sinh
+const DefaultInfoCom = require("../component/DefaultInfo").default;
+// Component chứa trạng thái học sinh đã lên xe hay chưa
+const StatusCom = require("../component/Status").default;
+// Component chứa địa điểm xuất đón trả
+const PlaceCom = require("../component/Place").default;
 
 class ChildrenTrackingCom extends Component{
     render(){
@@ -30,6 +37,9 @@ class ChildrenTrackingCom extends Component{
                     commonStyles.fullViewVerticalTopDown,
                     styles.viewInfo,
                   ]}>
+                    <DefaultInfoCom/>
+                    <StatusCom/>
+                    <PlaceCom/>
                 </View>
                 <TouchableOpacity
                   style={styles.btnExpandDivInfo}

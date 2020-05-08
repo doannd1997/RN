@@ -19,6 +19,7 @@ class BusComponent extends Component {
             global.localization.getLang('lang_bus_transport')
         }
         image={require('../../../../res/image/HomeScreen/transport.png')}
+        anchor={{x: 0.5, y: 0.5}}
       />
     );
   }
@@ -52,6 +53,7 @@ class MapViewComponent extends Component {
               : global.localization.getLang('lang_out_bus')
           }
           image={require('../../../../res/image/HomeScreen/education.png')}
+          anchor={{x: 0.5, y: 0.5}}
         />
         {[0, 1, 2].map((index)=>(<BusComponent {...self.props} index={index}/>))}
       </MapView>

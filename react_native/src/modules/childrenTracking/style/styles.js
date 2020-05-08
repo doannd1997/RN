@@ -24,7 +24,10 @@ export default styles = StyleSheet.create({
         position: "absolute",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 6
+        borderRadius: 6,
+        paddingLeft: 10,
+        alignItems: "flex-start",
+        justifyContent: "space-around"
     },
     btnExpandDivInfo: {
         position: "relative",
@@ -66,5 +69,11 @@ export default styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
-    }
+    },
+    divInfoInside: {
+        // backgroundColor: "red",
+        width: "100%",
+        height: 40,
+        justifyContent: "center"
+    },
 })
