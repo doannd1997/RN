@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-
+const colors = require("../../../color/Colors").default;
 export default styles = StyleSheet.create({
     divInfo: {
         position: "absolute",
@@ -15,10 +15,12 @@ export default styles = StyleSheet.create({
         flex: 1,
         width: "100%",
         height: "100%",
-        opacity: 0.7,
-        backgroundColor: "#1c1c1c",
+        opacity: 0.75,
+        backgroundColor: colors.trackingDivInfo,
         position: "absolute",
-        borderRadius: 6
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "grey"
     },
     viewInfo: {
         position: "absolute",
@@ -76,4 +78,10 @@ export default styles = StyleSheet.create({
         height: 40,
         justifyContent: "center"
     },
+    avatar: {
+        width: 28,
+        height: 28,
+        borderRadius: 5,
+        backgroundColor: "orange"
+    }
 })

@@ -13,7 +13,7 @@ class DefaultInfo extends Component {
   render(){
     return (
       <View style={styles.divInfoInside}>
-
+        <Image style={styles.avatar} source={require("../../../../res/image/StudenTracking/spm.png")}></Image>
       </View>
     );
   }
