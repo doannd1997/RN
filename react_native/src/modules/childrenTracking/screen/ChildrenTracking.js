@@ -60,6 +60,9 @@ class ChildrenTrackingCom extends Component{
                       self.props.dispatch({
                         type: 'SWITCH_MAP_TYPE',
                       });
+                      self.props.dispatch({
+                        type: 'MAP_VIEW_RESET_REGION',
+                      });
                     }}>
                     <Text
                       style={[commonStyles.text, styles.txtMapType]}>
