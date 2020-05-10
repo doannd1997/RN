@@ -114,8 +114,9 @@ export default styles = StyleSheet.create({
         flex: 1,
         textAlign: "center",
         fontWeight: "bold",
-        fontStyle: "italic",
+        // fontStyle: "italic",
         alignSelf: "center",
-        paddingTop: 5
+        paddingTop: 5,
+        fontWeight: "200"
     }
 })
