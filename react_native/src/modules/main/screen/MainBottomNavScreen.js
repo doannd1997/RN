@@ -9,6 +9,7 @@ const store = require("../redux/Redux").default;
 const colors = require("../../../color/Colors").default;
 
 const HomeComponent = require("../../mainTabs/home/home").default;
+const HistoryComponent = require("../../mainTabs/history/History").default;
 
 function Home(props) {
   return (
@@ -19,9 +20,8 @@ function Home(props) {
 
 function History() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>History!</Text>
-    </View>
+    <HistoryComponent style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    </HistoryComponent>
   );
 }
 
