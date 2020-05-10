@@ -35,15 +35,13 @@ export default styles = StyleSheet.create({
         justifyContent: "space-around"
     },
     btnExpandDivInfo: {
-        position: "relative",
-        width: 45,
-        height: 35,
+        // position: "relative",
+        width: 40,
+        height: 30,
         bottom: 0,
         alignItems: "center",
-        // backgroundColor: "#dbdbdb",
-        borderRadius: 3,
-        // opacity: 0.6
-        margin: 3
+        // borderRadius: 3,
+        // margin: 3
     },
     btnCollapseDivInfo: {
         position: "absolute",
@@ -86,5 +84,23 @@ export default styles = StyleSheet.create({
         height: 30,
         borderRadius: 15,
         backgroundColor: "orange"
+    },
+    topRightClusterButton: {
+        backgroundColor: "#140640",
+        width: 160,
+        height: 30,
+        borderRadius: 3,
+        justifyContent: "flex-start",
+        flexDirection: "row-reverse",
+        alignItems: "flex-end",
+        
+    },
+    txtMapType: {
+        color: "#fff",
+        alignSelf: "center",
+        flex: 1,
+        textAlign: "center",
+        fontWeight: "bold",
+        fontStyle: "italic"
     }
 })

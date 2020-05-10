@@ -41,21 +41,22 @@ class ChildrenTrackingCom extends Component{
                     <StatusCom/>
                     <PlaceCom/>
                 </View>
-                <TouchableOpacity
-                  style={styles.btnExpandDivInfo}
-                  onPress={() => {
-                    self.props.dispatch({
-                      type: 'CHILDREN_TRACKING_showingDivInfo__HIDE',
-                    });
-                  }}>
-                  <Icon
-                    name="remove"
-                    size={30}
-                    color={'#919191'}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.btnExpandDivInfo}
+                <View style={styles.topRightClusterButton}>
+                  <TouchableOpacity
+                    style={[styles.btnExpandDivInfo, {backgroundColor: "red"}]}
+                    onPress={() => {
+                      self.props.dispatch({
+                        type: 'CHILDREN_TRACKING_showingDivInfo__HIDE',
+                      });
+                    }}>
+                    <Icon
+                      name="remove"
+                      size={26}
+                      color={'#ffffff'}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                  style={[styles.btnExpandDivInfo, {backgroundColor: "#0867c7"}]}
                   onPress={() => {
                     self.props.dispatch({
                       type: 'SWITCH_MAP_TYPE',
@@ -63,10 +64,14 @@ class ChildrenTrackingCom extends Component{
                   }}>
                   <Icon
                     name="adjust"
-                    size={30}
-                    color={'#919191'}
+                    size={26}
+                    color={'#ffffff'}
                   />
                 </TouchableOpacity>
+                <Text style={[commonStyles.text, styles.txtMapType]}>
+                  {global.localization.getLang("lang_map_type_" + this.props.mapType)}
+                </Text>
+                </View>
               </View>
             ) : null}
 
@@ -98,7 +103,8 @@ class ChildrenTrackingCom extends Component{
 const mapStateToProps = (state)=>{
     return {
         logedIn: state.logedIn,
-        CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo
+        CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo,
+        mapType: state.mapType
     }
 }
 

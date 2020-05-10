@@ -30,5 +30,8 @@
     "lang_account": "Account",
     "lang_password": "Password",
     "lang_out_bus": "Waiting for bus",
-    "lang_on_bus": "On bus"
+    "lang_on_bus": "On bus",
+    "lang_bus_transport": "Bus No",
+    "lang_map_type_standard": "Standard",
+    "lang_map_type_sattelite": "Sattellite"
 }
