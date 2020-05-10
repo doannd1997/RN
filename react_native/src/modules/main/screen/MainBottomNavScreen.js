@@ -9,7 +9,7 @@ const store = require("../redux/Redux").default;
 const colors = require("../../../color/Colors").default;
 
 const HomeComponent = require("../../mainTabs/home/home").default;
-const HistoryComponent = require("../../mainTabs/history/History").default;
+const HistoryComponent = require("../../mainTabs/history/screen/History").default;
 
 function Home(props) {
   return (

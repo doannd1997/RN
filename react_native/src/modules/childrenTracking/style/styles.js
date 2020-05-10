@@ -102,7 +102,7 @@ export default styles = StyleSheet.create({
         backgroundColor: "#140640",
         width: 130,
         height: 30,
-        borderRadius: 3,
+        // borderRadius: 3,
         justifyContent: "flex-start",
         flexDirection: "row-reverse",
         alignItems: "flex-end",
