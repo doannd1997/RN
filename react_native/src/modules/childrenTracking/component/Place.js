@@ -17,7 +17,7 @@ class DefaultInfo extends Component {
         style={styles.iconDivInfo}
         name="location"
         size={28}
-        color={colors.trackingInfoIcon}
+        color={colors.thickTheme}
       />
       </View>
     );

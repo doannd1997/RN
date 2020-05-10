@@ -16,7 +16,7 @@ class DefaultInfo extends Component {
         <Icon
           name="running"
           size={28}
-          color={colors.trackingInfoIcon}
+          color={colors.thickTheme}
         />
       </View>
     );

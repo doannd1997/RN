@@ -6,21 +6,24 @@ export default styles = StyleSheet.create({
         width: "98%",
         height: 130,
         bottom: 3,
-        flexDirection: "column-reverse",
+        flexDirection: "column",
         alignItems: "flex-end",
         justifyContent: "flex-start",
-        borderRadius: 6
+        borderRadius: 6,
+        // shadowColor: '#000',
+        // shadowOffset: { width: -5, height: -5 },
+        // shadowOpacity: 0.8,
+        // shadowRadius: 2,
+        // elevation: 4,
     },
     panelInfo: {
         flex: 1,
         width: "100%",
         height: "100%",
-        opacity: 0.75,
+        opacity: 0.8,
         backgroundColor: colors.trackingDivInfo,
         position: "absolute",
         borderRadius: 6,
-        borderWidth: 1,
-        borderColor: "grey"
     },
     viewInfo: {
         position: "absolute",
@@ -37,7 +40,7 @@ export default styles = StyleSheet.create({
         height: 35,
         bottom: 0,
         alignItems: "center",
-        backgroundColor: "#dbdbdb",
+        // backgroundColor: "#dbdbdb",
         borderRadius: 3,
         // opacity: 0.6
         margin: 3
@@ -63,7 +66,8 @@ export default styles = StyleSheet.create({
         bottom: 3,
         backgroundColor: "#1c1c1c",
         borderRadius: 3,
-        opacity: 0.8
+        opacity: 1,
+        
     },
     btnExpand: {
         width: 50,
@@ -73,15 +77,14 @@ export default styles = StyleSheet.create({
         justifyContent: "center"
     },
     divInfoInside: {
-        // backgroundColor: "red",
         width: "100%",
         height: 40,
         justifyContent: "center"
     },
     avatar: {
-        width: 28,
-        height: 28,
-        borderRadius: 5,
+        width: 30,
+        height: 30,
+        borderRadius: 15,
         backgroundColor: "orange"
     }
 })

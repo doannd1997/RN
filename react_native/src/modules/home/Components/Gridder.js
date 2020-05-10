@@ -75,11 +75,12 @@ const Gridder = props => {
                         return (
                             <View style={{paddingBottom: 8, paddingTop: 8, paddingLeft: 5, paddingRight: 5}}>
                                 <TouchableOpacity 
-                                    style={[styles.buttonGrid, {backgroundColor: item.color}]}
+                                    style={[styles.buttonGrid, {backgroundColor: "#fff"}]}
                                     onPress={()=>{
                                         pressOnGrid(props, item.methodName, navigation)
                                     }}
                                 >
+                                    <Image source={require("../../../../res/image/HomeScreen/vinbus.jpeg")} style={styles.imgTheme}/>
                                     <Text style={styles.buttonGridHeader}>
                                         {global.localization.getLang(item.lang)}
                                     </Text>

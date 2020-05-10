@@ -51,7 +51,7 @@ class ChildrenTrackingCom extends Component{
                   <Icon
                     name="remove"
                     size={30}
-                    color={'#424242'}
+                    color={'#919191'}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -64,7 +64,7 @@ class ChildrenTrackingCom extends Component{
                   <Icon
                     name="adjust"
                     size={30}
-                    color={'#424242'}
+                    color={'#919191'}
                   />
                 </TouchableOpacity>
               </View>
