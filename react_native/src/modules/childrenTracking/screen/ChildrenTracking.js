@@ -23,7 +23,7 @@ class ChildrenTrackingCom extends Component{
         var self = this;
         return (
           <View style={commonStyles.fullViewVerticalCenter}>
-            <MapViewCom/>
+            <MapViewCom />
             {this.props.CHILDREN_TRACKING_showingDivInfo ? (
               <View style={styles.divInfo}>
                 <View
@@ -37,40 +37,37 @@ class ChildrenTrackingCom extends Component{
                     commonStyles.fullViewVerticalTopDown,
                     styles.viewInfo,
                   ]}>
-                    <DefaultInfoCom/>
-                    <StatusCom/>
-                    <PlaceCom/>
+                  <DefaultInfoCom />
+                  <StatusCom />
+                  <PlaceCom />
                 </View>
                 <View style={styles.topRightClusterButton}>
                   <TouchableOpacity
-                    style={[styles.btnExpandDivInfo, {backgroundColor: "red"}]}
+                    style={[
+                      styles.btnExpandDivInfo,
+                      {backgroundColor: 'red'},
+                    ]}
                     onPress={() => {
                       self.props.dispatch({
                         type: 'CHILDREN_TRACKING_showingDivInfo__HIDE',
                       });
                     }}>
-                    <Icon
-                      name="remove"
-                      size={26}
-                      color={'#ffffff'}
-                    />
+                    <Icon name="remove" size={24} color={'#ffffff'} />
                   </TouchableOpacity>
                   <TouchableOpacity
-                  style={[styles.btnExpandDivInfo, {backgroundColor: "#0867c7"}]}
-                  onPress={() => {
-                    self.props.dispatch({
-                      type: 'SWITCH_MAP_TYPE',
-                    });
-                  }}>
-                  <Icon
-                    name="adjust"
-                    size={26}
-                    color={'#ffffff'}
-                  />
-                </TouchableOpacity>
-                <Text style={[commonStyles.text, styles.txtMapType]}>
-                  {global.localization.getLang("lang_map_type_" + this.props.mapType)}
-                </Text>
+                    style={[styles.btnExpandDivInfo, {width: 80}]}
+                    onPress={() => {
+                      self.props.dispatch({
+                        type: 'SWITCH_MAP_TYPE',
+                      });
+                    }}>
+                    <Text
+                      style={[commonStyles.text, styles.txtMapType]}>
+                      {global.localization.getLang(
+                        'lang_map_type_' + this.props.mapType,
+                      )}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             ) : null}
@@ -87,11 +84,7 @@ class ChildrenTrackingCom extends Component{
                       type: 'MAP_VIEW_RESET_REGION',
                     });
                   }}>
-                  <Icon
-                    name="arrow-up"
-                    size={30}
-                    color={"#ffffff"}
-                  />
+                  <Icon name="arrow-up" size={30} color={'#ffffff'} />
                 </TouchableOpacity>
               </View>
             )}

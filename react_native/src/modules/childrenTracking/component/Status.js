@@ -14,10 +14,14 @@ class DefaultInfo extends Component {
     return (
       <View style={styles.divInfoInside}>
         <Icon
+          style={styles.iconDivInfo}
           name="running"
           size={28}
           color={colors.thickTheme}
         />
+        <Text style={[styles.textDivInfoCommon]}>
+          {this.props.status}
+        </Text>
       </View>
     );
   }
@@ -25,6 +29,7 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
+      status: "Status"
     }
 }
 

@@ -19,6 +19,9 @@ class DefaultInfo extends Component {
         size={28}
         color={colors.thickTheme}
       />
+      <Text style={[styles.textDivInfoCommon]}>
+          {this.props.place}
+        </Text>
       </View>
     );
   }
@@ -26,7 +29,7 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      
+      place: "Place"
     }
 }
 

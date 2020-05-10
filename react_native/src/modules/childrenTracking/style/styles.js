@@ -35,13 +35,11 @@ export default styles = StyleSheet.create({
         justifyContent: "space-around"
     },
     btnExpandDivInfo: {
-        // position: "relative",
-        width: 40,
-        height: 30,
+        width: 45,
+        height: "100%",
         bottom: 0,
         alignItems: "center",
-        // borderRadius: 3,
-        // margin: 3
+        justifyContent: "center",
     },
     btnCollapseDivInfo: {
         position: "absolute",
@@ -77,17 +75,32 @@ export default styles = StyleSheet.create({
     divInfoInside: {
         width: "100%",
         height: 40,
-        justifyContent: "center"
+        justifyContent: "flex-start",
+        flexDirection: "row",
+        alignItems: "center"
     },
+    textDivInfoCommon: {
+        marginLeft: 15,
+        color: "grey",
+        fontWeight: "bold",
+    },  
+    iconDivInfo: {
+        width: 50,
+        // backgroundColor: "cyan",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center"
+    },  
     avatar: {
         width: 30,
         height: 30,
         borderRadius: 15,
-        backgroundColor: "orange"
+        backgroundColor: "orange",
+        marginRight: 20
     },
     topRightClusterButton: {
         backgroundColor: "#140640",
-        width: 160,
+        width: 130,
         height: 30,
         borderRadius: 3,
         justifyContent: "flex-start",
@@ -101,6 +114,8 @@ export default styles = StyleSheet.create({
         flex: 1,
         textAlign: "center",
         fontWeight: "bold",
-        fontStyle: "italic"
+        fontStyle: "italic",
+        alignSelf: "center",
+        paddingTop: 5
     }
 })

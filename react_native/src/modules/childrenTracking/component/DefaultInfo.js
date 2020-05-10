@@ -13,7 +13,10 @@ class DefaultInfo extends Component {
   render(){
     return (
       <View style={styles.divInfoInside}>
-        <Image style={styles.avatar} source={require("../../../../res/image/StudenTracking/spm.png")}></Image>
+        <Image style={[styles.avatar]} source={require("../../../../res/image/StudenTracking/spm.png")}></Image>
+        <Text style={[styles.textDivInfoCommon]}>
+          {this.props.name}
+        </Text>
       </View>
     );
   }
@@ -21,6 +24,7 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
+      name: "Student"
     }
 }
 
