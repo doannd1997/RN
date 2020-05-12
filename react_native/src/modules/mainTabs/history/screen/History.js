@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import {View, Text, StyleSheet} from "react-native"
-import {connect} from "react-redux"
+import {connect, Provider} from "react-redux"
 
 const HistoryComponent = require("./Main").default;
+const store = require("../redux/Redux").default;
 
 class History extends Component{
     render(){
         return (
-          <View style={styles.container}>
+          <Provider store = {store}>
+            <View style={styles.container}>
             {this.props.logedIn ? (
               <HistoryComponent style={styles.container} />
             ) : (
@@ -16,6 +18,8 @@ class History extends Component{
               </Text>
             )}
           </View>
+          </Provider>
+          
         );
     }
 }

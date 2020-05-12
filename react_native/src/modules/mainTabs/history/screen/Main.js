@@ -1,14 +1,26 @@
 import React, {Component} from "react";
-import {View, Text, StyleSheet} from "react-native"
+import {View, Text, StyleSheet, SectionList} from "react-native"
 import {connect} from "react-redux"
+const store = require("../redux/Redux").default;
+
+const Item = require("../component/TakeOffDetail").default;
+const Header = require("../component/TakeOffHeader").default;
 
 class Main extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>
-                    Hello {this.props.logedIn?"loged":"not logedin"}
-                </Text>
+                <SectionList style={styles.sectionList}
+                    sections={this.props.history}
+                    keyExtractor={(item, index) => item + index}
+                    renderItem={({ item, index }) => <Item {...this.props} name={item} index={index}/>}
+                    renderSectionHeader={({ section: { title } }) => (
+                      <Header {...this.props} title = {title}/>
+                    )}
+                    initialNumToRender={10}
+                >
+
+                </SectionList>
             </View>
         )
     }
@@ -16,7 +28,7 @@ class Main extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        logedIn: state.logedIn
+        history: state.history
     }
 }
 
@@ -30,5 +42,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         flex: 1,
+    },
+    sectionList: {
+        flex: 1,
+        width: "100%",
+        backgroundColor: "#ffffff"
     }
 })

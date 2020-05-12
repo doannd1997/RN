@@ -45,5 +45,5 @@ const mapStateToProps = state => ({
     logedIn: state.logedIn
   });
   
-  export default connect(mapStateToProps)(ToolBar);
+export default connect(mapStateToProps)(ToolBar);
 
