@@ -1,34 +1,63 @@
 import React, {Component} from "react";
 import {View, Text, StyleSheet, SectionList} from "react-native"
 import {connect} from "react-redux"
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 const store = require("../redux/Redux").default;
 
 const Item = require("../component/TakeOffDetail").default;
 const Header = require("../component/TakeOffHeader").default;
 
-class Main extends Component{
-    render(){
-        return(
-            <View style={styles.container}>
-                <SectionList style={styles.sectionList}
-                    sections={this.props.history}
-                    keyExtractor={(item, index) => item + index}
-                    renderItem={({ item, index }) => <Item {...this.props} name={item} index={index}/>}
-                    renderSectionHeader={({ section: { title } }) => (
-                      <Header {...this.props} title = {title}/>
-                    )}
-                    initialNumToRender={10}
-                >
+const ToolBar = require("../component/ToolBar").default;
 
-                </SectionList>
-            </View>
-        )
+class Main extends Component{
+    onSelectDate(event, date){
+        console.log("event: " + JSON.stringify(event));
+        console.log("date: " + date);
+        this.props.dispatch({type: "TOGGLE_PICKING"})
+    }
+    render(){
+        return (
+          <View style={styles.container}>
+            <ToolBar />
+            <SectionList
+              style={styles.sectionList}
+              sections={this.props.history}
+              keyExtractor={(item, index) => item + index}
+              renderItem={({item, index}) => (
+                <Item {...this.props} data={item} index={index} />
+              )}
+              renderSectionHeader={({section: {title}}) => (
+                <Header {...this.props} title={title} />
+              )}
+              initialNumToRender={10}
+              // onEndReached={()=>{console.log("end reched")}}
+              progressViewOffset={100}
+              onRefresh={() => {
+                console.log('refresh');
+              }}
+              refreshing={this.props.isPickingDate}
+            />
+            {this.props.isPickingDate ? (
+              <DateTimePicker
+                style={styles.dateTimePicker}
+                timeZoneOffsetInMinutes={0}
+                value={new Date()}
+                mode={'date'}
+                is24Hour={true}
+                display="default"
+                onChange={this.onSelectDate.bind(this)}
+              />
+            ) : null}
+          </View>
+        );
     }
 }
 
 const mapStateToProps = (state)=>{
     return {
-        history: state.history
+        history: state.history,
+        isPickingDate: state.isPickingDate
     }
 }
 

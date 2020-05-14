@@ -52,6 +52,7 @@ function MyTabs() {
     return (
       <Provider store={store}>
         <Tab.Navigator
+        backgroundColor="cyan"
         initialRouteName="Feed"
         tabBarOptions={{
             activeTintColor: '#ffffff',

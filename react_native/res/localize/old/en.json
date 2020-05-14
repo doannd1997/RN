@@ -33,5 +33,6 @@
     "lang_on_bus": "On bus",
     "lang_bus_transport": "Bus No",
     "lang_map_type_standard": "Standard",
-    "lang_map_type_sattelite": "Sattellite"
+    "lang_map_type_satellite": "Sattellite",
+    "lang_pick_date": "Select Date"
 }

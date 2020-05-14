@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRoute, useNavigation } from '@react-navigation/native';
-
+import LinearGradient from "react-native-linear-gradient"
 import { connect } from "react-redux";
 
 const commonStyles = require("../../../common/style/index").default;
@@ -16,7 +16,14 @@ const ToolBar = props=>{
     const navigation = useNavigation();
     return (
       <View style={commonStyles.toolBar}>
-        {!props.logedIn ? (
+        <LinearGradient
+          style={{flex: 1}}
+          colors={['#136a8a', '#267871']}
+          // start={[0, 0.65]}
+          start={{x: 0, y: 0.65}} 
+          end={{x: 1, y: 0}}
+        >
+          {!props.logedIn ? (
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={() => {
@@ -37,6 +44,8 @@ const ToolBar = props=>{
             <Text style={commonStyles.text}>Xin Chào, Developer!</Text>
           </View>
         ) : null}
+          </LinearGradient>
+        
       </View>
     );
 }

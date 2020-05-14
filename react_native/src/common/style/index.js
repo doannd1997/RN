@@ -48,7 +48,7 @@ export default styles = StyleSheet.create({
         justifyContent: "center"
     },
     toolBar: {
-        backgroundColor: "#004400",
+        // backgroundColor: "#004400",
         width: "100%",
         height: 45,
         alignItems: "center",
