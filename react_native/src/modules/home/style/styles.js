@@ -45,26 +45,30 @@ export default (styles = StyleSheet.create({
     borderRadius: 4,
     width: '100%',
     height: 160,
-    flexDirection: 'column-reverse',
+    flexDirection: 'row-reverse',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
+    alignItems: "flex-end"
   },
   buttonGridHeader: {
     color: '#ffffff',
     fontWeight: 'bold',
     fontSize: 18,
     position: "absolute",
-    margin: 7,
-    textShadowColor:'#585858',
-    textShadowOffset:{width: 6, height: 4},
-    textShadowRadius:10,
+    margin: 15,
+    paddingBottom: 10,
+    // textShadowColor:'#585858',
+    // textShadowOffset:{width: 6, height: 4},
+    // textShadowRadius:10,
   },
   imgTheme: {
-      width: "100%",
+      width: 180,
       height: "100%",
-      borderRadius: 4
+      borderRadius: 4,
+      position: "absolute",
+      right: 0
   }
 }));

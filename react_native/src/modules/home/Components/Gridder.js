@@ -3,6 +3,7 @@ import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from "react-redux";
 import { useNavigation } from '@react-navigation/native';
+import LinearGradient from "react-native-linear-gradient";
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -74,17 +75,22 @@ const Gridder = props => {
                     renderItem={({item, index})=>{
                         return (
                             <View style={{paddingBottom: 8, paddingTop: 8, paddingLeft: 5, paddingRight: 5}}>
+                              <LinearGradient style={{flex: 1}}
+                                colors={["#ffffff", "#fff", "#2e36a6"]}
+                                start={{x: 0.3, y: 0.5}}>
                                 <TouchableOpacity 
-                                    style={[styles.buttonGrid, {backgroundColor: "#fff"}]}
+                                    style={[styles.buttonGrid, {backgroundColor: "transparent"}]}
                                     onPress={()=>{
                                         pressOnGrid(props, item.methodName, navigation)
                                     }}
                                 >
-                                    <Image source={require("../../../../res/image/HomeScreen/vinbus.jpeg")} style={styles.imgTheme}/>
+                                    <Image source={require("../../../../res/image/HomeScreen/vinbus.png")} style={styles.imgTheme}
+                                    resizeMode={"stretch"}/>
                                     <Text style={styles.buttonGridHeader}>
                                         {global.localization.getLang(item.lang)}
                                     </Text>
                                 </TouchableOpacity>
+                                </LinearGradient>
                             </View>
                         )
                     }}
