@@ -16,6 +16,9 @@ class Main extends Component{
         console.log("date: " + date);
         this.props.dispatch({type: "TOGGLE_PICKING"})
     }
+    onSectionListRefresh(){
+        console.log("refresh =>>> ")
+    }
     render(){
         return (
           <View style={styles.container}>
@@ -33,9 +36,7 @@ class Main extends Component{
               initialNumToRender={10}
               // onEndReached={()=>{console.log("end reched")}}
               progressViewOffset={100}
-              onRefresh={() => {
-                console.log('refresh');
-              }}
+              onRefresh={this.onSectionListRefresh.bind(this)}
               refreshing={this.props.isPickingDate}
             />
             {this.props.isPickingDate ? (
