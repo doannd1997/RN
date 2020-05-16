@@ -4,5 +4,6 @@ export default color = {
     commonButton: "#1a5f9c",
     trackingInfoIcon: "#f58d1d",
     trackingDivInfo: "#ffffff",
-    thickTheme: "#001869"
+    thickTheme: "#001869",
+    toolBarBtn: "#264d75"
 }

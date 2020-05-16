@@ -9,7 +9,7 @@ const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default
 const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
 const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
 const ChildrenTrackingComponent = require("../../childrenTracking/screen/ChildrenTracking").default;
-
+const ReportAbsenceComponent = require("../../reportAbsenceComponent/screen/ReportAbsence").default;
 class App extends Component{
     render(){
         return  (
@@ -41,6 +41,10 @@ class App extends Component{
                 <Stack.Screen
                     name = "ChildrenTracking"
                     component =  { ChildrenTracking }
+                />
+                <Stack.Screen
+                    name = "ReportAbsence"
+                    component = {ReportAbsence}
                 />
             </Stack.Navigator>
             </SafeAreaView>
@@ -86,6 +90,14 @@ function ChildrenTracking({route, navigation}){
     return (
         <View style={styles.fullScreen}>
             <ChildrenTrackingComponent route={route} navigation={navigation}></ChildrenTrackingComponent>
+        </View>
+    )
+}
+
+function ReportAbsence({route, navigation}){
+    return (
+        <View style={[styles.fullScreen]}>
+            <ReportAbsenceComponent route={route} navigation={navigation}></ReportAbsenceComponent>
         </View>
     )
 }

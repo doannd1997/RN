@@ -37,7 +37,7 @@ class Main extends Component{
               // onEndReached={()=>{console.log("end reched")}}
               progressViewOffset={100}
               onRefresh={this.onSectionListRefresh.bind(this)}
-              refreshing={this.props.isPickingDate}
+              refreshing={false}
             />
             {this.props.isPickingDate ? (
               <DateTimePicker

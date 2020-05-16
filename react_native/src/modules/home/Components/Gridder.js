@@ -16,6 +16,10 @@ var navigationToMethod = (methodName, navigation)=>{
   switch (methodName){
     case METHOD_CHILDREN_TRAKCING:
       navigation.navigate("ChildrenTracking");
+      break;
+    case METHOD_REPORT_ABSENTEE:
+      navigation.navigate("ReportAbsence");
+      break;
   }
 }
 var pressOnGrid = (props, methodName, navigation)=>{

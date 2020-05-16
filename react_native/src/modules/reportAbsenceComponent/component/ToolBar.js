@@ -3,35 +3,37 @@ import {View, Text, Image, FlatList, Alert, TouchableOpacity} from "react-native
 // import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRoute, useNavigation } from '@react-navigation/native';
 import LinearGradient from "react-native-linear-gradient";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import Icon from "react-native-vector-icons/MaterialIcons"
 import { connect } from "react-redux";
 
-const commonStyles = require("../../../../common/style/index").default;
+const commonStyles = require("../../../common/style").default;
 const styles = require("../style/styles").default;
 
 const ToolBar = props=>{
+    var navigation = useNavigation();
     return (
       <LinearGradient
-        style={[commonStyles.toolBar, styles.toolBar]}
+        style={[commonStyles.toolBar]}
         colors={['#136a8a', '#267871']}
         // start={[0, 0.65]}
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>
+        <TouchableOpacity
+          style={commonStyles.toolBarBtnHome}
+          onPress={() => {
+            navigation.navigate("HomeScreen")
+          }}>
+          <Icon name="keyboard-return" size={28} color={'#fff'} />
+        </TouchableOpacity>
         <View style={styles.infoDiv}>
-          <Text style={[commonStyles.textBold, commonStyles.text, {fontStyle:"italic"}]}>
-            Ghi Nhận Đến 25/10/2019
+          <Text
+            style={[
+              commonStyles.toolBarTitle
+            ]}>
+            {global.localization.getLang("lang_report_absence")}
           </Text>
         </View>
-        <TouchableOpacity
-          style={styles.btnPickDate}
-          onPress={() => {
-            props.dispatch({type: "TOGGLE_PICKING"})
-          }}>
-          <Icon name="calendar" size={28} color={"#fff"}/>
-          <Text style={[commonStyles.Text, {color: "#fff"}]}>
-            {global.localization.getLang("lang_select")}
-          </Text>
-        </TouchableOpacity>
+        <Text style={[commonStyles.toolBarBtnHome]}/>
       </LinearGradient>
     );
 }

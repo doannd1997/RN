@@ -91,12 +91,16 @@ export default StyleSheet.create({
         flexDirection: "row"
     },
     btnPickDate: {
-        width: 120,
+        width: 100,
         height: 35,
-        backgroundColor: "#2e0469",
+        backgroundColor: colors.toolBarBtn,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 25
+        borderRadius: 25,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
+        padding: 10
     },
     infoDiv: {
         flex: 1,
