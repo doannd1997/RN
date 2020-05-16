@@ -103,6 +103,16 @@ export default styles = StyleSheet.create({
         elevation: 10,
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "row"
+        flexDirection: "column"
+    },
+    divFormTitle: {
+        fontWeight: "200",
+        fontSize: 16,
+        color: "#000",
+        top: 0,
+        backgroundColor: "cyan",
+        width: "100%",
+        height: 25,
+        textAlign: "center"
     }
 });

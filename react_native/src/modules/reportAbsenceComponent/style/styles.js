@@ -21,5 +21,47 @@ export default styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         flexDirection: "row"
+    },
+    itemInfo: {
+        width: "100%",
+        height: 80,
+        backgroundColor: "red",
+        margin: 5
+    },
+    inputField: {
+        backgroundColor: "green",
+        flex: 1,
+        width: "100%"
+    },
+    btnCluster: {
+        backgroundColor: "red",
+        flex: 1,
+        width: "100%"
+    },
+    inputFieldItem: {
+        flex: 1,
+        margin: 2,
+        backgroundColor: "cyan",
+        flexDirection: "row"
+    },
+    inputFieldFirstColumn: {
+        height: "100%",
+        width: 70,
+        backgroundColor: "green",
+        padding: 3
+    },
+    inputFieldSecondColumn: {
+        width: 200,
+        height: 50,
+        // backgroundColor: "cyan",
+        // height: "100%",
+        margin: 3,
+        alignSelf: "center",
+        borderWidth: 1,
+        // borderColor: "#ff000"
+    },
+    pickerItem: {
+        color: "#fff",
+        fontSize: 30
     }
 })

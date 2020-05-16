@@ -21,6 +21,10 @@ class App extends Component{
                 <Stack.Screen 
                     name = "HomeScreen" 
                     component = { HomeScreen }
+                    navigationOptions = {{
+                          tabBarVisible:false,
+                        }
+                     }
                     // options = { {title: "Màn hình chính"} }
                 />
                 <Stack.Screen 

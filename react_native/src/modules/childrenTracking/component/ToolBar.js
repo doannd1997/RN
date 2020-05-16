@@ -30,7 +30,7 @@ const ToolBar = props=>{
             style={[
               commonStyles.toolBarTitle
             ]}>
-            {global.localization.getLang("lang_report_absentee")}
+            {global.localization.getLang("lang_student_tracking")}
           </Text>
         </View>
         <Text style={[commonStyles.toolBarBtnHome]}/>

@@ -50,7 +50,9 @@ export default styles = StyleSheet.create({
         alignItems: "flex-end"
     },
     map: {
-        position: "absolute"
+        // position: "absolute",
+        flex: 1,
+        width: "100%"
     },
     divExpand: {
         alignItems: "center",

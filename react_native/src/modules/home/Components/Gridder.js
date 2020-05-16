@@ -65,42 +65,74 @@ var pressOnGrid = (props, methodName, navigation)=>{
 const Gridder = props => {
     const navigation = useNavigation();
     return (
-        <FlatList 
-                    style={styles.gridView} 
-                    showsVerticalScrollIndicator={false}
-                    bounces={true}
-                    data={[
-                        {color: '#2ecc71', lang: "lang_student_tracking", methodName: METHOD_CHILDREN_TRAKCING},
-                        {color: '#3498db', lang: "lang_report_absentee", methodName: METHOD_REPORT_ABSENTEE},
-                        {color: '#9b59b6', lang: "lang_register_service", methodName: METHOD_REGISTER_SERVICE},
-                        {color: '#34495e', lang: "lang_change_or_cancel_service", methodName: METHOD_CHANGE_CANCEL_SERVICE},
-                        {color: '#16a085', lang: "lang_register_guardian", methodName: METHOD_REGISTER_GUARDIAN},
-                    ]}
-                    renderItem={({item, index})=>{
-                        return (
-                            <View style={{paddingBottom: 8, paddingTop: 8, paddingLeft: 5, paddingRight: 5}}>
-                              <LinearGradient style={{flex: 1}}
-                                colors={["#ffffff", "#fff", "#2e36a6"]}
-                                start={{x: 0.3, y: 0.5}}>
-                                <TouchableOpacity 
-                                    style={[styles.buttonGrid, {backgroundColor: "transparent"}]}
-                                    onPress={()=>{
-                                        pressOnGrid(props, item.methodName, navigation)
-                                    }}
-                                >
-                                    <Image source={require("../../../../res/image/HomeScreen/vinbus.png")} style={styles.imgTheme}
-                                    resizeMode={"stretch"}/>
-                                    <Text style={styles.buttonGridHeader}>
-                                        {global.localization.getLang(item.lang)}
-                                    </Text>
-                                </TouchableOpacity>
-                                </LinearGradient>
-                            </View>
-                        )
-                    }}
-                    keyExtractor={(item, index)=>index.toString()}
-                />
-    )
+      <FlatList
+        style={styles.gridView}
+        showsVerticalScrollIndicator={false}
+        bounces={true}
+        data={[
+          {
+            color: '#2ecc71',
+            lang: 'lang_student_tracking',
+            methodName: METHOD_CHILDREN_TRAKCING,
+          },
+          {
+            color: '#3498db',
+            lang: 'lang_report_absentee',
+            methodName: METHOD_REPORT_ABSENTEE,
+          },
+          {
+            color: '#9b59b6',
+            lang: 'lang_register_service',
+            methodName: METHOD_REGISTER_SERVICE,
+          },
+          {
+            color: '#34495e',
+            lang: 'lang_change_or_cancel_service',
+            methodName: METHOD_CHANGE_CANCEL_SERVICE,
+          },
+          {
+            color: '#16a085',
+            lang: 'lang_register_guardian',
+            methodName: METHOD_REGISTER_GUARDIAN,
+          },
+        ]}
+        renderItem={({item, index}) => {
+          return (
+            <View
+              style={{
+                paddingBottom: 8,
+                paddingTop: 8,
+                paddingLeft: 5,
+                paddingRight: 5,
+              }}>
+              <LinearGradient
+                style={{flex: 1}}
+                colors={['#ffffff', '#fff', '#2e36a6']}
+                start={{x: 0.3, y: 0.5}}>
+                <TouchableOpacity
+                  style={[
+                    styles.buttonGrid,
+                    {backgroundColor: 'transparent'},
+                  ]}
+                  onPress={() => {
+                    pressOnGrid(props, item.methodName, navigation);
+                  }}>
+                  <Image
+                    source={require('../../../../res/image/HomeScreen/vinbus.png')}
+                    style={styles.imgTheme}
+                    resizeMode={'stretch'}
+                  />
+                  <Text style={styles.buttonGridHeader}>
+                    {global.localization.getLang(item.lang)}
+                  </Text>
+                </TouchableOpacity>
+              </LinearGradient>
+            </View>
+          );
+        }}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    );
 };
 
 const mapStateToProps = state => ({

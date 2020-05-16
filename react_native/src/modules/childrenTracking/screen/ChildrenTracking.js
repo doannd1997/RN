@@ -9,6 +9,8 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 
+//Tool Bar
+const ToolBar = require("../component/ToolBar").default;
 // Bản đồ 
 const MapViewCom = require("../component/MapView").default;
 // Component chứa thông tin cơ bản của học sinh
@@ -22,7 +24,11 @@ class ChildrenTrackingCom extends Component{
     render(){
         var self = this;
         return (
-          <View style={commonStyles.fullViewVerticalCenter}>
+          <View style={[
+            commonStyles.fullViewVerticalCenter,
+            commonStyles.screenWithToolBar,
+          ]}>
+            <ToolBar style={commonStyles.toolBar} />
             <MapViewCom />
             {this.props.CHILDREN_TRACKING_showingDivInfo ? (
               <View style={styles.divInfo}>

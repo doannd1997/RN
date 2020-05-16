@@ -32,7 +32,7 @@ class MapViewComponent extends Component {
       <MapView
         showsUserLocation={true}
         mapType={this.props.mapType}
-        style={[commonStyles.fullViewVerticalCenter, styles.map]}
+        style={[styles.map]}
         provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}
         region={this.props.region}
