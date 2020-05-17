@@ -12,13 +12,15 @@ const styles = require("../style/styles").default;
 var navigateToLogIn = (navigation)=>{
   navigation.navigate("MainLogin");
 }
-var navigationToMethod = (methodName, navigation)=>{
+var navigationToMethod = (methodName, navigation, props)=>{
   switch (methodName){
     case METHOD_CHILDREN_TRAKCING:
       navigation.navigate("ChildrenTracking");
       break;
     case METHOD_REPORT_ABSENTEE:
       navigation.navigate("ReportAbsence");
+      break;
+    case METHOD_REGISTER_SERVICE:
       break;
   }
 }
@@ -40,10 +42,10 @@ var pressOnGrid = (props, methodName, navigation)=>{
         header,
         content,
         [
-          {
-            // text: global.localization.getLang(langItem),
-            // onPress: () => console.log('May be Pressed'),
-          },
+          // {
+          //   // text: global.localization.getLang(langItem),
+          //   // onPress: () => console.log('May be Pressed'),
+          // },
           {
             text: okLabel,
             onPress: () => {navigateToLogIn(navigation)},
@@ -57,7 +59,7 @@ var pressOnGrid = (props, methodName, navigation)=>{
       );
     }
     else {
-        navigationToMethod(methodName, navigation)
+        navigationToMethod(methodName, navigation, props)
     }
     
 }

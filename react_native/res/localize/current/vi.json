@@ -34,5 +34,12 @@
     "lang_bus_transport": "Xe đưa đón",
     "lang_map_type_standard": "Tiêu Chuẩn",
     "lang_map_type_satellite": "Vệ Tinh",
-    "lang_select": "Chọn"
+    "lang_select": "Chọn",
+    "lang_bus_pick_up": "Tuyến Đón",
+    "lang_bus_drop_down": "Tuyến Trả",
+    "lang_date_from": "Bắt Đầu Từ",
+    "lang_date_to": "Kết Thúc Vào",
+    "lang_absence_report": "Phiếu Thông Tin Báo Nghỉ",
+    "lang_report_absence_success": "Báo Nghỉ Thành Công",
+    "lang_confirm_send_report_absence_content": "Xác Nhận Báo Nghỉ Xe Bus Từ @from@ Đến @to@ ?"
 }

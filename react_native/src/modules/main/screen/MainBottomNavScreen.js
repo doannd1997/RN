@@ -69,6 +69,7 @@ function MyTabs() {
                 <Icon name="home" size={size} color={color} />
             ),
             }}
+            tabBarVisible= {false}
         />
         <Tab.Screen
             name="History"

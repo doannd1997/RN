@@ -34,5 +34,12 @@
     "lang_bus_transport": "Bus No",
     "lang_map_type_standard": "Standard",
     "lang_map_type_satellite": "Sattellite",
-    "lang_select": "Select"
+    "lang_select": "Select",
+    "lang_bus_pick_up": "Pick-Up Bus",
+    "lang_bus_drop_down": "Drop-Down Bus",
+    "lang_date_from": "From",
+    "lang_date_to": "To",
+    "lang_absence_report": "Absence Report",
+    "lang_report_absence_success": "Success",
+    "lang_confirm_send_report_absence_content": "Confirm Report Absence From @from@ To @to@ ?"
 }

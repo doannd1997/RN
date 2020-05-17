@@ -13,6 +13,7 @@ export default (styles = StyleSheet.create({
     justifyContent: 'center',
     // backgroundColor: "#de5a2a",
     right: 7,
+    alignSelf: "center",
   },
   toolBarUser: {
     alignContent: 'center',

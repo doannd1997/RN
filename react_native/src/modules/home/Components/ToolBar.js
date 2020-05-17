@@ -17,35 +17,33 @@ const ToolBar = props=>{
     return (
       <View style={commonStyles.toolBar}>
         <LinearGradient
-          style={{flex: 1}}
+          style={commonStyles.gradientToolBar}
           colors={['#136a8a', '#267871']}
           // start={[0, 0.65]}
-          start={{x: 0, y: 0.65}} 
-          end={{x: 1, y: 0}}
-        >
+          start={{x: 0, y: 0.65}}
+          end={{x: 1, y: 0}}>
           {!props.logedIn ? (
-          <TouchableOpacity
-            style={styles.btnLogin}
-            onPress={() => {
-              // props.dispatch({type: 'LOG_IN'});
-              navigation.navigate("MainLogin");
-            }}>
-            <Text style={[commonStyles.textBold, commonStyles.text]}>
-              {global.localization.getLang('lang_login')}
-            </Text>
-          </TouchableOpacity>
-        ) : null}
-        {props.logedIn ? (
-          <View style={styles.toolBarUser}>
-            <Image
-              source={require('../../../../res/image/HomeScreen/aquatic.png')}
-              style={styles.avatar}
-            />
-            <Text style={commonStyles.text}>Xin Chào, Developer!</Text>
-          </View>
-        ) : null}
-          </LinearGradient>
-        
+            <TouchableOpacity
+              style={styles.btnLogin}
+              onPress={() => {
+                // props.dispatch({type: 'LOG_IN'});
+                navigation.navigate('MainLogin');
+              }}>
+              <Text style={[commonStyles.textBold, commonStyles.text]}>
+                {global.localization.getLang('lang_login')}
+              </Text>
+            </TouchableOpacity>
+          ) : null}
+          {props.logedIn ? (
+            <View style={styles.toolBarUser}>
+              <Image
+                source={require('../../../../res/image/HomeScreen/aquatic.png')}
+                style={styles.avatar}
+              />
+              <Text style={commonStyles.text}>Xin Chào, Developer!</Text>
+            </View>
+          ) : null}
+        </LinearGradient>
       </View>
     );
 }
