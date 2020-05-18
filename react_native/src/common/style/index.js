@@ -126,7 +126,7 @@ export default (styles = StyleSheet.create({
     fontWeight: "bold"
   },
   dateTimePicker: {
-    // position: 'absolute',
+    position: 'absolute',
     alignSelf: 'center',
     width: 300,
     height: 300,
@@ -136,6 +136,7 @@ export default (styles = StyleSheet.create({
     shadowOffset: {width: 1, height: 2},
     elevation: 10,
     shadowOpacity: 0.3,
+    bottom: 0
   },
   alert: {
     position: 'absolute',
