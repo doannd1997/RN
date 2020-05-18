@@ -1,11 +1,12 @@
 import React, {Component} from "react";
-import {View, Text, Image, Alert} from "react-native";
+import {View, Text, Image, Alert, Picker} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {Picker} from '@react-native-community/picker';
+// import {Picker} from '@react-native-community/picker';
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Toast from 'react-native-simple-toast';
+import RNPickerSelect from 'react-native-picker-select';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -20,16 +21,16 @@ class ReportAbsenceCom extends Component {
   }
   onSelectDateStart(event, date){
     this.props.dispatch({type: "TOGGLE_PICKING_DATE_START", isPicking: false});
-    if (event.type=="set"){
-      var timeStamp = event.nativeEvent.timestamp;
+    if (date != undefined){
+      var timeStamp = new Date(date.toString().slice(0, 10) + "").getTime();
       this.props.dispatch({type: "UPDATE_DATE_START", startDate: timeStamp})
     }
     
   }
   onSelectDateEnd(event, date){
     this.props.dispatch({type: "TOGGLE_PICKING_DATE_END", isPicking: false});
-    if (event.type=="set"){
-      var timeStamp = event.nativeEvent.timestamp;
+    if (date != undefined){
+      var timeStamp = new Date(date.toString().slice(0, 10) + "").getTime();
       this.props.dispatch({type: "UPDATE_DATE_END", endDate: timeStamp})
     }
   }
@@ -99,41 +100,44 @@ class ReportAbsenceCom extends Component {
                 source={require('../../../../res/image/HomeScreen/education.png')}
                 resizeMode="stretch"
               />
+              <View style={styles.inputFieldSecondColumn}>
               <Text
                 style={[
-                  styles.inputFieldSecondColumn,
                   styles.pickerItem,
                   styles.childName,
                 ]}
                 ellipsizeMode={'tail'}
                 numberOfLines={1}
-                selectable={true}>
-                Child's Name Is Peter Packer
+              >
+                Child's Name is Peter Packer
               </Text>
+              </View>
+              
             </View>
             <View style={[styles.inputFieldItem]}>
               <View style={[styles.inputFieldFirstColumn]}>
                 <Icon name={'bus-alt'} size={50} color={'#444'} />
               </View>
-              <Picker
-                style={styles.inputFieldSecondColumn}
-                selectedValue={this.props.busType}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.props.dispatch({
-                    type: 'TOGGLE_BUS_TYPE',
-                    busType: itemValue,
-                  })
-                }
-                itemStyle={styles.pickerItem}>
-                <Picker.Item
-                  label={global.localization.getLang('lang_bus_pick_up')}
-                  value="PICK_UP"
-                />
-                <Picker.Item
-                  label={global.localization.getLang('lang_bus_drop_down')}
-                  value="DROP_DOWN"
-                />
-              </Picker>
+              <View style={[styles.inputFieldSecondColumn, styles.inputFieldSecondColumnWithShadow]}>
+                <RNPickerSelect
+                  style={{ flex: 1 }}
+                  value={this.props.busType}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.props.dispatch({
+                      type: 'TOGGLE_BUS_TYPE',
+                      busType: itemValue,
+                    })
+                  }
+                  items={[
+                    { label: global.localization.getLang('lang_bus_pick_up'), value: 'PICK_UP' },
+                    { label: global.localization.getLang('lang_bus_drop_down'), value: 'DROP_DOWN' },
+                  ]}
+                  // itemStyle={styles.pickerItem}>
+                  placeholder={{}}
+                >
+                </RNPickerSelect>
+              </View>
+
             </View>
             <View style={[styles.pickDateCluster]}>
               <View style={[styles.pickDateItem]}>
@@ -192,7 +196,7 @@ class ReportAbsenceCom extends Component {
             value={new Date(this.props.startDate)}
             mode={'date'}
             is24Hour={true}
-            display="default"
+            display="calendar"
             onChange={this.onSelectDateStart.bind(this)}
           />
         ) : null}
@@ -204,7 +208,7 @@ class ReportAbsenceCom extends Component {
             value={new Date(this.props.endDate)}
             mode={'date'}
             is24Hour={true}
-            display="default"
+            display="calendar"
             onChange={this.onSelectDateEnd.bind(this)}
           />
         ) : null}

@@ -48,22 +48,33 @@ export default styles = StyleSheet.create({
         // borderBottomWidth: 1,
         // marginBottom: 10,
         // borderBottomColor: "#ddd",
-        // backgroundColor: "cyan"
+        alignItems: "center",
+        justifyContent: "center"
     },
     inputFieldFirstColumn: {
         height: 70,
         width: 70,
         margin: 3,
         alignSelf: "center",
-        // backgroundColor: "cyan",
         alignItems: "center",
         justifyContent: "center"
     },
     inputFieldSecondColumn: {
-        width: 200,
+        width: 220,
         height: 50,
         margin: 3,
-        alignSelf: "center",
+        // alignSelf: "center",
+        backgroundColor: "#fff",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        borderRadius: 3,
+        padding: 4,
+    },
+    inputFieldSecondColumnWithShadow: {
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 2 },
+        elevation: 5,
+        shadowOpacity: 0.3,
     },
     pickerItem: {
         color: "#000",
@@ -72,7 +83,12 @@ export default styles = StyleSheet.create({
         textAlignVertical: "center"
     },
     childName: {
-        fontStyle: "italic"
+        fontStyle: "italic",
+        textAlignVertical: "center",
+        textAlign: "center",
+        // alignSelf: "center",
+        justifyContent: "center",
+        alignItems: "center"
     },
     pickDateCluster: {
         // backgroundColor: "cyan",
@@ -84,9 +100,10 @@ export default styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         margin: 1,
-        shadowColor: "#00f",
-        shadowOffset: {width: 5, height: 5},
+        shadowColor: "#000",
+        shadowOffset: {width: 1, height: 2},
         elevation: 5,
+        shadowOpacity: 0.3,
         backgroundColor: "#fff",
         paddingBottom: 15,
     },
@@ -119,7 +136,10 @@ export default styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         shadowColor: "#000",
-        elevation: 5
+        shadowColor: "#000",
+        shadowOffset: {width: 1, height: 2},
+        elevation: 5,
+        shadowOpacity: 0.3,
     },
     txtOk: {
         color: "#fff",

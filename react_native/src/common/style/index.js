@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
 const colors = require("../../color/Colors").default;
-
+import {Platform} from "react-native"
 
 export default (styles = StyleSheet.create({
   fullViewVerticalCenter: {
@@ -121,10 +121,21 @@ export default (styles = StyleSheet.create({
     width: '100%',
     height: 25,
     textAlign: 'center',
+    textAlignVertical: "center",
+    paddingTop: Platform.OS == "ios" ? 2 : 0,
+    fontWeight: "bold"
   },
   dateTimePicker: {
-    position: 'absolute',
+    // position: 'absolute',
     alignSelf: 'center',
+    width: 300,
+    height: 300,
+    bottom: 80,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {width: 1, height: 2},
+    elevation: 10,
+    shadowOpacity: 0.3,
   },
   alert: {
     position: 'absolute',

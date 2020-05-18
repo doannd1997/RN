@@ -9,7 +9,7 @@ const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default
 const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
 const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
 const ChildrenTrackingComponent = require("../../childrenTracking/screen/ChildrenTracking").default;
-const ReportAbsenceComponent = require("../../reportAbsenceComponent/screen/ReportAbsence").default;
+const ReportAbsenceComponent = require("../../reportAbsence/screen/ReportAbsence").default;
 class App extends Component{
     render(){
         return  (
