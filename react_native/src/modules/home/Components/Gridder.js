@@ -21,6 +21,7 @@ var navigationToMethod = (methodName, navigation, props)=>{
       navigation.navigate("ReportAbsence");
       break;
     case METHOD_REGISTER_SERVICE:
+      navigation.navigate("RegisterService");
       break;
   }
 }

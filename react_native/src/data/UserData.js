@@ -8,7 +8,8 @@ const asynStorage = require("../storage/asyncStore").default;
     userName: "null",
     displayName: "Developer",
     passWord: "123456",
-
+    GOOGLE_API_KEY: "AIzaSyCcuUK8Q8drVszgClwhfIVMXImXazFVaGE",
+    HERE_API_KEY: "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4",
     loadAllData: async ()=>{
         this.curLang = await asynStorage.getData(userData.KEY_LANG);
         if (typeof this.curLang == 'undefined'){
