@@ -43,14 +43,19 @@ export default styles = StyleSheet.create({
         height: "100%"
     },
     YearPickerContainer: {
-        backgroundColor: "cyan",
-        width: "100%",
-        height: 60
+        width: 200,
+        height: 30
     },
-    YearPicker: {
+    itemYearPicker: {
         flex: 1,
-        width: "100%",
         height: "100%",
-        backgroundColor: "grey"
+        height: "100%",
+        alignSelf: "center",
+        color: "#aaa",
+        fontWeight: "bold",
+        textAlign: "center",
+        textAlignVertical: "center",
+        paddingTop: 10,
+        fontStyle: "italic"
     }
 })

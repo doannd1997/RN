@@ -79,11 +79,15 @@ class RegisterService extends Component {
             <Text style={commonStyles.divFormTitle}>
               {global.localization.getLang('lang_register_service')}
             </Text>
-            <YearPickerCom/>
+            <YearPickerCom style={{width: 100, height: 60}}/>
             <TouchableOpacity
               style={{width: 400, height: 30, backgroundColor: 'cyan'}}
               onPress={this.onPress.bind(this)}
-            />
+            >
+              <Text style={{color: "#000"}}>
+                {this.props.curYear} hello
+              </Text>
+              </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -93,7 +97,8 @@ class RegisterService extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-
+      curYear: state.curYear,
+      yearList: state.yearList
     }
 }
 

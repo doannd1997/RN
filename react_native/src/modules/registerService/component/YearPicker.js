@@ -1,30 +1,29 @@
 import React, {Component} from "react";
 import {Text, View} from "react-native";
 import {connect} from "react-redux";
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import Swiper from 'react-native-swiper'
 
 const styles = require("../style/styles").default;
 
 class YearPicker extends Component{
     render(){
+        var comArr = this.props.yearList.map(year => {
+          return <Text style={styles.itemYearPicker}>{year}</Text>;
+        });
         return (
-            <View style={styles.YearPickerContainer}>
-                <MultiSlider style={styles.YearPicker}
-                min={2019}
-                max={2021}
-                value={[2019, 2020, 2021]}
-                step={1}
-                allowOverlap={false}
-                // customMarker={CustomMarker}
-                snapped={true}
-                enableLabel={true}
-                // vertical={true}
-                sliderLength={60}
-                >
-
-                </MultiSlider>
-            </View>
-        )
+          <View style={styles.YearPickerContainer}>
+            <Swiper
+              renderPagination={renderPagination}
+              //   loop={false}
+              showsButtons
+              onIndexChanged={(index)=>{
+                  this.props.dispatch({type: "CHANGE_YEAR", year: this.props.yearList[index]})
+              }}
+            >
+              {comArr}
+            </Swiper>
+          </View>
+        );
     }
 }
 
@@ -33,7 +32,7 @@ class YearPicker extends Component{
 
 const mapStateToProp = (state)=>{
     return {
-
+        yearList: state.yearList
     }
 };
 
