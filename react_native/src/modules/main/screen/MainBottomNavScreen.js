@@ -52,11 +52,12 @@ function MyTabs() {
     return (
       <Provider store={store}>
         <Tab.Navigator
-        backgroundColor="cyan"
-        initialRouteName="Feed"
+        initialRouteName="Home"
         tabBarOptions={{
             activeTintColor: colors.theme2,
+            allowFontScaling: true,
             // activeBackgroundColor: colors.theme
+            labelStyle: {fontWeight: "bold"}
         }}
         >
         <Tab.Screen
@@ -69,7 +70,6 @@ function MyTabs() {
                 <Icon name="home" size={size} color={color} />
             ),
             }}
-            tabBarVisible= {false}
         />
         <Tab.Screen
             name="History"
