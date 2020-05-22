@@ -3,16 +3,17 @@ const colors = require("../../../color/Colors").default;
 export default styles = StyleSheet.create({
     divInfo: {
         position: "absolute",
-        width: "98%",
+        width: 350,
         height: 130,
         bottom: 3,
         flexDirection: "column",
         alignItems: "flex-end",
         justifyContent: "flex-start",
-        borderRadius: 6,
+        borderRadius: 15,
+       
         // shadowColor: '#000',
-        // shadowOffset: { width: -5, height: -5 },
-        // shadowOpacity: 0.8,
+        // shadowOffset: { width: 1, height: 2 },
+        // shadowOpacity: 0.5,
         // shadowRadius: 2,
         // elevation: 4,
     },
@@ -23,7 +24,9 @@ export default styles = StyleSheet.create({
         opacity: 0.8,
         backgroundColor: colors.trackingDivInfo,
         position: "absolute",
-        borderRadius: 6,
+        borderRadius: 15,
+        borderColor: "#aaa",
+        borderWidth: 1
     },
     viewInfo: {
         position: "absolute",
@@ -108,7 +111,7 @@ export default styles = StyleSheet.create({
         justifyContent: "flex-start",
         flexDirection: "row-reverse",
         alignItems: "flex-end",
-        
+        right: 20
     },
     txtMapType: {
         color: "#fff",

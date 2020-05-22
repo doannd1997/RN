@@ -55,8 +55,8 @@ function MyTabs() {
         backgroundColor="cyan"
         initialRouteName="Feed"
         tabBarOptions={{
-            activeTintColor: '#ffffff',
-            activeBackgroundColor: colors.theme
+            activeTintColor: colors.theme2,
+            // activeBackgroundColor: colors.theme
         }}
         >
         <Tab.Screen

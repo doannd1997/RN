@@ -100,11 +100,12 @@ export default (styles = StyleSheet.create({
     fontSize: 17,
   },
   divForm: {
+    position: "absolute",
     backgroundColor: '#fff',
     width: 320,
-    marginTop: 50,
+    marginTop: 100,
     height: 400,
-    // flex: 1
+    alignSelf: "center",
     shadowColor: '#000',
     shadowOffset: {width: 10, height: 10},
     elevation: 10,

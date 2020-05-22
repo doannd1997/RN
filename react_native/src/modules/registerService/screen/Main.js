@@ -7,6 +7,8 @@ import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
+const MapViewCom = require("../component/MapView").default;
+const YearPickerCom = require("../component/YearPicker").default;
 const ToolBar = require("../component/ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
@@ -71,14 +73,18 @@ class RegisterService extends Component {
           commonStyles.screenWithToolBar,
         ]}>
         <ToolBar style={commonStyles.toolBar} />
-        <View style={commonStyles.divForm}>
-          <Text style={commonStyles.divFormTitle}>
-            {global.localization.getLang('lang_register_service')}
-          </Text>
-          <TouchableOpacity style={{width: 400, height: 30, backgroundColor: "cyan"}}
-          onPress={this.onPress.bind(this)}>
-
-          </TouchableOpacity>
+        <View style={styles.content}>
+          <MapViewCom />
+          <View style={commonStyles.divForm}>
+            <Text style={commonStyles.divFormTitle}>
+              {global.localization.getLang('lang_register_service')}
+            </Text>
+            <YearPickerCom/>
+            <TouchableOpacity
+              style={{width: 400, height: 30, backgroundColor: 'cyan'}}
+              onPress={this.onPress.bind(this)}
+            />
+          </View>
         </View>
       </View>
     );
@@ -87,11 +93,7 @@ class RegisterService extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        busType: state.busType,
-        isPickingDateStart: state.isPickingDateStart,
-        isPickingDateEnd: state.isPickingDateEnd,
-        startDate: state.startDate,
-        endDate: state.endDate
+
     }
 }
 
