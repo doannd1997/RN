@@ -13,13 +13,17 @@ class YearPicker extends Component{
         return (
           <View style={styles.YearPickerContainer}>
             <Swiper
-              renderPagination={renderPagination}
-              //   loop={false}
               showsButtons
-              onIndexChanged={(index)=>{
-                  this.props.dispatch({type: "CHANGE_YEAR", year: this.props.yearList[index]})
+              showsPagination={false}
+              onIndexChanged={index => {
+                this.props.dispatch({
+                  type: 'CHANGE_YEAR',
+                  year: this.props.yearList[index],
+                });
               }}
-            >
+              nextButton={<Text style={{color: "#fff", fontSize: 35}}>›</Text>}
+              prevButton={<Text style={{color: "#fff", fontSize: 35}}>‹</Text>}
+              >
               {comArr}
             </Swiper>
           </View>

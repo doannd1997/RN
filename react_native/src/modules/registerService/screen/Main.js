@@ -1,8 +1,9 @@
 import React, {Component, PureComponent} from "react";
-import {View, Text, TextInput, Alert, ScrollView} from "react-native";
+import {View, Text, TextInput, Alert, Image} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { CheckBox } from 'react-native-elements';
 import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -75,19 +76,103 @@ class RegisterService extends Component {
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
           <MapViewCom />
-          <View style={commonStyles.divForm}>
-            <Text style={commonStyles.divFormTitle}>
+          <View style={[commonStyles.divForm, styles.divForm]}>
+            {/* <Text style={commonStyles.divFormTitle}>
               {global.localization.getLang('lang_register_service')}
-            </Text>
-            <YearPickerCom style={{width: 100, height: 60}}/>
-            <TouchableOpacity
-              style={{width: 400, height: 30, backgroundColor: 'cyan'}}
-              onPress={this.onPress.bind(this)}
-            >
-              <Text style={{color: "#000"}}>
-                {this.props.curYear} hello
+            </Text> */}
+            <View style={styles.defaultInfo}>
+              <Image
+                source={require('../../../../res/image/HomeScreen/education.png')}
+                defaultSource={require('../../../../res/image/HomeScreen/education.png')}
+                style={styles.avatar}
+                resizeMode={'contain'}
+              />
+              <Text style={styles.childName}>
+                {this.props.childName} "Peter Packer"
               </Text>
-              </TouchableOpacity>
+            </View>
+
+            <View style={styles.viewDivForm}>
+              {/* <TouchableOpacity
+                style={{width: 400, height: 30, backgroundColor: 'cyan'}}
+                onPress={this.onPress.bind(this)}>
+                <Text style={{color: '#000'}}>
+                  {this.props.curYear} hello
+                </Text>
+              </TouchableOpacity> */}
+
+              <YearPickerCom />
+              <View style={styles.pickHome}>
+                <View style={styles.pickItem}>
+                  <View style={styles.pickCell0}>
+                    <CheckBox
+                      style={styles.checkbox}
+                      centercheckedIcon="dot-circle-o"
+                      uncheckedIcon="circle-o"
+                      checked={this.props.pickType == 'HOME'}
+                      checkedColor={'#fff'}
+                      uncheckedColor={'#bbb'}
+                      onIconPress={()=>{
+                        this.props.dispatch({type: "TOGGLE_PICK_TYPE"})
+                      }}
+                    />
+                  </View>
+                  <View style={styles.pickCell1}>
+                    <Text style={styles.txtPick}>
+                      {global.localization.getLang('lang_pick_at_home')}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.pickSubItem}>
+                  <View style={styles.pickCell0} />
+                  <View style={styles.pickCell1}>
+                    <Text style={styles.txtHomeAddress} numberOfLines={2}>
+                      Số 1 Đại Cồ Việt - Hai Bà Trưng - Hà Nội
+                    </Text>
+                    <TouchableOpacity style={styles.btnChangeAddress}>
+                      <Text style={styles.txtBtn}>
+                        {global.localization.getLang('lang_change')}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.pickPlace}>
+                <View style={styles.pickItem}>
+                  <View style={styles.pickCell0}>
+                    <CheckBox
+                      style={styles.checkbox}
+                      centercheckedIcon="dot-circle-o"
+                      uncheckedIcon="circle-o"
+                      checked={this.props.pickType == 'PLACE'}
+                      checkedColor={'#fff'}
+                      uncheckedColor={'#bbb'}
+                      onIconPress={()=>{
+                        this.props.dispatch({type: "TOGGLE_PICK_TYPE"})
+                      }}
+                    />
+                  </View>
+                  <View style={styles.pickCell1}>
+                    <Text style={styles.txtPick}>
+                      {global.localization.getLang('lang_pick_at_place')}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.pickSubItem}>
+                  <View style={styles.pickCell0} />
+                  <View style={styles.pickCell1}>
+                    <Text style={styles.txtHomeAddress} numberOfLines={2}>
+                      {global.localization.getLang('lang_blank')}
+                    </Text>
+                    <TouchableOpacity style={styles.btnChangeAddress}>
+                      <Text style={styles.txtBtn}>
+                        {global.localization.getLang('lang_change')}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -98,7 +183,8 @@ class RegisterService extends Component {
 const mapStateToProps = (state)=>{
     return {
       curYear: state.curYear,
-      yearList: state.yearList
+      yearList: state.yearList,
+      pickType: state.pickType
     }
 }
 
