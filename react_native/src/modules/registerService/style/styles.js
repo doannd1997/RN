@@ -47,7 +47,7 @@ export default styles = StyleSheet.create({
     },
     YearPickerContainer: {
         width: 200,
-        flex: 1,
+        flex: 1.2,
         marginBottom: 5,
 
     },
@@ -107,6 +107,11 @@ export default styles = StyleSheet.create({
         width: "100%",
         flex: 4,
         backgroundColor: "grey"
+    },
+    btnContainer: {
+        width: "100%",
+        flex: 2,
+        // backgroundColor:"cyan"
     },
     pickItem: {
         // backgroundColor: "blue",
@@ -173,5 +178,18 @@ export default styles = StyleSheet.create({
         fontWeight: "bold",
         textDecorationLine: "underline",
         fontStyle: "italic"
+    },
+    btnOk: {
+        // flex: 1,
+        backgroundColor: "#140640",
+        width: "100%",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    txtBtnOk: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 15
     }
 })

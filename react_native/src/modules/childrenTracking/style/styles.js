@@ -21,8 +21,8 @@ export default styles = StyleSheet.create({
         flex: 1,
         width: "100%",
         height: "100%",
-        opacity: 0.8,
-        backgroundColor: colors.trackingDivInfo,
+        opacity: 0.9,
+        backgroundColor: "grey",
         position: "absolute",
         borderRadius: 15,
         borderColor: "#aaa",
@@ -86,7 +86,7 @@ export default styles = StyleSheet.create({
     },
     textDivInfoCommon: {
         marginLeft: 15,
-        color: "grey",
+        color: "#fff",
         fontWeight: "bold",
     },  
     iconDivInfo: {
