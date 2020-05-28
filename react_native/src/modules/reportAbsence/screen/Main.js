@@ -188,7 +188,7 @@ class ReportAbsenceCom extends Component {
                 style={commonStyles.formBtnConfirm}
                 onPress={this.onConfirm.bind(this)}>
                 <Text style={[commonStyles.formBtnOkText]}>
-                  {global.localization.getLang('lang_confirm_ok')}
+                  {global.localization.getLang('lang_send_report_absence')}
                 </Text>
               </TouchableOpacity>
             </View>

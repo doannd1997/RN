@@ -13,13 +13,15 @@ const YearPickerCom = require("../component/YearPicker").default;
 const ToolBar = require("../component/ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
+const PlacePickerCom = require("../component/PlacePicker").default;
+
 const CENTER_POINT = "21.007833,105.841361";
 const COUNTRY_CODE = "VNM";
 const LANG = "vn";
 const PLACE_SEARCH = "@place_search@";
+const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
-var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=@api_key@";
-
+var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
 class LocationItem extends PureComponent{
   render(){
     return (
@@ -37,36 +39,14 @@ class RegisterService extends Component {
   constructor(props) {
     super(props);
   }
-  onPress(){
-    var place = "Số 1 Đại Cồ Việt";
-    place = place.split(" ").join("+");
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = e => {
-      if (request.readyState !== 4) {
-        return;
-      }
-
-      if (request.status === 200) {
-        Toast.show(request.responseText, Toast.SHORT, [
-          'UIAlertController',
-        ]);
-      } else {
-        Toast.show("ERR", Toast.SHORT, [
-          'UIAlertController',
-        ]);
-      }
-    };
-
-    request.open('GET', URL.replace(PLACE_SEARCH, place));
-    request.send();
-
-
-
+  changeHome(){
+    this.props.dispatch({type: "TOGGLE_PICKING"});
+  }
+  changePlace(){
+    this.props.dispatch({type: "TOGGLE_PICKING"});
   }
   render() {
-    URL = URL.replace("@api_key@", global.userData.HERE_API_KEY);
-    
-    var self = this;
+  
     return (
       <View
         style={[
@@ -76,10 +56,8 @@ class RegisterService extends Component {
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
           <MapViewCom />
-          <View style={[commonStyles.divForm, styles.divForm]}>
-            {/* <Text style={commonStyles.divFormTitle}>
-              {global.localization.getLang('lang_register_service')}
-            </Text> */}
+          {this.props.pickingAddress ? <PlacePickerCom {...this.props}/> : 
+            <View style={[commonStyles.divForm, styles.divForm]}>
             <View style={styles.defaultInfo}>
               <Image
                 source={require('../../../../res/image/HomeScreen/education.png')}
@@ -91,16 +69,7 @@ class RegisterService extends Component {
                 {this.props.childName} "Peter Packer"
               </Text>
             </View>
-
             <View style={styles.viewDivForm}>
-              {/* <TouchableOpacity
-                style={{width: 400, height: 30, backgroundColor: 'cyan'}}
-                onPress={this.onPress.bind(this)}>
-                <Text style={{color: '#000'}}>
-                  {this.props.curYear} hello
-                </Text>
-              </TouchableOpacity> */}
-
               <YearPickerCom />
               <View style={styles.pickHome}>
                 <View style={styles.pickItem}>
@@ -127,9 +96,9 @@ class RegisterService extends Component {
                   <View style={styles.pickCell0} />
                   <View style={styles.pickCell1}>
                     <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                      Số 1 Đại Cồ Việt - Hai Bà Trưng - Hà Nội
+                      {this.props.homeAddress}
                     </Text>
-                    <TouchableOpacity style={styles.btnChangeAddress}>
+                    <TouchableOpacity style={styles.btnChangeAddress} onPress={this.changeHome.bind(this)}>
                       <Text style={styles.txtBtn}>
                         {global.localization.getLang('lang_change')}
                       </Text>
@@ -162,9 +131,9 @@ class RegisterService extends Component {
                   <View style={styles.pickCell0} />
                   <View style={styles.pickCell1}>
                     <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                      {global.localization.getLang('lang_blank')}
+                      {this.props.placeAddress}
                     </Text>
-                    <TouchableOpacity style={styles.btnChangeAddress}>
+                    <TouchableOpacity style={styles.btnChangeAddress} onPress={this.changePlace.bind(this)}>
                       <Text style={styles.txtBtn}>
                         {global.localization.getLang('lang_change')}
                       </Text>
@@ -181,7 +150,8 @@ class RegisterService extends Component {
               </View>
             </View>
           </View>
-        </View>
+        }
+          </View>
       </View>
     );
   }
@@ -191,7 +161,12 @@ const mapStateToProps = (state)=>{
     return {
       curYear: state.curYear,
       yearList: state.yearList,
-      pickType: state.pickType
+      pickType: state.pickType,
+      homeAddress: state.homeAddress,
+      placeAddress: state.placeAddress,
+      homeSetted: state.homeSetted,
+      placeSetted: state.placeSetted,
+      pickingAddress: state.pickingAddress,
     }
 }
 

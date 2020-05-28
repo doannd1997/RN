@@ -46,5 +46,7 @@
     "lang_pick_at_place": "Other Place",
     "lang_change": "Change",
     "lang_blank": "Blank",
-    "lang_send_register": "Submit"
+    "lang_send_register": "Submit",
+    "lang_send_report_absence": "Submit Absence",
+    "lang_input_address": "Search Address"
 }

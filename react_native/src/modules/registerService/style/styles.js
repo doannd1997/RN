@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import { Dimensions } from 'react-native';
 const colors = require("../../../color/Colors").default;
 
 export default styles = StyleSheet.create({
@@ -178,5 +179,36 @@ export default styles = StyleSheet.create({
         fontWeight: "bold",
         textDecorationLine: "underline",
         fontStyle: "italic"
-    }
+    },
+    PlacePickerContainer: {
+        width: Dimensions.get('window').width-20,
+        height: "100%",
+        // backgroundColor: "cyan",
+        position: "absolute",
+        alignSelf: "center",
+        flexDirection: "column",
+        paddingTop: 10
+    },
+    txtContainer: {
+        width: "100%",
+        height: 60,
+        alignItems: "center",
+        // justifyContent: "center"
+    },
+    placeSearchPanel: {
+        backgroundColor: "#eee",
+        opacity: 0.8,
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        borderRadius: 10
+    },
+    txtPlace: {
+        width: "100%",
+        height: "100%",
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#aaa",
+        fontSize: 18
+    },
 })
