@@ -60,11 +60,11 @@ export default (styles = StyleSheet.create({
     alignItems: 'center',
   },
   gradientToolBar: {
-      height: 45, 
-      flex: 1,
-      alignItems: "flex-end",
-      justifyContent: "center",
-    },
+    height: 45,
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
   text: {
     color: '#ffffff',
     fontFamily: 'Arial',
@@ -100,12 +100,12 @@ export default (styles = StyleSheet.create({
     fontSize: 17,
   },
   divForm: {
-    position: "absolute",
+    position: 'absolute',
     backgroundColor: '#fff',
     width: 320,
     marginTop: 100,
     height: 400,
-    alignSelf: "center",
+    alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {width: 10, height: 10},
     elevation: 10,
@@ -122,9 +122,9 @@ export default (styles = StyleSheet.create({
     width: '100%',
     height: 25,
     textAlign: 'center',
-    textAlignVertical: "center",
-    paddingTop: Platform.OS == "ios" ? 2 : 0,
-    fontWeight: "bold"
+    textAlignVertical: 'center',
+    paddingTop: Platform.OS == 'ios' ? 2 : 0,
+    fontWeight: 'bold',
   },
   dateTimePicker: {
     position: 'absolute',
@@ -132,15 +132,27 @@ export default (styles = StyleSheet.create({
     width: 300,
     height: 300,
     bottom: 80,
-    backgroundColor: "#fff",
-    shadowColor: "#000",
+    backgroundColor: '#fff',
+    shadowColor: '#000',
     shadowOffset: {width: 1, height: 2},
     elevation: 10,
     shadowOpacity: 0.3,
-    bottom: 0
+    bottom: 0,
   },
   alert: {
     position: 'absolute',
     alignSelf: 'center',
   },
+  formBtnConfirm: {
+    backgroundColor: '#140640',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  formBtnOkText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 18
+  }
 }));

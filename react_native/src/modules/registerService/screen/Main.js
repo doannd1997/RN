@@ -173,8 +173,8 @@ class RegisterService extends Component {
                 </View>
               </View>
               <View style={styles.btnContainer}>
-                  <TouchableOpacity style={styles.btnOk}>
-                      <Text style={styles.txtBtnOk}>
+                  <TouchableOpacity style={commonStyles.formBtnConfirm}>
+                      <Text style={commonStyles.formBtnOkText}>
                           {global.localization.getLang("lang_send_register")}
                       </Text>
                   </TouchableOpacity>

@@ -178,18 +178,5 @@ export default styles = StyleSheet.create({
         fontWeight: "bold",
         textDecorationLine: "underline",
         fontStyle: "italic"
-    },
-    btnOk: {
-        // flex: 1,
-        backgroundColor: "#140640",
-        width: "100%",
-        height: "100%",
-        justifyContent: "center",
-        alignItems: "center"
-    },
-    txtBtnOk: {
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: 15
     }
 })

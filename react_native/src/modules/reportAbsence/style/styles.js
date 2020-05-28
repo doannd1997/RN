@@ -25,50 +25,47 @@ export default styles = StyleSheet.create({
     itemInfo: {
         width: "100%",
         height: 80,
-        backgroundColor: "red",
         margin: 5
     },
-    inputField: {
-        // flex: 1.5,
-        width: "100%",
-        height: 320
-    },
     btnCluster: {
-        backgroundColor: "#fff",
-        height: 50,
-        width: 320,
+        backgroundColor: "grey",
+        flex: 9,
+        width: "100%",
         justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column"
+    },
+    pickDateCluster: {
+        flexDirection: "row",
+        width: "100%",
+        flex: 4,
+        justifyContent: "space-around",
         alignItems: "center"
     },
     inputFieldItem: {
-        height: 75,
-        margin: 2,
+        width: "100%",
+        flex: 1,
         flexDirection: "row",
-        marginTop: 5,
-        // borderBottomWidth: 1,
-        // marginBottom: 10,
-        // borderBottomColor: "#ddd",
         alignItems: "center",
-        justifyContent: "center"
     },
     inputFieldFirstColumn: {
-        height: 70,
-        width: 70,
-        margin: 3,
+        height: "100%",
+        width: 50,
+        marginLeft: 10,
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "center"
     },
     inputFieldSecondColumn: {
         width: 220,
-        height: 50,
+        height: "80%",
         margin: 3,
         // alignSelf: "center",
         backgroundColor: "#fff",
         alignItems: "flex-start",
         justifyContent: "center",
         borderRadius: 3,
-        padding: 4,
+        marginLeft: 20
     },
     inputFieldSecondColumnWithShadow: {
         shadowColor: '#000',
@@ -90,22 +87,26 @@ export default styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
-    pickDateCluster: {
-        // backgroundColor: "cyan",
-        flex: 1,
-        padding: 3,
-        flexDirection: "row"
+    formInputCluster: {
+        flex: 9.2,
+        width: "100%",
+        flexDirection: "column",
+    },
+    btnConfirmContainer: {
+        width: "100%",
+        flex: 2
     },
     pickDateItem: {
-        flex: 1,
+        width: "48%",
+        height: "96%",
         backgroundColor: "#fff",
-        margin: 1,
         shadowColor: "#000",
         shadowOffset: {width: 1, height: 2},
         elevation: 5,
         shadowOpacity: 0.3,
         backgroundColor: "#fff",
         paddingBottom: 15,
+        borderRadius: 12
     },
     btnPickerDateItem: {
         width: "100%",
@@ -117,7 +118,8 @@ export default styles = StyleSheet.create({
     pickDateHeader: {
         textAlign: "center",
         textAlignVertical: "center",
-        color: "grey"
+        color: "#444",
+        fontWeight: "bold"
     },
     pickDateTime: {
         width: "100%",
@@ -125,13 +127,15 @@ export default styles = StyleSheet.create({
         // backgroundColor: "red",
         fontSize: 24,
         textAlign: "center",
-        textAlignVertical: "center"
+        textAlignVertical: "center",
+        fontWeight: "bold",
+        color: "#eee"
     },
+    
     btnConfirm: {
         backgroundColor: colors.theme2,
-        width: 310,
-        height: 40,
-        // flex: 1,
+        width: "100%",
+        height: "100%",
         borderRadius: 2,
         alignItems: "center",
         justifyContent: "center",
@@ -144,5 +148,28 @@ export default styles = StyleSheet.create({
     txtOk: {
         color: "#fff",
         fontSize: 18
-    }
+    },
+    defaultInfo: {
+        flex: 4,
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "cyan",
+        width: "100%",
+        paddingBottom: 10
+    },
+    avatar: {
+        marginTop: 10,
+        marginBottom: 5,
+        flex: 4,
+        width: "100%",
+    },
+    childName: {
+        color: "#666",
+        fontWeight: "bold",
+        fontSize: 18,
+        textAlign: "center",
+        textAlignVertical: "center",
+        flex: 1
+    },
 })
