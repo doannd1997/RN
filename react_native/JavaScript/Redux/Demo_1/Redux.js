@@ -4,7 +4,9 @@ const { createStore } = require('redux');
 
 const defaultState = { value: 0, extra: "000000" };
 
-const reducer = (state = defaultState, action) => {
+const reducer = (state, action) => {
+    if (Object.keys(state).length == 0)
+        state = defaultState;
     if (action.type == "UP")    return { value: state.value + 1, extra: action.extra };
     if (action.type == "DOWN") return { value: state.value - 1, extra: action.extra };
     if (action.type == "CHANGE_COLOR") return { value: state.value, extra: action.extra};

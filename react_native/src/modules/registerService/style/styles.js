@@ -196,7 +196,7 @@ export default styles = StyleSheet.create({
         // justifyContent: "center"
     },
     placeSearchPanel: {
-        backgroundColor: "#eee",
+        backgroundColor: "#333",
         opacity: 0.8,
         width: "100%",
         height: "100%",
@@ -209,6 +209,45 @@ export default styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         borderColor: "#aaa",
-        fontSize: 18
+        fontSize: 18,
+        color: "#fff",
+        paddingLeft: 20,
+        paddingRight: 20
     },
+    flatListContainer: {
+        width: "100%",
+        marginTop: 10,
+        borderRadius: 10
+    },
+    flatListPanel: {
+        backgroundColor: "#fff",
+        width: "100%",
+        height: "100%",
+        opacity: 0.8,
+        position: "absolute",
+        borderRadius: 10
+    },
+    placeItemContainer: {
+        width: "100%",
+        height: 40,
+        alignItems: "center",
+    },
+    placeItem: {
+        flex: 1,
+        // backgroundColor: "cyan",
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        flexDirection: "row"
+    },
+    txtPlaceItem: {
+        color: "grey",
+        fontWeight: "bold"
+    },
+    selectPlaceContainer: {
+        position: "absolute",
+        bottom: 0,
+        width: "100%",
+        height: 60
+    }
 })

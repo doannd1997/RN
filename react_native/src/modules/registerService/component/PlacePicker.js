@@ -2,6 +2,7 @@ import React, {Component, useState} from "react";
 import {View, FlatList, Text, TouchableOpacity, TextInput} from "react-native";
 import {connect} from "react-redux";
 import Toast from 'react-native-simple-toast';
+import Icon from 'react-native-vector-icons/Entypo'
 
 const styles = require("../style/styles").default;
 
@@ -13,21 +14,36 @@ const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
 
+const PlaceItem = (props, name)=>{
+    return(
+        <View style={styles.placeItemContainer}>
+            <TouchableOpacity onPress={()=>{
 
-const onPress=(text, setPlace)=>{
+            }}>
+                <Text>
+                    Place ... {name}
+                </Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+const onPress=(text, props)=>{
     text = text.split(" ").join("+");
     var request = new XMLHttpRequest();
     request.onreadystatechange = e => {
       if (request.readyState !== 4) {
         return;
       }
-
       if (request.status === 200) {
-          var res = JSON.parse(JSON.stringify(request.responseText));
-        Toast.show(res.items, Toast.SHORT, [
-          'UIAlertController',
-        ]);
-        // console.log(request.responseText.items)
+          var res = JSON.parse(request.responseText).items;
+          var listPlace = res.map((place)=>{
+              return {
+                title: place.title,
+                position: place.position
+              }
+          });
+          props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
       } else {
         Toast.show("ERR", Toast.SHORT, [
           'UIAlertController',
@@ -41,34 +57,63 @@ const onPress=(text, setPlace)=>{
   }
 
 const PlacePicker = (props)=>{
-    var [places, setPlace] = useState([]);
     return (
-        <View style={styles.PlacePickerContainer}>
-            <View style={styles.txtContainer}>
-                <View style={styles.placeSearchPanel}/>
-                <TextInput style={styles.txtPlace}
-                    caretHidden={false}
-                    clearButtonMode={"always"}
-                    onChangeText={(text)=>{
-                        setPlace("100")
-                        onPress(text, setPlace);
-                    }}
-                    placeholder={global.localization.getLang("lang_input_address")}
-                >
-                </TextInput>
-            </View>
-            <Text>
-                {/* {places.map(place=>{
-                    return "[" + place.title + "]" + place.position.toString();
-                })} */}
-            </Text>
+      <View style={styles.PlacePickerContainer}>
+        <View style={styles.txtContainer}>
+          <View style={styles.placeSearchPanel} />
+          <TextInput
+            style={styles.txtPlace}
+            caretHidden={false}
+            clearButtonMode={'always'}
+            onChangeText={text => {
+              onPress(text, props);
+            }}
+            placeholder={global.localization.getLang('lang_input_address')}
+            placeholderTextColor={'#ddd'}
+            onFocus={()=>{
+                props.dispatch({type: "TYPING_SEARCH"})
+            }}
+          />
         </View>
-    )
+        {props.searchResultShown ? (
+          <View style={[styles.flatListContainer, {height: Math.min(props.listPlace.length, 4) * 40}]}>
+            <View style={[styles.flatListPanel]} />
+            <FlatList
+              data={props.listPlace}
+              renderItem={({item, index, seperator}) => {
+                // return <Text>Hello</Text>
+                return (
+                  <View style={styles.placeItemContainer}>
+                    <TouchableOpacity
+                      style={styles.placeItem}
+                      onPress={() => {
+                          console.log("// " + item.position.lat + " // " + item.position.lng)
+                        props.dispatch({type: "SELECT_PLACE", placeSelected: {latitude: item.position.lat, longitude: item.position.lng, title: item.title}});
+                      }}>
+                      <Icon
+                        name={'location-pin'}
+                        size={27}
+                        color={'#333'}
+                      />
+                      <Text style={styles.txtPlaceItem}>{item.title}</Text>
+                    </TouchableOpacity>
+                  </View>
+                );
+              }}
+              keyExtractor={(item, index) => item.key}
+              showsVerticalScrollIndicator={false}
+            />
+          </View>
+        ) : null}
+      </View>
+    );
 };
 
 const mapStateToProps = (state)=>{
     return {
-        homeAddress: state.homeAddress
+        homeAddress: state.homeAddress,
+        listPlace: state.listPlace,
+        searchResultShown: state.searchResultShown
     };
 }
 

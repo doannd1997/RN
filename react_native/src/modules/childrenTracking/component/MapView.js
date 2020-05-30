@@ -31,7 +31,7 @@ class MapViewComponent extends Component {
     return (
       <MapView
         showsUserLocation={true}
-        mapType={this.props.mapType}
+        mapType={"this.props.mapType"}
         style={[styles.map]}
         provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}

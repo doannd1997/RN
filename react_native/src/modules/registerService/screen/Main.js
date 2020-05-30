@@ -55,103 +55,118 @@ class RegisterService extends Component {
         ]}>
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
-          <MapViewCom />
-          {this.props.pickingAddress ? <PlacePickerCom {...this.props}/> : 
+          <MapViewCom/>
+          {this.props.pickingAddress ? (
+            <PlacePickerCom {...this.props} />
+          ) : (
             <View style={[commonStyles.divForm, styles.divForm]}>
-            <View style={styles.defaultInfo}>
-              <Image
-                source={require('../../../../res/image/HomeScreen/education.png')}
-                defaultSource={require('../../../../res/image/HomeScreen/education.png')}
-                style={styles.avatar}
-                resizeMode={'contain'}
-              />
-              <Text style={styles.childName}>
-                {this.props.childName} "Peter Packer"
-              </Text>
-            </View>
-            <View style={styles.viewDivForm}>
-              <YearPickerCom />
-              <View style={styles.pickHome}>
-                <View style={styles.pickItem}>
-                  <View style={styles.pickCell0}>
-                    <CheckBox
-                      style={styles.checkbox}
-                      centercheckedIcon="dot-circle-o"
-                      uncheckedIcon="circle-o"
-                      checked={this.props.pickType == 'HOME'}
-                      checkedColor={'#fff'}
-                      uncheckedColor={'#bbb'}
-                      onIconPress={()=>{
-                        this.props.dispatch({type: "TOGGLE_PICK_TYPE"})
-                      }}
-                    />
-                  </View>
-                  <View style={styles.pickCell1}>
-                    <Text style={styles.txtPick}>
-                      {global.localization.getLang('lang_pick_at_home')}
-                    </Text>
-                  </View>
-                </View>
-                <View style={styles.pickSubItem}>
-                  <View style={styles.pickCell0} />
-                  <View style={styles.pickCell1}>
-                    <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                      {this.props.homeAddress}
-                    </Text>
-                    <TouchableOpacity style={styles.btnChangeAddress} onPress={this.changeHome.bind(this)}>
-                      <Text style={styles.txtBtn}>
-                        {global.localization.getLang('lang_change')}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+              <View style={styles.defaultInfo}>
+                <Image
+                  source={require('../../../../res/image/HomeScreen/education.png')}
+                  defaultSource={require('../../../../res/image/HomeScreen/education.png')}
+                  style={styles.avatar}
+                  resizeMode={'contain'}
+                />
+                <Text style={styles.childName}>
+                  {this.props.childName} "Peter Packer"
+                </Text>
               </View>
-              <View style={styles.pickPlace}>
-                <View style={styles.pickItem}>
-                  <View style={styles.pickCell0}>
-                    <CheckBox
-                      style={styles.checkbox}
-                      centercheckedIcon="dot-circle-o"
-                      uncheckedIcon="circle-o"
-                      checked={this.props.pickType == 'PLACE'}
-                      checkedColor={'#fff'}
-                      uncheckedColor={'#bbb'}
-                      onIconPress={()=>{
-                        this.props.dispatch({type: "TOGGLE_PICK_TYPE"})
-                      }}
-                    />
-                  </View>
-                  <View style={styles.pickCell1}>
-                    <Text style={styles.txtPick}>
-                      {global.localization.getLang('lang_pick_at_place')}
-                    </Text>
-                  </View>
-                </View>
-                <View style={styles.pickSubItem}>
-                  <View style={styles.pickCell0} />
-                  <View style={styles.pickCell1}>
-                    <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                      {this.props.placeAddress}
-                    </Text>
-                    <TouchableOpacity style={styles.btnChangeAddress} onPress={this.changePlace.bind(this)}>
-                      <Text style={styles.txtBtn}>
-                        {global.localization.getLang('lang_change')}
+              <View style={styles.viewDivForm}>
+                <YearPickerCom />
+                <View style={styles.pickHome}>
+                  <View style={styles.pickItem}>
+                    <View style={styles.pickCell0}>
+                      <CheckBox
+                        style={styles.checkbox}
+                        centercheckedIcon="dot-circle-o"
+                        uncheckedIcon="circle-o"
+                        checked={this.props.pickType == 'HOME'}
+                        checkedColor={'#fff'}
+                        uncheckedColor={'#bbb'}
+                        onIconPress={() => {
+                          this.props.dispatch({type: 'TOGGLE_PICK_TYPE'});
+                        }}
+                      />
+                    </View>
+                    <View style={styles.pickCell1}>
+                      <Text style={styles.txtPick}>
+                        {global.localization.getLang('lang_pick_at_home')}
                       </Text>
-                    </TouchableOpacity>
+                    </View>
+                  </View>
+                  <View style={styles.pickSubItem}>
+                    <View style={styles.pickCell0} />
+                    <View style={styles.pickCell1}>
+                      <Text style={styles.txtHomeAddress} numberOfLines={2}>
+                        {this.props.homeAddress}
+                      </Text>
+                      <TouchableOpacity
+                        style={styles.btnChangeAddress}
+                        onPress={this.changeHome.bind(this)}>
+                        <Text style={styles.txtBtn}>
+                          {global.localization.getLang('lang_change')}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View style={styles.btnContainer}>
+                <View style={styles.pickPlace}>
+                  <View style={styles.pickItem}>
+                    <View style={styles.pickCell0}>
+                      <CheckBox
+                        style={styles.checkbox}
+                        centercheckedIcon="dot-circle-o"
+                        uncheckedIcon="circle-o"
+                        checked={this.props.pickType == 'PLACE'}
+                        checkedColor={'#fff'}
+                        uncheckedColor={'#bbb'}
+                        onIconPress={() => {
+                          this.props.dispatch({type: 'TOGGLE_PICK_TYPE'});
+                        }}
+                      />
+                    </View>
+                    <View style={styles.pickCell1}>
+                      <Text style={styles.txtPick}>
+                        {global.localization.getLang('lang_pick_at_place')}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={styles.pickSubItem}>
+                    <View style={styles.pickCell0} />
+                    <View style={styles.pickCell1}>
+                      <Text style={styles.txtHomeAddress} numberOfLines={2}>
+                        {this.props.placeAddress}
+                      </Text>
+                      <TouchableOpacity
+                        style={styles.btnChangeAddress}
+                        onPress={this.changePlace.bind(this)}>
+                        <Text style={styles.txtBtn}>
+                          {global.localization.getLang('lang_change')}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.btnContainer}>
                   <TouchableOpacity style={commonStyles.formBtnConfirm}>
-                      <Text style={commonStyles.formBtnOkText}>
-                          {global.localization.getLang("lang_send_register")}
-                      </Text>
+                    <Text style={commonStyles.formBtnOkText}>
+                      {global.localization.getLang('lang_send_register')}
+                    </Text>
                   </TouchableOpacity>
+                </View>
               </View>
             </View>
-          </View>
-        }
-          </View>
+          )}
+          {!this.props.searchResultShown ? (
+            <View style={styles.selectPlaceContainer}>
+              <TouchableOpacity style={commonStyles.formBtnConfirm}>
+                <Text style={commonStyles.formBtnOkText}>
+                  {global.localization.getLang('lang_select_place')}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
+        </View>
       </View>
     );
   }
@@ -167,6 +182,7 @@ const mapStateToProps = (state)=>{
       homeSetted: state.homeSetted,
       placeSetted: state.placeSetted,
       pickingAddress: state.pickingAddress,
+      searchResultShown: state.searchResultShown
     }
 }
 

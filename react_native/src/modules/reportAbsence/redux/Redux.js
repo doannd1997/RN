@@ -13,7 +13,9 @@ const defaultState = {
 };
 
 
-const reducer = (state=defaultState, action)=>{
+const reducer = (state, action)=>{
+  if (Object.keys(state).length == 0)
+        state = defaultState;
   switch (action.type){
     case "TOGGLE_BUS_TYPE":
       return {...state, busType: action.busType};

@@ -48,5 +48,6 @@
     "lang_blank": "Blank",
     "lang_send_register": "Submit",
     "lang_send_report_absence": "Submit Absence",
-    "lang_input_address": "Search Address"
+    "lang_input_address": "Search Address",
+    "lang_select_place": "Select This Address"
 }

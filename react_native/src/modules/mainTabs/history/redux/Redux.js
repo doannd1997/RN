@@ -30,12 +30,14 @@ for (var i=0; i<5; i++){
     defaultState.history.push(last)
 }
 
-const reducer = (state=defaultState, action)=>{
+const reducer = (state, action)=>{
+  if (Object.keys(state).length == 0)
+        state = defaultState;
   switch (action.type){
     case "TOGGLE_PICKING":
       return {...state, isPickingDate: !state.isPickingDate}
   }
-    return defaultState;
+    return state;
 }
 
 export default createStore(reducer, {});
