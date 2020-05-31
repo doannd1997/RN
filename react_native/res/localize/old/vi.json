@@ -48,5 +48,6 @@
     "lang_blank": "Trống",
     "lang_send_register": "Gửi Đăng Kí",
     "lang_send_report_absence": "Đăng Kí Nghỉ",
-    "lang_input_address": "Tìm kiếm địa chỉ..."
+    "lang_input_address": "Tìm kiếm địa chỉ...",
+    "lang_select_place": "Chọn Địa Chỉ Này"
 }

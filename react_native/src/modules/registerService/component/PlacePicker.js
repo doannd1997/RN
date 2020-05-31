@@ -12,7 +12,7 @@ const LANG = "vn";
 const PLACE_SEARCH = "@place_search@";
 const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
-var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
+var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lg=" + LANG + "&apikey=" + HERE_API_KEY;
 
 const PlaceItem = (props, name)=>{
     return(
@@ -87,7 +87,6 @@ const PlacePicker = (props)=>{
                     <TouchableOpacity
                       style={styles.placeItem}
                       onPress={() => {
-                          console.log("// " + item.position.lat + " // " + item.position.lng)
                         props.dispatch({type: "SELECT_PLACE", placeSelected: {latitude: item.position.lat, longitude: item.position.lng, title: item.title}});
                       }}>
                       <Icon

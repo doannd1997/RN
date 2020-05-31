@@ -15,6 +15,11 @@ const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("../component/PlacePicker").default;
 
+const CHANGE_TYPE = {
+  HOME: "HOME",
+  PLACE: "PLACE"
+}
+
 const CENTER_POINT = "21.007833,105.841361";
 const COUNTRY_CODE = "VNM";
 const LANG = "vn";
@@ -40,10 +45,10 @@ class RegisterService extends Component {
     super(props);
   }
   changeHome(){
-    this.props.dispatch({type: "TOGGLE_PICKING"});
+    this.props.dispatch({type: "TOGGLE_PICKING", changeType: CHANGE_TYPE.HOME});
   }
   changePlace(){
-    this.props.dispatch({type: "TOGGLE_PICKING"});
+    this.props.dispatch({type: "TOGGLE_PICKING", changeType: CHANGE_TYPE.PLACE});
   }
   render() {
   
@@ -157,9 +162,13 @@ class RegisterService extends Component {
               </View>
             </View>
           )}
-          {!this.props.searchResultShown ? (
+          {(!this.props.searchResultShown && this.props.pickingAddress) ? (
             <View style={styles.selectPlaceContainer}>
-              <TouchableOpacity style={commonStyles.formBtnConfirm}>
+              <TouchableOpacity style={commonStyles.formBtnConfirm}
+                onPress={()=>{
+                  this.props.dispatch({type: "CHOOSE_PLACE"})
+                }}  
+              >
                 <Text style={commonStyles.formBtnOkText}>
                   {global.localization.getLang('lang_select_place')}
                 </Text>

@@ -9,6 +9,39 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 
+const API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4"
+const LANG = "vn";
+const LOCATION_CODE = "@location@";
+var URL = "https://revgeocode.search.hereapi.com/v1/revgeocode?at=" + LOCATION_CODE + "&lg=" + LANG + "&apikey=" + API_KEY;
+
+const reverseGeoCode = (location, props)=>{
+  var request = new XMLHttpRequest();
+  encodedLocation = location.latitude + "%2C" + location.longitude;
+  var _URL = URL.replace(LOCATION_CODE, encodedLocation);
+  request.onreadystatechange = e => {
+    if (request.readyState !== 4) {
+      return;
+    }
+    if (request.status === 200) {
+        var res = JSON.parse(request.responseText);
+        var placeSelected = {
+          latitude: location.latitude,
+          longitude: location.longitude,
+          title: res.items[0].title
+        };
+        props.dispatch({type: "SELECT_PLACE", placeSelected: placeSelected})
+    } else {
+      Toast.show("ERR", Toast.SHORT, [
+        'UIAlertController',
+      ]);
+    }
+  };
+
+    request.open('GET', _URL);
+    request.send();
+}
+
+
 class MapViewComponent extends Component {
   constructor(props){
     super(props)
@@ -18,6 +51,7 @@ class MapViewComponent extends Component {
     return (
       <MapView
         showsUserLocation={true}
+        showsMyLocationButton={true}
         mapType={this.props.mapType}
         style={[styles.map]}
         provider={PROVIDER_DEFAULT}
@@ -36,6 +70,20 @@ class MapViewComponent extends Component {
               longitude: this.props.placeSelected.longitude,
             }}
             image={require('../../../../res/image/HomeScreen/pin.png')}
+            draggable={true}
+            onPress={()=>{
+              console.log(this.props.placeSelected)
+            }}
+            onDragEnd={(e)=>{
+              var coordinate = e.nativeEvent.coordinate;
+              reverseGeoCode(coordinate, self.props);
+            }}
+            onDragStart={(e)=>{
+              this.marker.hideCallout();
+            }}
+            ref={_marker => {
+              this.marker = _marker;
+            }}
           >
             <Callout>
               <Text>
