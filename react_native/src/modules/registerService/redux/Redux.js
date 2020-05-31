@@ -9,6 +9,11 @@ BUS_TYPE = {
 PICK_TYPE = {
   HOME: "HOME",
   PLACE: "PLACE"
+};
+
+const PICK_TYPE_METHOD = {
+  WITH_PARENT: "WITH_PARENT",
+  ONLY_STUDENT: "ONLY_STUDENT"
 }
 
 var _curYear = new Date().getFullYear();
@@ -34,6 +39,10 @@ var defaultState = {
     latitudeDelta: 0.0522,
     longitudeDelta: 0.0171,
   },
+
+  pickTypeMethod: PICK_TYPE_METHOD.WITH_PARENT,        // Cách đón trả học sinh {với phụ huynh || học sinh tự lên}
+  serviceStartTime: Date.now(),
+  isPickingDateStart: false                                                      // Thời gian bắt đầu dịch vụ  
 };
 
 
@@ -45,6 +54,8 @@ const reducer = (state, action)=>{
       return {...state, curYear: action.year}
     case "TOGGLE_PICK_TYPE":
       return {...state, pickType: (state.pickType == PICK_TYPE.HOME) ? PICK_TYPE.PLACE : PICK_TYPE.HOME};
+    case "TOGGLE_PICK_TYPE_METHOD":
+      return {...state, pickTypeMethod: (state.pickTypeMethod == PICK_TYPE_METHOD.WITH_PARENT) ? PICK_TYPE_METHOD.ONLY_STUDENT : PICK_TYPE_METHOD.WITH_PARENT};
     case "TOGGLE_PICKING":
       var pickingAddress = !state.pickingAddress;
       return {...state, pickingAddress: pickingAddress, searchResultShown: false, changeType: action.changeType};
@@ -75,7 +86,15 @@ const reducer = (state, action)=>{
     case "START_LOADING":
       return {...state, isLoading: true};
     case "STOP_LOADING":
-      return {...state, isLoading: false}
+      return {...state, isLoading: false};
+    case "HIDE_PICKING_SERVICE_DATE_START":
+      return {...state, isPickingDateStart: false};
+    case "SHOW_PICKING_SERVICE_DATE_START":
+      return {...state, isPickingDateStart: true};
+      
+    case "CHANGE_SERVICE_DATE_START":
+      console.log("//// " + action.time)
+      return {...state, serviceStartTime: action.time}
     default:
       return state;
   }

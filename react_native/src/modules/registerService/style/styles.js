@@ -99,6 +99,15 @@ export default styles = StyleSheet.create({
         alignItems: "center"
     },
 
+    pageViewContainer: {
+        flex: 10,
+        width: "100%",
+    },  
+
+    page: {
+        flex: 1
+    },
+
     pickHome: {
         width: "100%",
         flex: 4,

@@ -11,6 +11,10 @@ const colors = require("../../../color/Colors").default;
 
 const MapViewCom = require("../component/MapView").default;
 const YearPickerCom = require("../component/YearPicker").default;
+const PageReg0 = require("../component/PageReg0").default;
+const PageReg1 = require("../component/PageReg1").default;
+
+import { Pages } from 'react-native-pages';
 const ToolBar = require("../component/ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
@@ -41,28 +45,48 @@ class LocationItem extends PureComponent{
   }
 }
 
+class MyPageCom extends Component{
+  selectPageReg0(){
+    // Trang chọn địa điểm đón trả
+    this.refs.pageViews.scrollToPage(0);
+  }
+  selectPageReg1(){
+    this.refs.pageViews.scrollToPage(1);
+  }
+  selectPageReg2(){
+    this.refs.pageViews.scrollToPage(2);
+  }
+  render(){
+    return (
+      <Pages indicatorColor={"transparent"} ref={"pageViews"}>
+        <PageReg0 {...this.props} toNextPage={this.selectPageReg1.bind(this)}/>
+        <PageReg1 {...this.props} toPrevPage={this.selectPageReg0.bind(this)}/>
+      </Pages>
+    )
+  }
+}
+
+
 class RegisterService extends Component {
-  constructor(props) {
-    super(props);
-  }
-  changeHome(){
-    this.props.dispatch({type: "TOGGLE_PICKING", changeType: CHANGE_TYPE.HOME});
-  }
-  changePlace(){
-    this.props.dispatch({type: "TOGGLE_PICKING", changeType: CHANGE_TYPE.PLACE});
-  }
-  render() {
   
+  render() {
+    
     return (
       <View
         style={[
           commonStyles.fullViewVerticalCenter,
           commonStyles.screenWithToolBar,
         ]}>
-        {this.props.isLoading ? <ActivityIndicator color={colors.indicator} size="large" style={commonStyles.indicator}/> : null}
+        {this.props.isLoading ? (
+          <ActivityIndicator
+            color={colors.indicator}
+            size="large"
+            style={commonStyles.indicator}
+          />
+        ) : null}
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
-          <MapViewCom/>
+          <MapViewCom />
           {this.props.pickingAddress ? (
             <PlacePickerCom {...this.props} />
           ) : (
@@ -80,97 +104,19 @@ class RegisterService extends Component {
               </View>
               <View style={styles.viewDivForm}>
                 <YearPickerCom />
-                <View style={styles.pickHome}>
-                  <View style={styles.pickItem}>
-                    <View style={styles.pickCell0}>
-                      <CheckBox
-                        style={styles.checkbox}
-                        centercheckedIcon="dot-circle-o"
-                        uncheckedIcon="circle-o"
-                        checked={this.props.pickType == 'HOME'}
-                        checkedColor={'#fff'}
-                        uncheckedColor={'#bbb'}
-                        onIconPress={() => {
-                          this.props.dispatch({type: 'TOGGLE_PICK_TYPE'});
-                        }}
-                      />
-                    </View>
-                    <View style={styles.pickCell1}>
-                      <Text style={styles.txtPick}>
-                        {global.localization.getLang('lang_pick_at_home')}
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={styles.pickSubItem}>
-                    <View style={styles.pickCell0} />
-                    <View style={styles.pickCell1}>
-                      <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                        {this.props.homeAddress}
-                      </Text>
-                      <TouchableOpacity
-                        style={styles.btnChangeAddress}
-                        onPress={this.changeHome.bind(this)}>
-                        <Text style={styles.txtBtn}>
-                          {global.localization.getLang('lang_change')}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.pickPlace}>
-                  <View style={styles.pickItem}>
-                    <View style={styles.pickCell0}>
-                      <CheckBox
-                        style={styles.checkbox}
-                        centercheckedIcon="dot-circle-o"
-                        uncheckedIcon="circle-o"
-                        checked={this.props.pickType == 'PLACE'}
-                        checkedColor={'#fff'}
-                        uncheckedColor={'#bbb'}
-                        onIconPress={() => {
-                          this.props.dispatch({type: 'TOGGLE_PICK_TYPE'});
-                        }}
-                      />
-                    </View>
-                    <View style={styles.pickCell1}>
-                      <Text style={styles.txtPick}>
-                        {global.localization.getLang('lang_pick_at_place')}
-                      </Text>
-                    </View>
-                  </View>
-                  <View style={styles.pickSubItem}>
-                    <View style={styles.pickCell0} />
-                    <View style={styles.pickCell1}>
-                      <Text style={styles.txtHomeAddress} numberOfLines={2}>
-                        {this.props.placeAddress}
-                      </Text>
-                      <TouchableOpacity
-                        style={styles.btnChangeAddress}
-                        onPress={this.changePlace.bind(this)}>
-                        <Text style={styles.txtBtn}>
-                          {global.localization.getLang('lang_change')}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-                <View style={styles.btnContainer}>
-                  <TouchableOpacity style={commonStyles.formBtnConfirm}>
-                    <Text style={commonStyles.formBtnOkText}>
-                      {global.localization.getLang('lang_send_register')}
-                    </Text>
-                  </TouchableOpacity>
+                <View style={styles.pageViewContainer}>
+                  <MyPage/>
                 </View>
               </View>
             </View>
           )}
-          {(!this.props.searchResultShown && this.props.pickingAddress) ? (
+          {!this.props.searchResultShown && this.props.pickingAddress ? (
             <View style={styles.selectPlaceContainer}>
-              <TouchableOpacity style={commonStyles.formBtnConfirm}
-                onPress={()=>{
-                  this.props.dispatch({type: "CHOOSE_PLACE"})
-                }}  
-              >
+              <TouchableOpacity
+                style={commonStyles.formBtnConfirm}
+                onPress={() => {
+                  this.props.dispatch({type: 'CHOOSE_PLACE'});
+                }}>
                 <Text style={commonStyles.formBtnOkText}>
                   {global.localization.getLang('lang_select_place')}
                 </Text>
@@ -178,7 +124,6 @@ class RegisterService extends Component {
             </View>
           ) : null}
         </View>
-        
       </View>
     );
   }
@@ -198,5 +143,6 @@ const mapStateToProps = (state)=>{
       searchResultShown: state.searchResultShown
     }
 }
+const MyPage = connect(mapStateToProps)(MyPageCom);
 
 export default connect(mapStateToProps)(RegisterService)

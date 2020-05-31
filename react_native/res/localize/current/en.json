@@ -50,5 +50,11 @@
     "lang_send_report_absence": "Submit Absence",
     "lang_input_address": "Search Address",
     "lang_select_place": "Select This Address",
-    "lang_pick_here": "Pick Here"
+    "lang_pick_here": "Pick Here",
+    "lang_next": "Next",
+    "lang_partner_list": "Partner",
+    "lang_pick_method_with_parent": "Parent go with Student until kick off",
+    "lang_pick_method_by_student": "Student kickk off and go off istself",
+    "lang_service_start_date": "Service Starting Date",
+    "lang_alert_wrong_year": "Please adjust Year @year@"
 }

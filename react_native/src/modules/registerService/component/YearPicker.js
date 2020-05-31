@@ -8,7 +8,7 @@ const styles = require("../style/styles").default;
 class YearPicker extends Component{
     render(){
         var comArr = this.props.yearList.map(year => {
-          return <Text style={styles.itemYearPicker}>{year}</Text>;
+          return <Text style={styles.itemYearPicker} key={year}>{year}</Text>;
         });
         return (
           <View style={styles.YearPickerContainer}>

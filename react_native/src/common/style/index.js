@@ -144,7 +144,7 @@ export default (styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formBtnConfirm: {
-    backgroundColor: '#140640',
+    backgroundColor: '#0a0b61',
     width: '100%',
     height: '100%',
     justifyContent: 'center',
