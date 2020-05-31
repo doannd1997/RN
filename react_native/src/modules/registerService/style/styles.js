@@ -29,7 +29,8 @@ export default styles = StyleSheet.create({
         shadowOpacity: 0.3,
     },
     divForm: {
-        backgroundColor: "grey"
+        backgroundColor: "grey",
+        height: 480
     },
     txtOk: {
         color: "#fff",
@@ -48,7 +49,7 @@ export default styles = StyleSheet.create({
     },
     YearPickerContainer: {
         width: 200,
-        flex: 1.2,
+        flex: 1.05,
         marginBottom: 5,
 
     },
@@ -91,7 +92,7 @@ export default styles = StyleSheet.create({
     },
     viewDivForm: {
         width: "100%",
-        flex: 9,
+        flex: 12,
         // backgroundColor: "red",
         flexDirection: "column",
         justifyContent: "center",
@@ -107,11 +108,11 @@ export default styles = StyleSheet.create({
     pickPlace: {
         width: "100%",
         flex: 4,
-        backgroundColor: "grey"
+        // backgroundColor: "grey"
     },
     btnContainer: {
         width: "100%",
-        flex: 2,
+        flex: 1.6,
         // backgroundColor:"cyan"
     },
     pickItem: {
