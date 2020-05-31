@@ -30,9 +30,9 @@ var defaultState = {
   region: {
     latitude: 21.005042,
     longitude: 105.843597,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  }
+    latitudeDelta: 0.0522,
+    longitudeDelta: 0.0171,
+  },
 };
 
 
