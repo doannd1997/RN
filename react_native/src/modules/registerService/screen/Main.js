@@ -7,7 +7,7 @@ import { CheckBox } from 'react-native-elements';
 import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
-const colors = requrie("../../../color/Colors").default
+const colors = require("../../../color/Colors").default;
 
 const MapViewCom = require("../component/MapView").default;
 const YearPickerCom = require("../component/YearPicker").default;
