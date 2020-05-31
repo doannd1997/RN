@@ -1,5 +1,5 @@
 import React, {Component, PureComponent} from "react";
-import {View, Text, TextInput, Alert, Image} from "react-native";
+import {View, Text, ActivityIndicator , Alert, Image} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -7,6 +7,7 @@ import { CheckBox } from 'react-native-elements';
 import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
+const colors = requrie("../../../color/Colors").default
 
 const MapViewCom = require("../component/MapView").default;
 const YearPickerCom = require("../component/YearPicker").default;
@@ -58,6 +59,7 @@ class RegisterService extends Component {
           commonStyles.fullViewVerticalCenter,
           commonStyles.screenWithToolBar,
         ]}>
+        {this.props.isLoading ? <ActivityIndicator color={colors.indicator} size="large" style={commonStyles.indicator}/> : null}
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
           <MapViewCom/>
@@ -176,6 +178,7 @@ class RegisterService extends Component {
             </View>
           ) : null}
         </View>
+        
       </View>
     );
   }
@@ -183,6 +186,7 @@ class RegisterService extends Component {
 
 const mapStateToProps = (state)=>{
     return {
+      isLoading: state.isLoading,
       curYear: state.curYear,
       yearList: state.yearList,
       pickType: state.pickType,

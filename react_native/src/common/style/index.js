@@ -154,5 +154,11 @@ export default (styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 18
+  },
+  indicator: {
+    position: "absolute",
+    top: "50%",
+    // alignSelf: "center",
+    zIndex: 1000
   }
 }));

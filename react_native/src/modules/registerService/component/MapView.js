@@ -39,6 +39,7 @@ const reverseGeoCode = (location, props)=>{
 
     request.open('GET', _URL);
     request.send();
+    props.dispatch({type: "START_LOADING"})
 }
 
 
@@ -86,7 +87,7 @@ class MapViewComponent extends Component {
             }}
           >
             <Callout>
-              <Text>
+              <Text style={{fontWeight: "bold"}}>
                 {this.props.placeSelected.title}
               </Text>
             </Callout>

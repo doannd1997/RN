@@ -13,6 +13,7 @@ PICK_TYPE = {
 
 var _curYear = new Date().getFullYear();
 var defaultState = {
+  isLoading: false,
   yearList: [_curYear, _curYear+1],
   curYear: _curYear,
   pickType: "HOME",                                                         // Radio Button hiển thị chọn nhà hay địa chỉ mới
@@ -39,7 +40,6 @@ var defaultState = {
 const reducer = (state, action)=>{
   if (Object.keys(state).length == 0)
     state = defaultState;
-    console.log(action)
   switch (action.type){
     case "CHANGE_YEAR":
       return {...state, curYear: action.year}
@@ -55,13 +55,27 @@ const reducer = (state, action)=>{
     case "SET_SEARCH_RESULT":
       return {...state, listPlace: action.listPlace};
     case "SELECT_PLACE":
-      return {...state, placeSelected: action.placeSelected, searchResultShown: false, region: {...state.region, latitude: action.placeSelected.latitude, longitude: action.placeSelected.longitude}}
+      return {
+        ...state,
+        placeSelected: action.placeSelected,
+        searchResultShown: false,
+        region: {
+          ...state.region,
+          latitude: action.placeSelected.latitude,
+          longitude: action.placeSelected.longitude,
+        },
+        isLoading: false
+      };
     case "CHOOSE_PLACE":
       var title = state.placeSelected.title;
       if (state.changeType == CHANGE_TYPE.HOME)
         return {...state, homeAddress: title, pickingAddress: false}
       else
         return {...state, placeAddress: title, pickingAddress: false};
+    case "START_LOADING":
+      return {...state, isLoading: true};
+    case "STOP_LOADING":
+      return {...state, isLoading: false}
     default:
       return state;
   }
