@@ -73,7 +73,7 @@ class MapViewComponent extends Component {
             image={require('../../../../res/image/HomeScreen/pin.png')}
             draggable={true}
             onPress={()=>{
-              console.log(this.props.placeSelected)
+              
             }}
             onDragEnd={(e)=>{
               var coordinate = e.nativeEvent.coordinate;

@@ -93,7 +93,6 @@ const reducer = (state, action)=>{
       return {...state, isPickingDateStart: true};
       
     case "CHANGE_SERVICE_DATE_START":
-      console.log("//// " + action.time)
       return {...state, serviceStartTime: action.time}
     default:
       return state;

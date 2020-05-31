@@ -12,8 +12,6 @@ const ToolBar = require("../component/ToolBar").default;
 
 class Main extends Component{
     onSelectDate(event, date){
-        console.log("event: " + JSON.stringify(event));
-        console.log("date: " + date);
         this.props.dispatch({type: "TOGGLE_PICKING"})
     }
     onSectionListRefresh(){

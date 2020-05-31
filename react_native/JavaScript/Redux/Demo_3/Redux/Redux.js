@@ -57,7 +57,6 @@ isGotErrorReducer = (state = defaultState.isGotError, action)=>{
 };
 
 reasonReducer = (state = defaultState.reason, action)=>{
-    console.log(action);
     switch (action.type){
         case 'GET_TEMP':
         case 'SUCCESS':
