@@ -1,14 +1,14 @@
 import React, {Component, PureComponent} from "react";
 import {View, Text, StyleSheet , Alert, Image} from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity, FlatList } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
-import Toast from 'react-native-simple-toast';
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const commonStyles = require("../../../common/style/index").default;
-const colors = require("../../../color/Colors").default;
+const colors = require("../../../common/style/index").default;
+import {QuickToast} from "../../../utils/Toast";
 
 const TimeUtils = require("../../../utils/Times").default;
 
@@ -47,6 +47,35 @@ var OptionContainer = (props)=>{
   );
 }
 
+var PartnerContainer = (props)=>{
+  var partner = props.partner;
+  var partnerId = partner.id;
+
+  var _checked = props.partners.filter((partner)=>{
+    return partner.id == partnerId;
+  })[0].checked;
+  
+  return (
+    <View style={styles.optionContainer}>
+      <CheckBox
+        centercheckedIcon="dot-circle-o"
+        uncheckedIcon="circle-o"
+        checked={_checked}
+        checkedColor={'#fff'}
+        uncheckedColor={'#bbb'}
+        onIconPress={() => {
+          console.log(partnerId)
+          props.dispatch({
+            type: 'TOGGLE_SELECT_PARTER',
+            partnerId: partnerId
+          });
+        }}
+      />
+      <Text style={styles.labelMethodItem}>{partner.name}</Text>
+    </View>
+  );
+}
+
 const CHANGE_TYPE = {
   HOME: "HOME",
   PLACE: "PLACE"
@@ -63,45 +92,66 @@ class PageReg1 extends Component {
     });
   }
   changeServiceStartTime(event, date){
-    console.log(event);
     this.props.dispatch({type: "HIDE_PICKING_SERVICE_DATE_START"})
     if (event.type == "set"){
       var timeStamp = event.nativeEvent.timestamp;
       var curYear = this.props.curYear;
-      console.log(new Date(timeStamp).getFullYear())
       if (new Date(timeStamp).getFullYear() == curYear)
         this.props.dispatch({type: "CHANGE_SERVICE_DATE_START", time: timeStamp})
       else {
         var toast = global.localization.getLang("lang_alert_wrong_year").replace("@year@", curYear);
-        Toast.show(toast, Toast.LONG);
+        QuickToast.show(toast);
       }
     }
   };
   render() {
     var self = this;
-
     return (
       <View style={styles.page}>
         <View style={styles.pickUpMethodContainer}>
-          <OptionContainer {...this.props} arg={PICK_TYPE.WITH_PARENT}></OptionContainer>
-          <OptionContainer {...this.props} arg={PICK_TYPE.ONLY_STUDENT}></OptionContainer>
+          <OptionContainer {...this.props} arg={PICK_TYPE.WITH_PARENT} />
+          <OptionContainer {...this.props} arg={PICK_TYPE.ONLY_STUDENT} />
         </View>
         <View style={styles.partnerHeaderContainer}>
           <Text style={styles.lblHeaderPartner}>
-            {global.localization.getLang("lang_partner_list")}
+            {global.localization.getLang('lang_partner_list')} 
+            <Text style={{color: "#fff"}}>
+              &nbsp;
+            ({
+              this.props.partners.filter((partner)=>partner.checked).length
+            }/{
+              this.props.partners.length
+            })
+            </Text>
           </Text>
         </View>
         <View style={styles.partnerContainer}>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            bounces={true}
+            data={self.props.partners}
+            renderItem={data => {
+              return (
+                <PartnerContainer {...self.props} partner={data.item} />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return index;
+            }}
+          />
         </View>
         <View style={styles.timeStartContainer}>
           <Text style={styles.lblStartDateService}>
-            {global.localization.getLang("lang_service_start_date")}
+            {global.localization.getLang('lang_service_start_date')}
           </Text>
           <View style={styles.btnTimeContainer}>
-            <TouchableOpacity style={styles.btnSelectTime}
-            onPress={()=>{
-              self.props.dispatch({type: "SHOW_PICKING_SERVICE_DATE_START"})
-            }}>
+            <TouchableOpacity
+              style={styles.btnSelectTime}
+              onPress={() => {
+                self.props.dispatch({
+                  type: 'SHOW_PICKING_SERVICE_DATE_START',
+                });
+              }}>
               <Text style={styles.lblBtnTimeStart}>
                 {TimeUtils.formatDate(this.props.serviceStartTime)}
               </Text>
@@ -109,17 +159,31 @@ class PageReg1 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity style={commonStyles.formBtnConfirm}
-          onPress={this.props.toPrevPage}
-          >
-            <Text style={commonStyles.formBtnOkText}>
-              {global.localization.getLang('lang_next')}
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.singleBtnContainer}>
+            <TouchableOpacity
+              style={commonStyles.formBtnCancel}
+              onPress={()=>{
+                self.props.toPrevPage();
+              }}>
+              <Text style={commonStyles.formBtnOkText}>
+                {global.localization.getLang('lang_prev')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.singleBtnContainer}>
+            <TouchableOpacity
+              style={commonStyles.formBtnConfirm}
+              onPress={()=>{
+                self.props.toNextPage();
+              }}>
+              <Text style={commonStyles.formBtnOkText}>
+                {global.localization.getLang('lang_next')}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         {this.props.isPickingDateStart ? (
           <DateTimePicker
-            ref="startDate"
             style={commonStyles.dateTimePicker}
             timeZoneOffsetInMinutes={0}
             value={new Date(this.props.serviceStartTime)}
@@ -140,7 +204,8 @@ const mapStateToProps = (state)=>{
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,
       isPickingDateStart: state.isPickingDateStart,
-      curYear: state.curYear
+      curYear: state.curYear,
+      partners: state.partners
     }
 }
 
@@ -149,7 +214,9 @@ export default connect(mapStateToProps)(PageReg1)
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
+    width: "100%",
+    height: "100%"
   },
   pickUpMethodContainer: {
     flex: 1.5,
@@ -157,17 +224,18 @@ const styles = StyleSheet.create({
   partnerHeaderContainer: {
     flex: 0.5,
     justifyContent: "center",
-    paddingLeft: 30,
+    paddingLeft: 50,
     alignItems: "flex-start"
   },  
   lblHeaderPartner: {
-    color: "#fff",
+    color: "#444",
     fontWeight: "bold",
-    fontSize: 18
+    fontSize: 16,
+    fontStyle: "italic"
   },
   partnerContainer: {
     flex: 1.5,
-    backgroundColor: "cyan"
+    // backgroundColor: "cyan"
   },
   timeStartContainer: {
     flex: 0.5,
@@ -178,7 +246,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btnContainer: {
-    flex: 0.81
+    flex: 0.81,
+    width: "100%",
+    flexDirection: "row",
+    // justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "blue"
+  },
+  singleBtnContainer: {
+    height: "100%",
+    // width: 40,
+    flex: 1,
+    backgroundColor: "red"
   },
   optionContainer: {
     flexDirection: "row",
@@ -187,13 +266,13 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   labelMethodItem: {
-    color: "#ddd",
+    color: "#fff",
     fontWeight: "bold",
     flex: 1,
     left: -20,
   },
   lblStartDateService: {
-    color: "#222",
+    color: "#333",
     // fontWeight: "bold",
     fontStyle: "italic",
   },

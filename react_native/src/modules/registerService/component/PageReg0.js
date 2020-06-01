@@ -4,7 +4,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
-import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
@@ -33,6 +32,7 @@ class PageReg0 extends Component {
     });
   }
   render() {
+    var self = this;
     return (
       <View style={styles.page}>
         <View style={styles.pickHome}>
@@ -116,7 +116,9 @@ class PageReg0 extends Component {
         <View style={styles.btnContainer}>
           <TouchableOpacity style={commonStyles.formBtnConfirm}>
             <Text style={commonStyles.formBtnOkText}
-            onPress={this.props.toNextPage}>
+            onPress={()=>{
+              self.props.toNextPage();
+            }}>
               {global.localization.getLang('lang_next')}
             </Text>
           </TouchableOpacity>

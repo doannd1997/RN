@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from "@react-native-community/datetimepicker";
-import Toast from 'react-native-simple-toast';
 import RNPickerSelect from 'react-native-picker-select';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
+import {QuickToast} from "../../../utils/Toast";
 
 const ToolBar = require("../component/ToolBar").default;
 const Times = require("../../../utils/Times").default;
@@ -64,9 +64,7 @@ class ReportAbsenceCom extends Component {
         {
           text: okLabel,
           onPress: () => {
-            Toast.show(global.localization.getLang('lang_report_absence_success'), Toast.SHORT, [
-              'UIAlertController',
-            ]);
+            QuickToast.show(global.localization.getLang('lang_report_absence_success'));
           },
         },
         {

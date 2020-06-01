@@ -4,7 +4,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
-import Toast from 'react-native-simple-toast';
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
@@ -13,8 +12,10 @@ const MapViewCom = require("../component/MapView").default;
 const YearPickerCom = require("../component/YearPicker").default;
 const PageReg0 = require("../component/PageReg0").default;
 const PageReg1 = require("../component/PageReg1").default;
+const PageReg2 = require("../component/PageReg2").default;
 
 import { Pages } from 'react-native-pages';
+import ViewPager from '@react-native-community/viewpager'
 const ToolBar = require("../component/ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
@@ -32,18 +33,7 @@ const PLACE_SEARCH = "@place_search@";
 const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
-class LocationItem extends PureComponent{
-  render(){
-    return (
-      <TouchableOpacity>
-        <Text>
-          {this.props.description}
-        </Text>
-      </TouchableOpacity>
-    )
-
-  }
-}
+const AgreementCom = require("../component/AgreeMent").default;
 
 class MyPageCom extends Component{
   selectPageReg0(){
@@ -51,18 +41,38 @@ class MyPageCom extends Component{
     this.refs.pageViews.scrollToPage(0);
   }
   selectPageReg1(){
+    // Trang chọn cách đón học sinh và học sinh đi cùng
     this.refs.pageViews.scrollToPage(1);
   }
   selectPageReg2(){
+    // Trang chọn người giám hộ
     this.refs.pageViews.scrollToPage(2);
   }
   render(){
     return (
-      <Pages indicatorColor={"transparent"} ref={"pageViews"}>
-        <PageReg0 {...this.props} toNextPage={this.selectPageReg1.bind(this)}/>
-        <PageReg1 {...this.props} toPrevPage={this.selectPageReg0.bind(this)}/>
+      <Pages
+        indicatorColor={'transparent'}
+        ref={'pageViews'}
+        scrollEnabled={false}
+        >
+        <PageReg0
+          key="0"
+          {...this.props}
+          toNextPage={this.selectPageReg1.bind(this)}
+        />
+        <PageReg1
+          key="1"
+          {...this.props}
+          toPrevPage={this.selectPageReg0.bind(this)}
+          toNextPage={this.selectPageReg2.bind(this)}
+        />
+        <PageReg2
+          key="2"
+          {...this.props}
+          toPrevPage={this.selectPageReg1.bind(this)}
+        />
       </Pages>
-    )
+    );
   }
 }
 
@@ -110,7 +120,7 @@ class RegisterService extends Component {
               </View>
             </View>
           )}
-          {!this.props.searchResultShown && this.props.pickingAddress ? (
+          {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (
             <View style={styles.selectPlaceContainer}>
               <TouchableOpacity
                 style={commonStyles.formBtnConfirm}
@@ -124,6 +134,7 @@ class RegisterService extends Component {
             </View>
           ) : null}
         </View>
+        {this.props.showAgreement ? <AgreementCom/> : null}
       </View>
     );
   }
@@ -140,7 +151,9 @@ const mapStateToProps = (state)=>{
       homeSetted: state.homeSetted,
       placeSetted: state.placeSetted,
       pickingAddress: state.pickingAddress,
-      searchResultShown: state.searchResultShown
+      searchResultShown: state.searchResultShown,
+      placeSelected: state.placeSelected,
+      showAgreement: state.showAgreement
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

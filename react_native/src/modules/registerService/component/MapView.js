@@ -8,6 +8,7 @@ import MapView, {Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE, Callout} from 'react
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
+import {QuickToast} from "../../../utils/Toast";
 
 const API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4"
 const LANG = "vn";
@@ -31,9 +32,7 @@ const reverseGeoCode = (location, props)=>{
         };
         props.dispatch({type: "SELECT_PLACE", placeSelected: placeSelected})
     } else {
-      Toast.show("ERR", Toast.SHORT, [
-        'UIAlertController',
-      ]);
+      QuickToast.show("ERR");
     }
   };
 

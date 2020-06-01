@@ -1,7 +1,6 @@
 import React, {Component, useState} from "react";
 import {View, FlatList, Text, TouchableOpacity, TextInput} from "react-native";
 import {connect} from "react-redux";
-import Toast from 'react-native-simple-toast';
 import Icon from 'react-native-vector-icons/Entypo'
 
 const styles = require("../style/styles").default;
@@ -45,9 +44,7 @@ const onPress=(text, props)=>{
           });
           props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
       } else {
-        Toast.show("ERR", Toast.SHORT, [
-          'UIAlertController',
-        ]);
+        console.log("Request get Place Failed")
       }
     };
 

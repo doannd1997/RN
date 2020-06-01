@@ -52,9 +52,17 @@
     "lang_select_place": "Select This Address",
     "lang_pick_here": "Pick Here",
     "lang_next": "Next",
+    "lang_prev": "Previous",
     "lang_partner_list": "Partner",
     "lang_pick_method_with_parent": "Parent go with Student until kick off",
     "lang_pick_method_by_student": "Student kickk off and go off istself",
     "lang_service_start_date": "Service Starting Date",
-    "lang_alert_wrong_year": "Please adjust Year @year@"
+    "lang_alert_wrong_year": "Please adjust Year @year@",
+    "lang_select_guardians_max": "Select @max@ of Guardians",
+    "lang_confirm": "Confirm",
+    "lang_agree_policy": "I have read and agreed with",
+    "lang_policy": "Agreement",
+    "lang_please_agree_policy": "Please agree with Agreement",
+    "lang_accept": "Accept",
+    "lang_reject": "Reject"
 }

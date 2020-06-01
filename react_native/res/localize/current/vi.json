@@ -52,9 +52,17 @@
     "lang_select_place": "Chọn Địa Chỉ Này",
     "lang_pick_here": "Đón Tại Đây",
     "lang_next": "Tiếp Theo",
+    "lang_prev": "Quay Lại",
     "lang_partner_list": "Người Đi Cùng",
     "lang_pick_method_with_parent": "PH giao HS tận tay Giám sát Xe",
     "lang_pick_method_by_student": "HS tự đón xe và về tại điểm đón trả",
     "lang_service_start_date": "Ngày bắt đầu dịch vụ",
-    "lang_alert_wrong_year": "Vui lòng điều chỉnh năm đăng kí @year@"
+    "lang_alert_wrong_year": "Vui lòng điều chỉnh năm đăng kí @year@",
+    "lang_select_guardians_max": "Chọn tối đa @max@ Người Giám hộ",
+    "lang_confirm": "Xác Nhận",
+    "lang_agree_policy": "Tôi đã đọc và đồng ý với",
+    "lang_policy": "Bản Cam Kết",
+    "lang_please_agree_policy": "Vui lòng đồng ý nội dung Bản cam kết",
+    "lang_accept": "Đồng Ý",
+    "lang_reject": "Từ Chối"
 }

@@ -150,6 +150,13 @@ export default (styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  formBtnCancel: {
+    backgroundColor: '#941616',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   formBtnOkText: {
     color: "#fff",
     fontWeight: "bold",
