@@ -1,5 +1,5 @@
 import {Provider} from "react-redux";
-import { Component } from "react";
+import React, { Component } from "react";
 
 const MainComponent = require("./Main").default;
 const store = require("../redux/Redux").default;
