@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
-const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
+const HomeScreenComponent = require("./HomeScreen").default;
 const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default;
 const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
 const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
@@ -15,7 +15,6 @@ const RegisterServiceComponent = require("../../registerService/screen/RegisterS
 class App extends Component{
     render(){
         return  (
-            <SafeAreaView style={{flex: 1}}>
             <Stack.Navigator
                 mode="modal"
                 headerMode="none"
@@ -57,7 +56,6 @@ class App extends Component{
                     component = { RegisterService }
                 />
             </Stack.Navigator>
-            </SafeAreaView>
         )
         
     }

@@ -5,7 +5,7 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 import LinearGradient from "react-native-linear-gradient"
 import { connect } from "react-redux";
 
-const commonStyles = require("../../../common/style/index").default;
+const commonStyles = require("../../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
 const ToolBar = props=>{
@@ -37,7 +37,7 @@ const ToolBar = props=>{
           {props.logedIn ? (
             <View style={styles.toolBarUser}>
               <Image
-                source={require('../../../../res/image/HomeScreen/aquatic.png')}
+                source={require('../../../../../res/image/HomeScreen/aquatic.png')}
                 style={styles.avatar}
               />
               <Text style={commonStyles.text}>Xin Chào, Developer!</Text>

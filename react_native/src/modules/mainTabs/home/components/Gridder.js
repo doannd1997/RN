@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from "react-native-linear-gradient";
 
-const commonStyles = require("../../../common/style/index").default;
+const commonStyles = require("../../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
 
@@ -121,7 +121,7 @@ const Gridder = props => {
                     pressOnGrid(props, item.methodName, navigation);
                   }}>
                   <Image
-                    source={require('../../../../res/image/HomeScreen/vinbus.png')}
+                    source={require('../../../../../res/image/HomeScreen/vinbus.png')}
                     style={styles.imgTheme}
                     resizeMode={'stretch'}
                   />
