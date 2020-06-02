@@ -6,20 +6,17 @@ import { connect } from 'react-redux';
 import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-const ToolBar = require("../component/ToolBar").default;
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
-export default class Main extends Component{
+class MainLogInCom extends Component{
     constructor(props){
         super(props);
     }
     render(){
         var self = this;
         return (
-          <View style={[commonStyles.fullViewVerticalCenter, commonStyles.screenWithToolBar]}>
-            <ToolBar style={commonStyles.toolBar} />
-            <View style={commonStyles.fullViewVerticalCenter}>
+          <View style={commonStyles.fullViewVerticalCenter}>
             <Fumi
               style={styles.input}
               label={global.localization.getLang('lang_phone_number')}
@@ -84,7 +81,14 @@ export default class Main extends Component{
               </Text>
             </TouchableOpacity>
           </View>
-          </View>
         );
     }
 }
+
+const mapStateToProps = (state)=>{
+    return {
+        logedIn: state.logedIn
+    }
+}
+
+export default connect(mapStateToProps)(MainLogInCom)
