@@ -15,7 +15,7 @@ class Main extends Component{
         this.props.dispatch({type: "TOGGLE_PICKING"})
     }
     onSectionListRefresh(){
-        console.log("refresh =>>> ")
+      
     }
     render(){
         return (

@@ -1,10 +1,10 @@
 import React, { Component, useState } from 'react';
 import { View, StyleSheet, Text, Button, TextInput, Image, SafeAreaView } from 'react-native';
-import { connect } from 'react-redux';
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 const Stack = createStackNavigator();
 
-const HomeScreenComponent = require("./HomeScreen").default;
+const HomeScreenComponent = require("../../home/screen/HomeScreen").default;
 const MainLogInComponent = require("../../logInMain/screen/LogInScreen").default;
 const GetInfoLogInComponent = require("../../logInGetInfo/screen/GetInfoLogInScreen").default;
 const ForgetPasswordComponent = require("../../logInForgetPassword/screen/ForgetPasswordScreen").default;
@@ -14,49 +14,47 @@ const RegisterServiceComponent = require("../../registerService/screen/RegisterS
 
 class App extends Component{
     render(){
-        return  (
-            <Stack.Navigator
-                mode="modal"
-                headerMode="none"
-            >
-                <Stack.Screen 
-                    name = "HomeScreen" 
-                    component = { HomeScreen }
-                    navigationOptions = {{
-                          tabBarVisible:false,
-                        }
-                     }
-                    // options = { {title: "Màn hình chính"} }
-                />
-                <Stack.Screen 
-                    name = "MainLogin" 
-                    component = { MainLogin }
-                    // options = { {title: "Màn hình đăng nhập"} }
-                />
-                <Stack.Screen 
-                    name = "GetInfoLogin" 
-                    component = { GetInfoLogin }
-                    // options = { {title: "Màn hình lấy thông tin đăng nhập"} }
-                />
-                <Stack.Screen 
-                    name = "FogetPassword" 
-                    component = { ForgetPassword }
-                    // options = { {title: "Màn hình quên mật khẩu"} }
-                />
-                <Stack.Screen
-                    name = "ChildrenTracking"
-                    component =  { ChildrenTracking }
-                />
-                <Stack.Screen
-                    name = "ReportAbsence"
-                    component = { ReportAbsence }
-                />
-                <Stack.Screen
-                    name = "RegisterService"
-                    component = { RegisterService }
-                />
+        return (
+          <NavigationContainer>
+            <Stack.Navigator mode="modal" headerMode="none">
+              <Stack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+                navigationOptions={{
+                  tabBarVisible: false,
+                }}
+                // options = { {title: "Màn hình chính"} }
+              />
+              <Stack.Screen
+                name="MainLogin"
+                component={MainLogin}
+                // options = { {title: "Màn hình đăng nhập"} }
+              />
+              <Stack.Screen
+                name="GetInfoLogin"
+                component={GetInfoLogin}
+                // options = { {title: "Màn hình lấy thông tin đăng nhập"} }
+              />
+              <Stack.Screen
+                name="FogetPassword"
+                component={ForgetPassword}
+                // options = { {title: "Màn hình quên mật khẩu"} }
+              />
+              <Stack.Screen
+                name="ChildrenTracking"
+                component={ChildrenTracking}
+              />
+              <Stack.Screen
+                name="ReportAbsence"
+                component={ReportAbsence}
+              />
+              <Stack.Screen
+                name="RegisterService"
+                component={RegisterService}
+              />
             </Stack.Navigator>
-        )
+          </NavigationContainer>
+        );
         
     }
 };
@@ -95,7 +93,7 @@ function ForgetPassword({route, navigation}){
 }
 
 function ChildrenTracking({route, navigation}){
-    return (
+   return (
         <View style={styles.fullScreen}>
             <ChildrenTrackingComponent route={route} navigation={navigation}></ChildrenTrackingComponent>
         </View>
@@ -139,4 +137,4 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps)(App)
+export default App;

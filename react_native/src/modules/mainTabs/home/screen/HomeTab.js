@@ -1,8 +1,9 @@
 import React, {Component, useState} from "react";
+import { connect } from "react-redux";
 
 const Main = require("./Main").default;
 
-export default class HomeScreen extends Component{
+class HomeScreen extends Component{
     constructor(props){
         super(props);
         // this.nav = props.nav.navigation;
@@ -13,3 +14,11 @@ export default class HomeScreen extends Component{
         )
     }
 }
+
+const mapStateToProps = (state)=>{
+    return {
+        logedIn: state.logedIn
+    }
+}
+
+export default connect(mapStateToProps)(HomeScreen)
