@@ -96,7 +96,7 @@ class RegisterService extends Component {
         ) : null}
         <ToolBar style={commonStyles.toolBar} />
         <View style={styles.content}>
-          <MapViewCom />
+          {this.props.pickingAddress ? <MapViewCom/> : null}
           {this.props.pickingAddress ? (
             <PlacePickerCom {...this.props} />
           ) : (

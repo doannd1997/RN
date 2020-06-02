@@ -37,7 +37,7 @@ export default styles = StyleSheet.create({
         fontSize: 18
     },
     content: {
-        backgroundColor: "cyan",
+        backgroundColor: "#fff",
         flex: 1,
         width: "100%"
     },
