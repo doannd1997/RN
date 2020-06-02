@@ -65,5 +65,7 @@
     "lang_policy": "Agreement",
     "lang_please_agree_policy": "Please agree with Agreement",
     "lang_accept": "Accept",
-    "lang_reject": "Reject"
+    "lang_reject": "Reject",
+    "lang_confirm_register_service_header": "Confirm Register Service",
+    "lang_confirm_register_service_content": "Service Price is @value@ VND, do you want to register ?"
 }

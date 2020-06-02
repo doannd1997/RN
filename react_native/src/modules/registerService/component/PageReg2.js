@@ -128,7 +128,38 @@ class PageReg2 extends Component {
               style={commonStyles.formBtnConfirm}
               onPress={() => {
                 if (self.props.policyAgree){
-
+                  var cost = 250000;
+                  var header = global.localization.getLang("lang_confirm_register_service_header");
+                  var content = global.localization.getLang("lang_confirm_register_service_content").replace("@value@", cost)
+                  var okLabel = global.localization.getLang(
+                    'lang_confirm_ok',
+                  );
+                  var cancelLabel = global.localization.getLang(
+                    'lang_confirm_cancel',
+                  );
+                  Alert.alert(
+                    header,
+                    content,
+                    [
+                      // {
+                      //   // text: global.localization.getLang(langItem),
+                      //   // onPress: () => console.log('May be Pressed'),
+                      // },
+                      {
+                        text: okLabel,
+                        onPress: () => {
+                          QuickToast.show("Success");
+                        },
+                      },
+                      {
+                        text: cancelLabel,
+                        onPress: () => {
+                          QuickToast.show("Canceled");
+                        },
+                      },
+                    ],
+                    {cancelable: true},
+                  );
                 }
                 else {
                   QuickToast.show(global.localization.getLang("lang_please_agree_policy"))

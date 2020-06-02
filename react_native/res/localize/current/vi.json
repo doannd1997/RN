@@ -65,5 +65,7 @@
     "lang_policy": "Bản Cam Kết",
     "lang_please_agree_policy": "Vui lòng đồng ý nội dung Bản cam kết",
     "lang_accept": "Đồng Ý",
-    "lang_reject": "Từ Chối"
+    "lang_reject": "Từ Chối",
+    "lang_confirm_register_service_header": "Xác Nhận Đăng Kí",
+    "lang_confirm_register_service_content": "Phí dịch vụ xe buýt là @value@ Đồng, bạn có đồng ý đăng kí không ?"
 }
