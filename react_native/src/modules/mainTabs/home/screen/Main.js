@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 
 
-const commonStyles = require("../../../common/style/index").default;
+const commonStyles = require("../../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
 const ToolBar = require("../components/ToolBar").default;

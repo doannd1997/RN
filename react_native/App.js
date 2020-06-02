@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import Initial from './src/data/Initial';
 
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
-const MainScreen = require("./src/modules/main/screen/MainBottomNavScreen").default;
+const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 // const MainScreen = require("./JavaScript/Redux/Demo_2/App").default;
 
 

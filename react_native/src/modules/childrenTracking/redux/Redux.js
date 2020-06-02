@@ -8,6 +8,15 @@ const defaultRegion = {
 }
 const defaultState = {
     logedIn: global.userData.logedIn,
+    displayName: "Nguyễn Duy Đoàn",
+    CHILDREN_TRACKING_showingDivInfo: false,
+    region: {
+        ...defaultRegion
+        },
+    _region: {
+        ...defaultRegion
+        },
+    mapType: "standard"
 }
 
 const reducer = (state, action)=>{
