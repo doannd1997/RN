@@ -11,6 +11,7 @@ const ForgetPasswordComponent = require("../../logInForgetPassword/screen/Forget
 const ChildrenTrackingComponent = require("../../childrenTracking/screen/ChildrenTracking").default;
 const ReportAbsenceComponent = require("../../reportAbsence/screen/ReportAbsence").default;
 const RegisterServiceComponent = require("../../registerService/screen/RegisterServiceComponent").default;
+const ChangeServiceComponent = require("../../changeService/screen/ChangeServiceComponent").default;
 
 class App extends Component{
     render(){
@@ -51,6 +52,10 @@ class App extends Component{
               <Stack.Screen
                 name="RegisterService"
                 component={RegisterService}
+              />
+              <Stack.Screen
+                name="ChangeService"
+                component={ChangeService}
               />
             </Stack.Navigator>
           </NavigationContainer>
@@ -112,6 +117,14 @@ function RegisterService({route, navigation}){
     return (
         <View style={[styles.fullScreen]}>
             <RegisterServiceComponent route={route} navigation={navigation}></RegisterServiceComponent>
+        </View>
+    )
+}
+
+function ChangeService({route, navigation}){
+    return (
+        <View style={[styles.fullScreen]}>
+            <ChangeServiceComponent route={route} navigation={navigation}></ChangeServiceComponent>
         </View>
     )
 }

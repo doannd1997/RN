@@ -23,6 +23,9 @@ var navigationToMethod = (methodName, navigation, props)=>{
     case METHOD_REGISTER_SERVICE:
       navigation.navigate("RegisterService");
       break;
+    case METHOD_CHANGE_CANCEL_SERVICE:
+      navigation.navigate("ChangeService");
+      break;
   }
 }
 var pressOnGrid = (props, methodName, navigation)=>{
