@@ -113,8 +113,9 @@ export default styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         flexDirection: "column-reverse",
-        justifyContent: "flex-start",
-        alignItems: "center"
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "10%"
     },
     pickDateHeader: {
         textAlign: "center",
