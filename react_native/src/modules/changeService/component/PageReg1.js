@@ -3,7 +3,8 @@ import {View, Text, StyleSheet , Alert, Image} from "react-native";
 import { TouchableOpacity, FlatList } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { CheckBox } from 'react-native-elements';
+// import { CheckBox } from 'react-native-elements';
+import CheckBox from 'react-native-check-box'
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const commonStyles = require("../../../common/style/index").default;
@@ -31,16 +32,26 @@ var OptionContainer = (props)=>{
   return (
     <View style={styles.optionContainer}>
       <CheckBox
-        centercheckedIcon="dot-circle-o"
-        uncheckedIcon="circle-o"
-        checked={checked}
-        checkedColor={'#fff'}
-        uncheckedColor={'#bbb'}
-        onIconPress={() => {
+        style={{flex: 1, padding: 3, justifyContent: "center"}}
+        onClick={()=>{
           props.dispatch({
             type: 'TOGGLE_PICK_TYPE_METHOD',
           });
         }}
+        isChecked={checked}
+        checkBoxColor={"#fff"}
+        checkedCheckBoxColor={"cyan"}
+
+        // centercheckedIcon="dot-circle-o"
+        // uncheckedIcon="circle-o"
+        // checked={checked}
+        // checkedColor={'#fff'}
+        // uncheckedColor={'#bbb'}
+        // onIconPress={() => {
+        //   props.dispatch({
+        //     type: 'TOGGLE_PICK_TYPE_METHOD',
+        //   });
+        // }}
       />
       <Text style={styles.labelMethodItem}>{pickTypeStr}</Text>
     </View>
@@ -58,18 +69,30 @@ var PartnerContainer = (props)=>{
   return (
     <View style={styles.optionContainer}>
       <CheckBox
-        centercheckedIcon="dot-circle-o"
-        uncheckedIcon="circle-o"
-        checked={_checked}
-        checkedColor={'#fff'}
-        uncheckedColor={'#bbb'}
-        onIconPress={() => {
-          console.log(partnerId)
+        style={{flex: 1, padding: 3, justifyContent: "center"}}
+        onClick={()=>{
           props.dispatch({
             type: 'TOGGLE_SELECT_PARTER',
             partnerId: partnerId
           });
         }}
+        isChecked={_checked}
+        checkBoxColor={"#fff"}
+        checkedCheckBoxColor={"cyan"}
+
+
+        // centercheckedIcon="dot-circle-o"
+        // uncheckedIcon="circle-o"
+        // checked={_checked}
+        // checkedColor={'#fff'}
+        // uncheckedColor={'#bbb'}
+        // onIconPress={() => {
+        //   console.log(partnerId)
+        //   props.dispatch({
+        //     type: 'TOGGLE_SELECT_PARTER',
+        //     partnerId: partnerId
+        //   });
+        // }}
       />
       <Text style={styles.labelMethodItem}>{partner.name}</Text>
     </View>

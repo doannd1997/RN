@@ -3,7 +3,8 @@ import {View, Text, ActivityIndicator , Alert, Image} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { CheckBox } from 'react-native-elements';
+// import { CheckBox } from 'react-native-elements';
+import CheckBox from 'react-native-check-box'
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
@@ -15,6 +16,7 @@ const ToolBar = require("./ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("./PlacePicker").default;
+const CommonCheckBox = require("../../../common/component/CheckBox").default;
 
 const CHANGE_TYPE = {
   HOME: "HOME",
@@ -39,17 +41,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={styles.checkbox}
-                centercheckedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                checked={this.props.pickType == 'HOME'}
-                checkedColor={'#fff'}
-                uncheckedColor={'#bbb'}
-                onIconPress={() => {
+                style={{flex: 1, padding: 3, justifyContent: "center"}}
+                onClick={()=>{
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
+                isChecked={this.props.pickType == 'HOME'}
+                checkBoxColor={"#fff"}
+                checkedCheckBoxColor={"cyan"}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -78,17 +78,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={styles.checkbox}
-                centercheckedIcon="dot-circle-o"
-                uncheckedIcon="circle-o"
-                checked={this.props.pickType == 'PLACE'}
-                checkedColor={'#fff'}
-                uncheckedColor={'#bbb'}
-                onIconPress={() => {
+                style={{flex: 1, padding: 3, justifyContent: "center"}}
+                onClick={()=>{
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
+                isChecked={this.props.pickType == 'PLACE'}
+                checkBoxColor={"#fff"}
+                checkedCheckBoxColor={"cyan"}
               />
             </View>
             <View style={styles.pickCell1}>

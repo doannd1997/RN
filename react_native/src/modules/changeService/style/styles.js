@@ -151,8 +151,8 @@ export default styles = StyleSheet.create({
     },
     checkbox: {
         alignSelf: "center",
-        marginLeft: 10,
-        backgroundColor: "red"
+        alignItems: "center",
+        justifyContent: "center"
     },
     pickCell1: {
         height: "100%",
