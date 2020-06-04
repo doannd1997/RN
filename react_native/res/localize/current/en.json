@@ -73,5 +73,7 @@
     "lang_confirm_change_service_header": "Confirm Change Service",
     "lang_confirm_change_service_content": "Do you want to update Bus Service ?",
     "lang_confirm_remove_service_header": "Confirm Remove Service",
-    "lang_confirm_remove_service_content": "Do you want to remove service from @date@ ?"
+    "lang_confirm_remove_service_content": "Do you want to remove service from @date@ ?",
+    "lang_inbox": "Inbox",
+    "lang_sent_mail": "Sent Mail"
 }

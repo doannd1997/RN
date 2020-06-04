@@ -1,6 +1,7 @@
 import {StyleSheet} from "react-native";
 const colors = require("../../color/Colors").default;
 import {Platform, Dimensions} from "react-native"
+import { Colors } from "react-native/Libraries/NewAppScreen";
 const DIM_WIDTH = Dimensions.get("window").didth;
 const DIM_HEIGHT = Dimensions.get("window").height;
 
@@ -60,6 +61,30 @@ export default (styles = StyleSheet.create({
     top: 0,
     backgroundColor: colors.theme,
     alignItems: 'center',
+  },
+  toolBarElementContainer: {
+    flex: 1,
+    height: "100%",
+    backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  toolBarElementContainerActive: {
+    backgroundColor: colors.headerBar
+  },
+  toolBarElementContainerInactive: {
+    backgroundColor: "#888"
+  },
+  fullTouchButton: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  toolBarBtnHeader: {
+    color: "#fff",
+    fontWeight: "bold"
   },
   gradientToolBar: {
     height: 45,

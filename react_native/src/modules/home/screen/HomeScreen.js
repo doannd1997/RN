@@ -10,6 +10,7 @@ const colors = require("../../../color/Colors").default;
 
 const HomeComponent = require("../../mainTabs/home/screen/HomeTab").default;
 const HistoryComponent = require("../../mainTabs/history/screen/History").default;
+const MailComponent = require("../../mainTabs/mail/screen/Mail").default;
 
 function Home(props) {
   // const isFocused = useIsFocused();
@@ -42,9 +43,8 @@ function History() {
 
 function Mail() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Mail!</Text>
-    </View>
+    <MailComponent style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    </MailComponent>
   );
 }
 
