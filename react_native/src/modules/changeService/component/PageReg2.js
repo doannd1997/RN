@@ -130,7 +130,7 @@ class PageReg2 extends Component {
         
           <View style={styles.singleBtnContainer}>
             <TouchableOpacity
-              style={commonStyles.formBtnCancel}
+              style={commonStyles.formBtnRemove}
               onPress={()=>{
                 var header = global.localization.getLang("lang_confirm_remove_service_header");
                 var content = global.localization.getLang("lang_confirm_remove_service_content");

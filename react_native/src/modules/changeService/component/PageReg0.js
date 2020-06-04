@@ -112,11 +112,12 @@ class PageReg0 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity style={commonStyles.formBtnConfirm}>
-            <Text style={commonStyles.formBtnOkText}
-            onPress={()=>{
+        <TouchableOpacity
+            style={commonStyles.formBtnConfirm}
+            onPress={() => {
               self.props.toNextPage();
             }}>
+            <Text style={commonStyles.formBtnOkText}>
               {global.localization.getLang('lang_next')}
             </Text>
           </TouchableOpacity>

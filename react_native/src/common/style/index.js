@@ -161,6 +161,13 @@ export default (styles = StyleSheet.create({
     alignItems: 'center',
   },
   formBtnCancel: {
+    backgroundColor: '#444444',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  formBtnRemove: {
     backgroundColor: '#941616',
     width: '100%',
     height: '100%',

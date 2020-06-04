@@ -40,15 +40,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={{flex: 1, padding: 3, justifyContent: "center"}}
-                onClick={()=>{
+                style={{flex: 1, padding: 3, justifyContent: 'center'}}
+                onClick={() => {
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
                 isChecked={this.props.pickType == 'HOME'}
-                checkBoxColor={"#fff"}
-                checkedCheckBoxColor={"cyan"}
+                checkBoxColor={'#fff'}
+                checkedCheckBoxColor={'cyan'}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -77,15 +77,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={{flex: 1, padding: 3, justifyContent: "center"}}
-                onClick={()=>{
+                style={{flex: 1, padding: 3, justifyContent: 'center'}}
+                onClick={() => {
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
                 isChecked={this.props.pickType == 'PLACE'}
-                checkBoxColor={"#fff"}
-                checkedCheckBoxColor={"cyan"}
+                checkBoxColor={'#fff'}
+                checkedCheckBoxColor={'cyan'}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -111,11 +111,13 @@ class PageReg0 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity style={commonStyles.formBtnConfirm}>
-            <Text style={commonStyles.formBtnOkText}
-            onPress={()=>{
+          <TouchableOpacity
+            style={commonStyles.formBtnConfirm}
+            onPress={() => {
+              console.log('=>>>> To Next Page');
               self.props.toNextPage();
             }}>
+            <Text style={commonStyles.formBtnOkText}>
               {global.localization.getLang('lang_next')}
             </Text>
           </TouchableOpacity>
