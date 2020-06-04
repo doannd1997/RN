@@ -7,5 +7,6 @@ export default color = {
     trackingDivInfo: "#ffffff",
     thickTheme: "#001869",
     toolBarBtn: "#264d75",
-    indicator: "#27a88a"
+    indicator: "#27a88a",
+    headerBar: "#097ade"
 }

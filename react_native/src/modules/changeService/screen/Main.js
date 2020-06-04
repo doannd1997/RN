@@ -99,7 +99,8 @@ class Main extends Component {
           {this.props.pickingAddress ? (
             <PlacePickerCom {...this.props} />
           ) : (
-            <View style={[commonStyles.divForm, styles.divForm]}>
+            <View style={commonStyles.contentContainer}>
+              <View style={[commonStyles.divForm, styles.divForm]}>
               <View style={styles.defaultInfo}>
                 <Image
                   source={require('../../../../res/image/HomeScreen/education.png')}
@@ -117,6 +118,7 @@ class Main extends Component {
                   <MyPage/>
                 </View>
               </View>
+            </View>
             </View>
           )}
           {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (

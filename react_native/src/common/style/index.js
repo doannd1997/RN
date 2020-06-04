@@ -99,11 +99,18 @@ export default (styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 17,
   },
+  contentContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    backgroundColor: "#fff",
+    width: "100%"
+  },
   divForm: {
-    position: 'absolute',
+    //ßposition: 'absolute',
     backgroundColor: '#fff',
     width: 320,
-    marginTop: 100,
+    //marginTop: 100,
     height: 400,
     alignSelf: 'center',
     shadowColor: '#000',

@@ -13,10 +13,12 @@ const ReportAbsenceComponent = require("../../reportAbsence/screen/ReportAbsence
 const RegisterServiceComponent = require("../../registerService/screen/RegisterServiceComponent").default;
 const ChangeServiceComponent = require("../../changeService/screen/ChangeServiceComponent").default;
 
+const colors = require("../../../color/Colors").default;
+
 class App extends Component{
     render(){
         return (
-        <SafeAreaView style={{flex: 1, backgroundColor: "#136a8a"}}>
+        <SafeAreaView style={{flex: 1, backgroundColor: colors.headerBar}}>
           <NavigationContainer>
             <Stack.Navigator mode="modal" headerMode="none">
               <Stack.Screen

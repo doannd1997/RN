@@ -8,12 +8,13 @@ import { connect } from "react-redux";
 
 const commonStyles = require("../../../../common/style/index").default;
 const styles = require("../style/styles").default;
+const colors = require("../../../../color/Colors").default;
 
 const ToolBar = props=>{
     return (
       <LinearGradient
         style={[commonStyles.toolBar, styles.toolBar]}
-        colors={['#136a8a', '#136a8a']}
+        colors={[colors.headerBar, colors.headerBar]}
         // start={[0, 0.65]}
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>

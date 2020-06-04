@@ -100,7 +100,8 @@ class RegisterService extends Component {
           {this.props.pickingAddress ? (
             <PlacePickerCom {...this.props} />
           ) : (
-            <View style={[commonStyles.divForm, styles.divForm]}>
+            <View style={commonStyles.contentContainer}>
+              <View style={[commonStyles.divForm, styles.divForm]}>
               <View style={styles.defaultInfo}>
                 <Image
                   source={require('../../../../res/image/HomeScreen/education.png')}
@@ -119,7 +120,7 @@ class RegisterService extends Component {
                 </View>
               </View>
             </View>
-          )}
+            </View>)}
           {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (
             <View style={styles.selectPlaceContainer}>
               <TouchableOpacity
