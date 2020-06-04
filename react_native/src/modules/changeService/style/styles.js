@@ -194,7 +194,7 @@ export default styles = StyleSheet.create({
     },
     PlacePickerContainer: {
         width: Dimensions.get('window').width-20,
-        height: "100%",
+        // height: "100%",
         // backgroundColor: "cyan",
         position: "absolute",
         alignSelf: "center",
