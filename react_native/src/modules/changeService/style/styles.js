@@ -30,7 +30,7 @@ export default styles = StyleSheet.create({
     },
     divForm: {
         backgroundColor: "grey",
-        height: 480
+        // height: 480
     },
     txtOk: {
         color: "#fff",
@@ -54,13 +54,17 @@ export default styles = StyleSheet.create({
 
     },
     defaultInfo: {
-        flex: 4,
+        flex: 4.2,
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
         backgroundColor: "cyan",
         width: "100%",
-        paddingBottom: 10
+        // paddingBottom: 10
+    },
+    nameContainer: {
+        height: "18%",
+        marginBottom: 3
     },
     avatar: {
         marginTop: 10,

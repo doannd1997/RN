@@ -111,7 +111,7 @@ class PageReg2 extends Component {
                 var header = global.localization.getLang("lang_confirm_remove_service_header");
                 var content = global.localization.getLang("lang_confirm_remove_service_content");
                 var okLabel = global.localization.getLang(
-                  'lang_change_service',
+                  'lang_confirm_ok',
                 );
                 var cancelLabel = global.localization.getLang(
                   'lang_confirm_cancel',
@@ -153,7 +153,7 @@ class PageReg2 extends Component {
                 var header = global.localization.getLang("lang_confirm_change_service_header");
                 var content = global.localization.getLang("lang_confirm_change_service_content");
                 var okLabel = global.localization.getLang(
-                  'lang_change_service',
+                  'lang_confirm_ok',
                 );
                 var cancelLabel = global.localization.getLang(
                   'lang_confirm_cancel',

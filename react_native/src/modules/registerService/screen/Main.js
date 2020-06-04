@@ -109,9 +109,11 @@ class RegisterService extends Component {
                   style={styles.avatar}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.childName}>
-                  {this.props.childName} "Peter Packer"
-                </Text>
+                <View style={styles.nameContainer}>
+                  <Text style={styles.childName}>
+                    {this.props.childName} "Peter Packer"
+                  </Text>
+                </View>
               </View>
               <View style={styles.viewDivForm}>
                 <YearPickerCom />

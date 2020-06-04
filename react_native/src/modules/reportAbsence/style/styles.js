@@ -57,7 +57,8 @@ export default styles = StyleSheet.create({
         justifyContent: "center"
     },
     inputFieldSecondColumn: {
-        width: 220,
+        // width: 220,
+        flex: 4,
         height: "80%",
         margin: 3,
         // alignSelf: "center",

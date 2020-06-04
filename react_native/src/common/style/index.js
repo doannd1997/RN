@@ -1,6 +1,8 @@
 import {StyleSheet} from "react-native";
 const colors = require("../../color/Colors").default;
-import {Platform} from "react-native"
+import {Platform, Dimensions} from "react-native"
+const DIM_WIDTH = Dimensions.get("window").didth;
+const DIM_HEIGHT = Dimensions.get("window").height;
 
 export default (styles = StyleSheet.create({
   fullViewVerticalCenter: {
@@ -109,9 +111,10 @@ export default (styles = StyleSheet.create({
   divForm: {
     //ßposition: 'absolute',
     backgroundColor: '#fff',
-    width: 320,
+    width: "80%",
     //marginTop: 100,
-    height: 400,
+    // height: 400,
+    aspectRatio: 3/4.5,
     alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {width: 10, height: 10},
