@@ -16,6 +16,7 @@ const ChangeServiceComponent = require("../../changeService/screen/ChangeService
 class App extends Component{
     render(){
         return (
+        <SafeAreaView style={{flex: 1, backgroundColor: "#136a8a"}}>
           <NavigationContainer>
             <Stack.Navigator mode="modal" headerMode="none">
               <Stack.Screen
@@ -59,6 +60,7 @@ class App extends Component{
               />
             </Stack.Navigator>
           </NavigationContainer>
+        </SafeAreaView>
         );
         
     }

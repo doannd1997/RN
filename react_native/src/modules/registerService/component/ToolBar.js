@@ -14,7 +14,7 @@ const ToolBar = props=>{
     return (
       <LinearGradient
         style={[commonStyles.toolBar]}
-        colors={['#136a8a', '#267871']}
+        colors={['#136a8a', '#136a8a']}
         // start={[0, 0.65]}
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>

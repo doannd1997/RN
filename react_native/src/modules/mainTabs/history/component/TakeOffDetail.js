@@ -25,7 +25,7 @@ export default TakeOffDetail = (props)=>{
         </View>
         <LinearGradient
           style={[styles.itemTime]}
-          colors={['#136a8a', '#267871']}
+          colors={['#136a8a', '#136a8a']}
           start={{x: 0, y: 0.65}}
           end={{x: 1, y: 0}}>
           <Text style={styles.itemTimeText}>{props.data.time}</Text>
