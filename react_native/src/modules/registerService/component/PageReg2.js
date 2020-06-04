@@ -28,7 +28,7 @@ var GuardianContainer = (props)=>{
   return (
     <View style={styles.optionContainer}>
       <CheckBox
-        style={{flex: 1, padding: 3, justifyContent: "center"}}
+        style={{flex: 1, padding: 3, justifyContent: "center", alignItems: "center"}}
         onClick={()=>{
           props.dispatch({
             type: 'TOGGLE_SELECT_GUARDIAN',
@@ -281,7 +281,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     flex: 1,
-    left: -20,
+    // left: -20,
+    flex: 4
   },
   lblStartDateService: {
     color: "#333",

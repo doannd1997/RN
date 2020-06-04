@@ -28,7 +28,7 @@ var GuardianContainer = (props)=>{
   return (
     <View style={styles.optionContainer}>
       <CheckBox
-        style={{flex: 1, padding: 3, justifyContent: "center"}}
+        style={{flex: 1, padding: 3, justifyContent: "center", alignItems: "center"}}
         onClick={()=>{
           props.dispatch({
             type: 'TOGGLE_SELECT_GUARDIAN',
@@ -116,6 +116,18 @@ class PageReg2 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
+        <View style={styles.singleBtnContainer}>
+            <TouchableOpacity
+              style={commonStyles.formBtnCancel}
+              onPress={()=>{
+                self.props.toPrevPage();
+              }}>
+              <Text style={commonStyles.formBtnOkText}>
+                {global.localization.getLang('lang_prev')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        
           <View style={styles.singleBtnContainer}>
             <TouchableOpacity
               style={commonStyles.formBtnCancel}
@@ -283,7 +295,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     flex: 1,
-    left: -20,
+    // left: -20,
+    flex: 5
   },
   lblStartDate: {
     color: "#333",
