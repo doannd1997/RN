@@ -16,14 +16,14 @@ export default Times = {
         var dateCom = getDateComponent(timeStamp);
         switch (formatType){
             case Times.FORMAT_TYPE.dd_mm_yyyy:
-                return dateCom.d + "/" + dateCom.m + "/" + dateCom.y;
+                return dateCom.d + "-" + dateCom.m + "-" + dateCom.y;
             default:
-                return dateCom.d + "/" + dateCom.m + "/" + dateCom.y;
+                return dateCom.d + "-" + dateCom.m + "-" + dateCom.y;
         }
     },
     
 }
 
 Times.FORMAT_TYPE = {
-    dd_mm_yyyy: "DD/MM/YYYY"
+    dd_mm_yyyy: "DD-MM-YYYY"
 }

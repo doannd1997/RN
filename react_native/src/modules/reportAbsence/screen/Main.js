@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from "@react-native-community/datetimepicker";
 import RNPickerSelect from 'react-native-picker-select';
+import DatePicker from 'react-native-datepicker'
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -145,14 +146,9 @@ class ReportAbsenceCom extends Component {
                 </View>
                 <View style={styles.pickDateCluster}>
                   <LinearGradient style={[styles.pickDateItem]} colors={['#d9a8ed', '#e69865']} start={{ x: 0, y: 0 }} end={{ x: 0.35, y: 0.5 }}>
-                    <TouchableOpacity
+                    <View
                       style={[styles.btnPickerDateItem]}
-                      onPress={() => {
-                        this.props.dispatch({
-                          type: 'TOGGLE_PICKING_DATE_START',
-                          isPicking: true,
-                        });
-                      }}>
+                      >
                       <Text style={[styles.pickDateHeader]}>
                         {global.localization.getLang('lang_date_from')}
                       </Text>
@@ -160,17 +156,26 @@ class ReportAbsenceCom extends Component {
                         {Times.formatDate(this.props.startDate)}
                       </Text>
                       <Icon name={'calendar-alt'} size={40} color={'#888'} />
-                    </TouchableOpacity>
+                      <DatePicker
+                        showIcon={false}
+                        hideText={true}
+                        date={Times.formatDate(new Date().getTime())}
+                        mode="date"
+                        // placeholder="select date"
+                        format="DD-MM-YYYY"
+                        // minDate="2016-05-01"
+                        // maxDate="2016-06-01"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        style={{width: "100%", height: "100%", alignSelf: "center", position: "absolute"}} 
+                        onDateChange={this.onSelectDateStart.bind(this)}
+                      />
+                    </View>
                   </LinearGradient>
                   <LinearGradient style={[styles.pickDateItem]} colors={['#d9a8ed', '#e69865']} start={{ x: 0, y: 0 }} end={{ x: 0.35, y: 0.5 }}>
-                    <TouchableOpacity
+                    <View
                       style={[styles.btnPickerDateItem]}
-                      onPress={() => {
-                        this.props.dispatch({
-                          type: 'TOGGLE_PICKING_DATE_END',
-                          isPicking: true,
-                        });
-                      }}>
+                      >
                       <Text style={[styles.pickDateHeader]}>
                         {global.localization.getLang('lang_date_to')}
                       </Text>
@@ -178,7 +183,21 @@ class ReportAbsenceCom extends Component {
                         {Times.formatDate(this.props.endDate)}
                       </Text>
                       <Icon name={'calendar-alt'} size={40} color={'#888'} />
-                    </TouchableOpacity>
+                      <DatePicker
+                        showIcon={false}
+                        hideText={true}
+                        date={"05-06-2020"}
+                        mode="date"
+                        // placeholder="select date"
+                        format="DD-MM-YYYY"
+                        // minDate="2016-05-01"
+                        // maxDate="2016-06-01"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        style={{width: "100%", height: "100%", alignSelf: "center", position: "absolute"}} 
+                        onDateChange={this.onSelectDateEnd.bind(this)}
+                      />
+                    </View>
                   </LinearGradient>
                 </View>
               </View>
@@ -193,31 +212,7 @@ class ReportAbsenceCom extends Component {
               </View>
             </View>
           </View>
-          {this.props.isPickingDateStart ? (
-            <DateTimePicker
-              ref="startDate"
-              style={commonStyles.dateTimePicker}
-              timeZoneOffsetInMinutes={0}
-              value={new Date(this.props.startDate)}
-              mode={'date'}
-              is24Hour={true}
-              display="calendar"
-              onChange={this.onSelectDateStart.bind(this)}
-            />
-          ) : null}
-        </View>
-        {this.props.isPickingDateEnd ? (
-          <DateTimePicker
-            ref="endDate"
-            style={commonStyles.dateTimePicker}
-            timeZoneOffsetInMinutes={0}
-            value={new Date(this.props.endDate)}
-            mode={'date'}
-            is24Hour={true}
-            display="calendar"
-            onChange={this.onSelectDateEnd.bind(this)}
-          />
-        ) : null}
+          </View>
       </View>
     );
   }

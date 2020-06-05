@@ -35,7 +35,6 @@ const ToolBar = props=>{
           <DatePicker
                   showIcon={false}
                   hideText={true}
-                  style={{width: 10}}
                   date={"05-06-2020"}
                   mode="date"
                   // placeholder="select date"
