@@ -100,7 +100,8 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-around",
-        padding: 10
+        paddingLeft: 3,
+        paddingRight: 3
     },
     infoDiv: {
         flex: 1,

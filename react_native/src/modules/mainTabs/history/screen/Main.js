@@ -1,7 +1,9 @@
 import React, {Component} from "react";
 import {View, Text, StyleSheet, SectionList} from "react-native"
 import {connect} from "react-redux"
-import DateTimePicker from '@react-native-community/datetimepicker';
+// import DateTimePicker from '@react-native-community/datetimepicker';
+
+import DatePicker from 'react-native-datepicker'
 
 const store = require("../redux/Redux").default;
 
@@ -37,20 +39,6 @@ class Main extends Component{
               onRefresh={this.onSectionListRefresh.bind(this)}
               refreshing={false}
             />
-            {this.props.isPickingDate ? (
-              <View style={styles.dateTimePickerContainer}>
-                <DateTimePicker
-                  style={{width: "100%", height: "100%"}}
-                  timeZoneOffsetInMinutes={0}
-                  value={new Date()}
-                  mode={'date'}
-                  is24Hour={true}
-                  display="default"
-                  onChange={this.onSelectDate.bind(this)}
-                />
-              </View>
-              
-            ) : null}
           </View>
         );
     }

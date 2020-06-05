@@ -7,6 +7,8 @@
  */
 
 import React, { Component } from 'react';
+import {Dimensions} from "react-native";
+import EStyleSheet from 'react-native-extended-stylesheet';
 import Initial from './src/data/Initial';
 
 const LoadingScreen = require("./src/modules/loading/screen/loadingscreen").default;
@@ -15,6 +17,9 @@ const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 
 
 console.disableYellowBox = true
+
+const entireScreenWidth = Dimensions.get('window').width;
+EStyleSheet.build({$rem: entireScreenWidth / 720});
 
 const setLoadingToTrue = (component)=>{
   component.setState((state)=>{
