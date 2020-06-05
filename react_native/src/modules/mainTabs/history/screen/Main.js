@@ -38,15 +38,18 @@ class Main extends Component{
               refreshing={false}
             />
             {this.props.isPickingDate ? (
-              <DateTimePicker
-                style={styles.dateTimePicker}
-                timeZoneOffsetInMinutes={0}
-                value={new Date()}
-                mode={'date'}
-                is24Hour={true}
-                display="default"
-                onChange={this.onSelectDate.bind(this)}
-              />
+              <View style={styles.dateTimePickerContainer}>
+                <DateTimePicker
+                  style={{width: "100%", height: "100%"}}
+                  timeZoneOffsetInMinutes={0}
+                  value={new Date()}
+                  mode={'date'}
+                  is24Hour={true}
+                  display="default"
+                  onChange={this.onSelectDate.bind(this)}
+                />
+              </View>
+              
             ) : null}
           </View>
         );
@@ -75,5 +78,10 @@ const styles = StyleSheet.create({
         flex: 1,
         width: "100%",
         backgroundColor: "#ffffff"
+    },
+    dateTimePickerContainer: {
+      backgroundColor: "#eee",
+      width: "100%",
+      height: "30%"
     }
 })
