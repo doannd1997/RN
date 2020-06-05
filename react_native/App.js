@@ -19,7 +19,7 @@ const MainScreen = require("./src/modules/main/screen/MainScreen").default;
 console.disableYellowBox = true
 
 const entireScreenWidth = Dimensions.get('window').width;
-EStyleSheet.build({$rem: entireScreenWidth / 720});
+EStyleSheet.build({$rem: entireScreenWidth / 180});
 
 const setLoadingToTrue = (component)=>{
   component.setState((state)=>{

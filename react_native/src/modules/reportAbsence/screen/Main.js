@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {View, Text, Image, Alert, Picker} from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -152,7 +153,7 @@ class ReportAbsenceCom extends Component {
                       <Text style={[styles.pickDateHeader]}>
                         {global.localization.getLang('lang_date_from')}
                       </Text>
-                      <Text style={[styles.pickDateTime]}>
+                      <Text style={[styles.pickDateTime, eStyles.btnPickDateLabel]}>
                         {Times.formatDate(this.props.startDate)}
                       </Text>
                       <Icon name={'calendar-alt'} size={40} color={'#888'} />
@@ -228,4 +229,10 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default connect(mapStateToProps)(ReportAbsenceCom)
+export default connect(mapStateToProps)(ReportAbsenceCom);
+
+const eStyles = EStyleSheet.create({
+  btnPickDateLabel: {
+    fontSize: "10rem"
+  }
+})
