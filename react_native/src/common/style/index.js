@@ -5,7 +5,9 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 const DIM_WIDTH = Dimensions.get("window").didth;
 const DIM_HEIGHT = Dimensions.get("window").height;
 
-export default (styles = StyleSheet.create({
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+export default (styles = EStyleSheet.create({
   fullViewVerticalCenter: {
     flex: 1,
     width: '100%',
@@ -22,10 +24,7 @@ export default (styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    // alignContent: "center",
-    // flexDirection: "column",
     alignItems: 'center',
-    // justifyContent: "center",
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
@@ -34,10 +33,7 @@ export default (styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    // alignContent: "center",
-    // flexDirection: "column",
     alignItems: 'center',
-    // justifyContent: "center",
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
@@ -51,16 +47,26 @@ export default (styles = StyleSheet.create({
     justifyContent: 'center',
   },
   toolBar: {
-    backgroundColor: 'red',
     width: '100%',
-    height: 45,
+    height: "18rem",
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    // position: "absolute",
     top: 0,
     backgroundColor: colors.theme,
     alignItems: 'center',
+  },
+  fullBtn: {
+    width: "100%",
+    height: "100%",
+  },
+  contentContainer: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#efefef",
+    alignItems: "center",
+    justifyContent: "center"
   },
   toolBarElementContainer: {
     flex: 1,
@@ -84,7 +90,8 @@ export default (styles = StyleSheet.create({
   },
   toolBarBtnHeader: {
     color: "#fff",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "6rem"
   },
   gradientToolBar: {
     height: 45,

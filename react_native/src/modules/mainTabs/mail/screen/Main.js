@@ -4,18 +4,21 @@ import {connect} from "react-redux"
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const store = require("../redux/Redux").default;
-
-const Item = require("../component/TakeOffDetail").default;
-const Header = require("../component/TakeOffHeader").default;
+const styles = require("../style/styles").default;
 
 const ToolBar = require("../component/ToolBar").default;
+const MailListCom = require("../component/MailList").default;
+const ButtonCreate = require("../component/BtnCreate").default;
 
 class Main extends Component{
     render(){
         return (
           <View style={styles.container}>
             <ToolBar {...this.props}/>
-            <View style={styles.content}></View>
+            <View style={styles.content}>
+              <MailListCom/>
+              <ButtonCreate/>
+            </View>
           </View>
         );
     }
@@ -28,18 +31,3 @@ const mapStateToProps = (state)=>{
 }
 
 export default connect(mapStateToProps)(Main);
-
-
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        backgroundColor: "#ffffff",
-        alignItems: "center",
-        justifyContent: "center",
-        flex: 1,
-    },
-    content: {
-      flex: 1,
-      width: "100%"
-    }
-})

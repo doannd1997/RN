@@ -1,113 +1,89 @@
-import {StyleSheet} from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet"
 const colors = require("../../../../color/Colors").default;
 
-export default StyleSheet.create({
-    sectionListHeader: {
-        backgroundColor: "#fff",
-        height: 28,
-        marginTop: 10,
-        marginLeft: 5,
-        alignItems: "flex-start",
-        justifyContent: "center",
-    },
-    itemBoadring: {
-        backgroundColor: "#00c206",
-    },
-    itemGetOff: {
-        backgroundColor: "orange",
-    },
-    headerText: {
-        fontWeight: "300",
-        fontFamily: "arial",
-        fontSize: 20,
-        color: "#fff",
-        backgroundColor: "#aaaaaa",
-        width: 120,
-        borderRadius: 10,
-        textAlign: "center",
-        fontSize: 14,
-        fontWeight: "bold"
-    },
-    sectionListItem: {
-        height: 45,
-        // paddingLeft: 10,
-        marginLeft: 12,
-        marginRight: 12,
-        marginTop: 3,
-        marginBottom: 3,
-        alignItems: "center",
-        flexDirection: "row",
-        // borderRadius: 3,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
-        shadowOffset: {width: 5, height: 5},
-        elevation: 5,
-        borderRadius: 3
-    },
-    itemActionType: {
-        height: "100%",
-        fontWeight: "bold",
-        fontSize: 16,
-        flex: 1.2,
-        backgroundColor: "#fff",
+export default EStyleSheet.create({
+    container: {
+        width: "100%",
+        backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 3
-    },
-    itemTime: {
-        height: "100%",
-        // textAlign: "center",
-        flex: 2.5,
-        // color: "#000",
-        justifyContent: 'center',
-        alignItems: "center"
-        // fontWeight: "bold",
-        // fontSize: 18,
-        // backgroundColor: "#efefef",
-        // fontFamily: "tahoma",
-        // paddingTop: 7
-    },
-    itemTimeText:{
-        color:"#fff",
-        fontSize: 16
-    },  
-    itemPlace: {
-        height: "100%",
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-        flex: 4,
-        color: "#000",
-        fontWeight: "normal",
-        fontSize: 15,
-        padding: 2,
-        fontFamily: "normal",
-    },
-    toolBar: {
-        justifyContent: "space-between",
-        alignItems: "center",
-        flexDirection: "row",
-    },
-    btnPickDate: {
-        width: 100,
-        height: 35,
-        backgroundColor: colors.toolBarBtn,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 25,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-around",
-        padding: 10
-    },
-    infoDiv: {
         flex: 1,
-        height: 35,
-        // backgroundColor: "cyan",
+    },
+    content: {
+      flex: 1,
+      width: "100%",
+      backgroundColor: "#fff"
+    },
+    mailContainer: {
+        width: "100%",
+        height: "36rem",
+        borderRadius: 10,
+        // backgroundColor: "#fff",
+        paddingLeft: "2rem",
+        paddingRight: "2rem"
+    },
+    btnMail: {
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        borderBottomWidth: "0.5rem",
+        borderBottomColor: "grey",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    mailHeaderContainer: {
+        flex: 1,
+        width: "100%",
+        alignItems: "flex-start",
         justifyContent: "center"
     },
-    dateTimePicker: {
+    mailContentContainer: {
+        flex: 1.2,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        backgroundColor: "transparent",
+        paddingTop: "1.6rem",
+        paddingLeft: "1.2rem"
+    },
+    mailTimeContainer: {
+        flex: 1.5,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        backgroundColor: "transparent",
+        paddingLeft: "1.2rem",
+    },
+    mailLblHeader: {
+        color: "#03284f",
+        fontWeight: "bold",
+        fontSize: "6rem"
+    },
+    mailLblContent: {
+        color: "#444",
+        // fontWeight: "bold",
+        fontSize: "6rem"
+    },
+    mailLblTime: {
+        fontStyle: "italic",
+        color: "#03284f",
+        fontSize: "4.6rem"
+    },
+    btnCreate: {
         position: "absolute",
-        alignSelf: "center"
+        width: "20rem",
+        height: "20rem",
+        right: "12rem",
+        bottom: "12rem",
+        backgroundColor: "#0d6e32",
+        borderRadius: "20rem",
+        shadowColor: "#fff",
+        shadowOffset: {
+            width: "1.2rem",
+            height: "1.2rem"
+        },
+        elevation: 5,
+        alignItems: "center",
+        justifyContent: "center"
     }
 })

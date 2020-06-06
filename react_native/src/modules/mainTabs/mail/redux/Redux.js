@@ -14,11 +14,11 @@ var defaultState = {
 for (var i=0; i<15; i++){
     var mail = {
       header: "From VinGroup",
-      content: "Thư báo",
+      // content: "Thư báo",
       time: new Date().getTime()
     };
-    defaultState.inbox.push(mail);
-    defaultState.sentMail.push(mail);
+    defaultState.inbox.push({...mail, content: "Thư Đến"});
+    defaultState.sentMail.push({...mail, content: "Thư Đi"});
 }
 
 const reducer = (state, action)=>{

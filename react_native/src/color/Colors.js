@@ -8,5 +8,6 @@ export default color = {
     thickTheme: "#001869",
     toolBarBtn: "#264d75",
     indicator: "#27a88a",
-    headerBar: "#097ade"
+    headerBar: "#097ade",
+    contentBg: "#efefef"
 }
