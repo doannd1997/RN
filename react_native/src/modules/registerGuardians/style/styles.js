@@ -22,7 +22,7 @@ export default EStyleSheet.create({
         paddingLeft: "2rem",
         paddingRight: "2rem"
     },
-    btnMail: {
+    btnGuardian: {
         flex: 1,
         width: "100%",
         height: "100%",

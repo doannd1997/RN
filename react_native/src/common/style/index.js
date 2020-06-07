@@ -71,7 +71,6 @@ export default (styles = EStyleSheet.create({
   toolBarElementContainer: {
     flex: 1,
     height: "100%",
-    backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center"
   },

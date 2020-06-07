@@ -4,7 +4,7 @@ import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 
 const styles = require("../style/styles").default;
-const commonStyles = require("../../../../common/style/index").default;
+const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../../color/Colors").default;
 
 const TimeUtils = require("../../../../utils/Times").default;
