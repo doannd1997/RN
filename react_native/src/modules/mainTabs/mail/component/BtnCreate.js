@@ -10,8 +10,11 @@ const TimeUtils = require("../../../../utils/Times").default;
 
 class ButtonCreate extends Component{
     render(){
+        const self = this;
         return (
-            <TouchableOpacity style={styles.btnCreate}>
+            <TouchableOpacity style={styles.btnCreate} onPress={()=>{
+                self.props.dispatch({type: "TOGGLE_COMPOSING"})
+            }}>
                 <Icon name={"add"} size={40} color={"#fff"}/>
             </TouchableOpacity>
         )

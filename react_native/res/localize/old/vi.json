@@ -73,5 +73,7 @@
     "lang_confirm_change_service_header": "Xác Nhận Thay Đổi",
     "lang_confirm_change_service_content": "Bạn có muốn thay đổi dịch vụ Xe Buýt theo nội dung trên không ?",
     "lang_confirm_remove_service_header": "Xác Nhận Hủy",
-    "lang_confirm_remove_service_content": "Bạn muốn hủy dịch vụ Xe Buýt từ ngày @date@ ?"
+    "lang_confirm_remove_service_content": "Bạn muốn hủy dịch vụ Xe Buýt từ ngày @date@ ?",
+    "lang_inbox": "Hộp Thư Đến",
+    "lang_sent_mail": "Thư Đã Gửi"
 }

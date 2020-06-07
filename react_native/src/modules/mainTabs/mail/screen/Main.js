@@ -9,6 +9,7 @@ const styles = require("../style/styles").default;
 const ToolBar = require("../component/ToolBar").default;
 const MailListCom = require("../component/MailList").default;
 const ButtonCreate = require("../component/BtnCreate").default;
+const PopupComposeCom = require("../component/PopUpConmpose").default;
 
 class Main extends Component{
     render(){
@@ -18,6 +19,7 @@ class Main extends Component{
             <View style={styles.content}>
               <MailListCom/>
               <ButtonCreate/>
+              <PopupComposeCom/>
             </View>
           </View>
         );
@@ -26,7 +28,8 @@ class Main extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        curTab: state.curTab
+        curTab: state.curTab,
+        isDisplayPopup: state.isDisplayPopup
     }
 }
 

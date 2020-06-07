@@ -9,5 +9,7 @@ export default color = {
     toolBarBtn: "#264d75",
     indicator: "#27a88a",
     headerBar: "#097ade",
-    contentBg: "#efefef"
+    contentBg: "#efefef",
+    btnComposeLeft: "#377cad",
+    btnComposeRight: "#4cba85",
 }

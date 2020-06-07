@@ -8,7 +8,8 @@ var defaultState = {
 
   ],
   isReading: false,
-  curTab: 0
+  curTab: 0,
+  isDisplayPopup: false,
 };
 
 for (var i=0; i<15; i++){
@@ -26,7 +27,9 @@ const reducer = (state, action)=>{
         state = defaultState;
   switch (action.type){
     case "SET_TAB":
-      return {...state, curTab: action.curTab}
+      return {...state, curTab: action.curTab};
+    case "TOGGLE_COMPOSING":
+      return {...state, isDisplayPopup: !state.isDisplayPopup}
     break;
   }
     return state;

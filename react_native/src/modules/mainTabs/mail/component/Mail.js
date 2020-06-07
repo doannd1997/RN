@@ -9,7 +9,6 @@ const TimeUtils = require("../../../../utils/Times").default;
 
 class Mail extends Component{
     render(){
-        console.log(this.props.data.item)
         return (
           <View style={[styles.mailContainer]}>
             <TouchableOpacity style={commonStyles.fullBtn}

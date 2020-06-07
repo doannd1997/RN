@@ -140,6 +140,13 @@ export default (styles = EStyleSheet.create({
     backgroundColor: "#fff",
     width: "100%"
   },
+  panel: {
+    backgroundColor: "#000",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    opacity: 0.6
+  },
   divForm: {
     //ßposition: 'absolute',
     backgroundColor: '#fff',

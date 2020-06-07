@@ -15,7 +15,6 @@ var getDateComponent = (timeStamp)=>{
 };
 
 const timeParser = (data)=>{
-    console.log(data)
     var dd = (data._day) < 10 ? "0" + data._day : data._day;
     var mm = (data._month) < 10 ? "0" + data._month : data._month;
     var yy = data._year;

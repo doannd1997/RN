@@ -75,7 +75,7 @@ export default EStyleSheet.create({
         height: "20rem",
         right: "12rem",
         bottom: "12rem",
-        backgroundColor: "#0d6e32",
+        backgroundColor: "#088bbf",
         borderRadius: "20rem",
         shadowColor: "#fff",
         shadowOffset: {
@@ -85,5 +85,50 @@ export default EStyleSheet.create({
         elevation: 5,
         alignItems: "center",
         justifyContent: "center"
+    },
+    modal: {
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalContentContainer: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "transparent",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    divForm: {
+        width: "120rem",
+        height: "170rem",
+        borderRadius: "8rem",
+        backgroundColor: "#fff",
+        flexDirection: "column"
+    },
+    formComposeHeader: {
+        width: "100%",
+        flex: 1
+    },
+    formComposeContent: {
+        width: "100%",
+        flex: 5
+    },
+    formComposeFooter: {
+        width: "100%",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        // backgroundColor: "red"
+    },
+    btnSend: {
+        width: "60rem",
+        height: "23rem",
+        borderRadius: "4rem",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    btnSendLbl: {
+        color: "#fff",
+        fontSize: "8rem",
+        fontWeight: "bold"
     }
 })
