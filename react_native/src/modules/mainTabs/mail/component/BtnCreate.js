@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, Image} from "react-native";
 import {redux, connect} from "react-redux";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -15,7 +15,7 @@ class ButtonCreate extends Component{
             <TouchableOpacity style={styles.btnCreate} onPress={()=>{
                 self.props.dispatch({type: "OPEN_SEND_MAIL"})
             }}>
-                <Icon name={"add"} size={40} color={"#fff"}/>
+                <Image style={styles.imgAdd} source={require("../../../../../res/image/popup/add_white_128.png")}/>
             </TouchableOpacity>
         )
     }

@@ -160,5 +160,9 @@ export default EStyleSheet.create({
     imgClose: {
         width: "100%",
         height: "100%"
+    },
+    imgAdd: {
+        width: "12rem",
+        height: "12rem"
     }
 })
