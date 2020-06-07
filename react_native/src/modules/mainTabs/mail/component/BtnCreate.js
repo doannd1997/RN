@@ -13,7 +13,7 @@ class ButtonCreate extends Component{
         const self = this;
         return (
             <TouchableOpacity style={styles.btnCreate} onPress={()=>{
-                self.props.dispatch({type: "TOGGLE_COMPOSING"})
+                self.props.dispatch({type: "OPEN_SEND_MAIL"})
             }}>
                 <Icon name={"add"} size={40} color={"#fff"}/>
             </TouchableOpacity>

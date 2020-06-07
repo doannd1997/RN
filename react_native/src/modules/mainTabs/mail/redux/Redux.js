@@ -28,8 +28,11 @@ const reducer = (state, action)=>{
   switch (action.type){
     case "SET_TAB":
       return {...state, curTab: action.curTab};
-    case "TOGGLE_COMPOSING":
-      return {...state, isDisplayPopup: !state.isDisplayPopup}
+    case "OPEN_SEND_MAIL":
+    case "SEND_MAIL":
+      return {...state, isDisplayPopup: true};
+    case "CLOSE_COMPOSE_MAIL":
+      return {...state, isDisplayPopup: false};
     break;
   }
     return state;

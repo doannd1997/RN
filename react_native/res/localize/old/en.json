@@ -75,5 +75,7 @@
     "lang_confirm_remove_service_header": "Confirm Remove Service",
     "lang_confirm_remove_service_content": "Do you want to remove service from @date@ ?",
     "lang_inbox": "Inbox",
-    "lang_sent_mail": "Sent Mail"
+    "lang_sent_mail": "Sent Mail",
+    "lang_send_mail": "Send Mail",
+    "lang_mail_compose_header": "Compose Mail"
 }

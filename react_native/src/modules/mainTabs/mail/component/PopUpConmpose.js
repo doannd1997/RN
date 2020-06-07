@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, Modal} from "react-native";
+import {View, Text, TouchableOpacity, Modal, TextInput, Image } from "react-native";
 import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -24,22 +24,55 @@ class PopUpConmpose extends Component {
             <View style={styles.modalContentContainer}>
               <View style={commonStyles.panel} />
               <View style={[styles.divForm]}>
-                <View style={styles.formComposeHeader} />
-                <View style={styles.formComposeContent} />
+                <View style={styles.formComposeHeader}>
+                  <Text style={styles.formComposeLblHeader}>
+                    {global.localization.getLang(
+                      'lang_mail_compose_header',
+                    )}
+                  </Text>
+                  <TouchableOpacity style={styles.headerBtnClose}
+                    onPress={()=>{
+                      self.props.dispatch({type: "CLOSE_COMPOSE_MAIL"})
+                    }}
+                  >
+                    <Image source={require("../../../../../res/image/popup/close.png")}
+                      style={styles.imgClose}
+                      resizeMethod={"scale"}
+                    >
+
+                    </Image>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.formComposeContent}>
+                  <TextInput
+                    style={styles.txtMailContent}
+                    multiline={true}
+                    onChangeText={(text)=>{
+                      console.log(text)
+                    }}
+                    placeholder={"..."}
+                  />
+                </View>
                 <View style={styles.formComposeFooter}>
                   <LinearGradient
                     style={[styles.btnSend]}
-                    colors={[colors.btnComposeLeft, colors.btnComposeRight]}
+                    colors={[
+                      colors.btnComposeLeft,
+                      colors.btnComposeRight,
+                    ]}
                     // start={[0, 0.65]}
                     start={{x: 0, y: 0.65}}
-                    end={{x: 1, y: 0}}
-                  >
-                    <TouchableOpacity style={styles.btnSend} onPress={()=>{
-                        self.props.dispatch({type: "TOGGLE_COMPOSING"})
-                    }}>
-                        <Text style={styles.btnSendLbl}>
-                            {globalThis.localization.getLang("lang_send_mail")}
-                        </Text>
+                    end={{x: 1, y: 0}}>
+                    <TouchableOpacity
+                      style={styles.btnSend}
+                      onPress={() => {
+                        self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
+                      }}>
+                      <Text style={styles.btnSendLbl}>
+                        {globalThis.localization.getLang(
+                          'lang_send_mail',
+                        )}
+                      </Text>
                     </TouchableOpacity>
                   </LinearGradient>
                 </View>

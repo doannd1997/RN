@@ -106,7 +106,12 @@ export default EStyleSheet.create({
     },
     formComposeHeader: {
         width: "100%",
-        flex: 1
+        flex: 1,
+        borderTopLeftRadius: "8rem",
+        borderTopRightRadius: "8rem",
+        backgroundColor: colors.theme2,
+        justifyContent: "center",
+        alignItems: "center"
     },
     formComposeContent: {
         width: "100%",
@@ -117,7 +122,8 @@ export default EStyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        // backgroundColor: "red"
+        borderTopWidth: 1,
+        borderTopColor: "#ddd"
     },
     btnSend: {
         width: "60rem",
@@ -130,5 +136,29 @@ export default EStyleSheet.create({
         color: "#fff",
         fontSize: "8rem",
         fontWeight: "bold"
+    },
+    formComposeLblHeader: {
+        color: "#fff",
+        fontSize: "8rem",
+        fontWeight: "bold"
+    },
+    txtMailContent: {
+        width: "100%",
+        height: "100%",
+        // backgroundColor: "red",
+        color: "#333",
+        fontSize: "8rem",
+        padding: "4rem",
+        textAlignVertical: "top"
+    },
+    headerBtnClose: {
+        position: "absolute",
+        width: "11rem",
+        height: "11rem",
+        right: "6rem"
+    },
+    imgClose: {
+        width: "100%",
+        height: "100%"
     }
 })
