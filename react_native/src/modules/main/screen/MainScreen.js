@@ -12,6 +12,7 @@ const ChildrenTrackingComponent = require("../../childrenTracking/screen/Childre
 const ReportAbsenceComponent = require("../../reportAbsence/screen/ReportAbsence").default;
 const RegisterServiceComponent = require("../../registerService/screen/RegisterServiceComponent").default;
 const ChangeServiceComponent = require("../../changeService/screen/ChangeServiceComponent").default;
+const RegisterGuardiansComponent = require("../../registerGuardians/screen/RegisterGuardians").default;
 
 const colors = require("../../../color/Colors").default;
 
@@ -59,6 +60,10 @@ class App extends Component{
               <Stack.Screen
                 name="ChangeService"
                 component={ChangeService}
+              />
+              <Stack.Screen
+                name="RegisterGuardians"
+                component={RegisterGuardians}
               />
             </Stack.Navigator>
           </NavigationContainer>
@@ -129,6 +134,14 @@ function ChangeService({route, navigation}){
     return (
         <View style={[styles.fullScreen]}>
             <ChangeServiceComponent route={route} navigation={navigation}></ChangeServiceComponent>
+        </View>
+    )
+}
+
+function RegisterGuardians({route, navigation}){
+    return (
+        <View style={[styles.fullScreen]}>
+            <RegisterGuardiansComponent route={route} navigation={navigation}></RegisterGuardiansComponent>
         </View>
     )
 }

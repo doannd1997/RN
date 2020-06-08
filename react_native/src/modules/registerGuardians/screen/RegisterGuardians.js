@@ -2,35 +2,21 @@ import React, {Component} from "react";
 import {View, Text, StyleSheet} from "react-native"
 import {connect, Provider} from "react-redux"
 
-const HistoryComponent = require("./Main").default;
+const MainCom = require("./Main").default;
 const store = require("../redux/Redux").default;
 
-class RegisterGuardians extends Component{
+export default class RegisterGuardians extends Component{
     render(){
         return (
           <Provider store = {store}>
-            <View style={styles.container}>
-            {this.props.logedIn ? (
-              <HistoryComponent style={styles.container} />
-            ) : (
-              <Text style={[commonStyle.textBold, {color: "grey"}]}>
-                {global.localization.getLang('lang_noti_login')}
-              </Text>
-            )}
-          </View>
+            <MainCom/>
+            <View/>
           </Provider>
           
         );
     }
 }
 
-const mapStateToProps = (state)=>{
-    return {
-        logedIn: state.logedIn
-    }
-}
-
-export default connect(mapStateToProps)(RegisterGuardians);
 
 
 const styles = StyleSheet.create({
@@ -38,8 +24,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: "center",
-        flex: 1
+        flex: 1,
+        width: "100%",
+        height: "100%"
     }
 })
 
-const commonStyle = require("../../../../common/style/index").default;
+const commonStyle = require("../../../common/style/index").default;

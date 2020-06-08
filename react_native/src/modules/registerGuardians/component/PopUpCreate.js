@@ -5,9 +5,9 @@ import LinearGradient from "react-native-linear-gradient";
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
-const colors = require("../../../../color/Colors").default;
+const colors = require("../../../color/Colors").default;
 
-const TimeUtils = require("../../../../utils/Times").default;
+const TimeUtils = require("../../../utils/Times").default;
 
 class PopUpConmpose extends Component {
     render(){
@@ -35,7 +35,7 @@ class PopUpConmpose extends Component {
                       self.props.dispatch({type: "CLOSE_COMPOSE_MAIL"})
                     }}
                   >
-                    <Image source={require("../../../../../res/image/popup/close.png")}
+                    <Image source={require("../../../../res/image/popup/close.png")}
                       style={styles.imgClose}
                       resizeMethod={"scale"}
                     >
@@ -73,7 +73,7 @@ class PopUpConmpose extends Component {
                           'lang_send_mail',
                         )}
                       </Text>
-                      <Image style={styles.imgSendMail} source={require("../../../../../res/image/popup/send.png")}/>
+                      <Image style={styles.imgSendMail} source={require("../../../../res/image/popup/send.png")}/>
                     </TouchableOpacity>
                   </LinearGradient>
                 </View>

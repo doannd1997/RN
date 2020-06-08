@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
-const colors = require("../../../../color/Colors").default;
+const colors = require("../../../color/Colors").default;
 
 const ToolBar = props=>{
     const activeTabStyle = commonStyles.toolBarElementContainerActive;

@@ -5,9 +5,9 @@ import {redux, connect} from "react-redux";
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const GuardianCom = require("../component/Guardian").default;
-const colors = require("../../../../color/Colors").default;
+const colors = require("../../../color/Colors").default;
 
-class MailListCom extends Component{
+class Guardians extends Component{
     render(){
         return (
             <FlatList style={[{flex: 1}]}
@@ -28,4 +28,4 @@ const mapStateToProps = (state)=>{
     }
 };
 
-export default connect(mapStateToProps)(MailListCom);
+export default connect(mapStateToProps)(Guardians);

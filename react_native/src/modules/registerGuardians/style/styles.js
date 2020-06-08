@@ -1,5 +1,5 @@
 import EStyleSheet from "react-native-extended-stylesheet"
-const colors = require("../../../../color/Colors").default;
+const colors = require("../../../color/Colors").default;
 
 export default EStyleSheet.create({
     container: {

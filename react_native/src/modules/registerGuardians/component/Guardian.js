@@ -5,7 +5,7 @@ import {redux, connect} from "react-redux";
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
 
-const TimeUtils = require("../../../../utils/Times").default;
+const TimeUtils = require("../../../utils/Times").default;
 
 class Guardian extends Component{
     render(){
@@ -41,4 +41,4 @@ const mapStateToProps = (state)=>{
     return state;
 };
 
-export default connect(mapStateToProps)(Mail);
+export default connect(mapStateToProps)(Guardian);

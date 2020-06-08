@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
 
-const TimeUtils = require("../../../../utils/Times").default;
+const TimeUtils = require("../../../utils/Times").default;
 
 class ButtonCreate extends Component{
     render(){
@@ -15,7 +15,7 @@ class ButtonCreate extends Component{
             <TouchableOpacity style={styles.btnCreate} onPress={()=>{
                 self.props.dispatch({type: "OPEN_SEND_MAIL"})
             }}>
-                <Image style={styles.imgAdd} source={require("../../../../../res/image/popup/add_white_128.png")}/>
+                <Image style={styles.imgAdd} source={require("../../../../res/image/popup/add_white_128.png")}/>
             </TouchableOpacity>
         )
     }
