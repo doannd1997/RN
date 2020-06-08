@@ -19,7 +19,7 @@ class PopUpConmpose extends Component {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}
-            visible={this.props.isDisplayPopup}
+            visible={this.props.adding}
             style={styles.modal}>
             <View style={styles.modalContentContainer}>
               <View style={commonStyles.panel} />
@@ -86,7 +86,7 @@ class PopUpConmpose extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        isDisplayPopup: state.isDisplayPopup
+      adding: state.adding
     }
 };
 

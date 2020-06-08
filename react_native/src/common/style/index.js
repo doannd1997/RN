@@ -59,6 +59,7 @@ export default (styles = EStyleSheet.create({
   fullBtn: {
     width: "100%",
     height: "100%",
+    backgroundColor: "red"
   },
   contentContainer: {
     flex: 1,
@@ -130,7 +131,7 @@ export default (styles = EStyleSheet.create({
   toolBarTitle: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: "6.8rem",
   },
   toolBarBtnBack: {
     position: "absolute",

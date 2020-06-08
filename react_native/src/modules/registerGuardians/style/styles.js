@@ -14,60 +14,11 @@ export default EStyleSheet.create({
       width: "100%",
       backgroundColor: "#fff"
     },
-    mailContainer: {
+    guardianContainer: {
         width: "100%",
-        height: "36rem",
-        borderRadius: 10,
-        // backgroundColor: "#fff",
-        paddingLeft: "2rem",
-        paddingRight: "2rem"
-    },
-    btnGuardian: {
-        flex: 1,
-        width: "100%",
-        height: "100%",
-        borderBottomWidth: "0.5rem",
-        borderBottomColor: "grey",
-        flexDirection: "column",
-        alignItems: "center",
-    },
-    mailHeaderContainer: {
-        flex: 1,
-        width: "100%",
-        alignItems: "flex-start",
-        justifyContent: "center"
-    },
-    mailContentContainer: {
-        flex: 1.2,
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "flex-start",
         backgroundColor: "transparent",
-        paddingTop: "1.6rem",
-        paddingLeft: "1.2rem"
-    },
-    mailTimeContainer: {
-        flex: 1.5,
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        backgroundColor: "transparent",
-        paddingLeft: "1.2rem",
-    },
-    mailLblHeader: {
-        color: "#03284f",
-        fontWeight: "bold",
-        fontSize: "6rem"
-    },
-    mailLblContent: {
-        color: "#444",
-        // fontWeight: "bold",
-        fontSize: "6rem"
-    },
-    mailLblTime: {
-        fontStyle: "italic",
-        color: "#03284f",
-        fontSize: "4.6rem"
+        height: "40rem",
+        padding: "1rem"
     },
     btnCreate: {
         position: "absolute",
@@ -125,41 +76,6 @@ export default EStyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: "#ddd"
     },
-    btnSend: {
-        width: "60rem",
-        height: "23rem",
-        borderRadius: "4rem",
-        justifyContent: "space-around",
-        alignItems: "center",
-        flexDirection: "row",
-        paddingLeft: "8rem",
-        paddingRight: "8rem",
-    },
-    btnSendLbl: {
-        color: "#fff",
-        fontSize: "8rem",
-        fontWeight: "bold"
-    },
-    formComposeLblHeader: {
-        color: "#fff",
-        fontSize: "8rem",
-        fontWeight: "bold"
-    },
-    txtMailContent: {
-        width: "100%",
-        height: "100%",
-        // backgroundColor: "red",
-        color: "#333",
-        fontSize: "8rem",
-        padding: "4rem",
-        textAlignVertical: "top"
-    },
-    headerBtnClose: {
-        position: "absolute",
-        width: "11rem",
-        height: "11rem",
-        right: "6rem"
-    },
     imgClose: {
         width: "100%",
         height: "100%"
@@ -168,8 +84,4 @@ export default EStyleSheet.create({
         width: "12rem",
         height: "12rem"
     },
-    imgSendMail: {
-        width: "20rem",
-        height: "20rem"
-    }
 })

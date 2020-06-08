@@ -20,7 +20,7 @@ class Main extends Component{
             <View style={styles.content}>
               <GuardiansCom/>
               <ButtonCreate/>
-              {/* <PopUpCreate/> */}
+              <PopUpCreate/>
             </View>
           </View>
         );
