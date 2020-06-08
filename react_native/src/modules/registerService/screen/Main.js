@@ -16,7 +16,7 @@ const PageReg2 = require("../component/PageReg2").default;
 
 import { Pages } from 'react-native-pages';
 import ViewPager from '@react-native-community/viewpager'
-const ToolBar = require("../component/ToolBar").default;
+const ToolBar = require("../../../common/component/Toolbar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("../component/PlacePicker").default;
@@ -94,7 +94,7 @@ class RegisterService extends Component {
             style={commonStyles.indicator}
           />
         ) : null}
-        <ToolBar style={commonStyles.toolBar} />
+        <ToolBar style={commonStyles.toolBar} {...this.props} params={{title: "lang_register_service", navigation: "HomeScreen"}}/>
         <View style={styles.content}>
           {this.props.pickingAddress ? <MapViewCom/> : null}
           {this.props.pickingAddress ? (

@@ -132,6 +132,13 @@ export default (styles = EStyleSheet.create({
     fontWeight: 'bold',
     fontSize: 17,
   },
+  toolBarBtnBack: {
+    position: "absolute",
+    height: "100%",
+    aspectRatio: 1,
+    left: 0,
+    padding: "4rem"
+  },
   contentContainer: {
     justifyContent: "center",
     alignItems: "center",

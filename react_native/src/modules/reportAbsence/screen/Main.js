@@ -13,7 +13,7 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 import {QuickToast} from "../../../utils/Toast";
 
-const ToolBar = require("../component/ToolBar").default;
+const ToolBar = require("../../../common/component/Toolbar").default;
 const Times = require("../../../utils/Times").default;
 
 
@@ -88,7 +88,7 @@ class ReportAbsenceCom extends Component {
           commonStyles.fullViewVerticalCenter,
           commonStyles.screenWithToolBar,
         ]}>
-        <ToolBar style={commonStyles.toolBar} />
+        <ToolBar style={commonStyles.toolBar} params={{title: "lang_report_absentee", navigation: "HomeScreen"}}/>
         <View style={commonStyles.contentContainer}>
           <View style={commonStyles.divForm}>
             <View style={styles.defaultInfo}>

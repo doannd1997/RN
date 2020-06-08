@@ -12,7 +12,6 @@ const colors = require("../../../color/Colors").default;
 const MapViewCom = require("./MapView").default;
 const YearPickerCom = require("./YearPicker").default;
 import { Pages } from 'react-native-pages';
-const ToolBar = require("./ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("./PlacePicker").default;

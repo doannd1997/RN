@@ -25,6 +25,7 @@ var navigationToMethod = (methodName, navigation, props)=>{
       break;
     case METHOD_CHANGE_CANCEL_SERVICE:
       navigation.navigate("ChangeService");
+      break;
     case METHOD_REGISTER_GUARDIAN:
       navigation.navigate("RegisterGuardians");
       break;

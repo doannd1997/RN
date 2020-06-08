@@ -6,33 +6,39 @@ import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { connect } from "react-redux";
 
-const commonStyles = require("../../../common/style/index").default;
-const styles = require("../style/styles").default;
-const colors = require("../../../color/Colors").default;
+const commonStyles = require("../style/index").default;
+const colors = require("../../color/Colors").default;
 
 const ToolBar = props=>{
-    const activeTabStyle = commonStyles.toolBarElementContainerActive;
-    const inactiveTabStyle = commonStyles.toolBarElementContainerInactive;
+    var navagation = useNavigation();
     return (
       <LinearGradient
         style={[commonStyles.toolBar, styles.toolBar]}
         colors={[colors.headerBar, colors.headerBar]}
-        // start={[0, 0.65]}
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>
         <View style={[commonStyles.fullViewVerticalCenter]}>
           <Text style={[commonStyles.toolBarTitle]}>
-            {global.localization.getLang('lang_register_guardian')}
+            {global.localization.getLang(props.params.title)}
           </Text>
+          <TouchableOpacity style={commonStyles.toolBarBtnBack}
+            onPress={()=>{
+                navagation.navigate(props.params.navigation)
+            }}
+          >
+            <Image
+              style={commonStyles.fullBtn}
+              source={require('../../../res/image/popup/back_light_grey_128.png')}
+              resizeMethod={"scale"}
+            />
+          </TouchableOpacity>
         </View>
       </LinearGradient>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-      curTab: state.curTab
-    }
+const mapStateToProps = (state) => {
+    return {}
   };
   
 export default connect(mapStateToProps)(ToolBar);
