@@ -10,7 +10,8 @@ const colors = require("../../../../color/Colors").default;
 class MailListCom extends Component{
     render(){
         return (
-            <FlatList style={[{flex: 1}]}
+            <FlatList style={[{flex: 1, backgroundColor: colors.screenBg}]}
+            showsVerticalScrollIndicator={false}
                 initialNumToRender={10}
                 data={this.props.curTab == 0 ? this.props.inbox : this.props.sentMail}
                 keyExtractor={(data, key)=>key}

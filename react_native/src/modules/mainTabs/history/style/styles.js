@@ -37,11 +37,11 @@ export default StyleSheet.create({
         marginBottom: 3,
         alignItems: "center",
         flexDirection: "row",
-        // borderRadius: 3,
+        borderRadius: 1,
         backgroundColor: '#fff',
         shadowColor: '#000',
         shadowOffset: {width: 5, height: 5},
-        elevation: 5,
+        elevation: 2,
         borderRadius: 3
     },
     itemActionType: {

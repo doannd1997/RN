@@ -64,6 +64,7 @@ class Main extends Component{
             <View style = { style.flatList }>
                 { this.props.isAdding? <Form/> : null }
                 <FlatList
+                    showsVerticalScrollIndicator={false}    
                     data={ this.getFilter() }
                     renderItem={({item})=>{
                         return  <Item data={

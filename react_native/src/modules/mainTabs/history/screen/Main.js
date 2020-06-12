@@ -24,6 +24,7 @@ class Main extends Component{
           <View style={styles.container}>
             <ToolBar />
             <SectionList
+              showsVerticalScrollIndicator={false}
               style={styles.sectionList}
               sections={this.props.history}
               keyExtractor={(item, index) => item + index}

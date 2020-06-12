@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, Image} from "react-native";
 import {redux, connect} from "react-redux";
 
 const styles = require("../style/styles").default;
@@ -15,20 +15,25 @@ class Guardian extends Component{
                 // disabled
             >
               <View style={[styles.btnGuardian]}>
-                <View style={styles.mailHeaderContainer}>
-                    <Text style={styles.mailLblHeader}>
-                        {this.props.data.item.header}
-                    </Text>
+                <View style={styles.avatarContainer}>
+                    <Image style={styles.avatar} 
+                        defaultSource={require("../../../../res/image/HomeScreen/user.png")}
+                        source={{uri: "https://img.favpng.com/21/14/14/auxiliary-police-lawyer-png-favpng-hedbA0ATF4nxzw8Bsu9SFTFqq.jpg"}}
+                        resizeMethod="resize"
+                    />
                 </View>
-                <View style={styles.mailContentContainer}>
-                    <Text style={styles.mailLblContent}>
-                        {this.props.data.item.content}
-                    </Text>
-                </View>
-                <View style={styles.mailTimeContainer}>
-                    <Text style={styles.mailLblTime}>
-                        {TimeUtils.formatTime(this.props.data.item.time)}
-                    </Text>
+                <View style={styles.infoContainer}>
+                    <View style={styles.infoNameContainer}>
+                        <Text style={[commonStyles.text, styles.textName]}>
+                            Hello
+                        </Text>
+                    </View>
+                    <View style={styles.infoElementcontainer}>
+
+                    </View>
+                    <View style={styles.infoElementcontainer}>
+
+                    </View>
                 </View>
               </View>
             </TouchableOpacity>

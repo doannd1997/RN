@@ -84,4 +84,47 @@ export default EStyleSheet.create({
         width: "12rem",
         height: "12rem"
     },
+    btnGuardian: {
+        backgroundColor: "#fff",
+        width: "100%",
+        height: "100%",
+        borderRadius: "1rem",
+        flexDirection: "row"
+    },
+    avatarContainer: {
+        height: "100%",
+        aspectRatio: 1,
+        backgroundColor: "transparent",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    avatar: {
+        height: "90%",
+        aspectRatio: 1,
+        borderRadius: "20rem"
+    },
+    infoContainer: {
+        backgroundColor: "#1a40ab",
+        flex: 1,
+        height: "100%",
+        alignItems: "center",
+        flexDirection: "column",
+        borderTopRightRadius: "1rem",
+        borderBottomRightRadius: "1rem",
+        paddingLeft: "2rem"
+    },
+    infoNameContainer: {
+        width: "100%",
+        flex: 1,
+        // backgroundColor: "red",
+        justifyContent: "center"
+    },
+    infoElementcontainer: {
+        width: "100%",
+        flex: 0.6,
+        // backgroundColor: "blue"
+    },
+    textName: {
+        fontSize: "7rem"
+    }
 })

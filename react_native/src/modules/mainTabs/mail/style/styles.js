@@ -17,19 +17,18 @@ export default EStyleSheet.create({
     mailContainer: {
         width: "100%",
         height: "36rem",
-        borderRadius: 10,
-        // backgroundColor: "#fff",
-        paddingLeft: "2rem",
-        paddingRight: "2rem"
+        padding: "1.2rem",
     },
     btnMail: {
         flex: 1,
         width: "100%",
         height: "100%",
-        borderBottomWidth: "0.5rem",
-        borderBottomColor: "grey",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "#fff",
+        borderRadius: "1.2rem",
+        paddingLeft: "0.5rem",
+        paddingRight: "0.5rem"
     },
     mailHeaderContainer: {
         flex: 1,
@@ -100,15 +99,15 @@ export default EStyleSheet.create({
     divForm: {
         width: "120rem",
         height: "170rem",
-        borderRadius: "8rem",
+        borderRadius: "2rem",
         backgroundColor: "#fff",
         flexDirection: "column"
     },
     formComposeHeader: {
         width: "100%",
         flex: 1,
-        borderTopLeftRadius: "8rem",
-        borderTopRightRadius: "8rem",
+        borderTopLeftRadius: "2rem",
+        borderTopRightRadius: "2rem",
         backgroundColor: colors.theme2,
         justifyContent: "center",
         alignItems: "center"

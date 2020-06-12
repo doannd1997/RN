@@ -59,7 +59,6 @@ export default (styles = EStyleSheet.create({
   fullBtn: {
     width: "100%",
     height: "100%",
-    backgroundColor: "red"
   },
   contentContainer: {
     flex: 1,

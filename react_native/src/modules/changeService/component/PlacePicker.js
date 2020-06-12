@@ -76,6 +76,7 @@ const PlacePicker = (props)=>{
           <View style={[styles.flatListContainer, {height: Math.min(props.listPlace.length, 4) * 40}]}>
             <View style={[styles.flatListPanel]} />
             <FlatList
+              showsVerticalScrollIndicator={false}
               data={props.listPlace}
               renderItem={({item, index, seperator}) => {
                 // return <Text>Hello</Text>

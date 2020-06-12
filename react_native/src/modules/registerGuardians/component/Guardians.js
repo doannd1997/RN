@@ -10,13 +10,16 @@ const colors = require("../../../color/Colors").default;
 class Guardians extends Component{
     render(){
         return (
-            <FlatList style={[{flex: 1}]}
+            <FlatList style={[{flex: 1, backgroundColor: colors.screenBg}]}
+                showsVerticalScrollIndicator={false}
                 initialNumToRender={10}
                 data={this.props.guardians}
                 keyExtractor={(data, key)=>key}
                 renderItem={(data)=>{
+                    console.log(data)
                     return <GuardianCom data={data}/>
                 }}
+                showsVerticalScrollIndicator={false}
             />
         )
     }
