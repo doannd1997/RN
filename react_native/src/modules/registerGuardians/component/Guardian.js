@@ -1,9 +1,11 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, Image} from "react-native";
+import {View, Text, TouchableOpacity, Image, TouchableHighlight, Touchable} from "react-native";
 import {redux, connect} from "react-redux";
+import LinearGradient from "react-native-linear-gradient";
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
+const colors = require("../../../color/Colors").default;
 
 const TimeUtils = require("../../../utils/Times").default;
 
@@ -11,8 +13,9 @@ class Guardian extends Component{
     render(){
         return (
           <View style={[styles.guardianContainer]}>
-            <TouchableOpacity style={commonStyles.fullBtn}
+            <TouchableHighlight style={commonStyles.fullBtn}
                 // disabled
+                // onPress={()=>{console.log(1)}}
             >
               <View style={[styles.btnGuardian]}>
                 <View style={styles.avatarContainer}>
@@ -22,10 +25,14 @@ class Guardian extends Component{
                         resizeMethod="resize"
                     />
                 </View>
-                <View style={styles.infoContainer}>
+                <LinearGradient
+                    style={styles.infoContainer}
+                    colors={["#e08b3a", "#b12dcc"]}
+                    start={{x: 0, y: 0.65}}
+                    end={{x: 1, y: 0}}>
                     <View style={styles.infoNameContainer}>
                         <Text style={[commonStyles.text, styles.textName]}>
-                            Hello
+                            {this.props.data.item.name}
                         </Text>
                     </View>
                     <View style={styles.infoElementcontainer}>
@@ -34,9 +41,9 @@ class Guardian extends Component{
                     <View style={styles.infoElementcontainer}>
 
                     </View>
-                </View>
+                </LinearGradient>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </View>
         );
     }

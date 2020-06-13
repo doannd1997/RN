@@ -62,7 +62,8 @@ export default EStyleSheet.create({
         borderTopRightRadius: "8rem",
         backgroundColor: colors.theme2,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flexDirection: "row"
     },
     formComposeContent: {
         width: "100%",
@@ -109,7 +110,9 @@ export default EStyleSheet.create({
         height: "100%",
         alignItems: "center",
         flexDirection: "column",
+        borderTopLeftRadius: "1rem",
         borderTopRightRadius: "1rem",
+        borderBottomLeftRadius: "1rem",
         borderBottomRightRadius: "1rem",
         paddingLeft: "2rem"
     },
@@ -126,5 +129,14 @@ export default EStyleSheet.create({
     },
     textName: {
         fontSize: "7rem"
+    },
+    formLblHeader: {
+        fontSize: "8rem"
+    },
+    headerBtnClose: {
+        position: "absolute",
+        width: "11rem",
+        height: "11rem",
+        right: "6rem"
     }
 })

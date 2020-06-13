@@ -77,5 +77,8 @@
     "lang_inbox": "Hộp Thư Đến",
     "lang_sent_mail": "Thư Đã Gửi",
     "lang_send_mail": "Gửi",
-    "lang_mail_compose_header": "Soạn Thư"
+    "lang_mail_compose_header": "Soạn Thư",
+    "lang_create_guardians": "Thêm Giám Hội",
+    "lang_update": "Cập Nhật",
+    "lang_delete": "Xóa"
 }

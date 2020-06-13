@@ -25,9 +25,9 @@ class PopUpConmpose extends Component {
               <View style={commonStyles.panel} />
               <View style={[styles.divForm]}>
                 <View style={styles.formComposeHeader}>
-                  <Text style={styles.formComposeLblHeader}>
+                  <Text style={[commonStyles.text, commonStyles.textBold, styles.formLblHeader]}>
                     {global.localization.getLang(
-                      'lang_mail_compose_header',
+                      'lang_create_guardians',
                     )}
                   </Text>
                   <TouchableOpacity style={styles.headerBtnClose}
@@ -48,7 +48,7 @@ class PopUpConmpose extends Component {
                     style={styles.txtMailContent}
                     multiline={true}
                     onChangeText={(text)=>{
-                      console.log(text)
+                      // console.log(text)
                     }}
                     placeholder={"..."}
                   />

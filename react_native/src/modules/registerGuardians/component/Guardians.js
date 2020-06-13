@@ -16,7 +16,7 @@ class Guardians extends Component{
                 data={this.props.guardians}
                 keyExtractor={(data, key)=>key}
                 renderItem={(data)=>{
-                    console.log(data)
+                    // console.log(data)
                     return <GuardianCom data={data}/>
                 }}
                 showsVerticalScrollIndicator={false}

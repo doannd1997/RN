@@ -22,7 +22,7 @@ const reducer = (state, action)=>{
   switch (action.type){
     case "OPEN_TO_EDIT":
       return {...state, editting: true};
-    case "OPEN_TO_CREATE":
+    case "OPEN_ADD":
       return {...state, adding: true};
   }
     return state;

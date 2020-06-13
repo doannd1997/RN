@@ -77,5 +77,8 @@
     "lang_inbox": "Inbox",
     "lang_sent_mail": "Sent Mail",
     "lang_send_mail": "Send",
-    "lang_mail_compose_header": "Compose Mail"
+    "lang_mail_compose_header": "Compose Mail",
+    "lang_create_guardians": "Create Guardian",
+    "lang_update": "Update",
+    "lang_delete": "Delete"
 }
