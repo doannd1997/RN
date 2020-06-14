@@ -1,7 +1,7 @@
 export default color = {
     // theme: "#0d1e73",
     theme: "#7d8299",
-    theme2: "#243fb5",
+    theme2: "#0972db",
     commonButton: "#1a5f9c",
     trackingInfoIcon: "#f58d1d",
     trackingDivInfo: "#ffffff",
