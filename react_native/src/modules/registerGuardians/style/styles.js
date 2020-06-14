@@ -92,13 +92,6 @@ export default EStyleSheet.create({
         borderRadius: "1rem",
         flexDirection: "row"
     },
-    avatarContainer: {
-        height: "100%",
-        aspectRatio: 1,
-        backgroundColor: "transparent",
-        justifyContent: "center",
-        alignItems: "center"
-    },
     avatar: {
         height: "90%",
         aspectRatio: 1,
@@ -138,5 +131,76 @@ export default EStyleSheet.create({
         width: "11rem",
         height: "11rem",
         right: "6rem"
+    },
+    btnCreateForm: {
+        flex: 1,
+        width: "100%",
+        backgroundColor: "#293a99",
+        borderBottomRightRadius: "8rem",
+        borderBottomLeftRadius: "8rem",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1.5rem"
+    },
+    imgBtnCreate: {
+        height: "100%",
+        aspectRatio: 1
+    },
+    formDivContentAvatar: {
+        // backgroundColor: "red",
+        width: "100%",
+        flex: 1,
+        alignItems: "center",
+        padding: "1rem"
+    },
+    formDivContentInfo: {
+        backgroundColor: "transparent",
+        width: "100%",
+        flex: 1.3,
+        flexDirection: "column"
+    },
+    formDivContentOther: {
+        backgroundColor: "transparent",
+        width: "100%",
+        flex: 1
+    },
+    avatarContainer: {
+        height: "100%",
+        aspectRatio: 1,
+    },
+    avatar: {
+        height: "100%",
+        aspectRatio: 1,
+        borderRadius: "80rem",
+        backgroundColor: "#eee"
+    },
+    formAddTxt0: {
+        width: "100%",
+        flex: 1,
+        flexDirection: "row"
+    },
+    inputLbl: {
+        height: "100%",
+        flex: 1,
+        // backgroundColor: "red",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    inputField: {
+        height: "100%",
+        flex: 4,
+        // backgroundColor: "cyan",
+        paddingTop: "2rem",
+        paddingBottom: "2rem"
+    },
+    formTxt: {
+        // color: "#fff",
+        fontSize: "8rem",
+    },
+    txtLblHeader: {
+        fontSize: "6rem",
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontWeight: "bold"
     }
 })

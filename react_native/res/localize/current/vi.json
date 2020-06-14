@@ -78,7 +78,9 @@
     "lang_sent_mail": "Thư Đã Gửi",
     "lang_send_mail": "Gửi",
     "lang_mail_compose_header": "Soạn Thư",
-    "lang_create_guardians": "Thêm Giám Hội",
+    "lang_create_guardians": "Thêm Giám Hộ",
     "lang_update": "Cập Nhật",
-    "lang_delete": "Xóa"
+    "lang_delete": "Xóa",
+    "lang_select_image": "Chọn Ảnh",
+    "lang_full_name": "Họ & Tên"
 }

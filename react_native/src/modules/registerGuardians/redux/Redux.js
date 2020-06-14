@@ -5,6 +5,7 @@ var defaultState = {
   adding: false,
   editting: false,
   curGuardian: null,
+  addAvatarSource: require("../../../../res/image/guardians/police.png"),
 };
 
 for (var i=0; i<15; i++){
@@ -24,6 +25,12 @@ const reducer = (state, action)=>{
       return {...state, editting: true};
     case "OPEN_ADD":
       return {...state, adding: true};
+    case "SET_ADD_AVATAR":
+      return {...state, addAvatarSource: action.addAvatarSource};
+    case "CLOSE_POP_UP_ADD":
+      return {...state, adding: false}
+    case "CLOSE_POP_UP_EDIT":
+      return {...state, editting: false}
   }
     return state;
 }

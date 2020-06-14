@@ -229,5 +229,11 @@ export default (styles = EStyleSheet.create({
     top: "50%",
     // alignSelf: "center",
     zIndex: 1000
+  },
+  txtInput: {
+    borderBottomWidth: "0.5rem",
+    borderBottomColor: "#ddd",
+    width: "100%",
+    height: "100%",
   }
 }));

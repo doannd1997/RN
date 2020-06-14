@@ -1,15 +1,30 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, Modal, TextInput, Image } from "react-native";
+import {View, Text, Modal, TextInput, Image, TouchableOpacity, Platform} from "react-native";
 import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
+import ImagePicker from 'react-native-image-picker';
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../color/Colors").default;
 
 const TimeUtils = require("../../../utils/Times").default;
+import {QuickToast} from "../../../utils/Toast";
+
+const defaultAvatar =  require("../../../../res/image/guardians/police.png");
 
 class PopUpConmpose extends Component {
+  constructor(props){
+    super(props);
+    this.options = {
+      title: global.localization.getLang("lang_select_image"),
+      // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+  }
     render(){
         var self = this;
         return (
@@ -24,58 +39,174 @@ class PopUpConmpose extends Component {
             <View style={styles.modalContentContainer}>
               <View style={commonStyles.panel} />
               <View style={[styles.divForm]}>
-                <View style={styles.formComposeHeader}>
-                  <Text style={[commonStyles.text, commonStyles.textBold, styles.formLblHeader]}>
+                <LinearGradient
+                  style={[styles.formComposeHeader]}
+                  colors={[
+                    colors.btnComposeLeft,
+                    colors.btnComposeRight,
+                  ]}
+                  // start={[0, 0.65]}
+                  start={{x: 0, y: 0.65}}
+                  end={{x: 1, y: 0}}>
+                  <Text
+                    style={[
+                      commonStyles.text,
+                      commonStyles.textBold,
+                      styles.formLblHeader,
+                    ]}>
                     {global.localization.getLang(
                       'lang_create_guardians',
                     )}
                   </Text>
-                  <TouchableOpacity style={styles.headerBtnClose}
-                    onPress={()=>{
-                      self.props.dispatch({type: "CLOSE_COMPOSE_MAIL"})
-                    }}
-                  >
-                    <Image source={require("../../../../res/image/popup/close.png")}
+                  <TouchableOpacity
+                    style={styles.headerBtnClose}
+                    onPress={() => {
+                      self.props.dispatch({type: 'CLOSE_POP_UP_ADD'});
+                    }}>
+                    <Image
+                      source={require('../../../../res/image/popup/close.png')}
                       style={styles.imgClose}
-                      resizeMethod={"scale"}
-                    >
-
-                    </Image>
+                      resizeMethod={'scale'}
+                    />
                   </TouchableOpacity>
-                </View>
+                </LinearGradient>
                 <View style={styles.formComposeContent}>
-                  <TextInput
-                    style={styles.txtMailContent}
-                    multiline={true}
-                    onChangeText={(text)=>{
-                      // console.log(text)
-                    }}
-                    placeholder={"..."}
-                  />
+                  <View style={styles.formDivContentAvatar}>
+                    <TouchableOpacity
+                      sytyle={styles.avatarContainer}
+                      onPress={() => {
+                        ImagePicker.showImagePicker(
+                          this.options,
+                          response => {
+                            if (response.didCancel) {
+                              console.log(
+                                'User cancelled image picker',
+                              );
+                            } else if (response.error) {
+                              console.log(
+                                'ImagePicker Error: ',
+                                response.error,
+                              );
+                            } else if (response.customButton) {
+                              console.log(
+                                'User tapped custom button: ',
+                                response.customButton,
+                              );
+                            } else {
+                              var source;
+
+                              if (Platform.OS === 'android') {
+                                source = {
+                                  uri: response.uri,
+                                  isStatic: true,
+                                };
+                              } else {
+                                source = {
+                                  uri: response.uri.replace(
+                                    'file://',
+                                    '',
+                                  ),
+                                  isStatic: true,
+                                };
+                              }
+
+                              // const source = { uri: response.uri };
+
+                              // You can also display the image using data:
+                              // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                              this.props.dispatch({
+                                type: 'SET_ADD_AVATAR',
+                                addAvatarSource: source,
+                              });
+                            }
+                          },
+                        );
+                      }}>
+                      <Image
+                        defaultSource={require('../../../../res/image/guardians/police.png')}
+                        source={this.props.addAvatarSource}
+                        style={styles.avatar}
+                        resizeMethod={'resize'}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.formDivContentInfo}>
+                    <View style={styles.formAddTxt0}>
+                      <View style={styles.inputLbl}>
+                        <Text style={styles.txtLblHeader}>
+                          {global.localization.getLang(
+                            'lang_full_name',
+                          )}
+                        </Text>
+                      </View>
+                      <View style={styles.inputField}>
+                        <TextInput
+                          style={[
+                            commonStyles.txtInput,
+                            styles.formTxt,
+                          ]}
+                          placeholder={'...'}
+                        />
+                      </View>
+                    </View>
+                    <View style={styles.formAddTxt0}>
+                      <View style={styles.inputLbl}>
+                        <Text style={styles.txtLblHeader}>
+                          {/* {global.localization.getLang(
+                            'lang_full_name',
+                          )} */}
+                          [Any Thing]
+                        </Text>
+                      </View>
+                      <View style={styles.inputField}>
+                        <TextInput
+                          style={[
+                            commonStyles.txtInput,
+                            styles.formTxt,
+                          ]}
+                          placeholder={'...'}
+                        />
+                      </View>
+                    </View>
+                    <View style={styles.formAddTxt0}>
+                      <View style={styles.inputLbl}>
+                        <Text style={styles.txtLblHeader}>
+                          {/* {global.localization.getLang(
+                            'lang_full_name',
+                          )} */}
+                          [Any Thing]
+                        </Text>
+                      </View>
+                      <View style={styles.inputField}>
+                        <TextInput
+                          style={[
+                            commonStyles.txtInput,
+                            styles.formTxt,
+                          ]}
+                          placeholder={'...'}
+                        />
+                      </View>
+                    </View>
+                  </View>
+                  {/* <View style={styles.formDivContentOther} /> */}
                 </View>
                 <View style={styles.formComposeFooter}>
-                  <LinearGradient
-                    style={[styles.btnSend]}
-                    colors={[
-                      colors.btnComposeLeft,
-                      colors.btnComposeRight,
-                    ]}
-                    // start={[0, 0.65]}
-                    start={{x: 0, y: 0.65}}
-                    end={{x: 1, y: 0}}>
+                  <View style={styles.btnCreateForm}>
                     <TouchableOpacity
-                      style={styles.btnSend}
+                      style={styles.btnCreateForm}
                       onPress={() => {
-                        self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
+                        QuickToast.show("Success");
+                        self.props.dispatch({
+                          type: 'CLOSE_POP_UP_ADD',
+                        });
                       }}>
-                      <Text style={styles.btnSendLbl}>
-                        {globalThis.localization.getLang(
-                          'lang_send_mail',
-                        )}
-                      </Text>
-                      <Image style={styles.imgSendMail} source={require("../../../../res/image/popup/send.png")}/>
+                      <Image
+                        source={require('../../../../res/image/popup/add_white_128.png')}
+                        style={styles.imgBtnCreate}
+                      />
                     </TouchableOpacity>
-                  </LinearGradient>
+                  </View>
                 </View>
               </View>
             </View>
@@ -86,8 +217,10 @@ class PopUpConmpose extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      adding: state.adding
+      adding: state.adding,
+      addAvatarSource: state.addAvatarSource
     }
 };
 
 export default connect(mapStateToProps)(PopUpConmpose);
+
