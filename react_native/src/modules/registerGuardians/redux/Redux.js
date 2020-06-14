@@ -11,12 +11,16 @@ var defaultState = {
   editAvatarSource: require("../../../../res/image/guardians/police.png"),
 };
 
-for (var i=0; i<8; i++){
-    var guardian = {
-      id: i,
-      name: "Giám Hộ " + (i+1),
-      avatarSource: require("../../../../res/image/guardians/police.png")
-    };
+const createDefaultGuardian = (i)=>{
+  return {
+    id: i,
+    name: "Giám Hộ " + (i+1),
+    avatarSource: require("../../../../res/image/guardians/police.png")
+  };
+}
+
+for (var i=0; i<5; i++){
+    var guardian = createDefaultGuardian(i)
     
     defaultState.guardians.push(guardian);
 }
@@ -33,9 +37,19 @@ const reducer = (state, action) => {
         editAvatarSource: action.curGuardian.item.avatarSource,
       };
     case 'OPEN_ADD':
-      return {...state, adding: true};
+      return {...state, adding: true, pseudoGuardian: {
+        item: createDefaultGuardian(state.guardians.length),
+        index: state.guardians.length
+      }};
     case 'SET_ADD_AVATAR':
-      return {...state, addAvatarSource: action.addAvatarSource};
+      return {
+        ...state,
+        addAvatarSource: action.addAvatarSource,
+        pseudoGuardian: {
+          ...action.pseudoGuardian,
+          item: {...state.pseudoGuardian.item, avatarSource: action.addAvatarSource},
+        },
+      };
     case 'SET_EDIT_AVATAR':
       return {
         ...state,
@@ -54,6 +68,13 @@ const reducer = (state, action) => {
           (guardian, index) => index != action.index,
         ),
       };
+    case 'ADD_GUARDIAN':
+      var guardians = state.guardians.concat([action.guardian.item]);
+      return {
+        ...state,
+        adding: false,
+        guardians: guardians
+      }
     case 'UPDATE_GUARDIAN':
       return {
         ...state,

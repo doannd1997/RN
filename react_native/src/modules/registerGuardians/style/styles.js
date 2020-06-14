@@ -124,7 +124,7 @@ export default EStyleSheet.create({
         fontSize: "7rem"
     },
     formLblHeader: {
-        fontSize: "8rem"
+        fontSize: "8rem",
     },
     headerBtnClose: {
         position: "absolute",
@@ -201,7 +201,8 @@ export default EStyleSheet.create({
         fontSize: "6rem",
         textAlign: "center",
         textAlignVertical: "center",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "grey"
     },
     btnRemove: {
         borderBottomLeftRadius: "8rem"

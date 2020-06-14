@@ -147,6 +147,19 @@ class PopUpConmpose extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  name: text
+                                },
+                              },
+                            });
+                          }}
+                          defaultValue={(this.props.pseudoGuardian == null) ? "" : this.props.pseudoGuardian.item.name}
                         />
                       </View>
                     </View>
@@ -196,10 +209,19 @@ class PopUpConmpose extends Component {
                     <TouchableOpacity
                       style={styles.btnCreateForm}
                       onPress={() => {
-                        QuickToast.show("Success");
-                        self.props.dispatch({
-                          type: 'CLOSE_POP_UP_ADD',
-                        });
+                        console.log(this.props.pseudoGuardian)
+                        var guardian = this.props.pseudoGuardian;
+                        this.props.dispatch(
+                          {
+                            type:
+                              'ADD_GUARDIAN',
+                            guardian: guardian,
+                            index: this
+                              .props
+                              .pseudoGuardian
+                              .index,
+                          },
+                        );
                       }}>
                       <Image
                         source={require('../../../../res/image/popup/add_white_128.png')}
@@ -218,7 +240,8 @@ class PopUpConmpose extends Component {
 const mapStateToProps = (state)=>{
     return {
       adding: state.adding,
-      addAvatarSource: state.addAvatarSource
+      addAvatarSource: state.addAvatarSource,
+      pseudoGuardian: state.pseudoGuardian
     }
 };
 
