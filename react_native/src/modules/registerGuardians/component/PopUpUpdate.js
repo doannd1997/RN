@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, Modal, TextInput, Image, TouchableOpacity, Platform} from "react-native";
+import {View, Text, Modal, TextInput, Image, TouchableOpacity, Platform, Alert} from "react-native";
 import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 import ImagePicker from 'react-native-image-picker';
@@ -13,18 +13,18 @@ import {QuickToast} from "../../../utils/Toast";
 
 const defaultAvatar =  require("../../../../res/image/guardians/police.png");
 
-class PopUpConmpose extends Component {
-  constructor(props){
-    super(props);
-    this.options = {
-      title: global.localization.getLang("lang_select_image"),
-      // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-  }
+class PopUpUpdate extends Component {
+    constructor(props){
+      super(props);
+      this.options = {
+        title: global.localization.getLang("lang_select_image"),
+        // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+    }
     render(){
         var self = this;
         return (
@@ -34,7 +34,7 @@ class PopUpConmpose extends Component {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}
-            visible={this.props.adding}
+            visible={this.props.editting}
             style={styles.modal}>
             <View style={styles.modalContentContainer}>
               <View style={commonStyles.panel} />
@@ -54,14 +54,12 @@ class PopUpConmpose extends Component {
                       commonStyles.textBold,
                       styles.formLblHeader,
                     ]}>
-                    {global.localization.getLang(
-                      'lang_create_guardians',
-                    )}
+                    {global.localization.getLang('lang_edit_guardian')}
                   </Text>
                   <TouchableOpacity
                     style={styles.headerBtnClose}
                     onPress={() => {
-                      self.props.dispatch({type: 'CLOSE_POP_UP_ADD'});
+                      self.props.dispatch({type: 'CLOSE_POP_UP_EDIT'});
                     }}>
                     <Image
                       source={require('../../../../res/image/popup/close.png')}
@@ -116,8 +114,8 @@ class PopUpConmpose extends Component {
                               // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
                               this.props.dispatch({
-                                type: 'SET_ADD_AVATAR',
-                                addAvatarSource: source,
+                                type: 'SET_EDIT_AVATAR',
+                                editAvatarSource: source,
                               });
                             }
                           },
@@ -125,7 +123,7 @@ class PopUpConmpose extends Component {
                       }}>
                       <Image
                         defaultSource={require('../../../../res/image/guardians/police.png')}
-                        source={this.props.addAvatarSource}
+                        source={this.props.editAvatarSource}
                         style={styles.avatar}
                         resizeMethod={'resize'}
                       />
@@ -147,6 +145,19 @@ class PopUpConmpose extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          defaultValue={(this.props.curGuardian ? this.props.curGuardian.item.name : "")}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  name: text
+                                },
+                              },
+                            });
+                          }}
                         />
                       </View>
                     </View>
@@ -192,21 +203,94 @@ class PopUpConmpose extends Component {
                   {/* <View style={styles.formDivContentOther} /> */}
                 </View>
                 <View style={styles.formEditFooter}>
-                  <View style={styles.btnCreateForm}>
-                    <TouchableOpacity
-                      style={styles.btnCreateForm}
-                      onPress={() => {
-                        QuickToast.show("Success");
-                        self.props.dispatch({
-                          type: 'CLOSE_POP_UP_ADD',
-                        });
-                      }}>
-                      <Image
-                        source={require('../../../../res/image/popup/add_white_128.png')}
-                        style={styles.imgBtnCreate}
-                      />
-                    </TouchableOpacity>
-                  </View>
+                    <View style={{height: "100%", flex: 1}}>
+                      <TouchableOpacity
+                        style={[commonStyles.formBtnRemove, styles.btnRemove]}
+                        onPress={()=>{
+                          var header = global.localization.getLang(
+                            'lang_noti_header',
+                          );
+                          var content = global.localization
+                            .getLang(
+                              'lang_confirm_delete_guardian'
+                            )
+                            .replace('@guardian@', self.props.curGuardian.item.name);
+                          var okLabel = global.localization.getLang(
+                            'lang_confirm_ok',
+                          );
+                          var cancelLabel = global.localization.getLang(
+                            'lang_confirm_cancel',
+                          );
+                          Alert.alert(
+                            header,
+                            content,
+                            [
+                              {
+                                text: okLabel,
+                                onPress: () => {
+                                  this.props.dispatch({type: "DELETE_GUARDIAN", index: this.props.curGuardian.index})
+                                },
+                              },
+                              {
+                                text: cancelLabel,
+                                onPress: () => {
+                                  // 
+                                },
+                              },
+                            ],
+                            {cancelable: true},
+                          );
+                        }}
+                      >
+                        <Text style={[commonStyles.textBold, commonStyles.text, styles.txtFooter]}>
+                          {global.localization.getLang("lang_delete")}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                    <View style={{height: "100%", flex: 1}}>
+                      <TouchableOpacity
+                        style={[commonStyles.formBtnConfirm, styles.btnUpdate]}
+                        onPress={()=>{
+                          var header = global.localization.getLang(
+                            'lang_noti_header',
+                          );
+                          var content = global.localization
+                            .getLang(
+                              'lang_confirm_update_guardian'
+                            )
+                          var okLabel = global.localization.getLang(
+                            'lang_confirm_ok',
+                          );
+                          var cancelLabel = global.localization.getLang(
+                            'lang_confirm_cancel',
+                          );
+                          Alert.alert(
+                            header,
+                            content,
+                            [
+                              {
+                                text: okLabel,
+                                onPress: () => {
+                                  var guardian = this.props.pseudoGuardian.item;
+                                  this.props.dispatch({type: "UPDATE_GUARDIAN", guardian: guardian, index: this.props.curGuardian.index});
+                                },
+                              },
+                              {
+                                text: cancelLabel,
+                                onPress: () => {
+                                  // 
+                                },
+                              },
+                            ],
+                            {cancelable: true},
+                          );    
+                        }}
+                      >
+                          <Text style={[commonStyles.textBold, commonStyles.text, styles.txtFooter]}>
+                          {global.localization.getLang("lang_update")}
+                          </Text>
+                      </TouchableOpacity>
+                    </View>
                 </View>
               </View>
             </View>
@@ -217,10 +301,12 @@ class PopUpConmpose extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      adding: state.adding,
-      addAvatarSource: state.addAvatarSource
+      editting: state.editting,
+      editAvatarSource: state.editAvatarSource,
+      curGuardian: state.curGuardian,
+      pseudoGuardian: state.pseudoGuardian
     }
 };
 
-export default connect(mapStateToProps)(PopUpConmpose);
+export default connect(mapStateToProps)(PopUpUpdate);
 

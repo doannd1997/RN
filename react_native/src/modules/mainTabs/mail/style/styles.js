@@ -125,9 +125,10 @@ export default EStyleSheet.create({
         borderTopColor: "#ddd"
     },
     btnSend: {
-        width: "60rem",
-        height: "23rem",
-        borderRadius: "4rem",
+        width: "100%",
+        height: "100%",
+        borderBottomLeftRadius: "1.2rem",
+        borderBottomRightRadius: "1.2rem",
         justifyContent: "space-around",
         alignItems: "center",
         flexDirection: "row",

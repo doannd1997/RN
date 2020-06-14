@@ -81,5 +81,9 @@
     "lang_create_guardians": "Create Guardian",
     "lang_update": "Update",
     "lang_delete": "Delete",
-    "lang_select_image": "Select Image"
+    "lang_select_image": "Select Image",
+    "lang_full_name": "Full Name",
+    "lang_edit_guardian": "Guardians Info",
+    "lang_confirm_delete_guardian": "Confirm Delete Guardian @guardian@ ?",
+    "lang_confirm_update_guardian": "Confirm Update Guardian's Info ?"
 }

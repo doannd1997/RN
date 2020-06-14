@@ -69,13 +69,13 @@ export default EStyleSheet.create({
         width: "100%",
         flex: 5
     },
-    formComposeFooter: {
+    formEditFooter: {
         width: "100%",
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        borderTopWidth: 1,
-        borderTopColor: "#ddd"
+        // borderTopWidth: 1,
+        flexDirection: "row"
     },
     imgClose: {
         width: "100%",
@@ -202,5 +202,14 @@ export default EStyleSheet.create({
         textAlign: "center",
         textAlignVertical: "center",
         fontWeight: "bold"
+    },
+    btnRemove: {
+        borderBottomLeftRadius: "8rem"
+    },
+    btnUpdate: {
+        borderBottomRightRadius: "8rem"
+    },
+    txtFooter: {
+        fontSize: "7rem"
     }
 })

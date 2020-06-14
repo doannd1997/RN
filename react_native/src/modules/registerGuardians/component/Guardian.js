@@ -15,13 +15,15 @@ class Guardian extends Component{
           <View style={[styles.guardianContainer]}>
             <TouchableHighlight style={commonStyles.fullBtn}
                 // disabled
-                // onPress={()=>{console.log(1)}}
+                onPress={()=>{
+                    this.props.dispatch({type: "OPEN_TO_EDIT", curGuardian: this.props.data})
+                }}
             >
               <View style={[styles.btnGuardian]}>
                 <View style={styles.avatarContainer}>
                     <Image style={styles.avatar} 
                         defaultSource={require("../../../../res/image/HomeScreen/user.png")}
-                        source={{uri: "https://img.favpng.com/21/14/14/auxiliary-police-lawyer-png-favpng-hedbA0ATF4nxzw8Bsu9SFTFqq.jpg"}}
+                        source={this.props.data.item.avatarSource}
                         resizeMethod="resize"
                     />
                 </View>

@@ -68,11 +68,11 @@ class PopUpConmpose extends Component {
                       onPress={() => {
                         self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
                       }}>
-                      <Text style={styles.btnSendLbl}>
+                      {/* <Text style={styles.btnSendLbl}>
                         {globalThis.localization.getLang(
                           'lang_send_mail',
                         )}
-                      </Text>
+                      </Text> */}
                       <Image style={styles.imgSendMail} source={require("../../../../../res/image/popup/send.png")}/>
                     </TouchableOpacity>
                   </LinearGradient>

@@ -11,6 +11,7 @@ const ToolBar = require("../../../common/component/Toolbar").default;
 const GuardiansCom = require("../component/Guardians").default;
 const ButtonCreate = require("../component/BtnCreate").default;
 const PopUpCreate = require("../component/PopUpCreate").default;
+const PopUpUpdate = require("../component/PopUpUpdate").default;
 
 class Main extends Component{
     render(){
@@ -21,6 +22,7 @@ class Main extends Component{
               <GuardiansCom/>
               <ButtonCreate/>
               <PopUpCreate/>
+              <PopUpUpdate/>
             </View>
           </View>
         );
