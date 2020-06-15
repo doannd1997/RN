@@ -85,5 +85,7 @@
     "lang_full_name": "Họ & Tên",
     "lang_edit_guardian": "Thông Tin Giám Hộ",
     "lang_confirm_delete_guardian": "Xác Nhận Xóa Giám Hộ @guardian@ ?",
-    "lang_confirm_update_guardian": "Xác Nhận Cập Nhật Thông Tin Giám Hộ ?"
+    "lang_confirm_update_guardian": "Xác Nhận Cập Nhật Thông Tin Giám Hộ ?",
+    "lang_parent": "Phụ Huynh",
+    "lang_student": "Học Sinh"
 }

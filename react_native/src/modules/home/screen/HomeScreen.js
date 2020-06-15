@@ -11,6 +11,7 @@ const colors = require("../../../color/Colors").default;
 const HomeComponent = require("../../mainTabs/home/screen/HomeTab").default;
 const HistoryComponent = require("../../mainTabs/history/screen/History").default;
 const MailComponent = require("../../mainTabs/mail/screen/Mail").default;
+const AccountComponent = require("../../mainTabs/account/screen/ScreenAccount").default;
 
 function Home(props) {
   // const isFocused = useIsFocused();
@@ -50,9 +51,7 @@ function Mail() {
 
 function Account() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Account!</Text>
-      </View>
+      <AccountComponent/>
     );
   }
 
