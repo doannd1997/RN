@@ -24,58 +24,64 @@ class PopUpConmpose extends Component {
             <View style={styles.modalContentContainer}>
               <View style={commonStyles.panel} />
               <View style={[styles.divForm]}>
-                <View style={styles.formComposeHeader}>
+                <LinearGradient
+                  style={[styles.formComposeHeader]}
+                  colors={[
+                    colors.btnComposeLeft,
+                    colors.btnComposeRight,
+                  ]}
+                  // start={[0, 0.65]}
+                  start={{x: 0, y: 0.65}}
+                  end={{x: 1, y: 0}}>
                   <Text style={styles.formComposeLblHeader}>
                     {global.localization.getLang(
                       'lang_mail_compose_header',
                     )}
                   </Text>
-                  <TouchableOpacity style={styles.headerBtnClose}
-                    onPress={()=>{
-                      self.props.dispatch({type: "CLOSE_COMPOSE_MAIL"})
-                    }}
-                  >
-                    <Image source={require("../../../../../res/image/popup/close.png")}
+                  <TouchableOpacity
+                    style={styles.headerBtnClose}
+                    onPress={() => {
+                      self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
+                    }}>
+                    <Image
+                      source={require('../../../../../res/image/popup/close.png')}
                       style={styles.imgClose}
-                      resizeMethod={"scale"}
-                    >
-
-                    </Image>
+                      resizeMethod={'scale'}
+                    />
                   </TouchableOpacity>
-                </View>
+                </LinearGradient>
                 <View style={styles.formComposeContent}>
                   <TextInput
                     style={styles.txtMailContent}
                     multiline={true}
-                    onChangeText={(text)=>{
-                      console.log(text)
+                    onChangeText={text => {
+                      console.log(text);
                     }}
-                    placeholder={"..."}
+                    placeholder={'...'}
                   />
                 </View>
                 <View style={styles.formComposeFooter}>
-                  <LinearGradient
+                  <View
                     style={[styles.btnSend]}
-                    colors={[
-                      colors.btnComposeLeft,
-                      colors.btnComposeRight,
-                    ]}
-                    // start={[0, 0.65]}
-                    start={{x: 0, y: 0.65}}
-                    end={{x: 1, y: 0}}>
+                    >
                     <TouchableOpacity
                       style={styles.btnSend}
                       onPress={() => {
-                        self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
+                        self.props.dispatch({
+                          type: 'CLOSE_COMPOSE_MAIL',
+                        });
                       }}>
                       {/* <Text style={styles.btnSendLbl}>
                         {globalThis.localization.getLang(
                           'lang_send_mail',
                         )}
                       </Text> */}
-                      <Image style={styles.imgSendMail} source={require("../../../../../res/image/popup/send.png")}/>
+                      <Image
+                        style={styles.imgSendMail}
+                        source={require('../../../../../res/image/popup/send.png')}
+                      />
                     </TouchableOpacity>
-                  </LinearGradient>
+                  </View>
                 </View>
               </View>
             </View>

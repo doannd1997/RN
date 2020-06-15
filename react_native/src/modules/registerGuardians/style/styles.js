@@ -135,7 +135,7 @@ export default EStyleSheet.create({
     btnCreateForm: {
         flex: 1,
         width: "100%",
-        backgroundColor: "#293a99",
+        backgroundColor: colors.theme2,
         borderBottomRightRadius: "8rem",
         borderBottomLeftRadius: "8rem",
         justifyContent: "center",

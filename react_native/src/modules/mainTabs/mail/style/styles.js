@@ -134,6 +134,7 @@ export default EStyleSheet.create({
         flexDirection: "row",
         paddingLeft: "8rem",
         paddingRight: "8rem",
+        backgroundColor: colors.theme2
     },
     btnSendLbl: {
         color: "#fff",
