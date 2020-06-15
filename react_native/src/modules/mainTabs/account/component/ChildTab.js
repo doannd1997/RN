@@ -78,11 +78,13 @@ class ParentTab extends Component{
                       />
                   </TouchableOpacity>
                 </View>
+                <View style={styles.otherInfoContainer}>
                 <View style={styles.parentNameContainer}>
-                      <Text style={styles.parentName}>
-                          {this.props.studentName}
-                      </Text>
+                  <Text style={styles.parentName}>
+                    {this.props.studentName}
+                  </Text>
                 </View>
+              </View>
               </View>
             </View>
           );

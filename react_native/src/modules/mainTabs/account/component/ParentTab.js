@@ -29,59 +29,54 @@ class ParentTab extends Component{
             <View style={styles.parentInfoContainer}>
               <View style={styles.parentAvatarContainer}>
                 <TouchableOpacity
-                    onPress={()=>{
-                        ImagePicker.showImagePicker(
-                            options,
-                            response => {
-                              if (response.didCancel) {
-                                console.log(
-                                  'User cancelled image picker',
-                                );
-                              } else if (response.error) {
-                                console.log(
-                                  'ImagePicker Error: ',
-                                  response.error,
-                                );
-                              } else if (response.customButton) {
-                                console.log(
-                                  'User tapped custom button: ',
-                                  response.customButton,
-                                );
-                              } else {
-                                var source;
-  
-                                if (Platform.OS === 'android') {
-                                  source = {
-                                    uri: response.uri,
-                                    isStatic: true,
-                                  };
-                                } else {
-                                  source = {
-                                    uri: response.uri.replace(
-                                      'file://',
-                                      '',
-                                    ),
-                                    isStatic: true,
-                                  };
-                                }
-  
-                                this.props.dispatch({
-                                  type: 'SET_PARENT_AVATAR',
-                                  avatar: source,
-                                });
-                            }})
-                    }}
-                >
-                    <Image
+                  onPress={() => {
+                    ImagePicker.showImagePicker(options, response => {
+                      if (response.didCancel) {
+                        console.log('User cancelled image picker');
+                      } else if (response.error) {
+                        console.log(
+                          'ImagePicker Error: ',
+                          response.error,
+                        );
+                      } else if (response.customButton) {
+                        console.log(
+                          'User tapped custom button: ',
+                          response.customButton,
+                        );
+                      } else {
+                        var source;
+
+                        if (Platform.OS === 'android') {
+                          source = {
+                            uri: response.uri,
+                            isStatic: true,
+                          };
+                        } else {
+                          source = {
+                            uri: response.uri.replace('file://', ''),
+                            isStatic: true,
+                          };
+                        }
+
+                        this.props.dispatch({
+                          type: 'SET_PARENT_AVATAR',
+                          avatar: source,
+                        });
+                      }
+                    });
+                  }}>
+                  <Image
                     style={styles.parentAvatar}
                     source={this.props.parentAvatar}
-                    />
+                  />
                 </TouchableOpacity>
               </View>
-              <View style={styles.parentNameContainer}>
-                    <Text style={styles.parentName}>
-                        {this.props.parentName}
-                    </Text>
+              <View style={styles.otherInfoContainer}>
+                <View style={styles.parentNameContainer}>
+                  <Text style={styles.parentName}>
+                    {this.props.parentName}
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

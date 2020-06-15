@@ -36,13 +36,23 @@ export default EStyleSheet.create({
         borderWidth: "0.4rem",
         borderColor: "grey"
     },
-    parentNameContainer: {
+    otherInfoContainer: {
         width: "100%",
         alignItems: "center",
         flex: 1,
-        paddingTop: "5rem"
+        paddingTop: "5rem",
+    },
+    parentNameContainer: {
+        width: "90%",
+        height: "20rem",
+        backgroundColor: "#187ede",
+        justifyContent: "center",
+        borderRadius: "10rem"
     },
     parentName: {
         fontSize: "12rem",
+        textAlign: "center",
+        borderRadius: "10rem",
+        color: "#fff"
     }
 })
