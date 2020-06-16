@@ -24,11 +24,18 @@ class Main extends Component{
     render(){
         var self = this;
         return (
-          <View style={[
-            commonStyles.fullViewVerticalCenter,
-            commonStyles.screenWithToolBar,
-          ]}>
-            <ToolBar style={commonStyles.toolBar} params={{title: "lang_student_tracking", navigation: "HomeScreen"}}/>
+          <View
+            style={[
+              commonStyles.fullViewVerticalCenter,
+              commonStyles.screenWithToolBar,
+            ]}>
+            <ToolBar
+              style={commonStyles.toolBar}
+              params={{
+                title: 'lang_student_tracking',
+                navigation: 'HomeScreen',
+              }}
+            />
             <MapViewCom />
             {this.props.CHILDREN_TRACKING_showingDivInfo ? (
               <View style={styles.divInfo}>
@@ -49,10 +56,7 @@ class Main extends Component{
                 </View>
                 <View style={styles.topRightClusterButton}>
                   <TouchableOpacity
-                    style={[
-                      styles.btnExpandDivInfo,
-                      {backgroundColor: 'red'},
-                    ]}
+                    style={[styles.btnClose]}
                     onPress={() => {
                       self.props.dispatch({
                         type: 'CHILDREN_TRACKING_showingDivInfo__HIDE',
@@ -61,7 +65,7 @@ class Main extends Component{
                     <Icon name="remove" size={24} color={'#ffffff'} />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={[styles.btnExpandDivInfo, {width: 80}]}
+                    style={[styles.btnChangeMode]}
                     onPress={() => {
                       self.props.dispatch({
                         type: 'SWITCH_MAP_TYPE',

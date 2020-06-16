@@ -1,19 +1,20 @@
 import {StyleSheet} from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet"
 
-export default (styles = StyleSheet.create({
+export default (styles = EStyleSheet.create({
   btnLogin: {
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#ffffff',
-    height: 35,
-    width: 100,
+    // borderRadius: 12,
+    // borderWidth: 2,
+    // borderColor: '#ffffff',
+    height: "100%",
+    width: "60rem",
     alignContent: 'center',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: "#de5a2a",
-    right: 7,
-    alignSelf: "center",
+    backgroundColor: "#1c3266",
+    // right: 7,
+    // alignSelf: "center",
   },
   toolBarUser: {
     alignContent: 'center',
@@ -26,29 +27,24 @@ export default (styles = StyleSheet.create({
     padding: 5,
   },
   avatar: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    borderWidth: 1,
+    width: "15rem",
+    height: "15rem",
+    borderRadius: "10rem",
+    borderWidth: "0.2rem",
     borderColor: 'grey',
-    margin: 5,
+    margin: "1rem",
   },
   gridView: {
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
-    // backgroundColor: "cyan",
     width: '100%',
     padding: 5,
     backgroundColor: "#fff"
   },
   buttonGrid: {
-    borderRadius: 4,
     width: '100%',
-    height: 160,
+    height: "100%",
     flexDirection: 'row-reverse',
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
@@ -57,13 +53,10 @@ export default (styles = StyleSheet.create({
   buttonGridHeader: {
     color: '#ffffff',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: "9rem",
     position: "absolute",
-    margin: 15,
-    paddingBottom: 10,
-    // textShadowColor:'#585858',
-    // textShadowOffset:{width: 6, height: 4},
-    // textShadowRadius:10,
+    marginLeft: "18rem",
+    paddingBottom: "5rem",
   },
   imgTheme: {
       width: 180,
@@ -71,5 +64,55 @@ export default (styles = StyleSheet.create({
       borderRadius: 4,
       position: "absolute",
       right: 0
+  },
+  gridderItemContainer: {
+    padding: "2rem",
+    width: "100%",
+    aspectRatio: 2,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  gridderItem: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "5rem"
+  },
+  iconAndNameContainer: {
+    width: "100%",
+    flex: 3,
+    flexDirection: "row",
+  },
+  headerContainer: {
+    width: "100%",
+    flex: 1.2,
+    justifyContent: "center",
+    paddingLeft: "40rem",
+    // backgroundColor: "red"
+  },
+  description: {
+    color: "#bbb",
+    fontSize: "6rem"
+  },
+  iconContainer: {
+    height: "100%",
+    aspectRatio: 1,
+    padding: "10rem"
+  },
+  descriptionContainer: {
+    height: "100%",
+    flex: 4,
+    paddingTop: "15rem",
+    paddingRight: "5rem"
+  },
+  icon: {
+    width: "100%",
+    height: "100%",
+    borderRadius: "20rem"
+  },
+  txtLogIn: {
+    fontSize: "6rem"
+  },
+  txtHeader: {
+    fontSize: "6rem"
   }
 }));

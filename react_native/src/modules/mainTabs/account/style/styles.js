@@ -10,7 +10,6 @@ export default EStyleSheet.create({
     coverContainer: {
         width: "100%",
         flex: 1,
-        backgroundColor: "red"
     },
     parentCover: {
         width: "100%",

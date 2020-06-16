@@ -93,7 +93,7 @@ export default (styles = EStyleSheet.create({
     fontSize: "6rem"
   },
   gradientToolBar: {
-    height: 45,
+    height: "100%",
     flex: 1,
     alignItems: 'flex-end',
     justifyContent: 'center',

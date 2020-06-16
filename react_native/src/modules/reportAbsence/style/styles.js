@@ -1,7 +1,8 @@
 import {StyleSheet} from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet"
 const colors = require("../../../color/Colors").default;
 
-export default styles = StyleSheet.create({
+export default styles = EStyleSheet.create({
     input: {
         width: 300,
         margin: 5,
@@ -50,15 +51,15 @@ export default styles = StyleSheet.create({
     },
     inputFieldFirstColumn: {
         height: "100%",
-        width: 50,
-        marginLeft: 10,
+        flex: 1,
+        marginLeft: "6rem",
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "center"
     },
     inputFieldSecondColumn: {
         // width: 220,
-        flex: 4,
+        flex: 5,
         height: "80%",
         margin: 3,
         // alignSelf: "center",
@@ -80,14 +81,6 @@ export default styles = StyleSheet.create({
         textAlign: "center",
         textAlignVertical: "center"
     },
-    childName: {
-        fontStyle: "italic",
-        textAlignVertical: "center",
-        textAlign: "center",
-        // alignSelf: "center",
-        justifyContent: "center",
-        alignItems: "center"
-    },
     formInputCluster: {
         flex: 9.2,
         width: "100%",
@@ -106,8 +99,8 @@ export default styles = StyleSheet.create({
         elevation: 5,
         shadowOpacity: 0.3,
         backgroundColor: "#fff",
-        paddingBottom: 15,
-        borderRadius: 12
+        paddingBottom: "10rem",
+        borderRadius: "6rem"
     },
     btnPickerDateItem: {
         width: "100%",
@@ -121,7 +114,8 @@ export default styles = StyleSheet.create({
         textAlign: "center",
         textAlignVertical: "center",
         color: "#444",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: "7rem"
     },
     pickDateTime: {
         width: "100%",
@@ -161,17 +155,44 @@ export default styles = StyleSheet.create({
         paddingBottom: 10
     },
     avatar: {
-        marginTop: 10,
-        marginBottom: 5,
+        marginTop: "5rem",
+        marginBottom: "4rem",
         flex: 4,
         width: "100%",
     },
     childName: {
         color: "#666",
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: "8trem",
         textAlign: "center",
         textAlignVertical: "center",
         flex: 1
     },
+    iconBus: {
+        width: "90%",
+        height: "90%",
+        backgroundColor: "#eee",
+        padding: "2rem",
+        borderRadius: "2rem"
+    },
+    pickerStyle: {
+        // inputIOS: {
+        //     color: 'white',
+        //     paddingTop: 13,
+        //     paddingHorizontal: 10,
+        //     paddingBottom: 12,
+        // },
+        // inputAndroid: {
+        //     color: 'white',
+        // },
+        fontSize: "8rem",
+        // color: "#000"
+    },
+    imgCalendar: {
+        width: "25rem",
+        height: "25rem"
+    },
+    txtOk: {
+        fontSize: "8rem"
+    }
 })

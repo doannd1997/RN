@@ -13,12 +13,7 @@ class DefaultInfo extends Component {
   render(){
     return (
       <View style={styles.divInfoInside}>
-        <Icon
-        style={styles.iconDivInfo}
-        name="location"
-        size={28}
-        color={colors.thickTheme}
-      />
+        <Image source={require("../../../../res/image/StudenTracking/location.png")} style={styles.iconOther}/>
       <Text style={[styles.textDivInfoCommon]}>
           {this.props.place}
         </Text>

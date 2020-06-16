@@ -30,7 +30,7 @@ const ToolBar = props=>{
                 // props.dispatch({type: 'LOG_IN'});
                 navigation.navigate('MainLogin');
               }}>
-              <Text style={[commonStyles.textBold, commonStyles.text]}>
+              <Text style={[commonStyles.textBold, commonStyles.text, styles.txtLogIn]}>
                 {global.localization.getLang('lang_login')}
               </Text>
             </TouchableOpacity>
@@ -41,7 +41,7 @@ const ToolBar = props=>{
                 source={require('../../../../../res/image/HomeScreen/aquatic.png')}
                 style={styles.avatar}
               />
-              <Text style={commonStyles.text}>Xin Chào, Developer!</Text>
+              <Text style={[commonStyles.text, styles.txtHeader]}>Xin Chào, Developer!</Text>
             </View>
           ) : null}
         </LinearGradient>

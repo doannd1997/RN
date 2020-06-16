@@ -21,15 +21,15 @@ const ToolBar = props=>{
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>
         <View style={styles.infoDiv}>
-          <Text style={[commonStyles.textBold, commonStyles.text, {fontStyle:"italic"}]}>
+          <Text style={[commonStyles.textBold, commonStyles.text, styles.txtTimeRecorded]}>
             Ghi Nhận Đến 25/10/2019
           </Text>
         </View>
         <View
           style={styles.btnPickDate}
           >
-          <Icon name="calendar" size={22} color={"#fff"}/>
-          <Text style={[commonStyles.Text, {color: "#fff"}]}>
+          <Image source={require("../..//../../../res/image/history/calendar.png")} style={styles.imgPick}/>
+          <Text style={[commonStyles.text, commonStyles.textBold, styles.txtSelect]}>
             {global.localization.getLang("lang_select")}
           </Text>
           <DatePicker

@@ -109,7 +109,7 @@ class ReportAbsenceCom extends Component {
               <View style={[styles.formInputCluster]}>
                 <View style={[styles.inputFieldItem]}>
                   <View style={[styles.inputFieldFirstColumn]}>
-                    <Icon name={'bus-alt'} size={38} color={'#fff'} />
+                    <Image source={require("../../../../res/image/HomeScreen/transport.png")} style={styles.iconBus}/>
                   </View>
                   <View
                     style={[
@@ -117,7 +117,8 @@ class ReportAbsenceCom extends Component {
                       styles.inputFieldSecondColumnWithShadow,
                     ]}>
                     <RNPickerSelect
-                      style={{flex: 1}}
+                      textInputProps={styles.pickerStyle}
+                      useNativeAndroidPickerStyle={false}
                       value={this.props.busType}
                       onValueChange={(itemValue, itemIndex) =>
                         this.props.dispatch({
@@ -156,16 +157,14 @@ class ReportAbsenceCom extends Component {
                       <Text style={[styles.pickDateTime, eStyles.btnPickDateLabel]}>
                         {Times.formatDate(this.props.startDate)}
                       </Text>
-                      <Icon name={'calendar-alt'} size={40} color={'#888'} />
+                        <Image source={require("../../../../res/image/history/calendar.png")} style={styles.imgCalendar}
+                        resizeMethod={"resize"}/>
                       <DatePicker
                         showIcon={false}
                         hideText={true}
                         date={Times.formatDate(new Date().getTime())}
                         mode="date"
-                        // placeholder="select date"
                         format="DD-MM-YYYY"
-                        // minDate="2016-05-01"
-                        // maxDate="2016-06-01"
                         confirmBtnText="Confirm"
                         cancelBtnText="Cancel"
                         style={{width: "100%", height: "100%", alignSelf: "center", position: "absolute"}} 
@@ -180,10 +179,11 @@ class ReportAbsenceCom extends Component {
                       <Text style={[styles.pickDateHeader]}>
                         {global.localization.getLang('lang_date_to')}
                       </Text>
-                      <Text style={[styles.pickDateTime]}>
+                      <Text style={[styles.pickDateTime, eStyles.btnPickDateLabel]}>
                         {Times.formatDate(this.props.endDate)}
                       </Text>
-                      <Icon name={'calendar-alt'} size={40} color={'#888'} />
+                        <Image source={require("../../../../res/image/history/calendar.png")} style={styles.imgCalendar}
+                        resizeMethod={"resize"}/>
                       <DatePicker
                         showIcon={false}
                         hideText={true}
@@ -206,7 +206,7 @@ class ReportAbsenceCom extends Component {
                 <TouchableOpacity
                   style={commonStyles.formBtnConfirm}
                   onPress={this.onConfirm.bind(this)}>
-                  <Text style={[commonStyles.formBtnOkText]}>
+                  <Text style={[commonStyles.formBtnOkText, styles.txtOk]}>
                     {global.localization.getLang('lang_send_report_absence')}
                   </Text>
                 </TouchableOpacity>

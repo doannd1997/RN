@@ -1,21 +1,16 @@
 import {StyleSheet} from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet"
 const colors = require("../../../color/Colors").default;
-export default styles = StyleSheet.create({
+export default styles = EStyleSheet.create({
     divInfo: {
         position: "absolute",
-        width: 350,
-        height: 130,
-        bottom: 3,
+        width: "150rem",
+        height: "55rem",
+        bottom: "2rem",
         flexDirection: "column",
         alignItems: "flex-end",
         justifyContent: "flex-start",
-        borderRadius: 15,
-       
-        // shadowColor: '#000',
-        // shadowOffset: { width: 1, height: 2 },
-        // shadowOpacity: 0.5,
-        // shadowRadius: 2,
-        // elevation: 4,
+        borderRadius: "7rem",
     },
     panelInfo: {
         flex: 1,
@@ -24,7 +19,7 @@ export default styles = StyleSheet.create({
         opacity: 0.9,
         backgroundColor: "grey",
         position: "absolute",
-        borderRadius: 15,
+        borderRadius: "7rem",
         borderColor: "#aaa",
         borderWidth: 1
     },
@@ -37,12 +32,18 @@ export default styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "space-around"
     },
-    btnExpandDivInfo: {
-        width: 45,
+    btnClose: {
+        width: "15rem",
         height: "100%",
-        bottom: 0,
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "red"
+    },
+    btnChangeMode: {
+        width: "40rem",
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center"
     },
     btnCollapseDivInfo: {
         position: "absolute",
@@ -62,32 +63,31 @@ export default styles = StyleSheet.create({
         justifyContent: "center",
         alignSelf: "center",
         position: "absolute",
-        width: 50,
-        height: 35,
-        bottom: 3,
+        width: "30rem",
+        height: "15rem",
+        bottom: "1rem",
         backgroundColor: "#1c1c1c",
-        borderRadius: 3,
+        borderRadius: "2rem",
         opacity: 1,
-        
     },
     btnExpand: {
-        width: 50,
-        height: 35,
-        flex: 1,
+        width: "30rem",
+        height: "15rem",
         alignItems: "center",
         justifyContent: "center"
     },
     divInfoInside: {
         width: "100%",
-        height: 40,
+        flex: 1,
         justifyContent: "flex-start",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
     },
     textDivInfoCommon: {
         marginLeft: 15,
         color: "#fff",
         fontWeight: "bold",
+        fontSize: "6rem"
     },  
     iconDivInfo: {
         width: 50,
@@ -97,31 +97,46 @@ export default styles = StyleSheet.create({
         alignSelf: "center"
     },  
     avatar: {
-        width: 30,
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: "orange",
-        marginRight: 20
+        width: "15rem",
+        height: "15rem",
+        borderRadius: "8rem",
+        backgroundColor: "#eee",
+        marginRight: "3rem"
+    },
+    iconOther: {
+        width: "13rem",
+        height: "13rem",
+        marginRight: "5rem"
     },
     topRightClusterButton: {
         backgroundColor: "#140640",
-        width: 130,
-        height: 30,
+        width: "55rem",
+        height: "12rem",
         // borderRadius: 3,
         justifyContent: "flex-start",
         flexDirection: "row-reverse",
-        alignItems: "flex-end",
-        right: 20
+        alignItems: "center",
+        right: "7rem"
     },
     txtMapType: {
         color: "#fff",
         alignSelf: "center",
         flex: 1,
         textAlign: "center",
-        fontWeight: "bold",
-        // fontStyle: "italic",
+        textAlignVertical: "center",
+        // fontWeight: "bold",
         alignSelf: "center",
-        paddingTop: 5,
-        fontWeight: "200"
+        fontSize: "5.5rem"
+    },
+    markerImage: {
+        width: "20rem",
+        height: "20rem",
+        borderWidth: "0.5rem",
+        borderColor: "green",
+        borderRadius: "10rem"
+    },
+    busImage: {
+        width: "20rem",
+        height: "20rem",
     }
 })

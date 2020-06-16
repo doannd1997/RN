@@ -18,9 +18,10 @@ class BusComponent extends Component {
         description={
             global.localization.getLang('lang_bus_transport')
         }
-        image={require('../../../../res/image/HomeScreen/transport.png')}
         anchor={{x: 0.5, y: 0.5}}
-      />
+      >
+          <Image source={require('../../../../res/image/HomeScreen/transport.png')} style={styles.busImage}/>
+      </Marker>
     );
   }
 }
@@ -36,10 +37,12 @@ class MapViewComponent extends Component {
         provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}
         region={this.props.region}
-        onRegionChange={(region)=>{
-          self.props.dispatch({type: "MAP_VIEW_UPDATE_REGION", region: region})
-        }}
-      >
+        onRegionChange={region => {
+          self.props.dispatch({
+            type: 'MAP_VIEW_UPDATE_REGION',
+            region: region,
+          });
+        }}>
         <Marker
           // draggable
           coordinate={{
@@ -52,10 +55,15 @@ class MapViewComponent extends Component {
               ? global.localization.getLang('lang_on_bus')
               : global.localization.getLang('lang_out_bus')
           }
-          image={require('../../../../res/image/HomeScreen/education.png')}
-          anchor={{x: 0.5, y: 0.5}}
-        />
-        {[0, 1, 2].map((index)=>(<BusComponent {...self.props} index={index}/>))}
+          anchor={{x: 0.5, y: 0.5}}>
+          <Image
+            source={require('../../../../res/image/HomeScreen/education.png')}
+            style={styles.markerImage}
+          />
+        </Marker>
+        {[0, 1, 2].map(index => (
+          <BusComponent {...self.props} index={index} />
+        ))}
       </MapView>
     );
   }

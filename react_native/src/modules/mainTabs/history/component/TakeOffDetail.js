@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text} from "react-native";
+import {View, Text, Image} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
 import Icon from "react-native-vector-icons/AntDesign"
@@ -10,18 +10,16 @@ const commonStyles = require("../../../../common/style/index").default;
 export default TakeOffDetail = (props)=>{
     switch (props.data.action){
         case "UP":
-            var name = "upcircle"
-            var color = "green"
+            var source = UP_IMG;
             break;
         case "DOWN":
-            var name = "downcircle"
-            var color = "orange"
+            var source = DOWN_IMG;
             break;
     }
     return (
       <View style={[styles.sectionListItem]}>
         <View style={[styles.itemActionType]}>
-          <Icon name={name} color={color} size={30} />
+          <Image source={source} style={styles.imgUpDown} />
         </View>
         <LinearGradient
           style={[styles.itemTime]}
@@ -30,7 +28,12 @@ export default TakeOffDetail = (props)=>{
           end={{x: 1, y: 0}}>
           <Text style={styles.itemTimeText}>{props.data.time}</Text>
         </LinearGradient>
-        <View style={styles.itemPlace}><Text>{props.data.place}</Text></View>
+        <View style={styles.itemPlace}>
+          <Text style={styles.txtPlace}>{props.data.place}</Text>
+        </View>
       </View>
     );
-}
+};
+
+const UP_IMG = require("../../../../../res/image/history/up.png");
+const DOWN_IMG = require("../../../../../res/image/history/down.png");
