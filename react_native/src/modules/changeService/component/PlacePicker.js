@@ -73,7 +73,7 @@ const PlacePicker = (props)=>{
           />
         </View>
         {props.searchResultShown ? (
-          <View style={[styles.flatListContainer, {height: Math.min(props.listPlace.length, 4) * 40}]}>
+          <View style={[styles.flatListContainer]}>
             <View style={[styles.flatListPanel]} />
             <FlatList
               showsVerticalScrollIndicator={false}

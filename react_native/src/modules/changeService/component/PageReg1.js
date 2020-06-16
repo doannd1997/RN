@@ -3,11 +3,12 @@ import {View, Text, StyleSheet , Alert, Image} from "react-native";
 import { TouchableOpacity, FlatList } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-// import { CheckBox } from 'react-native-elements';
+import EStyleSheet from "react-native-extended-stylesheet";
 import CheckBox from 'react-native-check-box'
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const commonStyles = require("../../../common/style/index").default;
+const styless = require("../style/styles").default;
 const colors = require("../../../common/style/index").default;
 import {QuickToast} from "../../../utils/Toast";
 
@@ -39,21 +40,10 @@ var OptionContainer = (props)=>{
           });
         }}
         isChecked={checked}
-        checkBoxColor={"#fff"}
-        checkedCheckBoxColor={"cyan"}
-
-        // centercheckedIcon="dot-circle-o"
-        // uncheckedIcon="circle-o"
-        // checked={checked}
-        // checkedColor={'#fff'}
-        // uncheckedColor={'#bbb'}
-        // onIconPress={() => {
-        //   props.dispatch({
-        //     type: 'TOGGLE_PICK_TYPE_METHOD',
-        //   });
-        // }}
+        checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
+        unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styles.labelMethodItem}>{pickTypeStr}</Text>
+      <Text style={styless.labelMethodItem}>{pickTypeStr}</Text>
     </View>
   );
 }
@@ -77,24 +67,10 @@ var PartnerContainer = (props)=>{
           });
         }}
         isChecked={_checked}
-        checkBoxColor={"#fff"}
-        checkedCheckBoxColor={"cyan"}
-
-
-        // centercheckedIcon="dot-circle-o"
-        // uncheckedIcon="circle-o"
-        // checked={_checked}
-        // checkedColor={'#fff'}
-        // uncheckedColor={'#bbb'}
-        // onIconPress={() => {
-        //   console.log(partnerId)
-        //   props.dispatch({
-        //     type: 'TOGGLE_SELECT_PARTER',
-        //     partnerId: partnerId
-        //   });
-        // }}
+        checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
+        unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styles.labelMethodItem}>{partner.name}</Text>
+      <Text style={styless.labelMethodItem}>{partner.name}</Text>
     </View>
   );
 }
@@ -136,7 +112,7 @@ class PageReg1 extends Component {
           <OptionContainer {...this.props} arg={PICK_TYPE.ONLY_STUDENT} />
         </View>
         <View style={styles.partnerHeaderContainer}>
-          <Text style={styles.lblHeaderPartner}>
+          <Text style={styless.lblHeaderPartner}>
             {global.localization.getLang('lang_partner_list')} 
             <Text style={{color: "#fff"}}>
               &nbsp;
@@ -170,7 +146,7 @@ class PageReg1 extends Component {
               onPress={()=>{
                 self.props.toPrevPage();
               }}>
-              <Text style={commonStyles.formBtnOkText}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_prev')}
               </Text>
             </TouchableOpacity>
@@ -181,7 +157,7 @@ class PageReg1 extends Component {
               onPress={()=>{
                 self.props.toNextPage();
               }}>
-              <Text style={commonStyles.formBtnOkText}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_next')}
               </Text>
             </TouchableOpacity>
@@ -216,7 +192,7 @@ const mapStateToProps = (state)=>{
 
 export default connect(mapStateToProps)(PageReg1)
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "column",
@@ -224,22 +200,16 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   pickUpMethodContainer: {
-    flex: 1.5,
+    flex: 3,
   },
   partnerHeaderContainer: {
-    flex: 0.5,
+    flex: 2,
     justifyContent: "center",
-    paddingLeft: 50,
+    paddingLeft: "17rem",
     alignItems: "flex-start"
   },  
-  lblHeaderPartner: {
-    color: "#444",
-    fontWeight: "bold",
-    fontSize: 16,
-    fontStyle: "italic"
-  },
   partnerContainer: {
-    flex: 1.5,
+    flex: 3,
     // backgroundColor: "cyan"
   },
   timeStartContainer: {
@@ -251,7 +221,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btnContainer: {
-    flex: 0.81,
+    flex: 1.6,
     width: "100%",
     flexDirection: "row",
     // justifyContent: "center",
@@ -270,18 +240,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center"
   },
-  labelMethodItem: {
-    color: "#fff",
-    fontWeight: "bold",
-    flex: 1,
-    // left: -20,
-    flex: 5
-  },
-  lblStartDateService: {
-    color: "#333",
-    // fontWeight: "bold",
-    fontStyle: "italic",
-  },
   btnTimeContainer: {
     height: "100%",
     width: "50%",
@@ -296,9 +254,4 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 4,
   },
-  lblBtnTimeStart: {
-    color: "#ddd",
-    fontWeight: "bold",
-    textDecorationLine: "underline"
-  }
 })

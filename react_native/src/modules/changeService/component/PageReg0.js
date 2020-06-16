@@ -12,11 +12,9 @@ const colors = require("../../../color/Colors").default;
 const MapViewCom = require("./MapView").default;
 const YearPickerCom = require("./YearPicker").default;
 import { Pages } from 'react-native-pages';
-const ToolBar = require("./ToolBar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("./PlacePicker").default;
-const CommonCheckBox = require("../../../common/component/CheckBox").default;
 
 const CHANGE_TYPE = {
   HOME: "HOME",
@@ -41,15 +39,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={{flex: 1, padding: 3, justifyContent: "center"}}
-                onClick={()=>{
+                // style={styles.checkbox}
+                onClick={() => {
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
                 isChecked={this.props.pickType == 'HOME'}
-                checkBoxColor={"#fff"}
-                checkedCheckBoxColor={"cyan"}
+                checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
+                unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styles.imgCheckBox}/>}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -78,15 +76,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={{flex: 1, padding: 3, justifyContent: "center"}}
-                onClick={()=>{
+                style={{flex: 1, padding: 3, justifyContent: 'center'}}
+                onClick={() => {
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
                 isChecked={this.props.pickType == 'PLACE'}
-                checkBoxColor={"#fff"}
-                checkedCheckBoxColor={"cyan"}
+                checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
+                unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styles.imgCheckBox}/>}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -112,12 +110,13 @@ class PageReg0 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-        <TouchableOpacity
+          <TouchableOpacity
             style={commonStyles.formBtnConfirm}
             onPress={() => {
+              console.log('=>>>> To Next Page');
               self.props.toNextPage();
             }}>
-            <Text style={commonStyles.formBtnOkText}>
+            <Text style={[commonStyles.formBtnOkText, styles.txtBottomButton]}>
               {global.localization.getLang('lang_next')}
             </Text>
           </TouchableOpacity>

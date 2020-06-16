@@ -59,6 +59,8 @@ var defaultState = {
     {id: 7, name: 'Trần Quang Minh', checked: false},
     {id: 8, name: 'Trần Quang Vũ', checked: false},
   ],
+  policyAgree: false,
+  showAgreement: false
 };
 
 
@@ -140,6 +142,14 @@ const reducer = (state, action)=>{
           return guardian;
       })
       return {...state, guardians: guardians};
+    case "TOGGLE_POLICY_AGREE":
+      return {...state, policyAgree: !state.policyAgree};
+    case "TOGGLE_SHOW_AGREEMENT":
+      return {...state, showAgreement: !state.showAgreement};
+    case "ACCEPT_AND_HIDE_AGREEMENT":
+      return {...state, policyAgree: true, showAgreement: false};
+    case "REJECT_AND_HIDE_AGREEMENT":
+      return {...state, policyAgree: false, showAgreement: false};
     default:
       return state;
   }

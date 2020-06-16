@@ -21,8 +21,8 @@ class YearPicker extends Component{
                   year: this.props.yearList[index],
                 });
               }}
-              nextButton={<Text style={{color: "#fff", fontSize: 35}}>›</Text>}
-              prevButton={<Text style={{color: "#fff", fontSize: 35}}>‹</Text>}
+              nextButton={<Text style={styles.btnYearPickerNavigate}>›</Text>}
+              prevButton={<Text style={styles.btnYearPickerNavigate}>‹</Text>}
               >
               {comArr}
             </Swiper>

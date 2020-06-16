@@ -76,7 +76,7 @@ class MyPageCom extends Component{
 }
 
 
-class Main extends Component {
+class RegisterService extends Component {
   
   render() {
     
@@ -93,7 +93,7 @@ class Main extends Component {
             style={commonStyles.indicator}
           />
         ) : null}
-        <ToolBar style={commonStyles.toolBar} params={{title: "lang_change_or_cancel_service", navigation: "HomeScreen"}}/>
+        <ToolBar style={commonStyles.toolBar} {...this.props} params={{title: "lang_change_or_cancel_service", navigation: "HomeScreen"}}/>
         <View style={styles.content}>
           {this.props.pickingAddress ? <MapViewCom/> : null}
           {this.props.pickingAddress ? (
@@ -121,8 +121,7 @@ class Main extends Component {
                 </View>
               </View>
             </View>
-            </View>
-          )}
+            </View>)}
           {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (
             <View style={styles.selectPlaceContainer}>
               <TouchableOpacity
@@ -130,7 +129,7 @@ class Main extends Component {
                 onPress={() => {
                   this.props.dispatch({type: 'CHOOSE_PLACE'});
                 }}>
-                <Text style={commonStyles.formBtnOkText}>
+                <Text style={[commonStyles.formBtnOkText, styles.txtBtnSelectPlace]}>
                   {global.localization.getLang('lang_select_place')}
                 </Text>
               </TouchableOpacity>
@@ -160,4 +159,4 @@ const mapStateToProps = (state)=>{
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);
 
-export default connect(mapStateToProps)(Main)
+export default connect(mapStateToProps)(RegisterService)
