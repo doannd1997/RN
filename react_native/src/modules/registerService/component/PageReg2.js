@@ -3,12 +3,13 @@ import {View, Text, StyleSheet , Alert, Image} from "react-native";
 import { TouchableOpacity, FlatList } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-// import { CheckBox } from 'react-native-elements';
+import EStyleSheet from "react-native-extended-stylesheet";
 import CheckBox from 'react-native-check-box'
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../color/Colors").default;
+const styless = require("../style/styles").default;
 import {QuickToast} from "../../../utils/Toast";
 
 const TimeUtils = require("../../../utils/Times").default;
@@ -36,22 +37,10 @@ var GuardianContainer = (props)=>{
           });
         }}
         isChecked={_checked}
-        checkBoxColor={"#fff"}
-        checkedCheckBoxColor={"cyan"}
-
-        // centercheckedIcon="dot-circle-o"
-        // uncheckedIcon="circle-o"
-        // checked={_checked}
-        // checkedColor={'#fff'}
-        // uncheckedColor={'#bbb'}
-        // onIconPress={() => {
-        //   props.dispatch({
-        //     type: 'TOGGLE_SELECT_GUARDIAN',
-        //     guardianId: guardianId
-        //   });
-        // }}
+        checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
+        unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styles.labelMethodItem}>{guardian.name}</Text>
+      <Text style={styless.labelMethodItem}>{guardian.name}</Text>
     </View>
   );
 }
@@ -68,11 +57,11 @@ class PageReg2 extends Component {
     return (
       <View style={styles.page}>
         <View style={styles.guardianHeaderContainer}>
-          <Text style={styles.lblHeaderGuardians}>
+          <Text style={styless.lblHeaderGuardians}>
             {global.localization
               .getLang('lang_select_guardians_max')
               .replace('@max@', GUARDIAN_MAX)}
-            <Text style={{color: '#fff'}}>
+            <Text style={[styless.lblHeaderGuardians, {color: '#fff'}]}>
               &nbsp; (
               {
                 self.props.guardians.filter(guardian => guardian.checked)
@@ -107,21 +96,12 @@ class PageReg2 extends Component {
                 });
               }}
               isChecked={self.props.policyAgree}
-              checkBoxColor={"#fff"}
-              checkedCheckBoxColor={"cyan"}
-
-              // checked={self.props.policyAgree}
-              // checkedColor={'cyan'}
-              // uncheckedColor={'#bbb'}
-              // onIconPress={() => {
-              //   self.props.dispatch({
-              //     type: 'TOGGLE_POLICY_AGREE',
-              //   });
-              // }}
+              checkedImage={<Image source={require("../../../../res/image/service/s_checked.png")} style={styless.imgPolicyCheckBox}/>}
+              unCheckedImage={<Image source={require("../../../../res/image/service/s_unchecked.png")} style={styless.imgPolicyCheckBox}/>}
             />
           </View>
 
-          <Text style={styles.lblPolicyHeader}>
+          <Text style={styless.lblPolicyHeader}>
             {global.localization.getLang('lang_agree_policy')}&nbsp;&nbsp;
           </Text>
           <View style={styles.policyBtnContainer}>
@@ -129,7 +109,7 @@ class PageReg2 extends Component {
               onPress={()=>{
                 self.props.dispatch({type: "TOGGLE_SHOW_AGREEMENT"})
               }}>
-              <Text style={styles.lblPolicyBtn}>
+              <Text style={[styless.lblPolicyBtn]}>
                 &nbsp;{global.localization.getLang('lang_policy')}
               </Text>
             </TouchableOpacity>
@@ -140,7 +120,7 @@ class PageReg2 extends Component {
             <TouchableOpacity
               style={commonStyles.formBtnCancel}
               onPress={this.props.toPrevPage}>
-              <Text style={commonStyles.formBtnOkText}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_prev')}
               </Text>
             </TouchableOpacity>
@@ -187,7 +167,7 @@ class PageReg2 extends Component {
                   QuickToast.show(global.localization.getLang("lang_please_agree_policy"))
                 }
               }}>
-              <Text style={commonStyles.formBtnOkText}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_confirm')}
               </Text>
             </TouchableOpacity>
@@ -212,7 +192,7 @@ const mapStateToProps = (state)=>{
 
 export default connect(mapStateToProps)(PageReg2)
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   page: {
     flex: 1,
     flexDirection: "column",
@@ -228,12 +208,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     alignItems: "flex-start"
   },  
-  lblHeaderGuardians: {
-    color: "#444",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontStyle: "italic"
-  },
   guardiansContainer: {
     flex: 6.5,
     // backgroundColor: "cyan",
@@ -277,18 +251,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center"
   },
-  labelMethodItem: {
-    color: "#fff",
-    fontWeight: "bold",
-    flex: 1,
-    // left: -20,
-    flex: 4
-  },
-  lblStartDateService: {
-    color: "#333",
-    // fontWeight: "bold",
-    fontStyle: "italic",
-  },
   btnTimeContainer: {
     height: "100%",
     width: "50%",
@@ -303,21 +265,4 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 4,
   },
-  lblBtnTimeStart: {
-    color: "#ddd",
-    fontWeight: "bold",
-    textDecorationLine: "underline"
-  },
-  lblPolicyHeader: {
-    color: "#ddd",
-    paddingLeft: -30,
-    flex: 3.6,
-    textAlign: "right"
-  },
-  lblPolicyBtn: {
-    fontStyle: "italic",
-    textDecorationLine: "underline",
-    fontWeight: "bold",
-    color: "#002"
-  }
 })

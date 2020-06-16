@@ -130,7 +130,7 @@ class RegisterService extends Component {
                 onPress={() => {
                   this.props.dispatch({type: 'CHOOSE_PLACE'});
                 }}>
-                <Text style={commonStyles.formBtnOkText}>
+                <Text style={[commonStyles.formBtnOkText, styles.txtBtnSelectPlace]}>
                   {global.localization.getLang('lang_select_place')}
                 </Text>
               </TouchableOpacity>

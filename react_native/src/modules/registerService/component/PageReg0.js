@@ -39,15 +39,15 @@ class PageReg0 extends Component {
           <View style={styles.pickItem}>
             <View style={styles.pickCell0}>
               <CheckBox
-                style={{flex: 1, padding: 3, justifyContent: 'center'}}
+                // style={styles.checkbox}
                 onClick={() => {
                   this.props.dispatch({
                     type: 'TOGGLE_PICK_TYPE',
                   });
                 }}
                 isChecked={this.props.pickType == 'HOME'}
-                checkBoxColor={'#fff'}
-                checkedCheckBoxColor={'cyan'}
+                checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
+                unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styles.imgCheckBox}/>}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -83,8 +83,8 @@ class PageReg0 extends Component {
                   });
                 }}
                 isChecked={this.props.pickType == 'PLACE'}
-                checkBoxColor={'#fff'}
-                checkedCheckBoxColor={'cyan'}
+                checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
+                unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styles.imgCheckBox}/>}
               />
             </View>
             <View style={styles.pickCell1}>
@@ -116,7 +116,7 @@ class PageReg0 extends Component {
               console.log('=>>>> To Next Page');
               self.props.toNextPage();
             }}>
-            <Text style={commonStyles.formBtnOkText}>
+            <Text style={[commonStyles.formBtnOkText, styles.txtBottomButton]}>
               {global.localization.getLang('lang_next')}
             </Text>
           </TouchableOpacity>

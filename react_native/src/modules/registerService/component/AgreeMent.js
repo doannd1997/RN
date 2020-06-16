@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const commonStyles = require("../../../common/style").default;
+const styless = require("../style/styles").default;
 
 class Agreement extends Component{
     render(){
@@ -24,7 +25,7 @@ class Agreement extends Component{
                   onPress={()=>{
                     self.props.dispatch({type: "REJECT_AND_HIDE_AGREEMENT"})
                   }}>
-                  <Text style={commonStyles.formBtnOkText}>
+                  <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                     {global.localization.getLang('lang_reject')}
                   </Text>
                 </TouchableOpacity>
@@ -35,7 +36,7 @@ class Agreement extends Component{
                   onPress={() => {
                     self.props.dispatch({type: "ACCEPT_AND_HIDE_AGREEMENT"})
                   }}>
-                  <Text style={commonStyles.formBtnOkText}>
+                  <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                     {global.localization.getLang('lang_accept')}
                   </Text>
                 </TouchableOpacity>

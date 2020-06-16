@@ -9,6 +9,7 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 import {QuickToast} from "../../../utils/Toast";
+import style from "../../../common/style";
 
 const API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4"
 const LANG = "vn";
@@ -69,7 +70,6 @@ class MapViewComponent extends Component {
               latitude: this.props.placeSelected.latitude,
               longitude: this.props.placeSelected.longitude,
             }}
-            image={require('../../../../res/image/HomeScreen/pin.png')}
             draggable={true}
             onPress={()=>{
               
@@ -85,6 +85,7 @@ class MapViewComponent extends Component {
               this.marker = _marker;
             }}
           >
+            <Image source={require('../../../../res/image/HomeScreen/pin.png')} style={styles.imgPin}/>
             <Callout>
               <Text style={{fontWeight: "bold"}}>
                 {this.props.placeSelected.title}
