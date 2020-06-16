@@ -3,9 +3,9 @@ import {createStore} from "redux";
 const defaultState = {
     curTab: 0,
     parentAvatar: require("../../../../../res/image/Account/man.png"),
-    parentName: "Phụ Huynh",
+    parentName: "[ Tên Phụ Huynh ]",
     studentAvatar: require("../../../../../res/image/HomeScreen/education.png"),
-    studentName: "Học Sinh"
+    studentName: "[ Tên Học Sinh ]"
 }
 
 const reducer = (state, action)=>{

@@ -44,14 +44,25 @@ export default EStyleSheet.create({
     parentNameContainer: {
         width: "90%",
         height: "20rem",
-        backgroundColor: "#187ede",
+        // backgroundColor: "#187ede",
         justifyContent: "center",
         borderRadius: "10rem"
     },
+    btnLogOutContainer: {
+        width: "90%",
+        height: "20rem",
+        backgroundColor: "#f00",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "4rem",
+        marginTop: "10rem"
+    },
     parentName: {
-        fontSize: "12rem",
+        fontSize: "10rem",
         textAlign: "center",
-        borderRadius: "10rem",
-        color: "#fff"
+        color: "grey"
+    },
+    txtLogOut: {
+        fontSize: "10rem"
     }
 })

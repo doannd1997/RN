@@ -1,7 +1,9 @@
 import React, {Component} from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native"
+import {View, Text, Alert, Image, TouchableOpacity} from "react-native"
 import {connect} from "react-redux"
 import ImagePicker from 'react-native-image-picker';
+
+import {QuickToast} from "../../../../utils/Toast";
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
@@ -76,6 +78,52 @@ class ParentTab extends Component{
                   <Text style={styles.parentName}>
                     {this.props.parentName}
                   </Text>
+                </View>
+                <View style={styles.btnLogOutContainer}>
+                  <TouchableOpacity style={commonStyles.fullBtn}
+                    onPress={()=>{
+                      var header = global.localization.getLang("lang_noti_header");
+                      var content = global.localization.getLang("lang_confirm_log_out");
+                      var okLabel = global.localization.getLang(
+                        'lang_confirm_ok',
+                      );
+                      var cancelLabel = global.localization.getLang(
+                        'lang_confirm_cancel',
+                      );
+                      Alert.alert(
+                        header,
+                        content,
+                        [
+                          // {
+                          //   // text: global.localization.getLang(langItem),
+                          //   // onPress: () => console.log('May be Pressed'),
+                          // },
+                          {
+                            text: okLabel,
+                            onPress: () => {
+                              QuickToast.show("Success");
+                            },
+                          },
+                          {
+                            text: cancelLabel,
+                            onPress: () => {
+                              QuickToast.show("Canceled");
+                            },
+                          },
+                        ],
+                        {cancelable: true},
+                      );
+                    }}
+                  >
+                    <Text
+                      style={[
+                        commonStyles.textBold,
+                        commonStyles.text,
+                        styles.txtLogOut,
+                      ]}>
+                      {global.localization.getLang('lang_log_out')}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
