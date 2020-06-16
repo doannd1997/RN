@@ -9,6 +9,7 @@ export default styles = EStyleSheet.create({
 
     },
     tabBar: {
-        height: "18rem"
+        height: "18rem",
+        backgroundColor: "#fff"
     }
 })
