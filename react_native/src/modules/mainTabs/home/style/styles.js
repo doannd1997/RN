@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet"
+const colors = require("../../../../color/Colors").default;
 
 export default (styles = EStyleSheet.create({
   btnLogin: {
@@ -38,7 +39,7 @@ export default (styles = EStyleSheet.create({
     flex: 1,
     width: '100%',
     padding: 5,
-    backgroundColor: "#fff"
+    backgroundColor: colors.screenBg
   },
   buttonGrid: {
     width: '100%',

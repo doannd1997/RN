@@ -4,7 +4,7 @@ const colors = require("../../../../color/Colors").default;
 
 export default EStyleSheet.create({
   sectionListHeader: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.screenBg,
     height: "10rem",
     marginTop: "2rem",
     marginLeft: "2rem",

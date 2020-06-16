@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from '../../childrenTracking/redux/Redux';
 
 const colors = require("../../../color/Colors").default;
+const styles = require("../style/styles").default;
 
 const HomeComponent = require("../../mainTabs/home/screen/HomeTab").default;
 const HistoryComponent = require("../../mainTabs/history/screen/History").default;
@@ -86,9 +87,10 @@ export default class HomeScreen extends Component {
             tabBarOptions={{
               activeTintColor: colors.theme2,
               allowFontScaling: true,
-              labelStyle: {fontWeight: 'bold'},
+              labelStyle: styles.tabLbl,
+              style: styles.tabBar
             }}
-            style={{backgroundColor: 'cyan', flex: 1}}>
+            >
             <Tab.Screen
               name="Home"
               component={Home}
