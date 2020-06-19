@@ -54,10 +54,14 @@ class PopUpConmpose extends Component {
                   <TextInput
                     style={styles.txtMailContent}
                     multiline={true}
-                    onChangeText={text => {
-                      console.log(text);
-                    }}
                     placeholder={'...'}
+                    value={this.props.composeMailContent}
+                    onChangeText={(text)=>{
+                      this.props.dispatch({
+                        type: "TYPE_COMPOSE_MAIL",
+                        composeMailContent: text
+                      })
+                    }}
                   />
                 </View>
                 <View style={styles.formComposeFooter}>
@@ -67,15 +71,16 @@ class PopUpConmpose extends Component {
                     <TouchableOpacity
                       style={styles.btnSend}
                       onPress={() => {
+                        var mail = {
+                          header: "New Mail",
+                          content: this.props.composeMailContent,
+                          time: new Date().getTime()
+                        }
                         self.props.dispatch({
-                          type: 'CLOSE_COMPOSE_MAIL',
+                          type: 'SEND_MAIL',
+                          mail: mail
                         });
                       }}>
-                      {/* <Text style={styles.btnSendLbl}>
-                        {globalThis.localization.getLang(
-                          'lang_send_mail',
-                        )}
-                      </Text> */}
                       <Image
                         style={styles.imgSendMail}
                         source={require('../../../../../res/image/popup/send.png')}
@@ -92,7 +97,8 @@ class PopUpConmpose extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        isDisplayPopup: state.isDisplayPopup
+        isDisplayPopup: state.isDisplayPopup,
+        composeMailContent: state.composeMailContent
     }
 };
 

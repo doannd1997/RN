@@ -20,8 +20,9 @@ class MailListCom extends Component{
                 }}
                 refreshing={false}
                 onRefresh={()=>{
-                    // console.log(111)
+                    
                 }}
+                ref={"mailList"}
             />
         )
     }

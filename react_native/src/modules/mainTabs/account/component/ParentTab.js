@@ -39,17 +39,11 @@ class ParentTab extends Component{
                   onPress={() => {
                     ImagePicker.showImagePicker(options, response => {
                       if (response.didCancel) {
-                        console.log('User cancelled image picker');
+                        
                       } else if (response.error) {
-                        console.log(
-                          'ImagePicker Error: ',
-                          response.error,
-                        );
+                        
                       } else if (response.customButton) {
-                        console.log(
-                          'User tapped custom button: ',
-                          response.customButton,
-                        );
+                        
                       } else {
                         var source;
 
@@ -99,10 +93,6 @@ class ParentTab extends Component{
                         header,
                         content,
                         [
-                          // {
-                          //   // text: global.localization.getLang(langItem),
-                          //   // onPress: () => console.log('May be Pressed'),
-                          // },
                           {
                             text: okLabel,
                             onPress: () => {

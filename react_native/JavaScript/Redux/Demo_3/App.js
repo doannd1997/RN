@@ -13,12 +13,9 @@ export default class App extends Component{
     getTempByCityName(){
         getTemp("Ha Noi")
         .then((result)=>{
-            console.log("temp " + result)
         })
         .catch((e)=>{
-            console.log("error " + e)
         });
-        console.log("111")
     };
     render(){
         return <Provider store = {store}>

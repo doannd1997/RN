@@ -20,10 +20,14 @@ class Main extends Component{
       
     }
     render(){
+        var self = this;
         return (
           <View style={styles.container}>
-            <ToolBar />
+            <ToolBar chooseCallback={(param)=>{
+              self.refs.sectionList.scrollToLocation(param);
+            }}/>
             <SectionList
+              ref={"sectionList"}
               showsVerticalScrollIndicator={false}
               style={styles.sectionList}
               sections={this.props.history}
@@ -31,11 +35,10 @@ class Main extends Component{
               renderItem={({item, index}) => (
                 <Item {...this.props} data={item} index={index} />
               )}
-              renderSectionHeader={({section: {title}}) => (
-                <Header {...this.props} title={title} />
+              renderSectionHeader={({section: {date}}) => (
+                <Header {...this.props} date={date} />
               )}
               initialNumToRender={10}
-              // onEndReached={()=>{console.log("end reched")}}
               progressViewOffset={100}
               onRefresh={this.onSectionListRefresh.bind(this)}
               refreshing={false}

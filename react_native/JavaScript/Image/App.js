@@ -23,7 +23,6 @@ class MainView extends React.Component {
     })
     .catch((err) => {
        //Error Loading Images
-       console.log("err loading image " + err.toString())
     });
   };
   render() {

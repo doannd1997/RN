@@ -15,21 +15,6 @@ const MailComponent = require("../../mainTabs/mail/screen/Mail").default;
 const AccountComponent = require("../../mainTabs/account/screen/ScreenAccount").default;
 
 function Home(props) {
-  // const isFocused = useIsFocused();
-  // console.log(">>>> " + JSON.stringify(props))
-  // console.log(">>pp " + isFocused);
-  // for(var m in props.navigation) {
-  //   if(typeof props.navigation[m] == "function") {
-  //       console.log(m + " //");
-  //   }
-  // }
-
-  // for(var m in props.route) {
-  //   if(typeof props.navigation[m] == "function") {
-  //       console.log(m + " \\");
-  //   }
-  // }
-  
   return (
     <HomeComponent {...props} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     </HomeComponent>

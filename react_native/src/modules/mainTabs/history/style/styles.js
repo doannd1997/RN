@@ -105,7 +105,8 @@ export default EStyleSheet.create({
   },
   txtTimeRecorded: {
     // fontStyle: 'italic',
-    fontSize: "6.5rem"
+    fontSize: "6.5rem",
+    color: "#fff"
   },
   txtSelect: {
       fontSize: "6.5rem"

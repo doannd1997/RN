@@ -113,7 +113,6 @@ class PageReg0 extends Component {
           <TouchableOpacity
             style={commonStyles.formBtnConfirm}
             onPress={() => {
-              console.log('=>>>> To Next Page');
               self.props.toNextPage();
             }}>
             <Text style={[commonStyles.formBtnOkText, styles.txtBottomButton]}>

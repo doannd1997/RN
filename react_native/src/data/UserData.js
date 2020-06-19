@@ -79,15 +79,6 @@ const asynStorage = require("../storage/asyncStore").default;
     }
 }
 
-
-// userData.DEFAULT_LANG =
-//   Platform.OS === 'ios'
-//     ? NativeModules.SettingsManager.settings.AppleLocale ||
-//       NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
-//     : NativeModules.I18nManager.localeIdentifier;
-
-// console.log("language: " + userData.DEFAULT_LANG);
-
 userData.DEFAULT_LANG = "vi";
 
 userData.KEY_LANG = "KEY_LANG";

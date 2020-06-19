@@ -79,19 +79,11 @@ class PopUpConmpose extends Component {
                           this.options,
                           response => {
                             if (response.didCancel) {
-                              console.log(
-                                'User cancelled image picker',
-                              );
+                              
                             } else if (response.error) {
-                              console.log(
-                                'ImagePicker Error: ',
-                                response.error,
-                              );
+                              
                             } else if (response.customButton) {
-                              console.log(
-                                'User tapped custom button: ',
-                                response.customButton,
-                              );
+                              
                             } else {
                               var source;
 
@@ -209,7 +201,6 @@ class PopUpConmpose extends Component {
                     <TouchableOpacity
                       style={styles.btnCreateForm}
                       onPress={() => {
-                        console.log(this.props.pseudoGuardian)
                         var guardian = this.props.pseudoGuardian;
                         this.props.dispatch(
                           {

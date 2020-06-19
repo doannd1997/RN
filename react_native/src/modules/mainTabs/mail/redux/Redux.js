@@ -10,6 +10,7 @@ var defaultState = {
   isReading: false,
   curTab: 0,
   isDisplayPopup: false,
+  composeMailContent: ""
 };
 
 for (var i=0; i<15; i++){
@@ -29,11 +30,16 @@ const reducer = (state, action)=>{
     case "SET_TAB":
       return {...state, curTab: action.curTab};
     case "OPEN_SEND_MAIL":
-    case "SEND_MAIL":
-      return {...state, isDisplayPopup: true};
+      return {...state, isDisplayPopup: true, composeMailContent: ""};
     case "CLOSE_COMPOSE_MAIL":
       return {...state, isDisplayPopup: false};
-    break;
+    case "SEND_MAIL":
+      var mail = action.mail;
+      var sentMail = state.sentMail;
+      sentMail.unshift(mail);
+      return {...state, isDisplayPopup: false, sentMail: sentMail}
+    case "TYPE_COMPOSE_MAIL":
+      return {...state, composeMailContent: action.composeMailContent}
   }
     return state;
 }

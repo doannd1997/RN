@@ -133,10 +133,6 @@ class PageReg2 extends Component {
                   header,
                   content,
                   [
-                    // {
-                    //   // text: global.localization.getLang(langItem),
-                    //   // onPress: () => console.log('May be Pressed'),
-                    // },
                     {
                       text: okLabel,
                       onPress: () => {
@@ -175,10 +171,6 @@ class PageReg2 extends Component {
                   header,
                   content,
                   [
-                    // {
-                    //   // text: global.localization.getLang(langItem),
-                    //   // onPress: () => console.log('May be Pressed'),
-                    // },
                     {
                       text: okLabel,
                       onPress: () => {

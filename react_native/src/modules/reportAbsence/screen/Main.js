@@ -59,10 +59,6 @@ class ReportAbsenceCom extends Component {
       header,
       content,
       [
-        // {
-        //   // text: global.localization.getLang(langItem),
-        //   // onPress: () => console.log('May be Pressed'),
-        // },
         {
           text: okLabel,
           onPress: () => {
@@ -72,7 +68,7 @@ class ReportAbsenceCom extends Component {
         {
           text: cancelLabel,
           onPress: () => {
-            console.log('Cancel Report');
+            
           },
         },
       ],

@@ -44,7 +44,6 @@ const onPress=(text, props)=>{
           });
           props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
       } else {
-        console.log("Request get Place Failed")
       }
     };
 

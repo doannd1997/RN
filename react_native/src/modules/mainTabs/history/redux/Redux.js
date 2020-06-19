@@ -3,7 +3,7 @@ import {createStore} from "redux";
 const defaultState = {
   history: [
     {
-      title: '25/10/2019',
+      date: new Date().getTime(),
       data: [{
         time: "10:15:23",
         place: "Khu đô thị Time City",
@@ -24,9 +24,14 @@ const defaultState = {
   isPickingDate: false
 };
 
-for (var i=0; i<5; i++){
+
+const ONE_DAY = 1000*60*60*24;
+
+for (var i=0; i<12; i++){
     var last = defaultState.history[defaultState.history.length-1];
-    last.action = (i%2==0)? "DOWN" : "UP"
+    last = {...last};
+    last.action = (i%2==0)? "DOWN" : "UP";
+    last.date -= ONE_DAY;
     defaultState.history.push(last)
 }
 

@@ -49,17 +49,15 @@ var pressOnGrid = (props, methodName, navigation)=>{
         header,
         content,
         [
-          // {
-          //   // text: global.localization.getLang(langItem),
-          //   // onPress: () => console.log('May be Pressed'),
-          // },
           {
             text: okLabel,
             onPress: () => {navigateToLogIn(navigation)},
           },
           {
             text: cancelLabel,
-            onPress: () => {console.log('Cancel login')},
+            onPress: () => {
+              
+            },
           },
         ],
         {cancelable: true},
