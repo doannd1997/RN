@@ -1,5 +1,5 @@
 import React, {Component, useState} from "react";
-import {View, FlatList, Text, TouchableOpacity, TextInput} from "react-native";
+import {View, FlatList, Text, TouchableOpacity, TextInput, Image} from "react-native";
 import {connect} from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo'
 
@@ -87,11 +87,7 @@ const PlacePicker = (props)=>{
                       onPress={() => {
                         props.dispatch({type: "SELECT_PLACE", placeSelected: {latitude: item.position.lat, longitude: item.position.lng, title: item.title}});
                       }}>
-                      <Icon
-                        name={'location-pin'}
-                        size={27}
-                        color={'#333'}
-                      />
+                      <Image style={styles.imgPlaceSearch} source={require("../../../../res/image/HomeScreen/location.png")}/>
                       <Text style={styles.txtPlaceItem}>{item.title}</Text>
                     </TouchableOpacity>
                   </View>

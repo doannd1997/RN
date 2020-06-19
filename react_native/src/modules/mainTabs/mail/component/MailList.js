@@ -11,12 +11,16 @@ class MailListCom extends Component{
     render(){
         return (
             <FlatList style={[{flex: 1, backgroundColor: colors.screenBg}]}
-            showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
                 initialNumToRender={10}
                 data={this.props.curTab == 0 ? this.props.inbox : this.props.sentMail}
                 keyExtractor={(data, key)=>key}
                 renderItem={(data)=>{
                     return <Mail data={data}/>
+                }}
+                refreshing={false}
+                onRefresh={()=>{
+                    // console.log(111)
                 }}
             />
         )

@@ -31,9 +31,10 @@ export default (styles = EStyleSheet.create({
     width: "15rem",
     height: "15rem",
     borderRadius: "10rem",
-    borderWidth: "0.2rem",
+    // borderWidth: "0.2rem",
     borderColor: 'grey',
     margin: "1rem",
+    backgroundColor: "#eee"
   },
   gridView: {
     flex: 1,

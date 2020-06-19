@@ -326,4 +326,8 @@ export default (styles = EStyleSheet.create({
     fontSize: "5.6rem",
     fontStyle: "italic"
   },
+  imgPlaceSearch: {
+    width: "10rem",
+    height: "10rem"
+  }
 }));

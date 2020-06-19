@@ -38,10 +38,10 @@ const ToolBar = props=>{
           {props.logedIn ? (
             <View style={styles.toolBarUser}>
               <Image
-                source={require('../../../../../res/image/HomeScreen/aquatic.png')}
+                source={props.parentAvatar}
                 style={styles.avatar}
               />
-              <Text style={[commonStyles.text, styles.txtHeader]}>Xin Chào, Developer!</Text>
+              <Text style={[commonStyles.text, styles.txtHeader]}>{props.parentName}</Text>
             </View>
           ) : null}
         </LinearGradient>
@@ -50,7 +50,9 @@ const ToolBar = props=>{
 }
 
 const mapStateToProps = state => ({
-    logedIn: state.logedIn
+    logedIn: state.logedIn,
+    parentName: state.parentName,
+    parentAvatar: state.parentAvatar
   });
   
 export default connect(mapStateToProps)(ToolBar);

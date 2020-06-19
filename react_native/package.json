@@ -28,6 +28,7 @@
     "expo-asset": "^8.1.4",
     "expo-constants": "^9.0.0",
     "expo-font": "^8.1.1",
+    "jetifier": "^1.6.6",
     "json-beautify": "^1.1.1",
     "json-formatter-js": "^2.3.4",
     "json-string-formatter": "^1.0.1",
