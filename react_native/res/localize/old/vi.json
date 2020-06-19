@@ -93,5 +93,6 @@
     "lang_confirm_update_guardian": "Xác Nhận Cập Nhật Thông Tin Giám Hộ ?",
     "lang_parent": "Phụ Huynh",
     "lang_student": "Học Sinh",
-    "lang_log_out": "Đăng Xuất"
+    "lang_log_out": "Đăng Xuất",
+    "lang_confirm_log_out": "Xác Nhận Thoát Đăng Nhập Tài Khoản ?"
 }

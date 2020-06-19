@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useIsFocused } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Provider } from "react-redux";
-import store from '../../childrenTracking/redux/Redux';
+import store from '../redux/Redux';
 
 const colors = require("../../../color/Colors").default;
 const styles = require("../style/styles").default;
@@ -52,7 +52,8 @@ function Mail() {
 
 function Account() {
     return (
-      <AccountComponent/>
+      <AccountComponent style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      </AccountComponent>
     );
   }
 
@@ -72,7 +73,8 @@ export default class HomeScreen extends Component {
         }
         if (params.logedIn === false){
           store.dispatch({type: "LOG_OUT"});
-        }
+        };
+        delete this.props.route.params;
       }
 
       return (

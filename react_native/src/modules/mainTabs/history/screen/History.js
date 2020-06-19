@@ -4,6 +4,7 @@ import {connect, Provider} from "react-redux"
 
 const HistoryComponent = require("./Main").default;
 const store = require("../redux/Redux").default;
+const NotLogInCom = require("../../../../common/component/NotLogInCom").default;
 
 class History extends Component{
     render(){
@@ -13,9 +14,7 @@ class History extends Component{
             {this.props.logedIn ? (
               <HistoryComponent style={styles.container} />
             ) : (
-              <Text style={[commonStyle.textBold, {color: "grey"}]}>
-                {global.localization.getLang('lang_noti_login')}
-              </Text>
+              <NotLogInCom/>
             )}
           </View>
           </Provider>

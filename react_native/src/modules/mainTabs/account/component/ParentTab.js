@@ -8,17 +8,22 @@ import {QuickToast} from "../../../../utils/Toast";
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
 
-const options = {
-    title: global.localization.getLang("lang_select_image"),
-    // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-    },
-  };
+var opstions;
 
 class ParentTab extends Component{
+    constructor(){
+      super();
+      options = {
+        title: global.localization.getLang("lang_select_image"),
+        // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+    }
     render(){
+      var self = this;
         return (
           <View style={[styles.container]}>
             <View style={styles.coverContainer}>
@@ -101,13 +106,13 @@ class ParentTab extends Component{
                           {
                             text: okLabel,
                             onPress: () => {
-                              QuickToast.show("Success");
+                              self.props.dispatch({type: "LOG_OUT"})
                             },
                           },
                           {
                             text: cancelLabel,
                             onPress: () => {
-                              QuickToast.show("Canceled");
+                              self.props.dispatch({type: "LOG_OUT"})
                             },
                           },
                         ],

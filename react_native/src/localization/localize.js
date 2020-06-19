@@ -7,11 +7,12 @@ export default localization = {
     curLang: null,
     getLang: (lang_id)=>{
         switch (this.curLang){
-            case "vi":
-                return vi[lang_id];
-                break;
+            
             case "en":
                 return en[lang_id]
+                break;
+            default:
+                return vi[lang_id];
                 break;
         };
         return "[no_lang]" + lang_id

@@ -93,5 +93,6 @@
     "lang_confirm_update_guardian": "Confirm Update Guardian's Info ?",
     "lang_parent": "Parent",
     "lang_student": "Student",
-    "lang_log_out": "Log Out"
+    "lang_log_out": "Log Out",
+    "lang_confirm_log_out": "Are You Sure Log Out ?"
 }

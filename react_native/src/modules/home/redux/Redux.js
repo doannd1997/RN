@@ -8,11 +8,28 @@ const defaultRegion = {
 }
 const defaultState = {
     logedIn: global.userData.logedIn,
+    displayName: "Nguyễn Duy Đoàn",
+    CHILDREN_TRACKING_showingDivInfo: false,
+    region: {
+        ...defaultRegion
+        },
+    _region: {
+        ...defaultRegion
+        },
+    mapType: "standard",
+    curTab: 0,
+    parentAvatar: require("../../../../res/image/Account/man.png"),
+    parentName: "[ Tên Phụ Huynh ]",
+    studentAvatar: require("../../../../res/image/HomeScreen/education.png"),
+    studentName: "[ Tên Học Sinh ]"
 }
 
 const reducer = (state, action)=>{
     if (Object.keys(state).length == 0)
-        return defaultState
+        return defaultState;
+    console.log(">>");
+    console.log(state);
+    console.log(action);
     switch (action.type){
         case "LOG_IN":
             global.userData.setLogedIn(true);
@@ -31,9 +48,14 @@ const reducer = (state, action)=>{
             return {...state, _region: action.region };
         case "MAP_VIEW_RESET_REGION":
             return {...state, region: {...state._region}};
-        case "SWITCH_MAP_TYPE":{
+        case "SWITCH_MAP_TYPE":
             return {...state, mapType: (state.mapType == "standard") ? "satellite" : "standard"}
-        }
+        case "SET_TAB":
+            return {...state, curTab: action.curTab};
+        case "SET_PARENT_AVATAR":
+            return {...state, parentAvatar: action.avatar}
+        case "SET_STUDENT_AVATAR":
+            return {...state, studentAvatar: action.avatar}
     }
     
     return state;

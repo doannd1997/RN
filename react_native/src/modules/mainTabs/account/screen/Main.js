@@ -16,7 +16,7 @@ class Main extends Component{
         return (
             <View style={[commonStyles.fullViewVerticalCenter]}>
                 <ToolBar/>
-                {this.props.curTab == 0 ? <ParentTab style={{width: "100%", flex: 1}}/> : <ChildTab style={{width: "100%", flex: 1}}/>}
+                {this.props.curTab == 0 ? <ParentTab style={{width: "100%", flex: 1}} {...this.props}/> : <ChildTab style={{width: "100%", flex: 1}}/>}
             </View>
         )
     }

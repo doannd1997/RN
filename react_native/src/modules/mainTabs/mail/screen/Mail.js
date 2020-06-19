@@ -5,6 +5,8 @@ import {connect, Provider} from "react-redux"
 const HistoryComponent = require("./Main").default;
 const store = require("../redux/Redux").default;
 
+const NotLogInCom = require("../../../../common/component/NotLogInCom").default;
+
 class Mail extends Component{
     render(){
         return (
@@ -13,9 +15,7 @@ class Mail extends Component{
             {this.props.logedIn ? (
               <HistoryComponent style={styles.container} />
             ) : (
-              <Text style={[commonStyle.textBold, {color: "grey"}]}>
-                {global.localization.getLang('lang_noti_login')}
-              </Text>
+              <NotLogInCom/>
             )}
           </View>
           </Provider>
@@ -41,5 +41,3 @@ const styles = StyleSheet.create({
         flex: 1
     }
 })
-
-const commonStyle = require("../../../../common/style/index").default;
