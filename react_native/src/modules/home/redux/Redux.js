@@ -27,9 +27,6 @@ const defaultState = {
 const reducer = (state, action)=>{
     if (Object.keys(state).length == 0)
         return defaultState;
-    console.log(">>");
-    console.log(state);
-    console.log(action);
     switch (action.type){
         case "LOG_IN":
             global.userData.setLogedIn(true);

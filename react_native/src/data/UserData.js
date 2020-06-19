@@ -11,11 +11,17 @@ const asynStorage = require("../storage/asyncStore").default;
     GOOGLE_API_KEY: "AIzaSyCcuUK8Q8drVszgClwhfIVMXImXazFVaGE",
     HERE_API_KEY: "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4",
     loadAllData: async ()=>{
-        this.curLang = await asynStorage.getData(userData.KEY_LANG);
-        if (typeof this.curLang == 'undefined'){
-            await asynStorage.storeData(userData.KEY_LANG, userData.DEFAULT_LANG);
-            this.curLang = userData.DEFAULT_LANG;
-        }
+        const deviceLanguage =
+            Platform.OS === 'ios'
+            ? NativeModules.SettingsManager.settings
+                .AppleLocale ||
+                NativeModules.SettingsManager.settings
+                .AppleLanguages[0] // iOS 13
+            : NativeModules.I18nManager.localeIdentifier;
+
+        var _deviceLanguage = deviceLanguage.split('_')[0];
+        
+        this.curLang = _deviceLanguage;
         
         this.accessToken = await asyncStore.getData(userData.KEY_ACCESS_TOKEN);
         this.userName = await asyncStore.getData(userData.KEY_USER_NAME);
