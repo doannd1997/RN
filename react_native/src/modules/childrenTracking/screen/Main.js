@@ -68,6 +68,23 @@ class Main extends Component{
                     style={[styles.btnChangeMode]}
                     onPress={() => {
                       self.props.dispatch({
+                        type: 'SWITCH_PICK_TYPE',
+                      });
+                      // self.props.dispatch({
+                      //   type: 'MAP_VIEW_RESET_REGION',
+                      // });
+                    }}>
+                    <Text
+                      style={[commonStyles.text, styles.txtMapType]}>
+                      {global.localization.getLang(
+                        'lang_pick_type_' + this.props.pickType,
+                      )}
+                    </Text>
+                  </TouchableOpacity>
+                  {/* <TouchableOpacity
+                    style={[styles.btnChangeMode]}
+                    onPress={() => {
+                      self.props.dispatch({
                         type: 'SWITCH_MAP_TYPE',
                       });
                       self.props.dispatch({
@@ -80,7 +97,7 @@ class Main extends Component{
                         'lang_map_type_' + this.props.mapType,
                       )}
                     </Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                 </View>
               </View>
             ) : null}
@@ -110,7 +127,8 @@ const mapStateToProps = (state)=>{
     return {
         logedIn: state.logedIn,
         CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo,
-        mapType: state.mapType
+        mapType: state.mapType,
+        pickType: state.pickType
     }
 }
 

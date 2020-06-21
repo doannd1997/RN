@@ -96,5 +96,7 @@
     "lang_log_out": "Đăng Xuất",
     "lang_confirm_log_out": "Xác Nhận Thoát Đăng Nhập Tài Khoản ?",
     "lang_blank_history": "Lịch Sử Trống",
-    "lang_record": "_from_ đến _to_"
+    "lang_record": "_from_ đến _to_",
+    "lang_pick_type_UP": "Tuyến Đón",
+    "lang_pick_type_DOWN": "Tuyến Trả"
 }

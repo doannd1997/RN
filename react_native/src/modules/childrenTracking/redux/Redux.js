@@ -16,7 +16,8 @@ const defaultState = {
     _region: {
         ...defaultRegion
         },
-    mapType: "standard"
+    mapType: "standard",
+    pickType: "UP"
 }
 
 const reducer = (state, action)=>{
@@ -40,9 +41,10 @@ const reducer = (state, action)=>{
             return {...state, _region: action.region };
         case "MAP_VIEW_RESET_REGION":
             return {...state, region: {...state._region}};
-        case "SWITCH_MAP_TYPE":{
+        case "SWITCH_MAP_TYPE":
             return {...state, mapType: (state.mapType == "standard") ? "satellite" : "standard"}
-        }
+        case "SWITCH_PICK_TYPE":
+            return {...state, pickType: state.pickType == "UP" ? "DOWN" : "UP"};
     }
     
     return state;
