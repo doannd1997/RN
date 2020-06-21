@@ -62,24 +62,6 @@ export default class MainLogInCom extends Component{
             <TouchableOpacity
               style={[styles.input, styles.button]}
               onPress={() => {
-                // self.props.dispatch({type: 'TOGGLE_LOG_IN'});
-                // self.props.navigation.navigate('HomeScreen', {
-                //   logedIn: false,
-                // });
-                self.props.navigation.navigate("FogetPassword")
-              }}>
-              <Text
-                style={[
-                  commonStyles.text,
-                  commonStyles.textBold,
-                  styles.text,
-                ]}>
-                {global.localization.getLang('lang_change_password')}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.input, styles.button]}
-              onPress={() => {
                 self.props.navigation.navigate('GetInfoLogin', {
                   
                 });

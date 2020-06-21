@@ -48,6 +48,15 @@ export default EStyleSheet.create({
         justifyContent: "center",
         borderRadius: "10rem"
     },
+    btnChangePasswordContainer: {
+        width: "90%",
+        height: "20rem",
+        backgroundColor: colors.commonButton,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "4rem",
+        marginTop: "10rem"
+    },
     btnLogOutContainer: {
         width: "90%",
         height: "20rem",
