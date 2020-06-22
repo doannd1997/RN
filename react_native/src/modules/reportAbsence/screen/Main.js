@@ -125,6 +125,12 @@ class ReportAbsenceCom extends Component {
                       items={[
                         {
                           label: ("\t" + global.localization.getLang(
+                            'lang_bus_both',
+                          )),
+                          value: 'BOTH',
+                        },
+                        {
+                          label: ("\t" + global.localization.getLang(
                             'lang_bus_pick_up',
                           )),
                           value: 'PICK_UP',
@@ -135,6 +141,7 @@ class ReportAbsenceCom extends Component {
                           )),
                           value: 'DROP_DOWN',
                         },
+                        
                       ]}
                       // itemStyle={styles.pickerItem}>
                       placeholder={{}}

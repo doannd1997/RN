@@ -120,7 +120,7 @@ const ParentTab = (props)=>{
                       {
                         text: cancelLabel,
                         onPress: () => {
-                          props.dispatch({type: "LOG_OUT"})
+                          // props.dispatch({type: "LOG_OUT"})
                         },
                       },
                     ],

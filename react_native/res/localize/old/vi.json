@@ -6,7 +6,7 @@
     "lang_register": "Đăng Kí",
     "lang_phone_number": "Số điện thoại",
     "lang_email_receive_password": "Địa chỉ email nhận mật khẩu",
-    "lang_student_code": "Mã số sinh viên",
+    "lang_student_code": "Số hiệu học sinh",
     "lang_send_get_login_info": "Gửi Thông Tin Xác Thực",
     "lang_back_to_login": "Quay Về Trang Đăng Nhập",
     "lang_type_new_password": "Mật khẩu mới",
@@ -43,6 +43,7 @@
     "lang_select": "Chọn",
     "lang_bus_pick_up": "Tuyến Đón",
     "lang_bus_drop_down": "Tuyến Trả",
+    "lang_bus_both": "Cả 2 tuyến",
     "lang_date_from": "Bắt Đầu Từ",
     "lang_date_to": "Kết Thúc Vào",
     "lang_absence_report": "Phiếu Thông Tin Báo Nghỉ",
@@ -98,5 +99,5 @@
     "lang_blank_history": "Lịch Sử Trống",
     "lang_record": "_from_ đến _to_",
     "lang_pick_type_UP": "Tuyến Đón",
-    "Lang_pick_type_DOWN": "Tuyến Trả"
+    "lang_pick_type_DOWN": "Tuyến Trả"
 }

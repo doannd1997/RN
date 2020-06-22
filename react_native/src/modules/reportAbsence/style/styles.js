@@ -163,7 +163,7 @@ export default styles = EStyleSheet.create({
     childName: {
         color: "#666",
         fontWeight: "bold",
-        fontSize: "8trem",
+        fontSize: "8rem",
         textAlign: "center",
         textAlignVertical: "center",
         flex: 1
