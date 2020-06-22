@@ -27,7 +27,7 @@ export default EStyleSheet.create({
         alignItems: "center",
         backgroundColor: "#fff",
         borderRadius: "1.2rem",
-        paddingLeft: "0.5rem",
+        paddingLeft: "2.5rem",
         paddingRight: "0.5rem"
     },
     mailHeaderContainer: {
@@ -56,17 +56,18 @@ export default EStyleSheet.create({
     mailLblHeader: {
         color: "#03284f",
         fontWeight: "bold",
-        fontSize: "6rem"
+        fontSize: "8rem"
     },
     mailLblContent: {
         color: "#444",
         // fontWeight: "bold",
-        fontSize: "6rem"
+        fontSize: "7rem",
+        fontWeight: "bold"
     },
     mailLblTime: {
         fontStyle: "italic",
         color: "#03284f",
-        fontSize: "4.6rem"
+        fontSize: "6rem"
     },
     btnCreate: {
         position: "absolute",
@@ -91,7 +92,8 @@ export default EStyleSheet.create({
     },
     modalContentContainer: {
         width: "100%",
-        height: "100%",
+        // height: "100%",
+        flex: 1,
         backgroundColor: "transparent",
         justifyContent: "center",
         alignItems: "center",
@@ -172,5 +174,38 @@ export default EStyleSheet.create({
     imgSendMail: {
         width: "20rem",
         height: "20rem"
+    },
+    btnOneMail: {
+        width: "100%",
+        height: "100%"
+    },
+    bottomButtonMailContentContainer: {
+        width: "100%",
+        height: "20rem",
+        backgroundColor: "cyan",
+        justifyContent: "center",
+        flexDirection: "row"
+    },
+    mailDetailContainer: {
+        width: "100%",
+        flex: 1,
+        padding: "10rem",
+        backgroundColor: "#fff"
+    },
+    txtBtn: {
+        fontSize: "7rem"
+    },
+    txtMailDetail: {    
+        width: "100%",
+        flex: 1,
+        fontSize: "10rem",
+        color: "#333"
+    },
+    newMail: {
+        borderBottomWidth: "1rem",
+        borderColor: "#d44700"
+    },
+    readMail: {
+
     }
 })

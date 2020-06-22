@@ -87,6 +87,7 @@
     "lang_create_guardians": "Thêm Giám Hộ",
     "lang_update": "Cập Nhật",
     "lang_delete": "Xóa",
+    "lang_close": "Đóng",
     "lang_select_image": "Chọn Ảnh",
     "lang_full_name": "Họ & Tên",
     "lang_edit_guardian": "Thông Tin Giám Hộ",
@@ -99,5 +100,6 @@
     "lang_blank_history": "Lịch Sử Trống",
     "lang_record": "_from_ đến _to_",
     "lang_pick_type_UP": "Tuyến Đón",
-    "lang_pick_type_DOWN": "Tuyến Trả"
+    "lang_pick_type_DOWN": "Tuyến Trả",
+    "lang_confirm_delete_mail": "Xác nhận xóa thư ?"
 }

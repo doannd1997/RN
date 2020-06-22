@@ -237,5 +237,9 @@ export default (styles = EStyleSheet.create({
     borderBottomColor: "#ddd",
     width: "100%",
     height: "100%",
+  },
+  singleBtnContainer: {
+    height: "100%",
+    flex: 1
   }
 }));

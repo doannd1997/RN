@@ -10,6 +10,7 @@ const ToolBar = require("../component/ToolBar").default;
 const MailListCom = require("../component/MailList").default;
 const ButtonCreate = require("../component/BtnCreate").default;
 const PopupComposeCom = require("../component/PopUpConmpose").default;
+const MailDetailCom = require("../component/MailDetail").default;
 
 class Main extends Component{
     render(){
@@ -19,6 +20,7 @@ class Main extends Component{
             <View style={styles.content}>
               <MailListCom/>
               <ButtonCreate/>
+              <MailDetailCom/>
               <PopupComposeCom/>
             </View>
           </View>
