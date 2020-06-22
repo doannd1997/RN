@@ -12,7 +12,18 @@ var defaultState = {
   isDisplayPopup: false,
   composeMailContent: "",
   showingMail: false,
-  mailIndex: null
+  mailIndex: null,
+  childList: [
+    {
+        id: 0,
+        displayName: "Học Sinh 0"
+    },
+    {
+        id: 1,
+        displayName: "Học Sinh 1"
+    }
+  ],
+  curMonitor: 0,
 };
 
 for (var i=0; i<5; i++){
@@ -68,8 +79,10 @@ const reducer = (state, action)=>{
       _state = {..._state, sentMail: state.sentMail.filter((item, index)=>(index!=state.mailIndex))}
       _state.mailIndex = null;
       return _state;
+    case "CHANGE_MONITOR":
+      return {...state, curMonitor: action.curMonitor};
   }
-    return state;
+  return state;
 }
 
 export default createStore(reducer, {});

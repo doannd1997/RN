@@ -120,23 +120,37 @@ export default EStyleSheet.create({
     },
     formComposeFooter: {
         width: "100%",
-        flex: 1,
+        flex: 1.6,
         justifyContent: "center",
         alignItems: "center",
         borderTopWidth: 1,
         borderTopColor: "#ddd"
     },
+    btnSendContainer: {
+        width: "95%",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: colors.theme2,
+        borderRadius: "3rem",
+        marginTop: "1rem",
+        marginBottom: "1rem"
+    },
+    btnSendSchool: {
+
+    },
+    btnSendMonitor: {
+        backgroundColor: "#0db865"
+    },
     btnSend: {
         width: "100%",
-        height: "100%",
+        flex: 1,
         borderBottomLeftRadius: "1.2rem",
         borderBottomRightRadius: "1.2rem",
         justifyContent: "space-around",
         alignItems: "center",
-        flexDirection: "row",
-        paddingLeft: "8rem",
-        paddingRight: "8rem",
-        backgroundColor: colors.theme2
+        flexDirection: "row-reverse",
+        justifyContent: "flex-start",
     },
     btnSendLbl: {
         color: "#fff",
@@ -173,7 +187,8 @@ export default EStyleSheet.create({
     },
     imgSendMail: {
         width: "20rem",
-        height: "20rem"
+        height: "20rem",
+        marginRight: "3rem"
     },
     btnOneMail: {
         width: "100%",
@@ -207,5 +222,34 @@ export default EStyleSheet.create({
     },
     readMail: {
 
+    },
+    line: {
+        width: "0.8rem",
+        height: "80%",
+        backgroundColor: "#fff",
+        margin: "2rem"
+    },
+    sendMethodContainer: {
+        height: "100%",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: "0.2rem",
+        paddingBottom: "0.22rem"
+    },
+    txtSendMailMethod: {
+        color: "#fff",
+        fontSize: "6.2rem",
+        fontWeight: "bold"
+    },
+    sendMethodContent: {
+        width: "100%",
+        flex: 1,
+        borderWidth: 0,
+        justifyContent: "center",
+    },
+    sendMethodTxt: {
+        color: "#fff",
+        fontWeight: "bold"
     }
 })
