@@ -42,11 +42,11 @@ export default EStyleSheet.create({
         paddingTop: "5rem",
     },
     parentNameContainer: {
-        width: "90%",
+        width: "100%",
         height: "20rem",
-        // backgroundColor: "#187ede",
         justifyContent: "center",
-        borderRadius: "10rem"
+        borderRadius: "10rem",
+        alignItems: "center",
     },
     btnChangePasswordContainer: {
         width: "90%",
@@ -73,5 +73,71 @@ export default EStyleSheet.create({
     },
     txtLogOut: {
         fontSize: "10rem"
+    },
+    childNameContent: {
+        borderWidth: 0,
+        borderBottomWidth: "0.5rem",
+        width: "100%",
+        height: "100%",
+        flex: 1,
+    },
+    childName: {
+        textAlign: "center",
+        textAlignVertical: "center",
+        color: "grey",
+        fontSize: "8rem",
+        fontWeight: "bold",
+        width: "100%"
+    },
+    guardiansContainer: {
+        width: "100%",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "3rem",
+        flexDirection: "column"
+    },
+    guardiansHeaderContainer: {
+        width: "100%",
+        height: "20rem",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    guardiansList: {
+        width: "100%",
+        flex: 1,
+        backgroundColor: "#f8f8f8"
+    },
+    lblHeaderGuardiansList: {
+        fontSize: "7rem",
+        color: "#333"
+    },
+    optionContainer: {
+        width: "100%",
+        height: "20rem",
+        flexDirection: "row",
+        // backgroundColor: "#fff",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        margin: "5rem"
+    },
+    imgCheckBox: {
+        width: "12rem",
+        height: "12rem"
+    },
+    lblGuardian: {
+        color: "grey",
+        fontSize: "6rem",
+        marginLeft: "5rem"
+    },
+    guardianAvatar: {
+        width: "22rem",
+        height: "22rem",
+        borderRadius: "12rem",
+        backgroundColor: "#fff"
+    },
+    checkboxContainer: {
+        width: "20rem",
+        // height: "100%"
     }
 })

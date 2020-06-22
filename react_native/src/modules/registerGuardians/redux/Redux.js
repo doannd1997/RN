@@ -15,7 +15,9 @@ const createDefaultGuardian = (i)=>{
   return {
     id: i,
     name: "Giám Hộ " + (i+1),
-    avatarSource: require("../../../../res/image/guardians/police.png")
+    phoneNumber: Math.floor(Math.random()*10000000),
+    avatarSource: require("../../../../res/image/guardians/police.png"),
+    role: "Mẹ"
   };
 }
 

@@ -106,5 +106,11 @@
     "lang_bks": "Number Plate",
     "lang_driver": "Driver",
     "lang_monitor": "Monitor",
-    "lang_time_bus_pick": "Pick Time"
+    "lang_time_bus_pick": "Pick Time",
+    "lang_mail_send_school": "To School",
+    "lang_pick_up": "Pick Up",
+    "lang_drop_down": "Drop Down",
+    "lang_phone_number_collapse": "Phone.No",
+    "lang_phone_number_expand": "Phone Number",
+    "lang_role": "Role"
 }

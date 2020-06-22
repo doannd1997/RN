@@ -5,7 +5,6 @@ import NotLogInCom from "../../../../common/component/NotLogInCom";
 import styles from "../style/styles";
 
 const AccountComponent = require("./Main").default;
-const store = require("../redux/Redux").default;
 
 const commonStyles = require("../../../../common/style/index").default;
 

@@ -156,10 +156,9 @@ class PopUpUpdate extends Component {
                     <View style={styles.formAddTxt0}>
                       <View style={styles.inputLbl}>
                         <Text style={styles.txtLblHeader}>
-                          {/* {global.localization.getLang(
-                            'lang_full_name',
-                          )} */}
-                          [Any Thing]
+                          {global.localization.getLang(
+                            'lang_phone_number_collapse',
+                          )}
                         </Text>
                       </View>
                       <View style={styles.inputField}>
@@ -169,16 +168,28 @@ class PopUpUpdate extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          defaultValue={(this.props.curGuardian ? this.props.curGuardian.item.phoneNumber.toString() : "")}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  phoneNumber: text
+                                },
+                              },
+                            });
+                          }}
                         />
                       </View>
                     </View>
                     <View style={styles.formAddTxt0}>
                       <View style={styles.inputLbl}>
                         <Text style={styles.txtLblHeader}>
-                          {/* {global.localization.getLang(
-                            'lang_full_name',
-                          )} */}
-                          [Any Thing]
+                          {global.localization.getLang(
+                            'lang_role',
+                          )}
                         </Text>
                       </View>
                       <View style={styles.inputField}>
@@ -188,6 +199,19 @@ class PopUpUpdate extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          defaultValue={(this.props.curGuardian ? this.props.curGuardian.item.role : "")}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  role: text
+                                },
+                              },
+                            });
+                          }}
                         />
                       </View>
                     </View>

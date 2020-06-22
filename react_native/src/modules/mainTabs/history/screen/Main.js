@@ -5,8 +5,6 @@ import {connect} from "react-redux"
 
 import DatePicker from 'react-native-datepicker'
 
-const store = require("../redux/Redux").default;
-
 const Item = require("../component/TakeOffDetail").default;
 const Header = require("../component/TakeOffHeader").default;
 

@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, SectionList} from "react-native"
 import {connect} from "react-redux"
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const store = require("../redux/Redux").default;
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
 

@@ -121,7 +121,8 @@ export default EStyleSheet.create({
         // backgroundColor: "blue"
     },
     textName: {
-        fontSize: "7rem"
+        fontSize: "8rem",
+        fontWeight: "bold"
     },
     formLblHeader: {
         fontSize: "8rem",
@@ -211,6 +212,9 @@ export default EStyleSheet.create({
         borderBottomRightRadius: "8rem"
     },
     txtFooter: {
+        fontSize: "7rem"
+    },
+    txtElement: {
         fontSize: "7rem"
     }
 })

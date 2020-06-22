@@ -151,17 +151,16 @@ class PopUpConmpose extends Component {
                               },
                             });
                           }}
-                          defaultValue={(this.props.pseudoGuardian == null) ? "" : this.props.pseudoGuardian.item.name}
+                          defaultValue={""}
                         />
                       </View>
                     </View>
                     <View style={styles.formAddTxt0}>
                       <View style={styles.inputLbl}>
                         <Text style={styles.txtLblHeader}>
-                          {/* {global.localization.getLang(
-                            'lang_full_name',
-                          )} */}
-                          [Any Thing]
+                          {global.localization.getLang(
+                            'lang_phone_number_collapse',
+                          )}
                         </Text>
                       </View>
                       <View style={styles.inputField}>
@@ -171,16 +170,28 @@ class PopUpConmpose extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  phoneNumber: text
+                                },
+                              },
+                            });
+                          }}
+                          defaultValue={""}
                         />
                       </View>
                     </View>
                     <View style={styles.formAddTxt0}>
                       <View style={styles.inputLbl}>
                         <Text style={styles.txtLblHeader}>
-                          {/* {global.localization.getLang(
-                            'lang_full_name',
-                          )} */}
-                          [Any Thing]
+                          {global.localization.getLang(
+                            'lang_role',
+                          )}
                         </Text>
                       </View>
                       <View style={styles.inputField}>
@@ -190,6 +201,19 @@ class PopUpConmpose extends Component {
                             styles.formTxt,
                           ]}
                           placeholder={'...'}
+                          onChangeText={(text)=>{
+                            this.props.dispatch({
+                              type: 'UPDATE_PSEUDO',
+                              pseudoGuardian: {
+                                ...this.props.pseudoGuardian,
+                                item: {
+                                  ...this.props.pseudoGuardian.item,
+                                  role: text
+                                },
+                              },
+                            });
+                          }}
+                          defaultValue={""}
                         />
                       </View>
                     </View>

@@ -17,19 +17,19 @@ const defaultState = {
         ...defaultRegion
         },
     mapType: "standard",
-    curTab: 0,
+    curTab: 0,  // account Tab
     parentAvatar: require("../../../../res/image/Account/man.png"),
     parentName: "[ Tên Phụ Huynh ]",
-    studentAvatar: require("../../../../res/image/HomeScreen/education.png"),
-    studentName: "[ Tên Học Sinh ]",
     childList: [
         {
             id: 0,
-            displayName: "Học Sinh 0"
+            displayName: "Học Sinh A",
+            avatar: require("../../../../res/image/HomeScreen/education.png")
         },
         {
             id: 1,
-            displayName: "Học Sinh 1"
+            displayName: "Học Sinh B",
+            avatar: require("../../../../res/image/HomeScreen/education.png")
         }
     ],
     curChild: 0,
@@ -53,7 +53,8 @@ const defaultState = {
           }],
         },
       ],
-    isPickingDate: false
+    isPickingDate: false,
+    guardians: []
 }
 
 const ONE_DAY = 1000*60*60*24;
@@ -64,6 +65,23 @@ for (var i=0; i<12; i++){
     last.action = (i%2==0)? "DOWN" : "UP";
     last.date -= ONE_DAY;
     defaultState.history.push(last)
+}
+
+const createDefaultGuardian = (i)=>{
+    return {
+        id: i,
+        name: "Giám Hộ " + (i+1),
+        phoneNumber: Math.floor(Math.random()*10000000),
+        avatarSource: require("../../../../res/image/guardians/police.png"),
+        role: "Mẹ",
+        assigned: Array.from(Array(defaultState.childList.length), () => 0)
+    };
+}
+
+for (var i=0; i<3; i++){
+    var guardian = createDefaultGuardian(i)
+    
+    defaultState.guardians.push(guardian);
 }
 
 
@@ -95,11 +113,25 @@ const reducer = (state, action)=>{
         case "SET_PARENT_AVATAR":
             return {...state, parentAvatar: action.avatar}
         case "SET_STUDENT_AVATAR":
-            return {...state, studentAvatar: action.avatar}
+            var childList = state.childList.map((item, index)=>{
+                if (index != state.curChild)
+                    return item;
+                return {...item, avatar: action.avatar}
+            })
+            return {...state, childList: childList}
         case "SELECT_CHILD": 
             return {...state, curChild: action.curChild}
         case "TOGGLE_PICKING":
             return {...state, isPickingDate: !state.isPickingDate}
+        case "TOGGLE_ENABLE_GUARDIAN_ACC_INFO":
+            var _guardians = state.guardians.map((guardian, index)=>{
+                if (guardian.id != action.guardianId)
+                    return guardian;
+                var _assigned = guardian.assigned.map((item)=>item);
+                _assigned[state.curChild] = (_assigned[state.curChild] + 1)%2;
+                return {...guardian, assigned: _assigned}
+            });
+            return {...state, guardians: _guardians}
     }
     
     return state;

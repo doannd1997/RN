@@ -106,5 +106,11 @@
     "lang_bks": "Biển Kiểm Soát",
     "lang_driver": "Tài Xế",
     "lang_monitor": "Giám Sát",
-    "lang_time_bus_pick": "Giờ Đón Trả"
+    "lang_time_bus_pick": "Giờ Đón Trả",
+    "lang_mail_send_school": "Gửi Nhà Trường",
+    "lang_pick_up": "Tuyến Đón",
+    "lang_drop_down": "Tuyến Trả",
+    "lang_phone_number_collapse": "SDT",
+    "lang_phone_number_expand": "Số Điện Thoại",
+    "lang_role": "Vai Trò"
 }
