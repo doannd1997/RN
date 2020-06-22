@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from "@react-native-community/datetimepicker";
 import RNPickerSelect from 'react-native-picker-select';
 import DatePicker from 'react-native-datepicker'
-
+import ModalSelector from "react-native-modal-selector";
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 import {QuickToast} from "../../../utils/Toast";
@@ -94,12 +94,21 @@ class ReportAbsenceCom extends Component {
                 style={styles.avatar}
                 resizeMode={'contain'}
               />
-              <Text
-                style={styles.childName}
-                ellipsizeMode={'tail'}
-                numberOfLines={1}>
-                {this.props.childName} "Peter Packer"
-              </Text>
+              <ModalSelector
+                style={styles.childNameContainer}
+                selectStyle={styles.childNameContent}
+                initValueTextStyle={styles.childName}
+                cancelText={global.localization.getLang("lang_cancel")}
+                data={this.props.childList.map((item, index)=>{
+                  return {
+                    label: item.displayName,
+                    key: index
+                  }
+                })}
+                initValue={this.props.childList[this.props.curChild].displayName}
+                onChange={(option)=>{
+                  this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+                }} />
             </View>
             <View style={[styles.btnCluster]}>
               <View style={[styles.formInputCluster]}>
@@ -112,40 +121,36 @@ class ReportAbsenceCom extends Component {
                       styles.inputFieldSecondColumn,
                       styles.inputFieldSecondColumnWithShadow,
                     ]}>
-                    <RNPickerSelect
-                      textInputProps={styles.pickerStyle}
-                      useNativeAndroidPickerStyle={false}
-                      value={this.props.busType}
-                      onValueChange={(itemValue, itemIndex) =>
-                        this.props.dispatch({
-                          type: 'TOGGLE_BUS_TYPE',
-                          busType: itemValue,
-                        })
-                      }
-                      items={[
-                        {
-                          label: ("\t" + global.localization.getLang(
-                            'lang_bus_both',
-                          )),
-                          value: 'BOTH',
-                        },
-                        {
-                          label: ("\t" + global.localization.getLang(
-                            'lang_bus_pick_up',
-                          )),
-                          value: 'PICK_UP',
-                        },
-                        {
-                          label: ("\t" + global.localization.getLang(
-                            'lang_bus_drop_down',
-                          )),
-                          value: 'DROP_DOWN',
-                        },
-                        
-                      ]}
-                      // itemStyle={styles.pickerItem}>
-                      placeholder={{}}
-                    />
+                      <ModalSelector
+                        style={styles.busTypeContainer}
+                        selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
+                        initValueTextStyle={styles.txtBusType}
+                        cancelText={global.localization.getLang("lang_cancel")}
+                        data={[
+                          {
+                            label: (global.localization.getLang(
+                              'lang_bus_both',
+                            )),
+                            key: 'BOTH',
+                          },
+                          {
+                            label: (global.localization.getLang(
+                              'lang_bus_pick_up',
+                            )),
+                            key: 'PICK_UP',
+                          },
+                          {
+                            label: (global.localization.getLang(
+                              'lang_bus_drop_down',
+                            )),
+                            key: 'DROP_DOWN',
+                          },
+                          
+                        ]}
+                        initValue={global.localization.getLang("lang_bus_" + this.props.busType.toLowerCase())}
+                        onChange={(option)=>{
+                          this.props.dispatch({type: 'TOGGLE_BUS_TYPE', busType: option.key})
+                        }} />
                   </View>
               
                 </View>
@@ -228,7 +233,9 @@ const mapStateToProps = (state)=>{
         isPickingDateStart: state.isPickingDateStart,
         isPickingDateEnd: state.isPickingDateEnd,
         startDate: state.startDate,
-        endDate: state.endDate
+        endDate: state.endDate,
+        childList: state.childList,
+        curChild: state.curChild
     }
 }
 

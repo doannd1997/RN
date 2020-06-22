@@ -48,9 +48,11 @@ export default (styles = EStyleSheet.create({
     height: '100%',
   },
   YearPickerContainer: {
-    width: 200,
+    width: "40%",
     flex: 1.05,
-    marginBottom: 5,
+    marginBottom: "2rem",
+    padding: "1rem",
+    // backgroundColor: "red"
   },
   defaultInfo: {
     flex: 4.2,
@@ -297,7 +299,9 @@ export default (styles = EStyleSheet.create({
     fontSize: "7rem"
   },
   txtBottomButton: {
-      fontSize: "7rem"
+      fontSize: "7rem",
+      textAlign: "center",
+      textAlignVertical: "center"
   },
   lblHeaderGuardians: {
     color: "#444",
@@ -329,5 +333,26 @@ export default (styles = EStyleSheet.create({
   imgPlaceSearch: {
     width: "10rem",
     height: "10rem"
+  },
+  yearTxt: {
+    fontSize: "6rem",
+    fontWeight: "bold",
+    color: "#fff"
+  },
+  childNameContainer: {
+    height: "18rem",
+    width: "80%",
+    borderWidth: "0rem"
+  },
+  childNameContent: {
+      width: "100%", 
+      height: "100%", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      borderTopWidth: "0.2rem",
+      borderBottomWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderRadius: 0
   }
 }));

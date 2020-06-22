@@ -152,7 +152,7 @@ export default styles = EStyleSheet.create({
         alignItems: "center",
         backgroundColor: "cyan",
         width: "100%",
-        paddingBottom: 10
+        paddingBottom: "1rem"
     },
     avatar: {
         marginTop: "5rem",
@@ -166,7 +166,9 @@ export default styles = EStyleSheet.create({
         fontSize: "8rem",
         textAlign: "center",
         textAlignVertical: "center",
-        flex: 1
+        flex: 1,
+        width: "100%",
+        height: "100%"
     },
     iconBus: {
         width: "90%",
@@ -194,5 +196,30 @@ export default styles = EStyleSheet.create({
     },
     txtOk: {
         fontSize: "8rem"
+    },
+    txtBusType: {
+        color: "#fff",
+        fontSize: "8rem"
+    },
+    busTypeContainer: {
+        width: "100%", 
+        height: "100%",
+        backgroundColor: "grey",
+    },
+    childNameContainer: {
+        height: "18rem",
+        width: "80%",
+        borderWidth: "0rem"
+    },
+    childNameContent: {
+        width: "100%", 
+        height: "100%", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        borderTopWidth: "0.2rem",
+        borderBottomWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderRadius: 0
     }
 })

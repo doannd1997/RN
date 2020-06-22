@@ -202,7 +202,7 @@ export default EStyleSheet.create({
         color: "#333"
     },
     newMail: {
-        borderBottomWidth: "1rem",
+        borderRightWidth: "1rem",
         borderColor: "#d44700"
     },
     readMail: {

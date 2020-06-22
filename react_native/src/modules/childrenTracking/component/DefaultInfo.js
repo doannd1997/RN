@@ -1,7 +1,7 @@
 import React, {Component, useState} from "react";
 import {View, Text, useS, Image} from "react-native";
 
-import ModalSelector from "react-native-modal-selector"
+import ModalSelector from "react-native-modal-selector";
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
@@ -24,6 +24,7 @@ class DefaultInfo extends Component {
             style={{width: "100%", height: "100%"}}
             selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
             initValueTextStyle={styles.childNameTxt}
+            cancelText={global.localization.getLang("lang_cancel")}
             data={this.props.childList.map((item, index)=>{
               return {
                 key: index,

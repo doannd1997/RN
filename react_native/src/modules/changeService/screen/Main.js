@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
+import ModalSelector from "react-native-modal-selector";
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
@@ -108,11 +109,21 @@ class RegisterService extends Component {
                   style={styles.avatar}
                   resizeMode={'contain'}
                 />
-                <View style={styles.nameContainer}>
-                  <Text style={styles.childName}>
-                    {this.props.childName} "Peter Packer"
-                  </Text>
-                </View>
+                <ModalSelector
+                  style={styles.childNameContainer}
+                  selectStyle={styles.childNameContent}
+                  initValueTextStyle={styles.childName}
+                  cancelText={global.localization.getLang("lang_cancel")}
+                  data={this.props.childList.map((item, index)=>{
+                    return {
+                      label: item.displayName,
+                      key: index
+                    }
+                  })}
+                  initValue={this.props.childList[this.props.curChild].displayName}
+                  onChange={(option)=>{
+                    this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+                  }} />
               </View>
               <View style={styles.viewDivForm}>
                 <YearPickerCom />
@@ -154,7 +165,9 @@ const mapStateToProps = (state)=>{
       pickingAddress: state.pickingAddress,
       searchResultShown: state.searchResultShown,
       placeSelected: state.placeSelected,
-      showAgreement: state.showAgreement
+      showAgreement: state.showAgreement,
+      childList: state.childList,
+      curChild: state.curChild
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

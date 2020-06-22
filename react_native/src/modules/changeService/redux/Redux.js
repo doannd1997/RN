@@ -21,7 +21,7 @@ var _curYear = new Date().getFullYear();
 var defaultState = {
   isLoading: false,
   yearList: [_curYear, _curYear + 1],
-  curYear: _curYear,
+  curYearIdx: 0,
   pickType: 'HOME', // Radio Button hiển thị chọn nhà hay địa chỉ mới
   homeAddress: 'Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội', // Địa chỉ nhà hiển thị
   placeAddress: 'Trống', // Địa chỉ mới hiển thị
@@ -60,7 +60,18 @@ var defaultState = {
     {id: 8, name: 'Trần Quang Vũ', checked: false},
   ],
   policyAgree: false,
-  showAgreement: false
+  showAgreement: false,
+  childList: [
+    {
+        id: 0,
+        displayName: "Học Sinh 0"
+    },
+    {
+        id: 1,
+        displayName: "Học Sinh 1"
+    }
+  ],
+  curChild: 0
 };
 
 
@@ -69,7 +80,7 @@ const reducer = (state, action)=>{
     state = defaultState;
   switch (action.type){
     case "CHANGE_YEAR":
-      return {...state, curYear: action.year}
+      return {...state, curYearIdx: action.curYearIdx}
     case "TOGGLE_PICK_TYPE":
       return {...state, pickType: (state.pickType == PICK_TYPE.HOME) ? PICK_TYPE.PLACE : PICK_TYPE.HOME};
     case "TOGGLE_PICK_TYPE_METHOD":
@@ -150,6 +161,8 @@ const reducer = (state, action)=>{
       return {...state, policyAgree: true, showAgreement: false};
     case "REJECT_AND_HIDE_AGREEMENT":
       return {...state, policyAgree: false, showAgreement: false};
+    case "SELECT_CHILD":
+      return {...state, curChild: action.curChild}
     default:
       return state;
   }

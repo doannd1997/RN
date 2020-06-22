@@ -20,6 +20,7 @@ class App extends Component{
     render(){
         return (
         <SafeAreaView style={{flex: 1, backgroundColor: colors.headerBar}}>
+            <View style={{position: "absolute", width: "100%", height: "50%", bottom: 0, backgroundColor: "#fff"}}/>
           <NavigationContainer>
             <Stack.Navigator mode="modal" headerMode="none">
               <Stack.Screen
