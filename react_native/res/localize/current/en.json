@@ -101,5 +101,10 @@
     "lang_record": "_from_  to  _to_",
     "lang_pick_type_UP": "Pick Up",
     "lang_pick_type_DOWN": "Drop Down",
-    "lang_confirm_delete_mail": "Confirm delete Mail ?"
+    "lang_confirm_delete_mail": "Confirm delete Mail ?",
+    "lang_bus_name": "Bus's name",
+    "lang_bks": "Number Plate",
+    "lang_driver": "Driver",
+    "lang_monitor": "Monitor",
+    "lang_time_bus_pick": "Pick Time"
 }

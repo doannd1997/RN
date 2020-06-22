@@ -17,7 +17,18 @@ const defaultState = {
         ...defaultRegion
         },
     mapType: "standard",
-    pickType: "UP"
+    pickType: "UP",
+    childList: [
+        {
+            id: 0,
+            displayName: "Học Sinh 0"
+        },
+        {
+            id: 1,
+            displayName: "Học Sinh 1"
+        }
+    ],
+    curChild: 0
 }
 
 const reducer = (state, action)=>{
@@ -45,6 +56,8 @@ const reducer = (state, action)=>{
             return {...state, mapType: (state.mapType == "standard") ? "satellite" : "standard"}
         case "SWITCH_PICK_TYPE":
             return {...state, pickType: state.pickType == "UP" ? "DOWN" : "UP"};
+        case "CHANGE_STUDENT": 
+            return {...state, curChild: action.index}
     }
     
     return state;

@@ -101,5 +101,10 @@
     "lang_record": "_from_ đến _to_",
     "lang_pick_type_UP": "Tuyến Đón",
     "lang_pick_type_DOWN": "Tuyến Trả",
-    "lang_confirm_delete_mail": "Xác nhận xóa thư ?"
+    "lang_confirm_delete_mail": "Xác nhận xóa thư ?",
+    "lang_bus_name": "Tên tuyến",
+    "lang_bks": "Biển Kiểm Soát",
+    "lang_driver": "Tài Xế",
+    "lang_monitor": "Giám Sát",
+    "lang_time_bus_pick": "Giờ Đón Trả"
 }

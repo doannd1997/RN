@@ -4,7 +4,7 @@ import { NativeModules, Platform } from "react-native"
 const asynStorage = require("../storage/asyncStore").default;
 
  userData = {
-    logedIn: false,
+    logedIn: true,
     userName: "null",
     displayName: "Developer",
     passWord: "123456",

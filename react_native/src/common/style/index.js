@@ -215,7 +215,7 @@ export default (styles = EStyleSheet.create({
     alignItems: 'center',
   },
   formBtnRemove: {
-    backgroundColor: '#941616',
+    backgroundColor: colors.remove,
     width: '100%',
     height: '100%',
     justifyContent: 'center',

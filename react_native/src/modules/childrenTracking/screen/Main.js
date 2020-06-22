@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text} from "react-native";
+import {View, Text, Image} from "react-native";
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
@@ -19,6 +19,8 @@ const DefaultInfoCom = require("../component/DefaultInfo").default;
 const StatusCom = require("../component/Status").default;
 // Component chứa địa điểm xuất đón trả
 const PlaceCom = require("../component/Place").default;
+// Component chưa thông tin tuyến bus
+const BusInfoCom = require("../component/BusDetail").default;
 
 class Main extends Component{
     render(){
@@ -62,39 +64,20 @@ class Main extends Component{
                         type: 'CHILDREN_TRACKING_showingDivInfo__HIDE',
                       });
                     }}>
-                    <Icon name="remove" size={24} color={'#ffffff'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[styles.btnChangeMode]}
-                    onPress={() => {
-                      self.props.dispatch({
-                        type: 'SWITCH_PICK_TYPE',
-                      });
-                      // self.props.dispatch({
-                      //   type: 'MAP_VIEW_RESET_REGION',
-                      // });
-                    }}>
-                    <Text
-                      style={[commonStyles.text, styles.txtMapType]}>
-                      {global.localization.getLang(
-                        'lang_pick_type_' + this.props.pickType,
-                      )}
-                    </Text>
+                    <Image style={styles.imgClose} source={require("../../../../res/image/popup/close.png")}
+                    resizeMethod={"resize"}/>
                   </TouchableOpacity>
                   {/* <TouchableOpacity
                     style={[styles.btnChangeMode]}
                     onPress={() => {
                       self.props.dispatch({
-                        type: 'SWITCH_MAP_TYPE',
-                      });
-                      self.props.dispatch({
-                        type: 'MAP_VIEW_RESET_REGION',
+                        type: 'SWITCH_PICK_TYPE',
                       });
                     }}>
                     <Text
                       style={[commonStyles.text, styles.txtMapType]}>
                       {global.localization.getLang(
-                        'lang_map_type_' + this.props.mapType,
+                        'lang_pick_type_' + this.props.pickType,
                       )}
                     </Text>
                   </TouchableOpacity> */}
@@ -118,6 +101,7 @@ class Main extends Component{
                 </TouchableOpacity>
               </View>
             )}
+            {this.props.CHILDREN_TRACKING_showingDivInfo ? <BusInfoCom/> : null}
           </View>
         );
     }

@@ -1,25 +1,27 @@
 import {StyleSheet} from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet"
 const colors = require("../../../color/Colors").default;
+
+const BORDER = "2rem"
 export default styles = EStyleSheet.create({
     divInfo: {
         position: "absolute",
-        width: "150rem",
+        width: "98%",
         height: "55rem",
         bottom: "2rem",
         flexDirection: "column",
         alignItems: "flex-end",
         justifyContent: "flex-start",
-        borderRadius: "7rem",
+        borderRadius: BORDER,
     },
     panelInfo: {
         flex: 1,
         width: "100%",
         height: "100%",
-        opacity: 0.9,
-        backgroundColor: "grey",
+        opacity: 0.8,
+        backgroundColor: "#111",
         position: "absolute",
-        borderRadius: "7rem",
+        borderRadius: "2rem",
         borderColor: "#aaa",
         borderWidth: 1
     },
@@ -37,7 +39,15 @@ export default styles = EStyleSheet.create({
         height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "red"
+        backgroundColor: colors.remove,
+        borderTopRightRadius: BORDER,
+        borderBottomLeftRadius: BORDER,
+        padding: "3rem"
+    },
+    imgClose: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: "transparent",
     },
     btnChangeMode: {
         width: "40rem",
@@ -67,7 +77,7 @@ export default styles = EStyleSheet.create({
         height: "15rem",
         bottom: "1rem",
         backgroundColor: "#1c1c1c",
-        borderRadius: "2rem",
+        borderRadius: BORDER,
         opacity: 1,
     },
     btnExpand: {
@@ -109,14 +119,13 @@ export default styles = EStyleSheet.create({
         marginRight: "5rem"
     },
     topRightClusterButton: {
-        backgroundColor: "#140640",
+        backgroundColor: "transparent",
         width: "55rem",
-        height: "12rem",
-        // borderRadius: 3,
+        height: "14rem",
         justifyContent: "flex-start",
         flexDirection: "row-reverse",
         alignItems: "center",
-        right: "7rem"
+        // right: "7rem"
     },
     txtMapType: {
         color: "#fff",
@@ -138,5 +147,55 @@ export default styles = EStyleSheet.create({
     busImage: {
         width: "20rem",
         height: "20rem",
+    },
+    childNameContainer: {
+        margin: "2rem",
+        width: "120rem",
+        height: "90%",
+        alignItems: "center",
+        borderWidth: "1rem",
+        borderColor: "#eee",
+        borderRadius: "2rem",
+        backgroundColor: "cyan"
+    },
+    childNameTxt: {
+        color: "red",
+        fontSize: "8rem",
+        fontWeight: "bold"
+    },
+    busInfoContainer: {
+        position: "absolute",
+        width: "98%",
+        height: "75rem",
+        top: "20rem",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        justifyContent: "flex-start",
+        borderRadius: BORDER,
+    },
+    busInfoContainer_2: {
+        width: "100%",
+        height: "100%",
+        padding: "3rem",
+        flexDirection: "column"
+    },
+    itemBusInfoContainer: {
+        width: "100%",
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        // backgroundColor: "cyan"
+        flexDirection: "row"
+    },
+    itemBusHeader: {
+        fontSize: "6.5rem",
+        fontWeight: "bold",
+        color: "#fff"
+    },
+    itemBusTxt: {
+        fontSize: "6.5rem",
+        // fontWeight: "bold",
+        // textAlign: "left",
+        color: "#eee"
     }
 })

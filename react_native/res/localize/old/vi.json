@@ -100,5 +100,6 @@
     "lang_blank_history": "Lịch Sử Trống",
     "lang_record": "_from_ đến _to_",
     "lang_pick_type_UP": "Tuyến Đón",
-    "lang_pick_type_DOWN": "Tuyến Trả"
+    "lang_pick_type_DOWN": "Tuyến Trả",
+    "lang_confirm_delete_mail": "Xác nhận xóa thư ?"
 }

@@ -12,5 +12,6 @@ export default color = {
     contentBg: "#efefef",
     btnComposeLeft: "#377cad",
     btnComposeRight: "#4cba85",
-    screenBg: "#eee"
+    screenBg: "#eee",
+    remove: "#941616"
 }
