@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, Modal, TextInput, Image, Alert } from "react-native";
+import {View, Text, TouchableOpacity, Modal, TextInput, Image, Alert, SafeAreaView } from "react-native";
 import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 import style from "../../../../common/style";
@@ -7,6 +7,7 @@ import style from "../../../../common/style";
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
 const colors = require("../../../../color/Colors").default;
+const QuickToast = require("../../../../utils/Toast").QuickToast;
 
 const TimeUtils = require("../../../../utils/Times").default;
 
@@ -22,7 +23,7 @@ class MailDetail extends Component {
             }}
             visible={this.props.showingMail}
             style={styles.modal}>
-            <View style={styles.modalContentContainer}>
+            <SafeAreaView style={styles.modalContentContainer}>
                 <View style={styles.mailDetailContainer} >
                     <Text style={styles.txtMailDetail}>
                         {this.props.mailIndex == null ? null : this.props.curTab == 0 ? this.props.inbox[this.props.mailIndex].content : this.props.sentMail[this.props.mailIndex].content}
@@ -95,7 +96,7 @@ class MailDetail extends Component {
                   </TouchableOpacity>
                 </View>
               </View>
-            </View>
+            </SafeAreaView>
           </Modal>
         );
     }

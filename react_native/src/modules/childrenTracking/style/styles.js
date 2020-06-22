@@ -32,7 +32,8 @@ export default styles = EStyleSheet.create({
         borderRadius: 6,
         paddingLeft: 10,
         alignItems: "flex-start",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        flexDirection: "column"
     },
     btnClose: {
         width: "15rem",
@@ -92,6 +93,7 @@ export default styles = EStyleSheet.create({
         justifyContent: "flex-start",
         flexDirection: "row",
         alignItems: "center",
+        // backgroundColor: "red"
     },
     textDivInfoCommon: {
         marginLeft: 15,
@@ -159,8 +161,8 @@ export default styles = EStyleSheet.create({
         backgroundColor: "cyan"
     },
     childNameTxt: {
-        color: "red",
-        fontSize: "8rem",
+        color: "#333",
+        fontSize: "6rem",
         fontWeight: "bold"
     },
     busInfoContainer: {

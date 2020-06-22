@@ -52,9 +52,9 @@ class Main extends Component{
                     commonStyles.fullViewVerticalTopDown,
                     styles.viewInfo,
                   ]}>
-                  <DefaultInfoCom />
-                  <StatusCom />
-                  <PlaceCom />
+                  <DefaultInfoCom style={styles.divInfoInside} />
+                  <StatusCom style={styles.divInfoInside} />
+                  <PlaceCom style={styles.divInfoInside} />
                 </View>
                 <View style={styles.topRightClusterButton}>
                   <TouchableOpacity

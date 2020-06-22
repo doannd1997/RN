@@ -1,5 +1,7 @@
 import React, {Component, useState} from "react";
-import {View, Text, useS, Image, Picker} from "react-native";
+import {View, Text, useS, Image} from "react-native";
+
+import ModalSelector from "react-native-modal-selector"
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
@@ -18,20 +20,20 @@ class DefaultInfo extends Component {
           source={require('../../../../res/image/HomeScreen/education.png')}
         />
         <View style={styles.childNameContainer}>
-          <Picker
-            style={{width: '100%', height: '100%'}}
-            mode={'dialog'}
-            // itemStyle={styles.childNameTxt}
-            // itemStyle={{ backgroundColor: "grey", color: "blue", fontFamily:"Ebrima", fontSize:17 }}
-                
-            selectedValue={this.props.curChild}
-            onValueChange={(value, index) => {
-              this.props.dispatch({type: 'CHANGE_STUDENT', index: index});
-            }}>
-            {this.props.childList.map((item, index) => {
-              return <Picker.Item label={item.displayName} value={index} />;
+          <ModalSelector
+            style={{width: "100%", height: "100%"}}
+            selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
+            initValueTextStyle={styles.childNameTxt}
+            data={this.props.childList.map((item, index)=>{
+              return {
+                key: index,
+                label: item.displayName
+              }
             })}
-          </Picker>
+            initValue={this.props.childList[this.props.curChild].displayName}
+            onChange={(option)=>{
+              this.props.dispatch({type: 'CHANGE_STUDENT', index: option.key})
+            }} />
         </View>
       </View>
     );

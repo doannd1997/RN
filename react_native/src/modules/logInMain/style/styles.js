@@ -7,7 +7,9 @@ export default styles = EStyleSheet.create({
     input: {
         width: "120rem",
         margin: "1rem",
-        fontSize: "5rem"
+        fontSize: "5rem",
+        elevation: 0,
+        shadowOpacity: 0,
     },
     button: {
         height: "20rem",
