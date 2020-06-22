@@ -3,29 +3,27 @@ import {View, Text, StyleSheet} from "react-native"
 import {connect, Provider} from "react-redux"
 
 const HistoryComponent = require("./Main").default;
-const store = require("../redux/Redux").default;
 const NotLogInCom = require("../../../../common/component/NotLogInCom").default;
 
 class History extends Component{
     render(){
         return (
-          <Provider store = {store}>
-            <View style={styles.container}>
+          <View style={styles.container}>
             {this.props.logedIn ? (
               <HistoryComponent style={styles.container} />
             ) : (
-              <NotLogInCom/>
+              <NotLogInCom />
             )}
           </View>
-          </Provider>
-          
         );
     }
 }
 
 const mapStateToProps = (state)=>{
     return {
-        logedIn: state.logedIn
+        logedIn: state.logedIn,
+        childList: state.childList,
+        curChild: state.curChild
     }
 }
 

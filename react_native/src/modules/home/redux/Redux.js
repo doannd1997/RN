@@ -21,8 +21,51 @@ const defaultState = {
     parentAvatar: require("../../../../res/image/Account/man.png"),
     parentName: "[ Tên Phụ Huynh ]",
     studentAvatar: require("../../../../res/image/HomeScreen/education.png"),
-    studentName: "[ Tên Học Sinh ]"
+    studentName: "[ Tên Học Sinh ]",
+    childList: [
+        {
+            id: 0,
+            displayName: "Học Sinh 0"
+        },
+        {
+            id: 1,
+            displayName: "Học Sinh 1"
+        }
+    ],
+    curChild: 0,
+    history: [
+        {
+          date: new Date().getTime(),
+          data: [{
+            time: "10:15:23",
+            place: "Khu đô thị Time City",
+            action: "UP"
+          },
+          {
+            time: "10:15:23",
+            place: "Khu đô thị Time City ",
+            action: "DOWN"
+          },
+          {
+            time: "10:15:23",
+            place: "Khu đô thị Time City ",
+            action: "UP"
+          }],
+        },
+      ],
+    isPickingDate: false
 }
+
+const ONE_DAY = 1000*60*60*24;
+
+for (var i=0; i<12; i++){
+    var last = defaultState.history[defaultState.history.length-1];
+    last = {...last};
+    last.action = (i%2==0)? "DOWN" : "UP";
+    last.date -= ONE_DAY;
+    defaultState.history.push(last)
+}
+
 
 const reducer = (state, action)=>{
     if (Object.keys(state).length == 0)
@@ -53,6 +96,10 @@ const reducer = (state, action)=>{
             return {...state, parentAvatar: action.avatar}
         case "SET_STUDENT_AVATAR":
             return {...state, studentAvatar: action.avatar}
+        case "SELECT_CHILD": 
+            return {...state, curChild: action.curChild}
+        case "TOGGLE_PICKING":
+            return {...state, isPickingDate: !state.isPickingDate}
     }
     
     return state;

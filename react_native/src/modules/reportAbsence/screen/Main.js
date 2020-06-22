@@ -98,7 +98,7 @@ class ReportAbsenceCom extends Component {
                 style={styles.childNameContainer}
                 selectStyle={styles.childNameContent}
                 initValueTextStyle={styles.childName}
-                cancelText={global.localization.getLang("lang_cancel")}
+                cancelText={global.localization.getLang("lang_confirm_cancel")}
                 data={this.props.childList.map((item, index)=>{
                   return {
                     label: item.displayName,
@@ -125,7 +125,7 @@ class ReportAbsenceCom extends Component {
                         style={styles.busTypeContainer}
                         selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
                         initValueTextStyle={styles.txtBusType}
-                        cancelText={global.localization.getLang("lang_cancel")}
+                        cancelText={global.localization.getLang("lang_confirm_cancel")}
                         data={[
                           {
                             label: (global.localization.getLang(

@@ -8,6 +8,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import { connect } from "react-redux";
 import DatePicker from 'react-native-datepicker'
 import Toast from "react-native-root-toast";
+import ModalSelector from "react-native-modal-selector";
 
 const commonStyles = require("../../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -41,28 +42,21 @@ const ToolBar = props =>{
         start={{x: 0, y: 0.65}}
         end={{x: 1, y: 0}}>
         <View style={styles.infoDiv}>
-          <Text
-            style={[
-              commonStyles.textBold,
-              commonStyles.text,
-              styles.txtTimeRecorded,
-            ]}>
-            {props.histories.length == 0
-              ? global.localization.getLang('lang_blank_history')
-              : global
-                  .localization
-                  .getLang('lang_record')
-                  .replace(
-                    /_from_/gi,
-                    TimeUtils.formatDate(
-                      props.histories[props.histories.length - 1].date,
-                    ),
-                  )
-                  .replace(
-                    /_to_/gi,
-                    TimeUtils.formatDate(props.histories[0].date),
-                  )}
-          </Text>
+        <ModalSelector
+          style={styles.childNameContainer}
+          selectStyle={styles.childNameContent}
+          initValueTextStyle={styles.childName}
+          cancelText={global.localization.getLang("lang_confirm_cancel")}
+          data={props.childList.map((item, index)=>{
+            return {
+              label: item.displayName,
+              key: index
+            }
+          })}
+          initValue={props.childList[props.curChild].displayName}
+          onChange={(option)=>{
+            props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+          }} />
         </View>
         <View style={styles.btnPickDate}>
           <Image
@@ -124,7 +118,9 @@ const ToolBar = props =>{
 
 const mapStateToProps = state => {
     return {
-      histories: state.history
+      histories: state.history,
+      childList: state.childList,
+      curChild: state.curChild
     }
 };
   

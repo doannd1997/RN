@@ -13,7 +13,7 @@ class YearPicker extends Component{
               style={{width: "100%", height: "100%"}}
               selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
               initValueTextStyle={styles.yearTxt}
-              cancelText={global.localization.getLang("lang_cancel")}
+              cancelText={global.localization.getLang("lang_confirm_cancel")}
               data={this.props.yearList.map((item, index)=>{
                 return {
                   label: item,

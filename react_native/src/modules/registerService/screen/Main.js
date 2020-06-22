@@ -115,7 +115,7 @@ class RegisterService extends Component {
                   style={styles.childNameContainer}
                   selectStyle={styles.childNameContent}
                   initValueTextStyle={styles.childName}
-                  cancelText={global.localization.getLang("lang_cancel")}
+                  cancelText={global.localization.getLang("lang_confirm_cancel")}
                   data={this.props.childList.map((item, index)=>{
                     return {
                       label: item.displayName,

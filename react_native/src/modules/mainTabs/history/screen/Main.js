@@ -51,7 +51,9 @@ class Main extends Component{
 const mapStateToProps = (state)=>{
     return {
         history: state.history,
-        isPickingDate: state.isPickingDate
+        isPickingDate: state.isPickingDate,
+        childList: state.childList,
+        curChild: state.curChild
     }
 }
 

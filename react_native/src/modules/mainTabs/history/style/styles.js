@@ -77,7 +77,7 @@ export default EStyleSheet.create({
   toolBar: {
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: '6rem',
+    // paddingLeft: '6rem',
     // paddingRight: '2rem',
     flexDirection: 'row',
   },
@@ -123,5 +123,22 @@ export default EStyleSheet.create({
   txtPlace: {
       fontSize: "6rem",
       color: "#555"
+  },
+  childNameContainer: {
+    width: "100%",
+    height: "100%",
+    padding: "1rem"
+  },
+  childNameContent: {
+    width: "100%",
+    height: "100%",
+    borderWidth: "0.75rem",
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: "cyan"
+  },
+  childName: {
+    fontSize: "7rem",
+    fontWeight: "bold"
   }
 });
