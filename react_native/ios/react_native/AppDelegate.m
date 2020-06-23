@@ -12,6 +12,10 @@
 #import <React/RCTRootView.h>
 
 #import <GoogleMaps/GoogleMaps.h>
+//#import "Firebase.h"
+
+@import Firebase;
+//@import Fire;
 
 @implementation AppDelegate
 
@@ -31,6 +35,8 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [FIRApp configure];
+//  [FirebasePushNotifications configure];
   return YES;
 }
 
