@@ -61,7 +61,7 @@ class MapViewComponent extends Component {
             style={styles.markerImage}
           />
         </Marker>
-        {[0, 1, 2].map(index => (
+        {[0].map(index => (
           <BusComponent {...self.props} index={index} />
         ))}
       </MapView>

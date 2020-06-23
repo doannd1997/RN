@@ -19,49 +19,49 @@ class ChildInfo extends Component{
                     showsVerticalScrollIndicator={false}
                     >
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_full_name")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_full_name")}: {"\t"}<Text style={styles.txtInfoContent}>[Họ tên học sinh]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_student_code")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_student_code")}: {"\t"}<Text style={styles.txtInfoContent}>[Sô hiệu học sinh]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_grade")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_grade")}: {"\t"}<Text style={styles.txtInfoContent}>[Khối]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_school_place")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_school_place")}: {"\t"}<Text style={styles.txtInfoContent}>[Cơ sở học]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_pick_header")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_pick_header")}: {"\t"}<Text style={styles.txtInfoContent}>[Hình thức đón trả]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_pick_place")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_pick_place")}: {"\t"}<Text style={styles.txtInfoContent}>[Địa điểm đón]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_pick_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_pick_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}>[Thời gian đón dự kiến]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_drop_place")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_drop_place")}: {"\t"}<Text style={styles.txtInfoContent}>[Địa điểm trả]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_drop_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_drop_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}>[Thời gian trả dự kiến]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_bus_id")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_bus_id")}: {"\t"}<Text style={styles.txtInfoContent}>[Số hiệu tuyến buýt]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_driver")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_driver")}: {"\t"}<Text style={styles.txtInfoContent}>[Tên tài xế]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_driver_phone")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_driver_phone")}: {"\t"}<Text style={styles.txtInfoContent}>[Điện thoại tài xế]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_monitor")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_monitor")}: {"\t"}<Text style={styles.txtInfoContent}>[Tên nhân viên giám sát]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_monitor_phone")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_monitor_phone")}: {"\t"}<Text style={styles.txtInfoContent}>[Số điện thoại nhân viên giám sát]</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_start_date_service")}: {"\t"}<Text style={styles.txtInfoContent}> Any Text</Text>
+                        {global.localization.getLang("lang_start_date_service")}: {"\t"}<Text style={styles.txtInfoContent}>[Ngày bắt đầu dịch vụ]</Text>
                     </Text>
                 </ScrollView>
             </View>

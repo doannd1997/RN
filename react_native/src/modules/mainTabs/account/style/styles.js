@@ -165,6 +165,7 @@ export default EStyleSheet.create({
     },
     txtInfoContent: {
         fontSize: "7rem",
-        fontWeight: "normal"
+        fontWeight: "normal",
+        color: colors.thickTheme
     }
 })
