@@ -112,5 +112,18 @@
     "lang_drop_down": "Tuyến Trả",
     "lang_phone_number_collapse": "SDT",
     "lang_phone_number_expand": "Số Điện Thoại",
-    "lang_role": "Vai Trò"
+    "lang_role": "Vai Trò",
+    "lang_guardians_list": "Danh Sách Giám Hộ",
+    "lang_child_info": "Thông Tin Học Sinh",
+    "lang_grade": "Khối",
+    "lang_school_place": "Cơ sở học",
+    "lang_pick_header": "Hình thức đón trả",
+    "lang_pick_place": "Địa chỉ đón (Điểm đón)",
+    "lang_pick_time_estimate": "Thời gian đón dự kiến",
+    "lang_drop_place": "Địa chỉ trả (Điểm trả)",
+    "lang_drop_time_estimate": "Thời gian trả dự kiến",
+    "lang_bus_id": "Tuyến số",
+    "lang_driver_phone": "Điện thoại lái xe",
+    "lang_monitor_phone": "Điện thoại giám sát xe",
+    "lang_start_date_service": "Ngày bắt đầu dịch vụ"
 }

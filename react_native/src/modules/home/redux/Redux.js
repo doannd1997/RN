@@ -18,6 +18,7 @@ const defaultState = {
         },
     mapType: "standard",
     curTab: 0,  // account Tab
+    childWatchMode: 0, // 0 == guardians ; 1 == all Info
     parentAvatar: require("../../../../res/image/Account/man.png"),
     parentName: "[ Tên Phụ Huynh ]",
     childList: [
@@ -132,6 +133,8 @@ const reducer = (state, action)=>{
                 return {...guardian, assigned: _assigned}
             });
             return {...state, guardians: _guardians}
+        case "SWITCH_CHILD_TAB_MODE":
+            return {...state, childWatchMode: action.childWatchMode}
     }
     
     return state;

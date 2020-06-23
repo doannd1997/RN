@@ -9,6 +9,7 @@ const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
 
 const GuardianCom = require("../component/Guardian").default;
+const ChildInfoCom = require("../component/ChildInfo").default;
 
 const options = {
     title: global.localization.getLang("lang_select_image"),
@@ -19,7 +20,7 @@ const options = {
     },
   };
 
-class ParentTab extends Component{
+class ChildTab extends Component{
     render(){
         return (
           <View style={[styles.container]}>
@@ -95,23 +96,87 @@ class ParentTab extends Component{
                 />
                 <View style={styles.guardiansContainer}>
                   <View style={styles.guardiansHeaderContainer}>
-                      <Text style={[commonStyles.text, commonStyles.textBold, styles.lblHeaderGuardiansList]}>
-                        {global.localization.getLang("lang_guardians_list")}
-                      </Text>
+                    <View
+                      style={[
+                        styles.childHeaderContainer,
+                        this.props.childWatchMode == TAB_GUARDIANS
+                          ? styles.activeChildTab
+                          : {},
+                      ]}>
+                      <TouchableOpacity
+                        style={commonStyles.fullViewVerticalCenter}
+                        onPress={() => {
+                          this.props.dispatch({
+                            type: 'SWITCH_CHILD_TAB_MODE',
+                            childWatchMode: TAB_GUARDIANS,
+                          });
+                        }}>
+                        <Text
+                          style={[
+                            commonStyles.text,
+                            commonStyles.textBold,
+                            styles.lblHeaderGuardiansList,
+                            this.props.childWatchMode != TAB_GUARDIANS
+                              ? styles.inactiveWatchMode
+                              : styles.activeWatchMode,
+                          ]}>
+                          {global.localization.getLang(
+                            'lang_guardians_list',
+                          )}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                    <View
+                      style={[
+                        styles.childHeaderContainer,
+                        this.props.childWatchMode == TAB_CHILD_INFO
+                          ? styles.activeChildTab
+                          : {},
+                      ]}>
+                      <TouchableOpacity
+                        style={commonStyles.fullViewVerticalCenter}
+                        onPress={() => {
+                          this.props.dispatch({
+                            type: 'SWITCH_CHILD_TAB_MODE',
+                            childWatchMode: TAB_CHILD_INFO,
+                          });
+                        }}>
+                        <Text
+                          style={[
+                            commonStyles.text,
+                            commonStyles.textBold,
+                            styles.lblHeaderGuardiansList,
+                            this.props.childWatchMode != TAB_CHILD_INFO
+                              ? styles.inactiveWatchMode
+                              : styles.activeWatchMode,
+                          ]}>
+                          {global.localization.getLang(
+                            'lang_child_info',
+                          )}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                  <FlatList 
-                    style={styles.guardiansList}
-                    showsVerticalScrollIndicator={false}    
-                    data={this.props.guardians}
-                    renderItem={({item})=>{
+                  {this.props.childWatchMode == TAB_GUARDIANS ? (
+                    <FlatList
+                      style={styles.guardiansList}
+                      showsVerticalScrollIndicator={false}
+                      data={this.props.guardians}
+                      renderItem={({item}) => {
                         return (
-                          <GuardianCom guardian={item} style={styles.optionContainer}/>
-                          )
-                    }}
-                    keyExtractor={(item, index)=>{
-                        return  index + "";
-                    }}
-                  />
+                          <GuardianCom
+                            guardian={item}
+                            style={styles.optionContainer}
+                          />
+                        );
+                      }}
+                      keyExtractor={(item, index) => {
+                        return index + '';
+                      }}
+                    />
+                  ) : (
+                    <ChildInfoCom />
+                  )}
                 </View>
               </View>
             </View>
@@ -123,12 +188,14 @@ class ParentTab extends Component{
 const mapStateToProps = (state)=>{
     return {
         curTab: state.curTab,
-        studentName: state.studentName,
-        studentAvatar: state.studentAvatar,
         childList: state.childList,
         curChild: state.curChild,
-        guardians: state.guardians
+        guardians: state.guardians,
+        childWatchMode: state.childWatchMode
     }
 }
 
-export default connect(mapStateToProps)(ParentTab);
+export default connect(mapStateToProps)(ChildTab);
+
+const TAB_GUARDIANS = "0";
+const TAB_CHILD_INFO = "1";

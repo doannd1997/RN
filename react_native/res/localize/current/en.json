@@ -113,5 +113,17 @@
     "lang_phone_number_collapse": "Phone.No",
     "lang_phone_number_expand": "Phone Number",
     "lang_role": "Role",
-    "lang_guardians_list": "Guardians List"
+    "lang_guardians_list": "Guardians List",
+    "lang_child_info": "Student Info",
+    "lang_grade": "Grade",
+    "lang_school_place": "Place",
+    "lang_pick_header": "Pick Up/ Drop Down Method",
+    "lang_pick_place": "Pick Up Place",
+    "lang_pick_time_estimate": "Pick up time (Estimate)",
+    "lang_drop_place": "Drop Down Place",
+    "lang_drop_time_estimate": "Drop down time (Estimate)",
+    "lang_bus_id": "Bus Id",
+    "lang_driver_phone": "Drives's phone",
+    "lang_monitor_phone": "Monitor's phone",
+    "lang_start_date_service": "Start of Date service"
 }

@@ -102,6 +102,7 @@ export default EStyleSheet.create({
         height: "20rem",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "row"
     },
     guardiansList: {
         width: "100%",
@@ -139,5 +140,31 @@ export default EStyleSheet.create({
     checkboxContainer: {
         width: "20rem",
         // height: "100%"
+    },
+    childHeaderContainer: {
+        height: "100%",
+        flex: 1,
+    },
+    activeChildTab: {
+        borderBottomWidth: "1rem",
+        borderColor: "cyan"
+    },
+    inactiveWatchMode: {
+        color: "grey"
+    },
+    activeWatchMode: {
+        color: colors.theme2
+    },
+    scrollViewCotainer: {
+        margin: "3rem"
+    },
+    txtInfoHeader: {
+        fontSize: "7rem",
+        color: "#333",
+        margin: "3rem"
+    },
+    txtInfoContent: {
+        fontSize: "7rem",
+        fontWeight: "normal"
     }
 })
