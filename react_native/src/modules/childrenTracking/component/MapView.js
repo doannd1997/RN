@@ -3,7 +3,7 @@ import {View, Text, useS, Image} from "react-native";
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome"
-import MapView, {Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE, Callout} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_DEFAULT, PROVIDER_GOOGLE, Callout, Circle} from 'react-native-maps';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -12,16 +12,19 @@ const colors = require("../../../color/Colors").default;
 class BusComponent extends Component {
   render(){
     return (
-      <Marker
-        coordinate={global.userData.getBusCoordinate(this.props.index)}
+      <Circle
+        center={global.userData.getBusCoordinate(this.props.index)}
         title={""+this.props.index}
         description={
             global.localization.getLang('lang_bus_transport')
         }
         anchor={{x: 0.5, y: 0.5}}
+        radius={1200}
+        fillColor={"rgba(0,120,250,0.5)"}
+        strokeWidth={0}
       >
           <Image source={require('../../../../res/image/HomeScreen/transport.png')} style={styles.busImage}/>
-      </Marker>
+      </Circle>
     );
   }
 }
