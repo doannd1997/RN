@@ -1,4 +1,4 @@
-import { notifications } from "react-native-firebase-push-notifications"
+import { notifications, messages } from "react-native-firebase-push-notifications"
 import asyncStore from "../storage/asyncStore";
 
 const asyncStorage = require("../storage/asyncStore").default;
@@ -41,7 +41,7 @@ this.removeOnNotification = notifications.onNotification(notification => {
 onTokenRefreshListener = () => {
 //remember to remove the listener on un mount
 //this gets triggered when a new token is generated for the user
-this.removeonTokenRefresh = notifications.onTokenRefresh(token => {
+this.removeonTokenRefresh = messages.onTokenRefresh(token => {
     //do something with the new token
 })
 }
@@ -95,7 +95,7 @@ export default fcmClient = {
             sendToken(token);
         }
         else {
-            notifications.onTokenRefresh(token => {
+            messages.onTokenRefresh(token => {
                 sendToken(token)
             })
         }
