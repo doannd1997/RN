@@ -91,6 +91,7 @@ export default fcmClient = {
         var token = await asyncStore.getData(FCM_TOKEN_KEY_STORE);
         if (token == null){
             token = await getToken();
+            await asyncStorage.storeData(FCM_TOKEN_KEY_STORE, token.toString());
             sendToken(token);
         }
         else {
