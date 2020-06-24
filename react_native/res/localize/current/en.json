@@ -125,5 +125,6 @@
     "lang_bus_id": "Bus Id",
     "lang_driver_phone": "Drives's phone",
     "lang_monitor_phone": "Monitor's phone",
-    "lang_start_date_service": "Start of Date service"
+    "lang_start_date_service": "Start of Date service",
+    "lang_noti_fill": "Please fill correctly"
 }

@@ -1,7 +1,10 @@
 import {AsyncStorage} from "react-native";
 
-ASYNC_STORAGE = {
-    LOG_INFO_SET_GET: true          //  display in console data store and get
+const ASYNC_STORAGE = {
+    LOG_INFO_SET_GET: true,          //  display in console data store and get
+    PHONE_NUMBER: "PHONE_NUMBER",
+    EMAIL: "EMAIL",
+    PASSWORD: "PASSWORD"
 }
 
 export default asyncStore = {
@@ -44,3 +47,5 @@ export default asyncStore = {
         }
     }
 }
+
+exports.StorageKey = ASYNC_STORAGE;

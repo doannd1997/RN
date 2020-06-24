@@ -22,7 +22,7 @@ export default ToolBar = props=>{
         <TouchableOpacity
           style={commonStyles.toolBarBtnHome}
           onPress={() => {
-            navigation.navigate("MainLogin")
+            navigation.goBack()
           }}>
           <Icon name="keyboard-return" size={28} color={'#fff'} />
         </TouchableOpacity>

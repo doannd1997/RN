@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {View, Text, Image, FlatList, Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
+import {withNavigation} from "react-navigation"
 
 import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -9,10 +10,22 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 const ToolBar = require("../component/ToolBar").default;
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
+const {StoreDefine} = require("../redux/Redux");
 
-export default class Main extends Component{
+const Validator = require("../../../utils/Validator").default;
+
+class Main extends Component{
     constructor(props){
         super(props);
+    }
+    componentWillMount(){
+      // var param = this.props.route.params;
+      var phoneNumber = global.authenData.getPhoneNumber();
+      var email = "";
+      var studentId = "";
+      this.props.dispatch({type: StoreDefine.TYPE_PHONE_NUMBER, phoneNumber: phoneNumber});
+      this.props.dispatch({type: StoreDefine.TYPE_EMAIL, email: email});
+      this.props.dispatch({type: StoreDefine.TYPE_STUDENT_ID, studentId: studentId});
     }
     render(){
         var self = this;
@@ -29,17 +42,32 @@ export default class Main extends Component{
               iconSize={20}
               iconWidth={40}
               inputPadding={16}
+              keyboardType='numeric'
+              value={this.props.phoneNumber}
+              onChangeText={(text)=>{
+                this.props.dispatch({
+                  type: StoreDefine.TYPE_PHONE_NUMBER,
+                  phoneNumber: text
+                })
+              }}
             />
             <Fumi
               style={styles.input}
-              secureTextEntry={true}
+              // secureTextEntry={true}
               label={global.localization.getLang('lang_email_receive_password')}
               iconClass={FontAwesomeIcon}
-              iconName={'lock'}
+              iconName={'inbox'}
               iconColor={'#f95a25'}
               iconSize={20}
               iconWidth={40}
               inputPadding={16}
+              value={this.props.email}
+              onChangeText={(text)=>{
+                this.props.dispatch({
+                  type: StoreDefine.TYPE_EMAIL,
+                  email: text
+                })
+              }}
             />
             <Fumi
               style={styles.input}
@@ -50,13 +78,23 @@ export default class Main extends Component{
               iconSize={20}
               iconWidth={40}
               inputPadding={16}
+              value={this.props.studentId}
+              onChangeText={(text)=>{
+                this.props.dispatch({
+                  type: StoreDefine.TYPE_STUDENT_ID,
+                  studentId: text
+                })
+              }}
             />
             <TouchableOpacity
               style={[styles.input, styles.button]}
               onPress={() => {
-                self.props.navigation.navigate('MainLogin', {
+                var params = [this.props.phoneNumber, this.props.email, this.props.studentId];
+                Validator.validateLength(params, ()=>{
+                  self.props.navigation.navigate('MainLogin', {
                   
-                });
+                  });
+                })
               }}>
               <Text
                 style={[
@@ -88,3 +126,13 @@ export default class Main extends Component{
         );
     }
 }
+
+const mapStateToProps = (state)=>{
+  return {
+    phoneNumber: state.phoneNumber,
+    email: state.email,
+    studentId: state.studentId
+  }
+}
+
+export default withNavigation(connect(mapStateToProps)(Main));

@@ -82,7 +82,7 @@ const ParentTab = (props)=>{
             <View style={styles.btnChangePasswordContainer}>
               <TouchableOpacity style={commonStyles.fullBtn}
                 onPress={()=>{
-                  props.dispatch({type: "LOG_OUT"})
+                  // props.dispatch({type: "LOG_OUT"})
                   navigation.navigate("FogetPassword")
                 }}
               >
