@@ -9,12 +9,13 @@ admin.initializeApp({
 });
 
 // This registration token comes from the client FCM SDKs.
-var registrationToken = 'eAEpi2cIQ42iwva_cnPy9o:APA91bElveXh35O7M-qogFBV9MUQfvjy6RbG2DFFMgfvhLP89OMoIAUG_kIFI8vOxN0J7lk6tC3mqcCIAPhWjM9-Luwqy7krGH9Fq2j-g0jJF29OzUGDEttUWV-2NEsy2I2-8Te_JhzQ';
+var registrationToken = 'fP8TsROoSOu1MpxKXfAPaM:APA91bElq4PvxueYjHFCQU4qasuCJ2eXh-NlvJi6r-K2yuSlIM-JN_kpVzh2jWJkia5g0NJkPUquLhmyxtkYMfWM9nVNBDKTC4Nf0ogMarCfBqN7M1CvM6hUEb2YWTarpsTm_IcwuA81';
+// var registrationToken = 'fPROoSOu1MpxKXfAPaM:APA91bElq4PvxueYjHFCQU4qasuCJ2eXh-NlvJi6r-K2yuSlIM-JN_kpVzh2jWJkia5g0NJkPUquLhmyxtkYMfWM9nVNBDKTC4Nf0ogMarCfBqN7M1CvM6hUEb2YWTarpsTm_IcwuA81';
 
 var message = {
     notification: {
-        title: 'đây là thông báo',
-        body: 'thông báo gửi đến token',
+        title: 'Bạn có thư mới #1',
+        body: 'Xin chào',
       },
     //   apns: {
     //     payload: {
@@ -33,7 +34,9 @@ admin.messaging().send(message)
   .then((response) => {
     // Response is a message ID string.
     console.log('Successfully sent message:', response);
+    process.exit(1);
   })
   .catch((error) => {
     console.log('Error sending message:', error);
+    process.exit(-1);
   });
