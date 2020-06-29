@@ -87,7 +87,11 @@ class ReportAbsenceCom extends Component {
         <ToolBar style={commonStyles.toolBar} params={{title: "lang_report_absentee", navigation: "HomeScreen"}}/>
         <View style={commonStyles.contentContainer}>
           <View style={commonStyles.divForm}>
-            <View style={styles.defaultInfo}>
+            <LinearGradient
+              style={[styles.defaultInfo]}
+              colors={['#2c81d1', '#2fbdb6']}
+              start={{x: 0.3, y: 0.6}}
+              >
               <Image
                 source={require('../../../../res/image/HomeScreen/education.png')}
                 defaultSource={require('../../../../res/image/HomeScreen/education.png')}
@@ -109,7 +113,7 @@ class ReportAbsenceCom extends Component {
                 onChange={(option)=>{
                   this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
                 }} />
-            </View>
+            </LinearGradient>
             <View style={[styles.btnCluster]}>
               <View style={[styles.formInputCluster]}>
                 <View style={[styles.inputFieldItem]}>

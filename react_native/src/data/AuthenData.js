@@ -1,7 +1,6 @@
 import asyncStore, {StorageKey} from "../storage/asyncStore";
 
 var AuthenData = {
-    phoneNumber: "",
     setPhoneNumber: async (phoneNumber, callback)=>{
         this.phoneNumber = phoneNumber;
         await asyncStore.storeData(StorageKey.PHONE_NUMBER, phoneNumber.toString());
@@ -9,13 +8,35 @@ var AuthenData = {
             callback();
     },
     getPhoneNumber: ()=>{
-        return this.phoneNumber;
+        return this.phoneNumber || DEFAULT.PHONE_NUMNER;
+    },
+    setPassword: async (password, callback)=>{
+        this.password = password;
+        await asyncStore.storeData(StorageKey.PASSWORD, password.toString());
+        if (typeof callback == 'function')
+            callback();
+    },
+    getPassword: ()=>{
+        return this.password || DEFAULT.PASS_WORD;
+    },
+    setToken: (token)=>{
+        this.token = token;
+    },
+    getToken: ()=>{
+        return this.token || DEFAULT.TOKEN;
     },
     initial: async ()=>{
         var phoneNumber = await asyncStore.getData(StorageKey.PHONE_NUMBER);
-        console.log(">> " + phoneNumber)
-        this.phoneNumber = phoneNumber ? phoneNumber : ""
+        this.phoneNumber = phoneNumber ? phoneNumber : DEFAULT.PHONE_NUMNER;
+        var password = await asyncStore.getData(StorageKey.PASSWORD);
+        this.password = password ? password : DEFAULT.PASS_WORD;
     }
 }
 
 export default AuthenData;
+
+const DEFAULT = {
+    PHONE_NUMNER: "",
+    PASS_WORD: "",
+    TOKEN: ""
+}

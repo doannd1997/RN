@@ -17,7 +17,7 @@
     "lang_app_title": "App Parent",
     "lang_tab_home": "Home",
     "lang_tab_history": "History",
-    "lang_tab_mail": "Mail",
+    "lang_tab_mail": "Message",
     "lang_tab_account": "Account",
     "lang_student_tracking": "Bus Location Tracking",
     "lang_report_absentee": "Report Absence",
@@ -125,5 +125,6 @@
     "lang_bus_id": "Bus Id",
     "lang_driver_phone": "Drives's phone",
     "lang_monitor_phone": "Monitor's phone",
-    "lang_start_date_service": "Start of Date service"
+    "lang_start_date_service": "Start of Date service",
+    "lang_noti_fill": "Please fill correctly"
 }

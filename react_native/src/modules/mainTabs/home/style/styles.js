@@ -115,6 +115,6 @@ export default (styles = EStyleSheet.create({
     fontSize: "6rem"
   },
   txtHeader: {
-    fontSize: "6rem"
+    fontSize: "8rem"
   }
 }));

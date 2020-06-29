@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
 import ModalSelector from "react-native-modal-selector";
+import LinearGradient from 'react-native-linear-gradient';
 
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
@@ -104,7 +105,11 @@ class RegisterService extends Component {
           ) : (
             <View style={commonStyles.contentContainer}>
               <View style={[commonStyles.divForm, styles.divForm]}>
-              <View style={styles.defaultInfo}>
+              <LinearGradient
+                style={[styles.defaultInfo]}
+                colors={['#2c81d1', '#2fbdb6']}
+                start={{x: 0.3, y: 0.6}}
+                >
                 <Image
                   source={require('../../../../res/image/HomeScreen/education.png')}
                   defaultSource={require('../../../../res/image/HomeScreen/education.png')}
@@ -126,7 +131,7 @@ class RegisterService extends Component {
                   onChange={(option)=>{
                     this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
                   }} />
-              </View>
+              </LinearGradient>
               <View style={styles.viewDivForm}>
                 <YearPickerCom />
                 <View style={styles.pageViewContainer}>

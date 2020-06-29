@@ -76,7 +76,7 @@ export default (styles = EStyleSheet.create({
     // height: 200
   },
   childName: {
-    color: '#666',
+    color: '#eee',
     fontWeight: 'bold',
     fontSize: "8rem",
     // backgroundColor: "blue",

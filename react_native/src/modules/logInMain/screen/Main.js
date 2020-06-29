@@ -13,6 +13,8 @@ const styles = require("../style/styles").default;
 
 const Validator = require("../../../utils/Validator").default;
 
+const Networking = require("../networking/Networking").default;
+
 class MainLogInCom extends Component{
     constructor(props){
         super(props);
@@ -24,7 +26,7 @@ class MainLogInCom extends Component{
       // this.props.dispatch({type: StoreDefine.TYPE_PHONE_NUMBER, phoneNumber: phoneNumber});
       // this.props.dispatch({type: StoreDefine.TYPE_PASSWORD, password: password});
       this.props.dispatch({type: StoreDefine.TYPE_PHONE_NUMBER, phoneNumber: global.authenData.getPhoneNumber()});
-      this.props.dispatch({type: StoreDefine.TYPE_PASSWORD, password: ""});
+      this.props.dispatch({type: StoreDefine.TYPE_PASSWORD, password: global.authenData.getPassword()});
     }
     componentWillUnmount(){
 
@@ -82,11 +84,7 @@ class MainLogInCom extends Component{
               onPress={() => {
                 var params = [this.props.phoneNumber, this.props.password];
                 Validator.validateLength(params, ()=>{
-                  global.authenData.setPhoneNumber(this.props.phoneNumber, ()=>{
-                    self.props.navigation.navigate('HomeScreen', {
-                      logedIn: true,
-                    });
-                  })
+                  Networking.apiLogIn(this.props);
                 })
               }}>
               <Text
