@@ -50,7 +50,7 @@ class MailDetail extends Component {
                             text: okLabel,
                             onPress: () => {
                                 this.props.dispatch({
-                                    type: "DELETE_MAIL"
+                                    type: "MAIL_DELETE_MAIL"
                                 })
                             },
                             },
@@ -80,7 +80,7 @@ class MailDetail extends Component {
                   <TouchableOpacity style={commonStyles.formBtnConfirm}
                     onPress={()=>{
                         this.props.dispatch({
-                            type: "ClOSE_MAIL"
+                            type: "MAIL_ClOSE_MAIL"
                         })
                     }}
                   >
@@ -104,11 +104,11 @@ class MailDetail extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        showingMail: state.showingMail,
-        curTab: state.curTab,
-        mailIndex: state.mailIndex,
-        inbox: state.inbox,
-        sentMail: state.sentMail,
+        showingMail: state.mail_showing,
+        curTab: state.mail_curTab,
+        mailIndex: state.mail_mailIndex,
+        inbox: state.mail_inbox,
+        sentMail: state.mail_sentMail,
     }
 };
 

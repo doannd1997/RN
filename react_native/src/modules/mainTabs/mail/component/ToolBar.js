@@ -23,7 +23,7 @@ const ToolBar = props=>{
         <View style={[commonStyles.toolBarElementContainer, props.curTab == 0 ? activeTabStyle : inactiveTabStyle]}>
           <TouchableOpacity style={commonStyles.fullTouchButton}
             onPress={()=>{
-              props.dispatch({type: "SET_TAB", curTab: 0})
+              props.dispatch({type: "MAIL_SET_TAB", mail_curTab: 0})
             }}
           >
             <Text
@@ -36,7 +36,7 @@ const ToolBar = props=>{
         <View style={[commonStyles.toolBarElementContainer, props.curTab == 1 ? activeTabStyle : inactiveTabStyle]}>
           <TouchableOpacity style={commonStyles.fullTouchButton}
             onPress={()=>{
-              props.dispatch({type: "SET_TAB", curTab: 1})
+              props.dispatch({type: "MAIL_SET_TAB", mail_curTab: 1})
             }}
           >
             <Text
@@ -52,7 +52,7 @@ const ToolBar = props=>{
 
 const mapStateToProps = state => {
     return {
-      curTab: state.curTab
+      curTab: state.mail_curTab
     }
   };
   

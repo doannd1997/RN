@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Badge } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Provider } from "react-redux";
@@ -104,7 +105,9 @@ export default class HomeScreen extends Component {
               options={{
                 tabBarLabel: global.localization.getLang("lang_tab_mail"),
                 tabBarIcon: ({color, size}) => (
-                  <Icon name="inbox" size={size} color={color} />
+                  <Icon name="inbox" size={size} color={color}>
+                      {getNumBadge(store)}
+                  </Icon>
                 ),
               }}
             />
@@ -122,8 +125,16 @@ export default class HomeScreen extends Component {
         </View>
         </Provider>
       );
-    }
-
-    
+    }   
 }
 
+getNumBadge = (store)=>{
+  var numNew = store.getState().mail_inbox.filter((item)=>item.isNew).length;
+  return (
+    numNew > 0 ?
+    <Text style={styles.bagdeMail}>
+      {numNew}
+    </Text>
+    : null
+  )
+}

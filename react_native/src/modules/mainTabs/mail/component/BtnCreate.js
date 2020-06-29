@@ -13,7 +13,7 @@ class ButtonCreate extends Component{
         const self = this;
         return (
             <TouchableOpacity style={styles.btnCreate} onPress={()=>{
-                self.props.dispatch({type: "OPEN_SEND_MAIL"})
+                self.props.dispatch({type: "MAIL_OPEN_SEND_MAIL"})
             }}>
                 <Image style={styles.imgAdd} source={require("../../../../../res/image/popup/add_white_128.png")}/>
             </TouchableOpacity>

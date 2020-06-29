@@ -57,7 +57,7 @@ class PopUpConmpose extends Component {
                   <TouchableOpacity
                     style={styles.headerBtnClose}
                     onPress={() => {
-                      self.props.dispatch({type: 'CLOSE_COMPOSE_MAIL'});
+                      self.props.dispatch({type: 'MAIL_CLOSE_COMPOSE_MAIL'});
                     }}>
                     <Image
                       source={require('../../../../../res/image/popup/close.png')}
@@ -74,8 +74,8 @@ class PopUpConmpose extends Component {
                     value={this.props.composeMailContent}
                     onChangeText={text => {
                       this.props.dispatch({
-                        type: 'TYPE_COMPOSE_MAIL',
-                        composeMailContent: text,
+                        type: 'MAIL_TYPE_COMPOSE_MAIL',
+                        mail_composeContent: text,
                       });
                     }}
                   />
@@ -96,7 +96,7 @@ class PopUpConmpose extends Component {
                             time: new Date().getTime(),
                           };
                           self.props.dispatch({
-                            type: 'SEND_MAIL',
+                            type: 'MAIL_SEND_MAIL',
                             mail: mail,
                           });
                         }}>
@@ -135,7 +135,7 @@ class PopUpConmpose extends Component {
                             time: new Date().getTime(),
                           };
                           self.props.dispatch({
-                            type: 'SEND_MAIL',
+                            type: 'MAIL_SEND_MAIL',
                             mail: mail,
                           });
                         }}>
@@ -160,8 +160,8 @@ class PopUpConmpose extends Component {
                         }
                         onChange={option => {
                           this.props.dispatch({
-                            type: 'CHANGE_MONITOR',
-                            curMonitor: option.key,
+                            type: 'MAIL_CHANGE_MONITOR',
+                            mail_curMonitor: option.key,
                           });
                         }}
                       />
@@ -177,10 +177,10 @@ class PopUpConmpose extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        isDisplayPopup: state.isDisplayPopup,
-        composeMailContent: state.composeMailContent,
+        isDisplayPopup: state.mail_isDisplayPopUp,
+        composeMailContent: state.mail_composeContent,
         childList: state.childList,
-        curMonitor: state.curMonitor
+        curMonitor: state.mail_curMonitor
     }
 };
 

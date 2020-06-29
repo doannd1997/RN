@@ -14,17 +14,17 @@ class Mail extends Component{
           <View style={[styles.mailContainer]}>
             <TouchableOpacity style={commonStyles.fullBtn} disabled>
               <View
-                style={[styles.btnMail, this.props.data.item.isNew ? styles.newMail : styles.readMail]}
+                style={[styles.btnMail]}
                 >
                 <TouchableOpacity 
                     style={styles.btnOneMail}
                     onPress={()=>{
-                        this.props.dispatch({type: "SHOW_MAIL", index: this.props.data.index});
+                        this.props.dispatch({type: "MAIL_SHOW_MAIL", mail_mailIndex: this.props.data.index});
                     }}
                     >
                   <View style={styles.mailHeaderContainer}>
                     <Text
-                      style={styles.mailLblHeader}
+                      style={[styles.mailLblHeader, this.props.data.item.isNew ? styles.mailLblHeaderNew : styles.mailLblHeaderNormal]}
                       ellipsizeMode={'tail'}
                       numberOfLines={1}>
                       {this.props.data.item.header}

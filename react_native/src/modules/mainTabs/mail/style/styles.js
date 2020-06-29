@@ -54,9 +54,15 @@ export default EStyleSheet.create({
         paddingLeft: "1.2rem",
     },
     mailLblHeader: {
-        color: "#03284f",
+        color: "grey",
         fontWeight: "bold",
         fontSize: "8rem"
+    },
+    mailLblHeaderNew: {
+        color: "#088bbf"
+    },
+    mailLblHeaderNormal: {
+
     },
     mailLblContent: {
         color: "#444",

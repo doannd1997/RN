@@ -30,9 +30,9 @@ class MailListCom extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        curTab: state.curTab,
-        inbox: state.inbox,
-        sentMail: state.sentMail
+        curTab: state.mail_curTab,
+        inbox: state.mail_inbox,
+        sentMail: state.mail_sentMail
     }
 };
 

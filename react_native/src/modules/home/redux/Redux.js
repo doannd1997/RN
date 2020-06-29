@@ -55,7 +55,22 @@ const defaultState = {
         },
       ],
     isPickingDate: false,
-    guardians: []
+    guardians: [],
+
+    // mail-tab
+    mail_inbox: [
+
+    ],
+    mail_sentMail: [
+  
+    ],
+    mail_isReading: false,
+    mail_curTab: 0,
+    mail_isDisplayPopUp: false,
+    mail_composeContent: "",
+    mail_showing: false,
+    mail_mailIndex: null,
+    mail_curMonitor: 0,
 }
 
 const ONE_DAY = 1000*60*60*24;
@@ -66,6 +81,17 @@ for (var i=0; i<12; i++){
     last.action = (i%2==0)? "DOWN" : "UP";
     last.date -= ONE_DAY;
     defaultState.history.push(last)
+}
+
+for (var i=0; i<5; i++){
+    var mail = {
+      header: "From VinGroup",
+      // content: "Thư báo",
+      time: new Date().getTime(),
+      isNew: true
+    };
+    defaultState.mail_inbox.push({...mail, content: "Thư Đến"});
+    defaultState.mail_sentMail.push({...mail, content: "Thư Đi", isNew: false});
 }
 
 const createDefaultGuardian = (i)=>{
@@ -134,7 +160,49 @@ const reducer = (state, action)=>{
             });
             return {...state, guardians: _guardians}
         case "SWITCH_CHILD_TAB_MODE":
-            return {...state, childWatchMode: action.childWatchMode}
+            return {...state, childWatchMode: action.childWatchMode};
+
+        // mail
+        case "MAIL_SET_TAB":
+            return {...state, mail_curTab: action.mail_curTab};
+          case "MAIL_OPEN_SEND_MAIL":
+            return {...state, mail_isDisplayPopUp: true, mail_composeContent: ""};
+          case "MAIL_CLOSE_COMPOSE_MAIL":
+            return {...state, mail_isDisplayPopUp: false};
+          case "MAIL_SEND_MAIL":
+            var mail = action.mail;
+            var sentMail = state.mail_sentMail;
+            sentMail.unshift(mail);
+            return {...state, mail_isDisplayPopUp: false, mail_sentMail: sentMail}
+          case "MAIL_TYPE_COMPOSE_MAIL":
+            return {...state, mail_composeContent: action.mail_composeContent}
+          case "MAIL_SHOW_MAIL":
+            var _state = {...state, mail_mailIndex: action.mail_mailIndex, mail_showing: true};
+            if (state.mail_curTab == 0)
+              _state = {..._state, mail_inbox: state.mail_inbox.map((item, index)=>{
+                if (index == action.mail_mailIndex)
+                  return {...item, isNew: false}
+                return item;
+              })}
+            else 
+              _state = {..._state, mail_sentMail: state.mail_sentMail.map((item, index)=>{
+                if (index == action.mail_mailIndex)
+                  return {...item, isNew: false}
+                return item;
+              })}
+            return _state;
+          case "MAIL_ClOSE_MAIL":
+            return {...state, mail_showing: false, mail_mailIndex: null}
+          case "MAIL_DELETE_MAIL":
+            var _state = {...state, mail_showing: false};
+            if (state.mail_curTab == 0)
+              _state = {..._state, mail_inbox: state.mail_inbox.filter((item, index)=>(index!=state.mail_mailIndex))}
+            else 
+            _state = {..._state, mail_sentMail: state.mail_sentMail.filter((item, index)=>(index!=state.mail_mailIndex))}
+            _state.mail_mailIndex = null;
+            return _state;
+          case "MAIL_CHANGE_MONITOR":
+            return {...state, mail_curMonitor: action.mail_curMonitor};
     }
     
     return state;

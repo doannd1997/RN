@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, SectionList} from "react-native"
 import {connect} from "react-redux"
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const store = require("../redux/Redux").default;
 const styles = require("../style/styles").default;
 
 const ToolBar = require("../component/ToolBar").default;
@@ -30,8 +29,8 @@ class Main extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        curTab: state.curTab,
-        isDisplayPopup: state.isDisplayPopup
+        curTab: state.mail_curTab,
+        isDisplayPopup: state.mail_isDisplayPopUp
     }
 }
 

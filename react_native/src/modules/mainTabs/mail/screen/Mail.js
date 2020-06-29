@@ -3,14 +3,12 @@ import {View, Text, StyleSheet} from "react-native"
 import {connect, Provider} from "react-redux"
 
 const HistoryComponent = require("./Main").default;
-const store = require("../redux/Redux").default;
 
 const NotLogInCom = require("../../../../common/component/NotLogInCom").default;
 
 class Mail extends Component{
     render(){
         return (
-          <Provider store = {store}>
             <View style={styles.container}>
             {this.props.logedIn ? (
               <HistoryComponent style={styles.container} />
@@ -18,8 +16,6 @@ class Mail extends Component{
               <NotLogInCom/>
             )}
           </View>
-          </Provider>
-          
         );
     }
 }
