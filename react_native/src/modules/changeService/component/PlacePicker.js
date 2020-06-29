@@ -27,8 +27,8 @@ const PlaceItem = (props, name)=>{
     )
 }
 
-const onPress=(text, props)=>{
-    text = text.split(" ").join("+");
+const missCallback = (text, props)=>{
+    var _text = text.split(" ").join("+");
     var request = new XMLHttpRequest();
     request.onreadystatechange = e => {
       if (request.readyState !== 4) {
@@ -42,15 +42,24 @@ const onPress=(text, props)=>{
                 position: place.position
               }
           });
+          global.cacher.storeTempPlace(text, listPlace);
           props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
       } else {
       }
     };
 
-    request.open('GET', URL.replace(PLACE_SEARCH, text));
+    request.open('GET', URL.replace(PLACE_SEARCH, _text));
     request.send();
+}
 
-  }
+const onPress=(text, props)=>{
+  text = text.trim();
+  global.cacher.getTempPlace(text, (listPlace)=>{
+    props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
+  }, ()=>{
+    missCallback(text, props);
+  })
+}
 
 const PlacePicker = (props)=>{
     return (
