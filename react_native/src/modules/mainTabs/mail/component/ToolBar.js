@@ -29,7 +29,7 @@ const ToolBar = props=>{
             <Text
               style={commonStyles.toolBarBtnHeader}
             >
-              {global.localization.getLang('lang_inbox')}
+              {global.localization.getLang('lang_inbox') + (props.mail_inbox.filter((item)=>item.isNew).length > 0 ? (" (" + props.mail_inbox.filter((item)=>item.isNew).length + ")") : "")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -52,7 +52,8 @@ const ToolBar = props=>{
 
 const mapStateToProps = state => {
     return {
-      curTab: state.mail_curTab
+      curTab: state.mail_curTab,
+      mail_inbox: state.mail_inbox
     }
   };
   

@@ -106,7 +106,7 @@ export default class HomeScreen extends Component {
                 tabBarLabel: global.localization.getLang("lang_tab_mail"),
                 tabBarIcon: ({color, size}) => (
                   <Icon name="inbox" size={size} color={color}>
-                      {getNumBadge(store)}
+                      {/* {getNumBadge(store)} */}
                   </Icon>
                 ),
               }}
