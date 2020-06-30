@@ -130,7 +130,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.react_native"
+        applicationId "com.react_native_soict_app_parent"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

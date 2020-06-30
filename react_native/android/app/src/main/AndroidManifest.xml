@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.react_native">
+  package="com.react_native_soict_app_parent">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
-      android:name=".MainApplication"
+      android:name="com.react_native_soict_app_parent.MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
@@ -24,7 +24,7 @@
         <!-- You will also only need to add this uses-libray tag -->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
       <activity
-        android:name=".MainActivity"
+        android:name="com.react_native_soict_app_parent.MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize"
