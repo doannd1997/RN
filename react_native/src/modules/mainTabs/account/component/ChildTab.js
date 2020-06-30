@@ -190,8 +190,6 @@ class ChildTab extends Component{
 };
 
 const mapStateToProps = (state)=>{
-  // console.log(state.studentList[state.curStudent].routes.Pickup);
-  // console.log(state.curStudent)
     return {
         curTab: state.curTab,
         studentList: state.studentList,

@@ -154,11 +154,16 @@ export default styles = EStyleSheet.create({
         width: "100%",
         paddingBottom: "1rem"
     },
-    avatar: {
+    avatarContainer: {
         marginTop: "5rem",
         marginBottom: "4rem",
-        flex: 4,
-        width: "100%",
+        flex: 1,
+    },
+    avatar: {
+        height: "100%",
+        aspectRatio: 1,
+        backgroundColor: "red",
+        borderRadius: "20rem"
     },
     childName: {
         color: "#eee",

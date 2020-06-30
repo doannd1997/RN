@@ -93,12 +93,14 @@ class ReportAbsenceCom extends Component {
               colors={['#2c81d1', '#2fbdb6']}
               start={{x: 0.3, y: 0.6}}
               >
-              <Image
-                source={require('../../../../res/image/HomeScreen/education.png')}
-                defaultSource={require('../../../../res/image/HomeScreen/education.png')}
-                style={styles.avatar}
-                resizeMode={'contain'}
-              />
+              <View style={styles.avatarContainer}>
+                <Image
+                  source={this.props.studentList[this.props.curStudent].routes[StoreDefault.PICK_TYPE].avatar}
+                  defaultSource={require('../../../../res/image/HomeScreen/education.png')}
+                  style={styles.avatar}
+                  resizeMode={'cover'}
+                />
+              </View>
               <ModalSelector
                 style={styles.childNameContainer}
                 selectStyle={styles.childNameContent}
