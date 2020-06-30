@@ -6,8 +6,21 @@ const defaultRegion = {
     latitudeDelta: 0.0522,
     longitudeDelta: 0.0171,
 }
+
+const StoreConst = {
+    PICK_UP: "Pickup",
+    DELIVERY: "Delivery"
+}
+
+getRouteType = ()=>{
+    var hours = new Date().getHours()
+    if (hours < 12)
+        return StoreConst.PICK_UP
+    else 
+        return StoreConst.DELIVERY
+}
+
 const defaultState = {
-    logedIn: global.userData.logedIn,
     displayName: "Nguyễn Duy Đoàn",
     CHILDREN_TRACKING_showingDivInfo: false,
     region: {
@@ -17,33 +30,17 @@ const defaultState = {
         ...defaultRegion
         },
     mapType: "standard",
-    pickType: "UP",
-    childList: [
-        {
-            id: 0,
-            displayName: "Học Sinh 0"
-        },
-        {
-            id: 1,
-            displayName: "Học Sinh 1"
-        }
-    ],
-    curChild: 0
+    routeType: StoreConst.PICK_UP,
+    studentList: [],
+    curStudent: 0
 }
 
 const reducer = (state, action)=>{
     if (Object.keys(state).length == 0)
         return defaultState
+    
+    state.routeType = getRouteType()
     switch (action.type){
-        case "LOG_IN":
-            global.userData.setLogedIn(true);
-            return {...state, logedIn: true};
-        case "LOG_OUT":
-            global.userData.setLogedIn(false);
-            return {...state, logedIn: false};
-        case "TOGGLE_LOG_IN":
-            global.userData.setLogedIn(!global.userData.logedIn);
-            return {...state, logedIn: !state.logedIn}
         case "CHILDREN_TRACKING_showingDivInfo__SHOW":
             return {...state, CHILDREN_TRACKING_showingDivInfo: true}
         case "CHILDREN_TRACKING_showingDivInfo__HIDE":
@@ -54,15 +51,19 @@ const reducer = (state, action)=>{
             return {...state, region: {...state._region}};
         case "SWITCH_MAP_TYPE":
             return {...state, mapType: (state.mapType == "standard") ? "satellite" : "standard"}
-        case "SWITCH_PICK_TYPE":
-            return {...state, pickType: state.pickType == "UP" ? "DOWN" : "UP"};
         case "CHANGE_STUDENT": 
-            return {...state, curChild: action.index}
+            return {...state, curStudent: action.index}
+        
+            // set data
+        case "SET_TRACK_INFO":
+            return {...state, studentList: action.studentList}
     }
     
-    return state;
+    return {...state, routeType: getRouteType()};
 }
 
 const store = createStore(reducer, {});
 
 export default store;
+
+exports.StoreConst = StoreConst;

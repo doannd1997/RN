@@ -23,6 +23,15 @@ const PlaceCom = require("../component/Place").default;
 const BusInfoCom = require("../component/BusDetail").default;
 
 class Main extends Component{
+    componentWillMount(){
+        var routeBatch = global.routeData.getTrackingBatch();
+        console.log(">>");
+        console.log(routeBatch);
+        this.props.dispatch({type: "SET_TRACK_INFO", studentList: routeBatch})
+    }
+    componentWillUnmount(){
+      
+    }
     render(){
         var self = this;
         return (
@@ -67,20 +76,6 @@ class Main extends Component{
                     <Image style={styles.imgClose} source={require("../../../../res/image/popup/close.png")}
                     resizeMethod={"resize"}/>
                   </TouchableOpacity>
-                  {/* <TouchableOpacity
-                    style={[styles.btnChangeMode]}
-                    onPress={() => {
-                      self.props.dispatch({
-                        type: 'SWITCH_PICK_TYPE',
-                      });
-                    }}>
-                    <Text
-                      style={[commonStyles.text, styles.txtMapType]}>
-                      {global.localization.getLang(
-                        'lang_pick_type_' + this.props.pickType,
-                      )}
-                    </Text>
-                  </TouchableOpacity> */}
                 </View>
               </View>
             ) : null}
@@ -109,10 +104,8 @@ class Main extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        logedIn: state.logedIn,
         CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo,
         mapType: state.mapType,
-        pickType: state.pickType
     }
 }
 

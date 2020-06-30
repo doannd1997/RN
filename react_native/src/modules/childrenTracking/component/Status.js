@@ -9,14 +9,21 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 
+import { StoreConst } from "../redux/Redux";
+
 class DefaultInfo extends Component {
   render(){
     return (
       <View style={styles.divInfoInside}>
-        <Image source={require("../../../../res/image/StudenTracking/flag.png")} style={styles.iconOther}/>
-        <Text style={[styles.textDivInfoCommon]}>
-          {this.props.status}
-        </Text>
+        <View style={styles.iconOtherContainer}>
+          <Image source={require("../../../../res/image/StudenTracking/flag.png")} style={styles.iconOther}/>
+        </View>
+        <View style={styles.txtInfoContainer}>
+          <Text style={[styles.textDivInfoCommon]}>
+            {this.props.studentList[this.props.curStudent].routes[this.props.routeType].status + " - " + getRouteType(this.props.routeType)}
+          </Text>
+        </View>
+        
       </View>
     );
   }
@@ -24,8 +31,19 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      status: "Status"
+      curStudent: state.curStudent,
+      studentList: state.studentList,
+      routeType: state.routeType
     }
 }
 
 export default connect(mapStateToProps)(DefaultInfo);
+
+const getRouteType = (routeType)=>{
+  switch (routeType){
+    case StoreConst.PICK_UP:
+      return global.localization.getLang("lang_pick_type_UP")
+    case StoreConst.DELIVERY:
+      return global.localization.getLang("lang_pick_type_DOWN")
+  }
+}

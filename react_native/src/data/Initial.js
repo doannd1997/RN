@@ -5,6 +5,9 @@ const localize = require("../localization/localize").default;
 const fcmClient = require("../firebase/Firebase").default;
 const authenData = require("../data/AuthenData").default;
 
+const AccountData = require("./Account").default;
+const RouteData = require("./Route").default;
+
 const Cacher = require("./Cacher");
 
 const DELAY = 100; //ms loading -> main screen
@@ -18,7 +21,9 @@ export default initial = {
         global.authenData = authenData;
         await authenData.initial();
         
-        global.cacher = Cacher;
+        global.cacher = Cacher
+        global.accountData = AccountData
+        global.routeData = RouteData
 
         if (typeof callback == "function")
             setTimeout(callback, DELAY)

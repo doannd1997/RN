@@ -57,7 +57,7 @@ const styles = EStyleSheet.create({
         fontSize: "6rem"
     },
     txtNotLogin: {
-        fontSize: "5.5rem",
+        fontSize: "7rem",
         color: "#555",
         marginBottom: "3rem"
     }

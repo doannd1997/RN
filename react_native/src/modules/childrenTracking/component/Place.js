@@ -13,10 +13,15 @@ class DefaultInfo extends Component {
   render(){
     return (
       <View style={styles.divInfoInside}>
-        <Image source={require("../../../../res/image/StudenTracking/location.png")} style={styles.iconOther}/>
-      <Text style={[styles.textDivInfoCommon]}>
-          {this.props.place}
-        </Text>
+        <View style={styles.iconOtherContainer}>
+          <Image source={require("../../../../res/image/StudenTracking/location.png")} style={styles.iconOther}/>
+        </View>
+        <View style={styles.txtInfoContainer}>
+          <Text style={[styles.textDivInfoCommon]}
+          ellipsizeMode="tail">
+              {getPlace(this.props)}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -24,8 +29,14 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      place: "Place"
+      curStudent: state.curStudent,
+      studentList: state.studentList,
+      routeType: state.routeType
     }
 }
 
 export default connect(mapStateToProps)(DefaultInfo);
+
+const getPlace = (props)=>{
+  return props.studentList[props.curStudent].routes[props.routeType].point.Name
+}

@@ -25,13 +25,13 @@ class DefaultInfo extends Component {
             selectStyle={{width: "100%", height: "100%", justifyContent: "center", alignItems: "center"}}
             initValueTextStyle={styles.childNameTxt}
             cancelText={global.localization.getLang("lang_confirm_cancel")}
-            data={this.props.childList.map((item, index)=>{
+            data={this.props.studentList.map((item, index)=>{
               return {
                 key: index,
-                label: item.displayName
+                label: item.studentName
               }
             })}
-            initValue={this.props.childList[this.props.curChild].displayName}
+            initValue={this.props.studentList[this.props.curStudent].studentName}
             onChange={(option)=>{
               this.props.dispatch({type: 'CHANGE_STUDENT', index: option.key})
             }} />
@@ -43,9 +43,8 @@ class DefaultInfo extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      name: "Student",
-      curChild: state.curChild,
-      childList: state.childList
+      curStudent: state.curStudent,
+      studentList: state.studentList
     }
 }
 

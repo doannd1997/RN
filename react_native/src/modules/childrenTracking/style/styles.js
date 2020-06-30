@@ -96,10 +96,11 @@ export default styles = EStyleSheet.create({
         // backgroundColor: "red"
     },
     textDivInfoCommon: {
-        marginLeft: 15,
         color: "#fff",
         fontWeight: "bold",
-        fontSize: "6rem"
+        fontSize: "6rem",
+        textAlignVertical: "center",
+        height: "100%"
     },  
     iconDivInfo: {
         width: 50,
@@ -118,7 +119,6 @@ export default styles = EStyleSheet.create({
     iconOther: {
         width: "13rem",
         height: "13rem",
-        marginRight: "5rem"
     },
     topRightClusterButton: {
         backgroundColor: "transparent",
@@ -146,6 +146,10 @@ export default styles = EStyleSheet.create({
         borderColor: "green",
         borderRadius: "10rem"
     },
+    checkinImg: {
+        width: "20rem",
+        height: "20rem",
+    },
     busImage: {
         width: "20rem",
         height: "20rem",
@@ -162,7 +166,7 @@ export default styles = EStyleSheet.create({
     },
     childNameTxt: {
         color: "#333",
-        fontSize: "6rem",
+        fontSize: "7rem",
         fontWeight: "bold"
     },
     busInfoContainer: {
@@ -199,5 +203,16 @@ export default styles = EStyleSheet.create({
         // fontWeight: "bold",
         // textAlign: "left",
         color: "#eee"
+    },
+    iconOtherContainer: {
+        height: "100%",
+        width: "12rem",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    txtInfoContainer: {
+        height: "100%",
+        flex: 1,
+        paddingLeft: "3rem"
     }
 })

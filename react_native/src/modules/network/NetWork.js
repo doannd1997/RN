@@ -16,9 +16,6 @@ exports.networkRequestGet = (url, successCallback, failCalllback)=>{
 }
 
 exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
-    console.log(">> request params");
-    console.log(params)
-
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
 
@@ -33,7 +30,7 @@ exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
                 case 204:
                 case 200:
                     if (typeof successCallback == 'function'){
-                        successCallback(http.responseText);
+                        successCallback(http.responseText, http.getAllResponseHeaders());
                     }
                     break
                 case 408:
@@ -52,6 +49,5 @@ exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
 
 exports.createUrl = (field)=>{
     var url = netConf.protocol + "://" + netConf.ip + ":" + netConf.port + "/" + field;
-    console.log(">> url " + url);
     return url;
 }

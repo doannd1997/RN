@@ -13,19 +13,39 @@ class BusComponent extends Component {
   render(){
     return (
       <Circle
-        center={global.userData.getBusCoordinate(this.props.index)}
-        title={""+this.props.index}
-        description={
-            global.localization.getLang('lang_bus_transport')
-        }
-        anchor={{x: 0.5, y: 0.5}}
-        radius={1200}
+        center={global.routeData.getBusLocation({
+          latitude: this.props.busLocation.latitude, 
+          longitude: this.props.busLocation.longitude
+        })}
+        radius={global.routeData.getBusRadius()}
         fillColor={"rgba(0,120,250,0.5)"}
         strokeWidth={0.2}
       >
-          {/* <Image source={require('../../../../res/image/HomeScreen/transport.png')} style={styles.busImage}/> */}
       </Circle>
     );
+  }
+}
+
+class CheckInCom extends Component {
+  render(){
+    return (
+      <Marker
+      // draggable
+        coordinate={{
+          latitude: this.props.data.Lati,
+          longitude: this.props.data.Longi,
+        }}
+        title={global.localization.getLang("lang_check_in")}
+        description={
+          this.props.data.Name
+        }
+        anchor={{x: 0.5, y: 0}}>
+        <Image
+          source={require('../../../../res/image/StudenTracking/checkin_place.png')}
+          style={styles.checkinImg}
+        />
+      </Marker>
+    )
   }
 }
 
@@ -39,7 +59,7 @@ class MapViewComponent extends Component {
         style={[styles.map]}
         provider={PROVIDER_DEFAULT}
         initialRegion={this.props.region}
-        region={this.props.region}
+        // region={this.props.region}
         onRegionChange={region => {
           self.props.dispatch({
             type: 'MAP_VIEW_UPDATE_REGION',
@@ -49,14 +69,12 @@ class MapViewComponent extends Component {
         <Marker
           // draggable
           coordinate={{
-            latitude: 21.005042,
-            longitude: 105.843597,
+            latitude: this.props.studentLocation.latitude,
+            longitude: this.props.studentLocation.longitude,
           }}
-          title={global.userData.getChildName()}
+          title={global.localization.getLang("lang_place_pick_delivery")}
           description={
-            global.userData.isChildOnBus()
-              ? global.localization.getLang('lang_on_bus')
-              : global.localization.getLang('lang_out_bus')
+            this.props.studentLocation.name
           }
           anchor={{x: 0.5, y: 0.5}}>
           <Image
@@ -64,20 +82,34 @@ class MapViewComponent extends Component {
             style={styles.markerImage}
           />
         </Marker>
-        {[0].map(index => (
-          <BusComponent {...self.props} index={index} />
-        ))}
+        <BusComponent {...self.props} data={this.props.busLocation} />
+        {this.props.checkins.map(item=>{
+          return <CheckInCom {...this.props} data={item} />
+        })}
       </MapView>
     );
   }
 }
 
 const mapStateToProps = (state)=>{
+  var route = state.studentList[state.curStudent].routes[state.routeType]
+  var studentPoint = route.point;
     return {
-        logedIn: state.logedIn,
-        CHILDREN_TRACKING_showingDivInfo: state.CHILDREN_TRACKING_showingDivInfo,
         region: state.region,
-        mapType: state.mapType
+        mapType: state.mapType,
+        curStudent: state.curStudent,
+        studentList: state.studentList,
+        routeType: state.routeType,
+        studentLocation: {
+          latitude: studentPoint.Lati,
+          longitude: studentPoint.Longi,
+          name: studentPoint.Name
+        },
+        busLocation: {
+          latitude: route.latitude,
+          longitude: route.longitude
+        },
+        checkins: route.checkins
     }
 }
 

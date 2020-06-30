@@ -8,7 +8,6 @@ const defaultRegion = {
 }
 const defaultState = {
     logedIn: global.userData.logedIn,
-    displayName: "Nguyễn Duy Đoàn",
     CHILDREN_TRACKING_showingDivInfo: false,
     region: {
         ...defaultRegion
@@ -118,7 +117,7 @@ const reducer = (state, action)=>{
     switch (action.type){
         case "LOG_IN":
             global.userData.setLogedIn(true);
-            return {...state, logedIn: true};
+            return {...state, logedIn: true, parentName: action.parentName, parentAvatar: action.parentAvatar};
         case "LOG_OUT":
             global.userData.setLogedIn(false);
             return {...state, logedIn: false};
@@ -202,7 +201,7 @@ const reducer = (state, action)=>{
             _state.mail_mailIndex = null;
             return _state;
           case "MAIL_CHANGE_MONITOR":
-            return {...state, mail_curMonitor: action.mail_curMonitor};
+            return {...state, mail_curMonitor: action.mail_curMonitor}
     }
     
     return state;
