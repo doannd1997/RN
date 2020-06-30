@@ -1,11 +1,5 @@
 const {createStore} = require("redux");
 
-const defaultRegion = {
-    latitude: 21.005042,
-    longitude: 105.843597,
-    latitudeDelta: 0.0522,
-    longitudeDelta: 0.0171,
-}
 const defaultState = {
     logedIn: global.userData.logedIn,
 }

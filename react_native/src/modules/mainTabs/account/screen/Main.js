@@ -11,6 +11,12 @@ const ParentTab = require("../component/ParentTab").default;
 const ChildTab = require("../component/ChildTab").default;
 
 class Main extends Component{
+    componentWillMount(){
+
+    }
+    componentWillUnmount(){
+        
+    }
     render(){
         return (
             <View style={[commonStyles.fullViewVerticalCenter]}>

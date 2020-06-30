@@ -50,8 +50,8 @@ const mapStateToProps = (state)=>{
     return {
         history: state.history,
         isPickingDate: state.isPickingDate,
-        childList: state.childList,
-        curChild: state.curChild
+        studentList: state.studentList,
+        curStudent: state.curStudent
     }
 }
 

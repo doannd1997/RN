@@ -24,14 +24,9 @@ exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
     http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");
 
-    console.log(url);
-    console.log(params)
-
     http.onreadystatechange = function() {
         if (http.readyState == 4) {
-            console.log("res status " + http.status)
             switch (http.status){
-                
                 case 200:
                     if (typeof successCallback == 'function'){
                         successCallback(http.responseText, http.getAllResponseHeaders());
@@ -55,4 +50,10 @@ exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
 exports.createUrl = (field)=>{
     var url = netConf.protocol + "://" + netConf.ip + ":" + netConf.port + "/" + field;
     return url;
+}
+
+exports.getAvatarUri = (field)=>{
+    return {
+        uri: netConf.BASE_URL + field
+    }
 }

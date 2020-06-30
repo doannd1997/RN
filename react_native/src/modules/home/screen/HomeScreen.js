@@ -55,8 +55,10 @@ export default class HomeScreen extends Component {
       var params = this.props.route.params;
       if (typeof params == 'object'){
         if (params.logedIn === true){
-          var action = global.accountData.getBatch();
-          store.dispatch({type: "LOG_IN", ...action});
+          var accountData = global.accountData.getBatch();
+          var studentList = global.routeData.getTrackingBatch();
+
+          store.dispatch({type: "LOG_IN", ...accountData, studentList: studentList});
         }
         if (params.logedIn === false){
           store.dispatch({type: "LOG_OUT"});

@@ -68,7 +68,7 @@ class ChildTab extends Component{
                   <Image
                     style={styles.parentAvatar}
                     source={
-                      this.props.childList[this.props.curChild].avatar
+                      this.props.studentList[this.props.curStudent].routes.Pickup.avatar
                     }
                   />
                 </TouchableOpacity>
@@ -81,20 +81,20 @@ class ChildTab extends Component{
                   cancelText={global.localization.getLang(
                     'lang_confirm_cancel',
                   )}
-                  data={this.props.childList.map((item, index) => {
+                  data={this.props.studentList.map((item, index) => {
                     return {
-                      label: item.displayName,
+                      label: item.studentName,
                       key: index,
                     };
                   })}
                   initValue={
-                    this.props.childList[this.props.curChild]
-                      .displayName
+                    this.props.studentList[this.props.curStudent]
+                      .studentName
                   }
                   onChange={option => {
                     this.props.dispatch({
                       type: 'SELECT_CHILD',
-                      curChild: option.key,
+                      curStudent: option.key,
                     });
                   }}
                 />
@@ -190,10 +190,12 @@ class ChildTab extends Component{
 };
 
 const mapStateToProps = (state)=>{
+  // console.log(state.studentList[state.curStudent].routes.Pickup);
+  // console.log(state.curStudent)
     return {
         curTab: state.curTab,
-        childList: state.childList,
-        curChild: state.curChild,
+        studentList: state.studentList,
+        curStudent: state.curStudent,
         guardians: state.guardians,
         childWatchMode: state.childWatchMode
     }

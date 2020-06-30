@@ -14,8 +14,6 @@ export default Networking = {
             if (typeof resultCallback == 'function')
                 resultCallback();
             var json = JSON.parse(responseText)
-            console.log("update tracking >>")
-            console.log(json)
         }, async ()=>{
             if (typeof resultCallback == 'function')
                 resultCallback();

@@ -22,8 +22,8 @@ class History extends Component{
 const mapStateToProps = (state)=>{
     return {
         logedIn: state.logedIn,
-        childList: state.childList,
-        curChild: state.curChild
+        studentList: state.studentList,
+        curStudent: state.curStudent
     }
 }
 

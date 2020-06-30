@@ -11,17 +11,10 @@ const defaultState = {
   isPickingDateEnd: false,
   startDate: new Date().getTime(),
   endDate: new Date().getTime(),
-  childList: [
-    {
-        id: 0,
-        displayName: "Học Sinh 0"
-    },
-    {
-        id: 1,
-        displayName: "Học Sinh 1"
-    }
+  studentList: [
+
   ],
-  curChild: 0
+  curStudent: 0,
 };
 
 
@@ -40,9 +33,11 @@ const reducer = (state, action)=>{
     case "UPDATE_DATE_END":
       return {...state, endDate: action.endDate};
     case "SELECT_CHILD":
-      return {...state, curChild: action.curChild}
+      return {...state, curStudent: action.curStudent}
+    case "SET_STUDENT_INFO":
+      return {...state, studentList: action.studentList}
   }
-    return defaultState;
+    return state;
 }
 
 export default createStore(reducer, {});

@@ -10,13 +10,13 @@ const colors = require("../../../../color/Colors").default;
 
 const TimeUtils = require("../../../../utils/Times").default;
 
-const getMonitor=(childList)=>{
+const getMonitor=(studentList)=>{
   var data = [];
   var methods = [global.localization.getLang("lang_pick_up"), global.localization.getLang("lang_drop_down")];
-  for (var c in childList){
+  for (var c in studentList){
     for (var m in methods){
       var newMethod = {
-        label: childList[c].displayName + " - " + methods[m],
+        label: studentList[c].studentName + " - " + methods[m],
         key: data.length
       };
       data.push(newMethod);
@@ -154,9 +154,9 @@ class PopUpConmpose extends Component {
                         cancelText={global.localization.getLang(
                           'lang_confirm_cancel',
                         )}
-                        data={getMonitor(this.props.childList)}
+                        data={getMonitor(this.props.studentList)}
                         initValue={
-                          getMonitor(this.props.childList)[this.props.curMonitor].label
+                          getMonitor(this.props.studentList)[this.props.curMonitor].label
                         }
                         onChange={option => {
                           this.props.dispatch({
@@ -179,7 +179,7 @@ const mapStateToProps = (state)=>{
     return {
         isDisplayPopup: state.mail_isDisplayPopUp,
         composeMailContent: state.mail_composeContent,
-        childList: state.childList,
+        studentList: state.studentList,
         curMonitor: state.mail_curMonitor
     }
 };

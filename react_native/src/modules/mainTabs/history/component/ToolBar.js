@@ -47,15 +47,15 @@ const ToolBar = props =>{
           selectStyle={styles.childNameContent}
           initValueTextStyle={styles.childName}
           cancelText={global.localization.getLang("lang_confirm_cancel")}
-          data={props.childList.map((item, index)=>{
+          data={props.studentList.map((item, index)=>{
             return {
-              label: item.displayName,
+              label: item.studentName,
               key: index
             }
           })}
-          initValue={props.childList[props.curChild].displayName}
+          initValue={props.studentList[props.curStudent].studentName}
           onChange={(option)=>{
-            props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+            props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
           }} />
         </View>
         <View style={styles.btnPickDate}>
@@ -119,8 +119,8 @@ const ToolBar = props =>{
 const mapStateToProps = state => {
     return {
       histories: state.history,
-      childList: state.childList,
-      curChild: state.curChild
+      studentList: state.studentList,
+      curStudent: state.curStudent
     }
 };
   

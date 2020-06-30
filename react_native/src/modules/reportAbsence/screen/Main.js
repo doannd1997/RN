@@ -16,6 +16,7 @@ import {QuickToast} from "../../../utils/Toast";
 const ToolBar = require("../../../common/component/Toolbar").default;
 const Times = require("../../../utils/Times").default;
 
+import {StoreDefault} from "../../home/redux/Redux"
 
 class ReportAbsenceCom extends Component {
   constructor(props) {
@@ -103,15 +104,15 @@ class ReportAbsenceCom extends Component {
                 selectStyle={styles.childNameContent}
                 initValueTextStyle={styles.childName}
                 cancelText={global.localization.getLang("lang_confirm_cancel")}
-                data={this.props.childList.map((item, index)=>{
+                data={this.props.studentList.map((item, index)=>{
                   return {
-                    label: item.displayName,
+                    label: item.routes[StoreDefault.PICK_TYPE].studentName,
                     key: index
                   }
                 })}
-                initValue={this.props.childList[this.props.curChild].displayName}
+                initValue={self.props.studentList[self.props.curStudent].studentName}
                 onChange={(option)=>{
-                  this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+                  this.props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
                 }} />
             </LinearGradient>
             <View style={[styles.btnCluster]}>
@@ -232,15 +233,15 @@ class ReportAbsenceCom extends Component {
 }
 
 const mapStateToProps = (state)=>{
-    return {
-        busType: state.busType,
-        isPickingDateStart: state.isPickingDateStart,
-        isPickingDateEnd: state.isPickingDateEnd,
-        startDate: state.startDate,
-        endDate: state.endDate,
-        childList: state.childList,
-        curChild: state.curChild
-    }
+  return {
+      busType: state.busType,
+      isPickingDateStart: state.isPickingDateStart,
+      isPickingDateEnd: state.isPickingDateEnd,
+      startDate: state.startDate,
+      endDate: state.endDate,
+      studentList: state.studentList,
+      curStudent: state.curStudent,
+  }
 }
 
 export default connect(mapStateToProps)(ReportAbsenceCom);

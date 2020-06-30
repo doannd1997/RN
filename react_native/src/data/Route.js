@@ -1,3 +1,5 @@
+import { getAvatarUri } from "../modules/network/NetWork";
+
 var data = []
 var delta;
 
@@ -25,11 +27,11 @@ function Student(route){
     
     this.routes = {}
     
-    var route = new Route(route)
+    // var route = new Route(route)
     this.routes[route.routeType] = route;
 
     this.addRoute = function(route){
-        var route = new Route(route)
+        // var route = new Route(route)
         this.routes[route.routeType] = route;
     }
 }
@@ -55,6 +57,7 @@ export default RouteData = {
             var routeInfo = item.routeInfo;
             var student = routeInfo.LstStudents[0];
             return {
+                // for tracking + info
                 id: item.Id,
                 bks: item.BKS,
                 driverName: item.DriverName,
@@ -69,7 +72,21 @@ export default RouteData = {
                 point: student.PickupPoint,
                 status: student.StatusText,
                 studentName: student.Name,
+                
+                // for info
                 studentId: student.Id,
+                studentCode: student.StudentCode,
+                studentGrade: student.SchoolLevel,
+                studentSchool: student.StudentSchool,
+                pickUpOfftion: student.PickupPoint.Type,
+                pickUpPlace: student.PickupPoint.Name,
+                pickUpTime: student.PickUpTime,
+                dropOffPlace: student.DropOffPoint.Name,
+                dropOffTime: student.DropOffTime,
+                driverPhoneNumber: item.DriverPhone,
+                monitorPhoneNumber: item.MonitorPhone,
+                avatar: getAvatarUri(student.AvartarLink),
+                availableDateNextYear: student.AvailableDateNextYear
             }
         });
 
