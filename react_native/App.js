@@ -21,7 +21,7 @@ console.disableYellowBox = true
 const entireScreenWidth = Dimensions.get('window').width;
 EStyleSheet.build({$rem: entireScreenWidth / 180});
 
-const setLoadingToTrue = (component)=>{
+const setLoadingToTrue = function(component){
   component.setState((state)=>{
     return {loading: state}
   });

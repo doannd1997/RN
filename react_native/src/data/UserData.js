@@ -10,7 +10,7 @@ const asynStorage = require("../storage/asyncStore").default;
     passWord: "123456",
     GOOGLE_API_KEY: "AIzaSyCcuUK8Q8drVszgClwhfIVMXImXazFVaGE",
     HERE_API_KEY: "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4",
-    loadAllData: async ()=>{
+    loadAllData: async function(){
         const deviceLanguage =
             Platform.OS === 'ios'
             ? NativeModules.SettingsManager.settings
@@ -27,40 +27,40 @@ const asynStorage = require("../storage/asyncStore").default;
         this.userName = await asyncStore.getData(userData.KEY_USER_NAME);
         this.passWord = await asyncStore.getData(userData.KEY_PASS_WORD);
     },
-    getCurLang: ()=>{
+    getCurLang: function(){
         return this.curLang || userData.DEFAULT_LANG;
     },
 
-    isLogedIn: ()=>{
+    isLogedIn: function(){
         return this.logedIn;
     },
-    setLogedIn: (boo)=>{
+    setLogedIn: function(boo){
         this.logedIn = boo;
     },
-    getAccessToken: ()=>{
+    getAccessToken: function(){
         return this.accessToken;
     },
-    getUserName: ()=>{
+    getUserName: function(){
         return this.userName;
     },
-    getPassWord: ()=>{
+    getPassWord: function(){
         return this.passWord;
     },
 
-    setCurLang: async (lang)=>{
+    setCurLang: async function(lang){
         this.curLang = lang;
         asynStorage.storeData(userData.KEY_LANG, lang);
     },
 
-    getChildName: ()=>{
+    getChildName: function(){
         return "Kids";
     },
      
-    isChildOnBus: ()=>{
+    isChildOnBus: function(){
         return false;
     },
 
-    getBusCoordinate: (busIndex)=>{
+    getBusCoordinate: function(busIndex){
         var listCoor = [
             {
                 latitude:20.996669, 

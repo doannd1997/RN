@@ -126,7 +126,7 @@ class PageReg0 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = function(state){
     return {
       pickType: state.pickType,
       homeAddress: state.homeAddress,

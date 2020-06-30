@@ -3,8 +3,7 @@
 
 var places = {};
 var Cacher = {
-    getTempPlace: (place, hitCallback, missCallback)=>{
-        console.log(places)
+    getTempPlace: function(place, hitCallback, missCallback){
         if (Object.keys(places).indexOf(place) != -1){
             console.log(">> hit: [" + place + "]")
             if (typeof hitCallback == 'function')

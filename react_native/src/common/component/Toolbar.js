@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 const commonStyles = require("../style/index").default;
 const colors = require("../../color/Colors").default;
 
-const ToolBar = props=>{
+const ToolBar = function(props){
     var navagation = useNavigation();
     return (
       <LinearGradient

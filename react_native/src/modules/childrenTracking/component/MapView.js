@@ -9,6 +9,8 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 
+import { DefaultRegion } from "../redux/Redux";
+
 class BusComponent extends Component {
   render(){
     return (
@@ -58,14 +60,15 @@ class MapViewComponent extends Component {
         mapType={this.props.mapType}
         style={[styles.map]}
         provider={PROVIDER_DEFAULT}
-        initialRegion={this.props.region}
-        // region={this.props.region}
-        onRegionChange={region => {
-          self.props.dispatch({
-            type: 'MAP_VIEW_UPDATE_REGION',
-            region: region,
-          });
-        }}>
+        initialRegion={{...this.props.studentLocation, latitudeDelta: DefaultRegion.latitudeDelta, longitudeDelta: DefaultRegion.longitudeDelta}}
+        region={{...this.props.studentLocation, latitudeDelta: DefaultRegion.latitudeDelta, longitudeDelta: DefaultRegion.longitudeDelta}}
+        // onRegionChange={region => {
+        //   self.props.dispatch({
+        //     type: 'MAP_VIEW_UPDATE_REGION',
+        //     region: region,
+        //   });
+        // }}
+        >
         <Marker
           // draggable
           coordinate={{

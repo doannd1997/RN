@@ -87,7 +87,7 @@ const sendToken = async(token)=>{
 }
 
 export default fcmClient = {
-    start: async()=>{
+    start: async function(){
         var token = await asyncStore.getData(FCM_TOKEN_KEY_STORE);
         if (token == null){
             token = await getToken();

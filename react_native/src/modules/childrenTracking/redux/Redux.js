@@ -67,3 +67,4 @@ const store = createStore(reducer, {});
 export default store;
 
 exports.StoreConst = StoreConst;
+exports.DefaultRegion = defaultRegion;

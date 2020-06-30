@@ -21,7 +21,7 @@ const PICK_TYPE = {
 
 const GUARDIAN_MAX = 4;
 
-var GuardianContainer = (props)=>{
+var GuardianContainer = function(props){
   var guardian = props.guardian;
   var guardianId = guardian.id;
 
@@ -199,7 +199,7 @@ class PageReg2 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = function(state){
     return {
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,

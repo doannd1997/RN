@@ -13,7 +13,7 @@ const Cacher = require("./Cacher");
 const DELAY = 100; //ms loading -> main screen
 
 export default initial = {
-    initAll: async (callback)=>{
+    initAll: async function(callback){
         global.userData = userData;
         await userData.loadAllData();
         global.localization = localize;

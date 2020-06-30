@@ -16,7 +16,7 @@ const LANG = "vn";
 const LOCATION_CODE = "@location@";
 var URL = "https://revgeocode.search.hereapi.com/v1/revgeocode?at=" + LOCATION_CODE + "&lg=" + LANG + "&apikey=" + API_KEY;
 
-const reverseGeoCode = (location, props)=>{
+const reverseGeoCode = function(location, props){
   var request = new XMLHttpRequest();
   encodedLocation = location.latitude + "%2C" + location.longitude;
   var _URL = URL.replace(LOCATION_CODE, encodedLocation);
@@ -98,7 +98,7 @@ class MapViewComponent extends Component {
   }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = function(state){
     return {
       placeSelected: state.placeSelected,
       region: state.region,

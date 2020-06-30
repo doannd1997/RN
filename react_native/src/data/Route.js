@@ -36,7 +36,7 @@ function Student(route){
 
 
 export default RouteData = {
-    setRoute: (_data)=>{
+    setRoute: function(_data){
         data = _data;
         delta = RAD*BUS_RADIUS/sqrtOfTwo*Math.random();                     // this value is randomly, add to actual bus location
     },

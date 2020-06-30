@@ -19,7 +19,7 @@ const PICK_TYPE = {
   ONLY_STUDENT: "ONLY_STUDENT"
 }
 
-var OptionContainer = (props)=>{
+var OptionContainer = function(props){
   switch (props.arg){
     case PICK_TYPE.WITH_PARENT:
       var pickTypeStr = global.localization.getLang("lang_pick_method_with_parent");
@@ -48,7 +48,7 @@ var OptionContainer = (props)=>{
   );
 }
 
-var PartnerContainer = (props)=>{
+var PartnerContainer = function(props){
   var partner = props.partner;
   var partnerId = partner.id;
 
@@ -180,7 +180,7 @@ class PageReg1 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = function(state){
     return {
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,
