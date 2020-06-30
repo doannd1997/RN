@@ -42,7 +42,7 @@ class MainLogInCom extends Component{
         return (
           <View style={[commonStyles.fullViewVerticalCenter, commonStyles.screenWithToolBar]}>
             <ToolBar style={commonStyles.toolBar} />
-            <View style={commonStyles.fullViewVerticalCenter}>
+            <View style={[commonStyles.fullViewVerticalCenter, commonStyles.defaultColorBg]}>
             <Fumi
               style={styles.input}
               label={global.localization.getLang('lang_phone_number')}

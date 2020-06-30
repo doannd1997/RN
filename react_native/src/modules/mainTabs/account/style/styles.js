@@ -144,6 +144,7 @@ export default EStyleSheet.create({
     childHeaderContainer: {
         height: "100%",
         flex: 1,
+        backgroundColor: "#fff"
     },
     activeChildTab: {
         borderBottomWidth: "1rem",
@@ -167,5 +168,9 @@ export default EStyleSheet.create({
         fontSize: "7rem",
         fontWeight: "normal",
         color: colors.thickTheme
+    },
+    btnChildHeader: {
+        // backgroundColor: "#fff",
+        elevation: 0
     }
 })

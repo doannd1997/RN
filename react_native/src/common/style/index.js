@@ -20,6 +20,15 @@ export default (styles = EStyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.8,
   },
+  defaultColorBg: {
+    backgroundColor: "#eee"
+  },
+  noBgColor: {
+    backgroundColor: "transparent"
+  },
+  bgWhite: {
+    backgroundColor: "#fff"
+  },
   fullViewVerticalTopDown: {
     flex: 1,
     width: '100%',
