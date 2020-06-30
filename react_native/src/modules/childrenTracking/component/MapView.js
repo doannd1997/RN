@@ -21,9 +21,9 @@ class BusComponent extends Component {
         anchor={{x: 0.5, y: 0.5}}
         radius={1200}
         fillColor={"rgba(0,120,250,0.5)"}
-        strokeWidth={0}
+        strokeWidth={0.2}
       >
-          <Image source={require('../../../../res/image/HomeScreen/transport.png')} style={styles.busImage}/>
+          {/* <Image source={require('../../../../res/image/HomeScreen/transport.png')} style={styles.busImage}/> */}
       </Circle>
     );
   }

@@ -18,6 +18,10 @@ const options = {
       skipBackup: true,
       path: 'images',
     },
+    noData: false,
+    maxWidth: 128,
+    maxHeight: 128,
+    quality: 1,
   };
 
 class ChildTab extends Component{

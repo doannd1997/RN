@@ -201,7 +201,7 @@ export default (styles = EStyleSheet.create({
     alignSelf: 'center',
   },
   formBtnConfirm: {
-    backgroundColor: '#0a0b61',
+    backgroundColor: '#194fa6',
     width: '100%',
     height: '100%',
     justifyContent: 'center',
@@ -215,7 +215,7 @@ export default (styles = EStyleSheet.create({
     alignItems: 'center',
   },
   formBtnRemove: {
-    backgroundColor: colors.remove,
+    backgroundColor: "#f0190a",
     width: '100%',
     height: '100%',
     justifyContent: 'center',

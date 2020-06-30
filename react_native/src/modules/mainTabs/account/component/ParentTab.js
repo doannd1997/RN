@@ -22,6 +22,10 @@ const ParentTab = (props)=>{
         skipBackup: true,
         path: 'images',
       },
+      noData: false,
+      maxWidth: 128,
+      maxHeight: 128,
+      quality: 1,
     };
     var navigation = getNavigation();
 
