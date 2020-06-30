@@ -80,10 +80,10 @@
     "lang_confirm_change_service_content": "Bạn có muốn thay đổi dịch vụ Xe Buýt theo nội dung trên không ?",
     "lang_confirm_remove_service_header": "Xác Nhận Hủy",
     "lang_confirm_remove_service_content": "Bạn muốn hủy dịch vụ Xe Buýt từ ngày @date@ ?",
-    "lang_inbox": "Hộp Thư Đến",
-    "lang_sent_mail": "Thư Đã Gửi",
+    "lang_inbox": "Tin Nhắn Đến",
+    "lang_sent_mail": "Tin Nhắn Đã Gửi",
     "lang_send_mail": "Gửi",
-    "lang_mail_compose_header": "Soạn Thư",
+    "lang_mail_compose_header": "Soạn Tin Nhắn",
     "lang_create_guardians": "Thêm Giám Hộ",
     "lang_update": "Cập Nhật",
     "lang_delete": "Xóa",
@@ -126,5 +126,6 @@
     "lang_driver_phone": "Điện thoại tài xế",
     "lang_monitor_phone": "Điện thoại giám sát xe",
     "lang_start_date_service": "Ngày bắt đầu dịch vụ",
-    "lang_noti_fill": "Vui lòng điền thông tin hợp lệ"
+    "lang_noti_fill": "Vui lòng điền thông tin hợp lệ",
+    "REQUEST_CODE_FAIL": "Kết nốt gián đoạn"
 }

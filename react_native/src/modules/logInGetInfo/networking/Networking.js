@@ -2,19 +2,19 @@ import {networkRequestGet, networkRequestPost, createUrl} from "../../network/Ne
 import {QuickToast} from "../../../utils/Toast";
 
 export default Networking = {
-    apiLogIn: (props, resultCallback)=>{
+    apiRequestInfo: (props, resultCallback)=>{
         var url = createUrl(ROUTE.LOG_IN)
 
-        const userName = "0388273219";
-        const password = "123456";
-        var params = PARAM.LOG_IN.replace(/@user_name@/gi, userName).replace(/@pass_word@/gi, password);
+        var email = props.email;
+        var phoneNumber = props.phoneNumber;
+        var studentId = props.phoneNumber;
+
+        var params = PARAM.LOG_IN.replace(/@phone_number@/gi, phoneNumber).replace(/@email@/gi, email).replace(/@studentId@/, studentId);
 
         networkRequestPost(url, params, async (responseText)=>{
             if (typeof resultCallback == 'function')
                 resultCallback();
-            props.navigation.navigate("HomeScreen", {logedIn: true});
-            await global.authenData.setPhoneNumber(props.phoneNumber);
-            await global.authenData.setPassword(props.password);
+            props.navigation.navigate("MainLogin");
         }, async ()=>{
             if (typeof resultCallback == 'function')
                 resultCallback();
@@ -24,9 +24,9 @@ export default Networking = {
 };
 
 const ROUTE = {
-    LOG_IN: "api/values/ParentAppLogin"
+    LOG_IN: "api/values/ParentGetLogInInfo"
 }
 
 const PARAM = {
-    LOG_IN: "username=@user_name@&password=@pass_word@"
+    LOG_IN: "phoneNumber=@phone_number@&email=@email@&studentId=@studentId@"
 }

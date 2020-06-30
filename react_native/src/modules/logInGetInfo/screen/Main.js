@@ -4,6 +4,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import {withNavigation} from "react-navigation"
 
+const Indicator = require("../../../common/component/Indicator").default;
+
 import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -13,6 +15,15 @@ const styles = require("../style/styles").default;
 const {StoreDefine} = require("../redux/Redux");
 
 const Validator = require("../../../utils/Validator").default;
+const Networking = require("../networking/Networking").default;
+
+const startApiCallback = (props)=>{
+  props.dispatch({type: StoreDefine.PRESS_ON_REQUEST});
+}
+
+const resultApiCallback = (props)=>{
+  props.dispatch({type: StoreDefine.RESPONSE_RESULT});
+}
 
 class Main extends Component{
     constructor(props){
@@ -91,9 +102,10 @@ class Main extends Component{
               onPress={() => {
                 var params = [this.props.phoneNumber, this.props.email, this.props.studentId];
                 Validator.validateLength(params, ()=>{
-                  self.props.navigation.navigate('MainLogin', {
-                  
-                  });
+                  startApiCallback(self.props);
+                  Networking.apiRequestInfo(self.props, ()=>{
+                    resultApiCallback(self.props);
+                  })
                 })
               }}>
               <Text
@@ -122,6 +134,7 @@ class Main extends Component{
               </Text>
             </TouchableOpacity>
           </View>
+          {this.props.loading ? <Indicator/> : null}
           </View>
         );
     }
@@ -131,7 +144,8 @@ const mapStateToProps = (state)=>{
   return {
     phoneNumber: state.phoneNumber,
     email: state.email,
-    studentId: state.studentId
+    studentId: state.studentId,
+    loading: state.loading
   }
 }
 

@@ -80,10 +80,10 @@
     "lang_confirm_change_service_content": "Do you want to update Bus Service ?",
     "lang_confirm_remove_service_header": "Confirm Remove Service",
     "lang_confirm_remove_service_content": "Do you want to remove service from @date@ ?",
-    "lang_inbox": "Inbox",
-    "lang_sent_mail": "Sent Mail",
+    "lang_inbox": "In Message",
+    "lang_sent_mail": "Sent Message",
     "lang_send_mail": "Send",
-    "lang_mail_compose_header": "Compose Mail",
+    "lang_mail_compose_header": "Write New Message",
     "lang_create_guardians": "Create Guardian",
     "lang_update": "Update",
     "lang_delete": "Delete",
@@ -126,5 +126,6 @@
     "lang_driver_phone": "Drives's phone",
     "lang_monitor_phone": "Monitor's phone",
     "lang_start_date_service": "Start of Date service",
-    "lang_noti_fill": "Please fill correctly"
+    "lang_noti_fill": "Please fill correctly",
+    "REQUEST_CODE_FAIL": "Connection interupted"
 }

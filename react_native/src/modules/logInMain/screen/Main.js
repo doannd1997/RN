@@ -8,12 +8,22 @@ import { Fumi } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 const {StoreDefine} = require("../redux/Redux");
 const ToolBar = require("../component/ToolBar").default;
+const Indicator = require("../../../common/component/Indicator").default;
+
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 
 const Validator = require("../../../utils/Validator").default;
-
 const Networking = require("../networking/Networking").default;
+
+
+const startLogInCallback = (props)=>{
+  props.dispatch({type: StoreDefine.PRESS_LOG_IN});
+}
+
+const loginResultCallback = (props)=>{
+  props.dispatch({type: StoreDefine.LOG_IN_RESULT});
+}
 
 class MainLogInCom extends Component{
     constructor(props){
@@ -84,7 +94,10 @@ class MainLogInCom extends Component{
               onPress={() => {
                 var params = [this.props.phoneNumber, this.props.password];
                 Validator.validateLength(params, ()=>{
-                  Networking.apiLogIn(this.props);
+                  startLogInCallback(this.props);
+                  Networking.apiLogIn(this.props, ()=>{
+                    loginResultCallback(this.props)
+                  });
                 })
               }}>
               <Text
@@ -113,6 +126,7 @@ class MainLogInCom extends Component{
               </Text>
             </TouchableOpacity>
           </View>
+          {this.props.loading ? <Indicator/> : null}
           </View>
         );
     }
@@ -121,7 +135,8 @@ class MainLogInCom extends Component{
 const mapStateToProps = (state)=>{
   return {
     phoneNumber: state.phoneNumber,
-    password: state.password
+    password: state.password,
+    loading: state.loading
   }
 }
 

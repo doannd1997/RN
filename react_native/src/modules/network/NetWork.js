@@ -1,6 +1,7 @@
 const netConf = require("../../../res/Network/Network.json");
+import {QuickToast} from "../../utils/Toast";
 
-exports.networkRequestGet = (url, successCallback)=>{
+exports.networkRequestGet = (url, successCallback, failCalllback)=>{
     var http = new XMLHttpRequest();
     http.open("GET", url, true);
 
@@ -8,11 +9,16 @@ exports.networkRequestGet = (url, successCallback)=>{
         if(http.readyState == 4 && http.status == 200) {
             successCallback(http.readyState);
         }
+        else 
+            failCalllback();
     }
     http.send();
 }
 
-exports.networkRequestPost = (url, params, successCallback)=>{
+exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
+    console.log(">> request params");
+    console.log(params)
+
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
 
@@ -22,14 +28,24 @@ exports.networkRequestPost = (url, params, successCallback)=>{
     http.setRequestHeader("Connection", "close");
 
     http.onreadystatechange = function() {
-        if (http.readyState == 4){
-            if (typeof successCallback == 'function'){
-                successCallback();
+        if (http.readyState == 4) {
+            switch (http.status){
+                case 204:
+                case 200:
+                    if (typeof successCallback == 'function'){
+                        successCallback(http.responseText);
+                    }
+                    break
+                case 408:
+                    if (typeof failCalllback == 'function'){
+                        failCalllback();
+                    }
+                    else {
+                        QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
+                    }
+                    break
             }
         }
-        // if(http.readyState == 4 && http.status == 200) {
-        //     successCallback(http.readyState);
-        // }
     }
     http.send(params);
 }

@@ -23,7 +23,7 @@ class PopUpConmpose extends Component {
         skipBackup: true,
         path: 'images',
       },
-      noData: false,
+      no65Data: false,
       maxWidth: 128,
       maxHeight: 128,
       quality: 1,
