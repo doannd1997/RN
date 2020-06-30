@@ -16,7 +16,7 @@ export default Networking = {
             global.accountData.setAccount(json)
             global.routeData.setRoute(json.lstRoutes)
 
-            global.authenData.setToken(responseHeader["Access_Token"])
+            global.authenData.setToken(getAccessToken(responseHeader))
 
             props.navigation.navigate("HomeScreen", {logedIn: true});
             await global.authenData.setPhoneNumber(props.phoneNumber);
@@ -34,5 +34,14 @@ const ROUTE = {
 }
 
 const PARAM = {
-    LOG_IN: "username=@user_name@&password=@pass_word@"
+    LOG_IN: "username=@user_name@&password=@pass_word@",
+    ACCESS_TOKEN: "Access_Token: "
+}
+
+const getAccessToken = (responseHeader)=>{
+    var aIdx = responseHeader.search(PARAM.ACCESS_TOKEN);
+    var tokenIdx = aIdx + PARAM.ACCESS_TOKEN.length;
+    var token = responseHeader.slice(tokenIdx).split('\n')[0]
+
+    return token;
 }

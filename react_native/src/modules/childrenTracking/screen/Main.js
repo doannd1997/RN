@@ -22,15 +22,18 @@ const PlaceCom = require("../component/Place").default;
 // Component chưa thông tin tuyến bus
 const BusInfoCom = require("../component/BusDetail").default;
 
+const NetWorking = require("../networking/Networking").default;
+
 class Main extends Component{
     componentWillMount(){
         var routeBatch = global.routeData.getTrackingBatch();
-        console.log(">>");
-        console.log(routeBatch);
         this.props.dispatch({type: "SET_TRACK_INFO", studentList: routeBatch})
+        this.intervalUpdate = setInterval(()=>{
+          NetWorking.apiUpdate();
+        }, 5000)
     }
     componentWillUnmount(){
-      
+        clearInterval(this.intervalUpdate)
     }
     render(){
         var self = this;

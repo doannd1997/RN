@@ -24,16 +24,21 @@ exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
     http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");
 
+    console.log(url);
+    console.log(params)
+
     http.onreadystatechange = function() {
         if (http.readyState == 4) {
+            console.log("res status " + http.status)
             switch (http.status){
-                case 204:
+                
                 case 200:
                     if (typeof successCallback == 'function'){
                         successCallback(http.responseText, http.getAllResponseHeaders());
                     }
                     break
                 case 408:
+                case 204:
                     if (typeof failCalllback == 'function'){
                         failCalllback();
                     }
