@@ -104,7 +104,7 @@ class ChildTab extends Component{
                           : {},
                       ]}>
                       <TouchableOpacity
-                        style={commonStyles.fullViewVerticalCenter}
+                        style={[commonStyles.fullViewVerticalCenter, styles.btnChildHeader]}
                         onPress={() => {
                           this.props.dispatch({
                             type: 'SWITCH_CHILD_TAB_MODE',
@@ -134,7 +134,7 @@ class ChildTab extends Component{
                           : {},
                       ]}>
                       <TouchableOpacity
-                        style={commonStyles.fullViewVerticalCenter}
+                        style={[commonStyles.fullViewVerticalCenter, styles.btnChildHeader]}
                         onPress={() => {
                           this.props.dispatch({
                             type: 'SWITCH_CHILD_TAB_MODE',
