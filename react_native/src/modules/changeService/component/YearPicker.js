@@ -29,6 +29,20 @@ class YearPicker extends Component{
     }
 }
 
+class CurYear extends Component{
+  render(){
+    return (
+      <View style={styles.YearPickerContainer}>
+        <Text
+          style={styles.lblCurYear}
+          >
+            {this.props.yearList[this.props.curYearIdx]}
+      </Text>
+      </View>
+    );
+  }
+}
+
 
 
 
@@ -39,4 +53,4 @@ const mapStateToProp = (state)=>{
     }
 };
 
-export default connect(mapStateToProp)(YearPicker);
+export default connect(mapStateToProp)(CurYear);

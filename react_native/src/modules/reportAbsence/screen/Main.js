@@ -98,7 +98,7 @@ class ReportAbsenceCom extends Component {
                   source={this.props.studentList[this.props.curStudent].routes[StoreDefault.PICK_TYPE].avatar}
                   defaultSource={require('../../../../res/image/HomeScreen/education.png')}
                   style={styles.avatar}
-                  resizeMode={'cover'}
+                  resizeMethod={"scale"}
                 />
               </View>
               <ModalSelector

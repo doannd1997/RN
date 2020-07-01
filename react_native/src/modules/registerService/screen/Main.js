@@ -38,6 +38,9 @@ const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
 const AgreementCom = require("../component/AgreeMent").default;
 
+const Indicator = require("../../../common/component/Indicator").default
+
+
 class MyPageCom extends Component{
   selectPageReg0(){
     // Trang chọn địa điểm đón trả
@@ -51,6 +54,12 @@ class MyPageCom extends Component{
     // Trang chọn người giám hộ
     this.refs.pageViews.scrollToPage(2);
   }
+
+  componentWillMount(){
+    // var studentList = global.routeData.getTrackingBatch()
+    // this.props.dispatch({type: "SET_STUDENT_LIST", studentList: studentList})
+  }
+
   render(){
     return (
       <Pages
@@ -81,9 +90,7 @@ class MyPageCom extends Component{
 
 
 class RegisterService extends Component {
-  
   render() {
-    
     return (
       <View
         style={[
@@ -110,26 +117,28 @@ class RegisterService extends Component {
                 colors={['#2c81d1', '#2fbdb6']}
                 start={{x: 0.3, y: 0.6}}
                 >
-                <Image
-                  source={require('../../../../res/image/HomeScreen/education.png')}
-                  defaultSource={require('../../../../res/image/HomeScreen/education.png')}
-                  style={styles.avatar}
-                  resizeMode={'contain'}
-                />
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={this.props.studentList[this.props.curStudent].avatar}
+                    defaultSource={require('../../../../res/image/HomeScreen/education.png')}
+                    style={styles.avatar}
+                    resizeMethod={"scale"}
+                  />
+                </View>
                 <ModalSelector
                   style={styles.childNameContainer}
                   selectStyle={styles.childNameContent}
                   initValueTextStyle={styles.childName}
                   cancelText={global.localization.getLang("lang_confirm_cancel")}
-                  data={this.props.childList.map((item, index)=>{
+                  data={this.props.studentList.map((item, index)=>{
                     return {
-                      label: item.displayName,
+                      label: item.studentName,
                       key: index
                     }
                   })}
-                  initValue={this.props.childList[this.props.curChild].displayName}
+                  initValue={this.props.studentList[this.props.curStudent].studentName}
                   onChange={(option)=>{
-                    this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+                    this.props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
                   }} />
               </LinearGradient>
               <View style={styles.viewDivForm}>
@@ -155,6 +164,7 @@ class RegisterService extends Component {
           ) : null}
         </View>
         {this.props.showAgreement ? <AgreementCom/> : null}
+        {this.props.loading ? <Indicator/> : null}
       </View>
     );
   }
@@ -174,8 +184,9 @@ const mapStateToProps = (state)=>{
       searchResultShown: state.searchResultShown,
       placeSelected: state.placeSelected,
       showAgreement: state.showAgreement,
-      childList: state.childList,
-      curChild: state.curChild
+      studentList: state.studentList,
+      curStudent: state.curStudent,
+      loading: state.loading
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

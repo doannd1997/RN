@@ -52,6 +52,17 @@ export default (styles = EStyleSheet.create({
     flex: 1.05,
     marginBottom: "2rem",
     padding: "1rem",
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: "blue"
+    margin: "1rem",
+    borderWidth: "1rem",
+    borderColor: "#999",
+    borderRadius: "2rem"
+  },
+  lblCurYear: {
+    color: "#fff",
+    fontSize: "7rem",
     // backgroundColor: "red"
   },
   defaultInfo: {
@@ -67,13 +78,18 @@ export default (styles = EStyleSheet.create({
     height: '18%',
     marginBottom: "2rem",
   },
-  avatar: {
-    marginTop: "5rem",
+  avatarContainer: {
+    marginTop: "2rem",
     marginBottom: "3rem",
     flex: 4,
-    // backgroundColor: "red",
+    alignSelf: "center",
     width: '100%',
-    // height: 200
+    alignItems: "center",
+  },
+  avatar: {
+    height: "100%",
+    aspectRatio: 1,
+    borderRadius: "20rem"
   },
   childName: {
     color: '#eee',

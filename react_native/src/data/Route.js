@@ -24,7 +24,7 @@ function Student(route){
     
     this.studentId = route.studentId
     this.studentName = route.studentName
-    
+    this.avatar = route.avatar
     this.routes = {}
     
     // var route = new Route(route)

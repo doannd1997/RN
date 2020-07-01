@@ -61,17 +61,11 @@ var defaultState = {
   ],
   policyAgree: false,
   showAgreement: false,
-  childList: [
-    {
-        id: 0,
-        displayName: "Học Sinh 0"
-    },
-    {
-        id: 1,
-        displayName: "Học Sinh 1"
-    }
+  studentList: [
+
   ],
-  curChild: 0
+  curStudent: 0,
+  loading: false
 };
 
 
@@ -162,7 +156,10 @@ const reducer = (state, action)=>{
     case "REJECT_AND_HIDE_AGREEMENT":
       return {...state, policyAgree: false, showAgreement: false};
     case "SELECT_CHILD":
-      return {...state, curChild: action.curChild}
+      return {...state, curStudent: action.curStudent}
+    case "SET_STUDENT_LIST":
+      return {...state, studentList: action.studentList, pickingAddress: false}
+
     default:
       return state;
   }

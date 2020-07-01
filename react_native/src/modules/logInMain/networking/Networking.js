@@ -26,15 +26,41 @@ export default Networking = {
                 resultCallback();
             QuickToast.show(global.localization.getLang("REQUEST_LOGIN_FAIL"));
         })
+    },
+    apiGetGuardiansInfo: (props)=>{
+        var url = createUrl(ROUTE.GET_GUARDIANS)
+        
+        var parentId = global.accountData.getId()
+        var params = PARAM.LOG_IN.replace(/@parentId@/gi, parentId)
+
+        networkRequestPost(url, params, null, async (responseText, responseHeader)=>{
+            if (typeof resultCallback == 'function')
+                resultCallback();
+            var json = JSON.parse(responseText)
+            global.accountData.setAccount(json)
+            global.routeData.setRoute(json.lstRoutes)
+
+            global.authenData.setToken(getAccessToken(responseHeader))
+
+            props.navigation.navigate("HomeScreen", {logedIn: true})
+            await global.authenData.setPhoneNumber(props.phoneNumber)
+            await global.authenData.setPassword(props.password)
+        }, async ()=>{
+            if (typeof resultCallback == 'function')
+                resultCallback();
+            QuickToast.show(global.localization.getLang("REQUEST_LOGIN_FAIL"));
+        })
     }
 };
 
 const ROUTE = {
-    LOG_IN: "api/values/ParentAppLogin"
+    LOG_IN: "api/values/ParentAppLogin",
+    GET_GUARDIANS: "api/values/GetListSupervisorbyParent",
 }
 
 const PARAM = {
     LOG_IN: "username=@user_name@&password=@pass_word@",
+    GET_GUARDIANS: "ParentID=@parentId@",
     ACCESS_TOKEN: "Access_Token: "
 }
 

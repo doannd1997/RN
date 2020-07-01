@@ -108,26 +108,28 @@ class RegisterService extends Component {
                 colors={['#2c81d1', '#2fbdb6']}
                 start={{x: 0.3, y: 0.6}}
                 >
-                <Image
-                  source={require('../../../../res/image/HomeScreen/education.png')}
-                  defaultSource={require('../../../../res/image/HomeScreen/education.png')}
-                  style={styles.avatar}
-                  resizeMode={'contain'}
-                />
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={this.props.studentList[this.props.curStudent].avatar}
+                    defaultSource={require('../../../../res/image/HomeScreen/education.png')}
+                    style={styles.avatar}
+                    resizeMethod={"scale"}
+                  />
+                </View>
                 <ModalSelector
                   style={styles.childNameContainer}
                   selectStyle={styles.childNameContent}
                   initValueTextStyle={styles.childName}
                   cancelText={global.localization.getLang("lanlang_confirm_cancelg_cancel")}
-                  data={this.props.childList.map((item, index)=>{
+                  data={this.props.studentList.map((item, index)=>{
                     return {
-                      label: item.displayName,
+                      label: item.studentName,
                       key: index
                     }
                   })}
-                  initValue={this.props.childList[this.props.curChild].displayName}
+                  initValue={this.props.studentList[this.props.curStudent].studentName}
                   onChange={(option)=>{
-                    this.props.dispatch({type: 'SELECT_CHILD', curChild: option.key})
+                    this.props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
                   }} />
               </LinearGradient>
               <View style={styles.viewDivForm}>
@@ -171,8 +173,9 @@ const mapStateToProps = (state)=>{
       searchResultShown: state.searchResultShown,
       placeSelected: state.placeSelected,
       showAgreement: state.showAgreement,
-      childList: state.childList,
-      curChild: state.curChild
+      studentList: state.studentList,
+      curStudent: state.curStudent,
+      loading: state.loading
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);
