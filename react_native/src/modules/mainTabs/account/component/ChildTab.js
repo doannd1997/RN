@@ -10,19 +10,22 @@ const commonStyles = require("../../../../common/style/index").default;
 
 const GuardianCom = require("../component/Guardian").default;
 const ChildInfoCom = require("../component/ChildInfo").default;
+const NetWorking = require("../networking/Networking").default;
+
+const Indicator = require("../../../../common/component/Indicator").default
 
 const options = {
-    title: global.localization.getLang("lang_select_image"),
-    // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-    },
-    noData: false,
-    maxWidth: 128,
-    maxHeight: 128,
-    quality: 1,
-  };
+  title: global.localization.getLang("lang_select_image"),
+  // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+  noData: false,
+  maxWidth: 128,
+  maxHeight: 128,
+  quality: 1,
+};
 
 class ChildTab extends Component{
     render(){
@@ -179,11 +182,12 @@ class ChildTab extends Component{
                       }}
                     />
                   ) : (
-                    <ChildInfoCom />
+                     <ChildInfoCom /> 
                   )}
                 </View>
               </View>
             </View>
+            {this.props.loadingStudentInfomation ? <Indicator/> : null}
           </View>
         );
     }
@@ -195,7 +199,8 @@ const mapStateToProps = (state)=>{
         studentList: state.studentList,
         curStudent: state.curStudent,
         guardians: state.guardians,
-        childWatchMode: state.childWatchMode
+        childWatchMode: state.childWatchMode,
+        studentInfomation: state.studentInfomation,
     }
 }
 

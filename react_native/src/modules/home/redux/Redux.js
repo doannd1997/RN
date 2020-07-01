@@ -26,6 +26,12 @@ const defaultState = {
 
   ],
   curStudent: 0,
+  // student infomation in screen account
+  studentInfomation: [      
+
+  ],
+  loadingStudentInfomation: false,
+
   history: [
     {
       date: new Date().getTime(),
@@ -199,6 +205,16 @@ const reducer = (state, action) => {
       return _state;
     case "MAIL_CHANGE_MONITOR":
       return { ...state, mail_curMonitor: action.mail_curMonitor }
+
+    // count info
+    case "GET_INFO_STUDENT":
+      return {...state, loadingStudentInfomation: true}
+    case "RESULT_GET_INFO_STUDENT":
+      return {...state, loadingStudentInfomation: false}
+    case "SET_STUDENT_INFO":
+      var studentInfomation = state.studentInfomation
+      studentInfomation[state.curStudent] = action.studentInfo
+      return {...state, studentInfomation: studentInfomation}
   }
 
   return state;
