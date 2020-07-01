@@ -15,14 +15,19 @@ exports.networkRequestGet = (url, successCallback, failCalllback)=>{
     http.send();
 }
 
-exports.networkRequestPost = (url, params, successCallback, failCalllback)=>{
+exports.networkRequestPost = (url, params, token, successCallback, failCalllback)=>{
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
-
     // http.setRequestHeader("Content-type", "application/json; charset=utf-8");
     http.setRequestHeader("Content-type", netConf.CONTENT_TYPE);
-    http.setRequestHeader("Content-length", params.length);
+    // http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");
+
+
+    if (token != undefined){
+        http.setRequestHeader("Authorization", "Bearer " + token)
+    }
+
 
     http.onreadystatechange = function() {
         if (http.readyState == 4) {

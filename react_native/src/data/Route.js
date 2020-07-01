@@ -78,7 +78,7 @@ export default RouteData = {
                 studentCode: student.StudentCode,
                 studentGrade: student.SchoolLevel,
                 studentSchool: student.StudentSchool,
-                pickUpOfftion: student.PickupPoint.Type,
+                pickUpOption: student.PickupPoint.Type,
                 pickUpPlace: student.PickupPoint.Name,
                 pickUpTime: student.PickUpTime,
                 dropOffPlace: student.DropOffPoint.Name,
@@ -109,5 +109,6 @@ export default RouteData = {
 }
 
 const BUS_RADIUS = 1500; // khoảng mà xe nằm trong 
-const RAD = 0.000009;
+// const RAD = 0.000005;
+const RAD = 0
 const sqrtOfTwo = Math.sqrt(2);

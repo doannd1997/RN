@@ -142,9 +142,9 @@ export default styles = EStyleSheet.create({
     markerImage: {
         width: "20rem",
         height: "20rem",
-        borderWidth: "0.5rem",
-        borderColor: "green",
-        borderRadius: "10rem"
+        // borderWidth: "0.5rem",
+        // borderColor: "green",
+        // borderRadius: "10rem"
     },
     checkinImg: {
         width: "20rem",

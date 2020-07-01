@@ -24,13 +24,23 @@ const BusInfoCom = require("../component/BusDetail").default;
 
 const NetWorking = require("../networking/Networking").default;
 
+const updateUI = (props)=>{
+    var routeBatch = global.routeData.getTrackingBatch();
+    props.dispatch({type: "SET_TRACK_INFO", studentList: routeBatch})
+    console.log("update tracking ui with loop: " + CONST.TIME_UPDATE + " ms")
+}
+
 class Main extends Component{
     componentWillMount(){
-        var routeBatch = global.routeData.getTrackingBatch();
-        this.props.dispatch({type: "SET_TRACK_INFO", studentList: routeBatch})
+        var self = this
+        updateUI(this.props)        
         this.intervalUpdate = setInterval(()=>{
-          NetWorking.apiUpdate();
-        }, 5000)
+          NetWorking.apiUpdate(self.props, function(){
+              updateUI(self.props)
+          });
+        }, CONST.TIME_UPDATE)
+
+        NetWorking.apiUpdate(self.props)
     }
     componentWillUnmount(){
         clearInterval(this.intervalUpdate)
@@ -113,3 +123,7 @@ const mapStateToProps = (state)=>{
 }
 
 export default connect(mapStateToProps)(Main)
+
+const CONST = {
+  TIME_UPDATE: 5000
+}

@@ -41,7 +41,7 @@ class CheckInCom extends Component {
         description={
           this.props.data.Name
         }
-        anchor={{x: 0.5, y: 0}}>
+        anchor={{x: 0.5, y: 1}}>
         <Image
           source={require('../../../../res/image/StudenTracking/checkin_place.png')}
           style={styles.checkinImg}
@@ -79,9 +79,9 @@ class MapViewComponent extends Component {
           description={
             this.props.studentLocation.name
           }
-          anchor={{x: 0.5, y: 0.5}}>
+          anchor={{x: 0.5, y: 1}}>
           <Image
-            source={require('../../../../res/image/HomeScreen/education.png')}
+            source={require('../../../../res/image/StudenTracking/location.png')}
             style={styles.markerImage}
           />
         </Marker>

@@ -2,7 +2,7 @@ import {networkRequestGet, networkRequestPost, createUrl} from "../../network/Ne
 import {QuickToast} from "../../../utils/Toast";
 
 export default Networking = {
-    apiUpdate: (props, resultCallback)=>{
+    apiUpdate: (props, sucessCallback, failCallback)=>{
         var url = createUrl(ROUTE.UPDATE_TRACKING)
 
         const userName = global.authenData.getPhoneNumber();
@@ -10,13 +10,15 @@ export default Networking = {
         const token = global.authenData.getToken();
         var params = PARAM.UPDATE_TRACKING.replace(/@user_name@/gi, userName).replace(/@pass_word@/gi, password).replace(/@token@/gi, token);
 
-        networkRequestPost(url, params, async (responseText, responseHeader)=>{
-            if (typeof resultCallback == 'function')
-                resultCallback();
+        networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             var json = JSON.parse(responseText)
+            global.accountData.setAccount(json)
+            global.routeData.setRoute(json.lstRoutes)
+            if (typeof sucessCallback == 'function')
+                sucessCallback();
         }, async ()=>{
-            if (typeof resultCallback == 'function')
-                resultCallback();
+            if (typeof failCallback == 'function')
+                failCallback();
             QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
         })
     }

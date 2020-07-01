@@ -9,7 +9,7 @@ export default Networking = {
         const password = props.password;
         var params = PARAM.LOG_IN.replace(/@user_name@/gi, userName).replace(/@pass_word@/gi, password);
 
-        networkRequestPost(url, params, async (responseText, responseHeader)=>{
+        networkRequestPost(url, params, null, async (responseText, responseHeader)=>{
             if (typeof resultCallback == 'function')
                 resultCallback();
             var json = JSON.parse(responseText)
@@ -18,13 +18,13 @@ export default Networking = {
 
             global.authenData.setToken(getAccessToken(responseHeader))
 
-            props.navigation.navigate("HomeScreen", {logedIn: true});
-            await global.authenData.setPhoneNumber(props.phoneNumber);
-            await global.authenData.setPassword(props.password);
+            props.navigation.navigate("HomeScreen", {logedIn: true})
+            await global.authenData.setPhoneNumber(props.phoneNumber)
+            await global.authenData.setPassword(props.password)
         }, async ()=>{
             if (typeof resultCallback == 'function')
                 resultCallback();
-            QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
+            QuickToast.show(global.localization.getLang("REQUEST_LOGIN_FAIL"));
         })
     }
 };

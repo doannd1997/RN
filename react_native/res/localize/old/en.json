@@ -127,6 +127,8 @@
     "lang_monitor_phone": "Monitor's phone",
     "lang_start_date_service": "Start of Date service",
     "lang_place_pick_delivery": "Place Pick Up/ Delivery",
+    "lang_check_in": "Check In",
     "lang_noti_fill": "Please fill correctly",
-    "REQUEST_CODE_FAIL": "Connection interupted"
+    "REQUEST_CODE_FAIL": "Connection interupted",
+    "REQUEST_LOGIN_FAILRD": "Connection interupted/wrong account or password"
 }

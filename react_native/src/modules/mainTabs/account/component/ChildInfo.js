@@ -30,7 +30,7 @@ class ChildInfo extends Component{
                         {global.localization.getLang("lang_school_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.studentSchool)}</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                        {global.localization.getLang("lang_pick_header")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.pickUpOfftion)}</Text>
+                        {global.localization.getLang("lang_pick_header")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(getPickUpOption(this.props.studentInfo.pickUpOption))}</Text>
                     </Text>
                     <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
                         {global.localization.getLang("lang_pick_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.pickUpPlace)}</Text>
@@ -77,6 +77,15 @@ const mapStateToProps = (state)=>{
 }
 
 export default connect(mapStateToProps)(ChildInfo);
+
+const getPickUpOption = (field)=>{
+    switch (field){
+        case "home":
+            return global.localization.getLang("lang_pick_at_home")
+        case "place":
+            return global.localization.getLang("lang_pick_at_place")
+    }
+}
 
 const getParsedField = (field)=>{
     return field || "---"

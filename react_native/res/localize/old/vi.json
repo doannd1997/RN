@@ -127,6 +127,8 @@
     "lang_monitor_phone": "Điện thoại giám sát xe",
     "lang_start_date_service": "Ngày bắt đầu dịch vụ",
     "lang_place_pick_delivery": "Điểm đón/ trả",
+    "lang_check_in": "Điểm dừng",
     "lang_noti_fill": "Vui lòng điền thông tin hợp lệ",
-    "REQUEST_CODE_FAIL": "Kết nốt gián đoạn"
+    "REQUEST_CODE_FAIL": "Kết nốt gián đoạn",
+    "REQUEST_LOGIN_FAILRD": "Kết nối gián đoạn/sai tài khoản mật khẩu"
 }
