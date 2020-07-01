@@ -39,8 +39,7 @@ export default Networking = {
             if (typeof resultCallback == 'function')
                 resultCallback();
             var json = JSON.parse(responseText)
-            console.log(">> guardian")
-            console.log(json)
+            global.guardianData.setData(json)
         }, async ()=>{
             if (typeof resultCallback == 'function')
                 resultCallback();

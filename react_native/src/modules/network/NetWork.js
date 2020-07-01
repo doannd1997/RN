@@ -54,7 +54,6 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
 
 exports.createUrl = (field, options)=>{
     var url = netConf.protocol + "://" + netConf.ip + ":" + netConf.port + "/" + field;
-    console.log(options)
     if (typeof options == 'object' && Object.keys(options).length > 0){
         var extras = []
         for (var o in options){
@@ -63,7 +62,6 @@ exports.createUrl = (field, options)=>{
             extras.push(p)
         }
         extras = "?" + extras.join("&")
-        console.log(extras)
         url += extras
     }
     return url;

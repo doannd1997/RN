@@ -8,6 +8,7 @@ const authenData = require("../data/AuthenData").default;
 const AccountData = require("./Account").default;
 const RouteData = require("./Route").default;
 const RegisterData = require("./RegisterData").default
+const GuardianData = require("./GuardianData").default
 
 const Cacher = require("./Cacher");
 
@@ -26,6 +27,7 @@ export default initial = {
         global.accountData = AccountData
         global.routeData = RouteData
         global.registerData = RegisterData
+        global.guardianData = GuardianData
 
         if (typeof callback == "function")
             setTimeout(callback, DELAY)
