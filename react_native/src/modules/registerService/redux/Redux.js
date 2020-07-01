@@ -23,8 +23,7 @@ var defaultState = {
   yearList: [_curYear, _curYear + 1],
   curYearIdx: 0,
   pickType: 'HOME', // Radio Button hiển thị chọn nhà hay địa chỉ mới
-  homeAddress: 'Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội', // Địa chỉ nhà hiển thị
-  placeAddress: 'Trống', // Địa chỉ mới hiển thị
+  placeAddress: '---', // Địa chỉ mới hiển thị
   homeSetted: false, // Chọn địa chỉ nhà
   placeSetted: false, // Chọn địa chỉ mới
 
@@ -65,7 +64,7 @@ var defaultState = {
 
   ],
   curStudent: 0,
-  loading: false
+  loading: false,
 };
 
 
@@ -81,6 +80,21 @@ const reducer = (state, action)=>{
       return {...state, pickTypeMethod: (state.pickTypeMethod == PICK_TYPE_METHOD.WITH_PARENT) ? PICK_TYPE_METHOD.ONLY_STUDENT : PICK_TYPE_METHOD.WITH_PARENT};
     case "TOGGLE_PICKING":
       var pickingAddress = !state.pickingAddress;
+      if (pickingAddress){
+          var student = state.studentList[state.curStudent]
+          var region = {
+            ...state.region,
+            latitude: student.placeSelected.latitude,
+            longitude: student.placeSelected.longitude
+          }
+          state.region = region
+          var placeSelected = {
+            latitude: student.homeLatitude,
+            longitude: student.homeLongitude,
+            title: student.homeAddress
+          }
+          state.placeSelected = placeSelected
+      }
       return {...state, pickingAddress: pickingAddress, searchResultShown: false, changeType: action.changeType};
     case "TYPING_SEARCH":
       return {...state, searchResultShown: true, placeSelected: null};
@@ -89,9 +103,9 @@ const reducer = (state, action)=>{
     case "SET_SEARCH_RESULT":
       return {...state, listPlace: action.listPlace};
     case "SELECT_PLACE":
+      state.studentList[state.curStudent].placeSelected = action.placeSelected
       return {
         ...state,
-        placeSelected: action.placeSelected,
         searchResultShown: false,
         region: {
           ...state.region,
@@ -101,11 +115,10 @@ const reducer = (state, action)=>{
         isLoading: false
       };
     case "CHOOSE_PLACE":
-      var title = state.placeSelected.title;
       if (state.changeType == CHANGE_TYPE.HOME)
-        return {...state, homeAddress: title, pickingAddress: false}
+        return {...state, pickingAddress: false}
       else
-        return {...state, placeAddress: title, pickingAddress: false};
+        return {...state, pickingAddress: false};
     case "START_LOADING":
       return {...state, isLoading: true};
     case "STOP_LOADING":
@@ -159,7 +172,10 @@ const reducer = (state, action)=>{
       return {...state, curStudent: action.curStudent}
     case "SET_STUDENT_LIST":
       return {...state, studentList: action.studentList, pickingAddress: false}
-
+    case "REQUEST_DATA":
+      return {...state, loading: true}
+    case "RESULT_DATA":
+      return {...state, loading: false}
     default:
       return state;
   }

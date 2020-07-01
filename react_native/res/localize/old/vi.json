@@ -130,5 +130,5 @@
     "lang_check_in": "Điểm dừng",
     "lang_noti_fill": "Vui lòng điền thông tin hợp lệ",
     "REQUEST_CODE_FAIL": "Kết nốt gián đoạn",
-    "REQUEST_LOGIN_FAILRD": "Kết nối gián đoạn/sai tài khoản mật khẩu"
+    "REQUEST_LOGIN_FAIL": "Kết nối gián đoạn/sai tài khoản mật khẩu"
 }

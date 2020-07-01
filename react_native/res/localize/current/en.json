@@ -130,5 +130,6 @@
     "lang_check_in": "Check In",
     "lang_noti_fill": "Please fill correctly",
     "REQUEST_CODE_FAIL": "Connection interupted",
-    "REQUEST_LOGIN_FAIL": "Connection interupted/wrong account or password"
+    "REQUEST_LOGIN_FAIL": "Connection interupted/wrong account or password",
+    "pick_up_option_not_available_1": "Pick up place is now NOT avaiable, please select pick up at home"
 }

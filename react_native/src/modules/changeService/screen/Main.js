@@ -36,6 +36,8 @@ const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
 
+const Indicator = require("../../../common/component/Indicator").default
+
 class MyPageCom extends Component{
   selectPageReg0(){
     // Trang chọn địa điểm đón trả
@@ -132,12 +134,18 @@ class RegisterService extends Component {
                     this.props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
                   }} />
               </LinearGradient>
-              <View style={styles.viewDivForm}>
-                <YearPickerCom />
-                <View style={styles.pageViewContainer}>
-                  <MyPage/>
+              {this.props.loading ?
+                <View style={styles.viewDivForm}>
+                  <Indicator/>
                 </View>
-              </View>
+                : 
+                <View style={styles.viewDivForm}>
+                  <YearPickerCom />
+                  <View style={styles.pageViewContainer}>
+                    <MyPage/>
+                  </View>
+                </View>
+              }
             </View>
             </View>)}
           {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (

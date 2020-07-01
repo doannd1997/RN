@@ -1,11 +1,12 @@
-import {networkRequestGet, networkRequestPost, createUrl} from "../../../network/NetWork";
-import {QuickToast} from "../../../../utils/Toast";
+import {networkRequestGet, networkRequestPost, createUrl} from "../../network/NetWork"
+import {QuickToast} from "../../../utils/Toast";
 
 export default Networking = {
     aipGetRegisterInfo: (data, sucessCallback, failCallback)=>{
         var url = createUrl(ROUTE.UPDATE_TRACKING)
 
-        var params = PARAM.UPDATE_TRACKING.replace(/@student_id@/gi, data.studentId)
+        var parentId = global.accountData.getId()
+        var params = PARAM.UPDATE_TRACKING.replace(/@parentId@/gi, parentId)
         const token = global.authenData.getToken()
         networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             var json = JSON.parse(responseText)
@@ -20,9 +21,9 @@ export default Networking = {
 };
 
 const ROUTE = {
-    UPDATE_TRACKING: "api/values/GetStudentRouteInformation"
+    UPDATE_TRACKING: "api/values/GetRegister4CurrentYear"
 }
 
 const PARAM = {
-    UPDATE_TRACKING: "studentid=@student_id@"
+    UPDATE_TRACKING: "parentId=@parentId@"
 }

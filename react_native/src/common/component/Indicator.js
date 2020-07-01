@@ -20,7 +20,7 @@ class Indicator extends Component{
     render(){
         return (
             <TouchableOpacity style={styles.indicatorContainer} onPress={()=>{}}>
-                <BarIndicator color={"grey"} count={5}/>
+                <BarIndicator color={"#54cbe3"} count={5}/>
             </TouchableOpacity>
         );
     }

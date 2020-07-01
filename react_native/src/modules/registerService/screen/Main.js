@@ -141,15 +141,21 @@ class RegisterService extends Component {
                     this.props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
                   }} />
               </LinearGradient>
-              <View style={styles.viewDivForm}>
-                <YearPickerCom />
-                <View style={styles.pageViewContainer}>
-                  <MyPage/>
+              {this.props.loading ?
+                <View style={styles.viewDivForm}>
+                  <Indicator/>
                 </View>
-              </View>
+                : 
+                <View style={styles.viewDivForm}>
+                  <YearPickerCom />
+                  <View style={styles.pageViewContainer}>
+                    <MyPage/>
+                  </View>
+                </View>
+              }
             </View>
             </View>)}
-          {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (
+          {!this.props.searchResultShown && this.props.pickingAddress ? (
             <View style={styles.selectPlaceContainer}>
               <TouchableOpacity
                 style={commonStyles.formBtnConfirm}
@@ -164,7 +170,6 @@ class RegisterService extends Component {
           ) : null}
         </View>
         {this.props.showAgreement ? <AgreementCom/> : null}
-        {this.props.loading ? <Indicator/> : null}
       </View>
     );
   }
@@ -186,7 +191,7 @@ const mapStateToProps = (state)=>{
       showAgreement: state.showAgreement,
       studentList: state.studentList,
       curStudent: state.curStudent,
-      loading: state.loading
+      loading: state.loading,
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

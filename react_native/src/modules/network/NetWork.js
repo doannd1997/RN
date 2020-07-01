@@ -52,8 +52,20 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
     http.send(params);
 }
 
-exports.createUrl = (field)=>{
+exports.createUrl = (field, options)=>{
     var url = netConf.protocol + "://" + netConf.ip + ":" + netConf.port + "/" + field;
+    console.log(options)
+    if (typeof options == 'object' && Object.keys(options).length > 0){
+        var extras = []
+        for (var o in options){
+            var data = options[o]
+            var p = o + "=" + data.toString().replace(/ /gi, "%20@")
+            extras.push(p)
+        }
+        extras = "?" + extras.join("&")
+        console.log(extras)
+        url += extras
+    }
     return url;
 }
 

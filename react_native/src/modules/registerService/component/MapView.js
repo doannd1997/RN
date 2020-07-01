@@ -9,7 +9,9 @@ const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
 import {QuickToast} from "../../../utils/Toast";
-import style from "../../../common/style";
+
+const BubbleBtn = require("../../../common/component/BubbleButton").default
+import {BTN_TYPE} from "../../../common/component/BubbleButton"
 
 const API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4"
 const LANG = "vn";
@@ -50,57 +52,64 @@ class MapViewComponent extends Component {
   render() {
     var self = this;
     return (
-      <MapView
-        showsUserLocation={true}
-        showsMyLocationButton={true}
-        mapType={this.props.mapType}
-        style={[styles.map]}
-        provider={PROVIDER_DEFAULT}
-        initialRegion={this.props.region}
-        region={this.props.region}
-        onRegionChange={region => {
-          self.props.dispatch({
-            type: 'MAP_VIEW_UPDATE_REGION',
-            region: region,
-          });
-        }}>
-        {this.props.placeSelected != null ? (
-          <Marker
-            coordinate={{
-              latitude: this.props.placeSelected.latitude,
-              longitude: this.props.placeSelected.longitude,
-            }}
-            draggable={true}
-            onPress={()=>{
-              
-            }}
-            onDragEnd={(e)=>{
-              var coordinate = e.nativeEvent.coordinate;
-              reverseGeoCode(coordinate, self.props);
-            }}
-            onDragStart={(e)=>{
-              this.marker.hideCallout();
-            }}
-            ref={_marker => {
-              this.marker = _marker;
-            }}
+      <View style={commonStyles.fullViewVerticalCenter}>
+        <MapView
+          showsUserLocation={true}
+          showsMyLocationButton={true}
+          mapType={this.props.mapType}
+          style={[styles.map]}
+          provider={PROVIDER_DEFAULT}
+          initialRegion={this.props.region}
+          region={this.props.region}
+          // onRegionChange={region => {
+          //   self.props.dispatch({
+          //     type: 'MAP_VIEW_UPDATE_REGION',
+          //     region: region,
+          //   });
+          // }}
           >
-            <Image source={require('../../../../res/image/HomeScreen/pin.png')} style={styles.imgPin}/>
-            <Callout>
-              <Text style={{fontWeight: "bold"}}>
-                {this.props.placeSelected.title}
-              </Text>
-            </Callout>
+          {this.props.placeSelected != null ? (
+            <Marker
+              coordinate={{
+                latitude: this.props.placeSelected.latitude,
+                longitude: this.props.placeSelected.longitude,
+              }}
+              draggable={true}
+              onPress={()=>{
+                
+              }}
+              onDragEnd={(e)=>{
+                var coordinate = e.nativeEvent.coordinate;
+                reverseGeoCode(coordinate, self.props);
+              }}
+              onDragStart={(e)=>{
+                this.marker.hideCallout();
+              }}
+              ref={_marker => {
+                this.marker = _marker;
+              }}
+            >
+              <Image source={require('../../../../res/image/StudenTracking/location.png')} style={styles.imgPin}/>
+              <Callout>
+                <Text style={{fontWeight: "bold"}}>
+                  {this.props.placeSelected.title}
+                </Text>
+              </Callout>
             </Marker>
-        ) : null}
-      </MapView>
+          ) : null}
+        </MapView>
+        {BubbleBtn(BTN_TYPE.CLOSE, ()=>{
+          self.props.dispatch({type: "TOGGLE_PICKING"})
+        })}
+      </View>
     );
   }
 }
 
 const mapStateToProps = (state)=>{
+  var student = state.studentList[state.curStudent]
     return {
-      placeSelected: state.placeSelected,
+      placeSelected: student.placeSelected,
       region: state.region,
     }
 }

@@ -64,7 +64,8 @@ var defaultState = {
   studentList: [
 
   ],
-  curStudent: 0
+  curStudent: 0,
+  loading: false
 };
 
 
