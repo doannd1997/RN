@@ -176,8 +176,6 @@ class PageReg2 extends Component {
 
 const mapStateToProps = (state)=>{
   var student = state.studentList[state.curStudent]
-  console.log("11")
-  console.log(student.guardiandsId)
     return {
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,

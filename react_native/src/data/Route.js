@@ -1,23 +1,8 @@
 import { getAvatarUri } from "../modules/network/NetWork";
 
 var data = []
+var trackingBatch = {}
 var delta;
-
-function Route(route){
-    this.id = route.Id
-    this.routeName = route.routeName
-    this.bks = route.bks
-    this.driverName = route.driverName
-    this.monitorName = route.monitorName
-    this.checkins = route.checkins
-    this.startTime = route.startTime
-    this.endTime = route.endTime
-    this.latitude = route.latitude
-    this.longitude = route.longitude
-    this.status = route.status
-    this.routeType = route.routeType
-    this.point = route.point
-}
 
 function Student(route){
     var self = this
@@ -25,6 +10,8 @@ function Student(route){
     this.studentId = route.studentId
     this.studentName = route.studentName
     this.avatar = route.avatar
+    this.schoolLatitude = route.schoolLatitude
+    this.schoolLongitude = route.schoolLongitude
     this.routes = {}
     
     // var route = new Route(route)
@@ -41,6 +28,7 @@ export default RouteData = {
     setRoute: function(_data){
         data = _data;
         delta = RAD*BUS_RADIUS/sqrtOfTwo*Math.random();                     // this value is randomly, add to actual bus location
+        this.parseData()
     },
     getBusRadius: function(){
         return BUS_RADIUS;
@@ -53,9 +41,14 @@ export default RouteData = {
     },
 
     getTrackingBatch: function(){
+        return trackingBatch
+    },
+
+    parseData: function(){
         var routes = data.map((item, index)=>{
             var routeInfo = item.routeInfo;
             var student = routeInfo.LstStudents[0];
+            var schoolPoint = routeInfo.LstStopPoints.slice(-1)[0]
             return {
                 // for tracking + info
                 id: item.Id,
@@ -86,7 +79,9 @@ export default RouteData = {
                 driverPhoneNumber: item.DriverPhone,
                 monitorPhoneNumber: item.MonitorPhone,
                 avatar: getAvatarUri(student.AvartarLink),
-                availableDateNextYear: student.AvailableDateNextYear
+                availableDateNextYear: student.AvailableDateNextYear,
+                schoolLatitude: schoolPoint.Lati,
+                schoolLongitude: schoolPoint.Longi,
             }
         });
 
@@ -104,7 +99,16 @@ export default RouteData = {
             }
         }
 
-        return childrenList;
+        trackingBatch = childrenList
+    },
+    mergeStudentStatus: function(studentStatus){
+        for (var s in trackingBatch){
+            var student = trackingBatch[s]
+            var info = studentStatus.filter((item)=>item.StudentID == student.studentId)[0]
+            student.registrationStatus = info.RegistrationStatus,
+            student.registrationStatusText = info.RegistrationStatusText
+            console.log(student)
+        }
     }
 }
 

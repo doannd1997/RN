@@ -97,6 +97,11 @@ class MapViewComponent extends Component {
               </Callout>
             </Marker>
           ) : null}
+          <Marker
+            coordinate={this.props.schoolLocation}
+          >
+              <Image source={require('../../../../res/image/StudenTracking/school.png')} style={styles.imgPin}/>
+          </Marker>
         </MapView>
         {BubbleBtn(BTN_TYPE.CLOSE, ()=>{
           self.props.dispatch({type: "TOGGLE_PICKING"})
@@ -108,9 +113,14 @@ class MapViewComponent extends Component {
 
 const mapStateToProps = (state)=>{
   var student = state.studentList[state.curStudent]
+  var schoolLocation = {
+    latitude: student.schoolLatitude,
+    longitude: student.schoolLongitude,
+  }
     return {
       placeSelected: student.placeSelected,
       region: state.region,
+      schoolLocation: schoolLocation
     }
 }
 
