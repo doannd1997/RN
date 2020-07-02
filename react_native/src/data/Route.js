@@ -1,4 +1,4 @@
-import { getAvatarUri } from "../modules/network/NetWork";
+import { getAvatarUri, getAgreementUri } from "../modules/network/NetWork";
 
 var data = []
 var trackingBatch = {}
@@ -12,6 +12,8 @@ function Student(route){
     this.avatar = route.avatar
     this.schoolLatitude = route.schoolLatitude
     this.schoolLongitude = route.schoolLongitude
+    this.activePartners = route.activePartners
+    this.agreementUri = route.agreementUri
     this.routes = {}
     
     // var route = new Route(route)
@@ -65,6 +67,8 @@ export default RouteData = {
                 point: student.PickupPoint,
                 status: student.StatusText,
                 studentName: student.Name,
+                activePartners: student.LstPickupPeople,
+                agreementUri: getAgreementUri(student.AgreementLink),
                 
                 // for info
                 studentId: student.Id,
@@ -107,7 +111,14 @@ export default RouteData = {
             var info = studentStatus.filter((item)=>item.StudentID == student.studentId)[0]
             student.registrationStatus = info.RegistrationStatus,
             student.registrationStatusText = info.RegistrationStatusText
-            console.log(student)
+        }
+    },
+    addPartner: function(studentList, partner){
+        for (var s in studentList){
+            var student = studentList[s]
+            var pId = partner.studentId
+            if (pId != student.studentId)
+                student.partners.push(partner)
         }
     }
 }

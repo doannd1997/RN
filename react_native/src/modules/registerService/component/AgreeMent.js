@@ -1,10 +1,18 @@
 import React, {Component} from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, Dimensions } from "react-native";
+import { WebView } from 'react-native-webview'
 import {connect} from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import EStyleSheet from 'react-native-extended-stylesheet'
+
 const commonStyles = require("../../../common/style").default;
 const styless = require("../style/styles").default;
+
+const dimen = {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height
+}
 
 class Agreement extends Component{
     render(){
@@ -16,7 +24,12 @@ class Agreement extends Component{
               styles.container,
             ]}>
             <View style={styles.contentContainer}>
-              <Text>[Điều Khoản]</Text>
+              <WebView 
+                source={{ uri: student.agreementUri }} 
+                startInLoadingState={true}
+                scalesPageToFit={true}
+                style={dimen}
+              />
             </View>
             <View style={styles.bottomBtn}>
               <View style={styles.singleBtnContainer}>
@@ -48,15 +61,17 @@ class Agreement extends Component{
 };
 
 const mapStateToProps = (state)=>{
-    return {
-        // showAgreement: state.showAgreement
-    }
+  student = state.studentList[state.curStudent]
+  return {
+      // showAgreement: state.showAgreement
+      student: student
+  }
 }
 
 export default connect(mapStateToProps)(Agreement);
 
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
         flex: 1,
         position: "absolute",
@@ -67,15 +82,16 @@ const styles = StyleSheet.create({
         flexDirection: "column"
     },
     contentContainer: {
-        flex: 11,
+        flex: 1,
         width: "100%",
         justifyContent: "center",
         alignItems: "center"
     },
     bottomBtn: {
-        flex: 1,
+        // flex: 1,
         backgroundColor: "cyan",
         width: "100%",
+        height: "20rem",
         flexDirection: "row"
     },
     singleBtnContainer: {

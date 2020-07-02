@@ -14,22 +14,11 @@ import {QuickToast} from "../../../utils/Toast";
 
 const TimeUtils = require("../../../utils/Times").default;
 
-const PICK_TYPE = {
-  WITH_PARENT: "WITH_PARENT",
-  ONLY_STUDENT: "ONLY_STUDENT"
-}
+import {PICK_TYPE_METHOD} from "../redux/Redux"
 
 var OptionContainer = (props)=>{
-  switch (props.arg){
-    case PICK_TYPE.WITH_PARENT:
-      var pickTypeStr = global.localization.getLang("lang_pick_method_with_parent");
-      var checked = props.pickTypeMethod == PICK_TYPE.WITH_PARENT;
-      break;
-    case PICK_TYPE.ONLY_STUDENT:
-      var pickTypeStr = global.localization.getLang("lang_pick_method_by_student");
-      var checked = props.pickTypeMethod == PICK_TYPE.ONLY_STUDENT;
-      break;
-  };
+  var pickUpOption = props.student.pickUpOption
+  var checked = pickUpOption == props.arg
   return (
     <View style={styles.optionContainer}>
       <CheckBox
@@ -43,18 +32,27 @@ var OptionContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{pickTypeStr}</Text>
+      <Text style={styless.labelMethodItem}>{getOptionStr(props.arg)}</Text>
     </View>
   );
 }
 
+const getOptionStr = (pickType)=>{
+  switch (pickType){
+    case PICK_TYPE_METHOD.WITH_PARENT:
+      return global.localization.getLang("lang_pick_method_with_parent")
+    case PICK_TYPE_METHOD.ONLY_STUDENT:
+      return global.localization.getLang("lang_pick_method_by_student")
+  }
+}
+
 var PartnerContainer = (props)=>{
   var partner = props.partner;
-  var partnerId = partner.id;
+  var partnerId = partner.studentId;
 
-  var _checked = props.partners.filter((partner)=>{
-    return partner.id == partnerId;
-  })[0].checked;
+  var _checked = props.student.activePartners.filter((item=>{
+    return item == partnerId
+  })).length != 0
   
   return (
     <View style={styles.optionContainer}>
@@ -70,7 +68,7 @@ var PartnerContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{partner.name}</Text>
+      <Text style={styless.labelMethodItem}>{partner.studentName}</Text>
     </View>
   );
 }
@@ -94,7 +92,8 @@ class PageReg1 extends Component {
     this.props.dispatch({type: "HIDE_PICKING_SERVICE_DATE_START"})
     if (event.type == "set"){
       var timeStamp = event.nativeEvent.timestamp;
-      var curYear = this.props.curYear;
+      // var curYear = this.props.curYear;
+      var curYear = new Date().getFullYear()
       if (new Date(timeStamp).getFullYear() == curYear)
         this.props.dispatch({type: "CHANGE_SERVICE_DATE_START", time: timeStamp})
       else {
@@ -108,8 +107,8 @@ class PageReg1 extends Component {
     return (
       <View style={styles.page}>
         <View style={styles.pickUpMethodContainer}>
-          <OptionContainer {...this.props} arg={PICK_TYPE.WITH_PARENT} />
-          <OptionContainer {...this.props} arg={PICK_TYPE.ONLY_STUDENT} />
+          <OptionContainer {...this.props} arg={PICK_TYPE_METHOD.WITH_PARENT} />
+          <OptionContainer {...this.props} arg={PICK_TYPE_METHOD.ONLY_STUDENT} />
         </View>
         <View style={styles.partnerHeaderContainer}>
           <Text style={styless.lblHeaderPartner}>
@@ -199,13 +198,15 @@ class PageReg1 extends Component {
 
 
 const mapStateToProps = (state)=>{
-    return {
-      pickTypeMethod: state.pickTypeMethod,
-      serviceStartTime: state.serviceStartTime,
-      isPickingDateStart: state.isPickingDateStart,
-      curYear: state.curYear,
-      partners: state.partners
-    }
+  var student = state.studentList[state.curStudent]
+  return {
+    pickTypeMethod: state.pickTypeMethod,
+    serviceStartTime: state.serviceStartTime,
+    isPickingDateStart: state.isPickingDateStart,
+    curYear: state.curYear,
+    partners: student.partners,
+    student: student
+  }
 }
 
 export default connect(mapStateToProps)(PageReg1)

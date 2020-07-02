@@ -23,11 +23,11 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
     // http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");
 
+    console.log(params)
 
     if (token != undefined){
         http.setRequestHeader("Authorization", "Bearer " + token)
     }
-
 
     http.onreadystatechange = function() {
         if (http.readyState == 4) {
@@ -45,6 +45,9 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
                     else {
                         QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
                     }
+                    break
+                case 500:
+                    console.log(http.responseText)
                     break
             }
         }
@@ -71,4 +74,8 @@ exports.getAvatarUri = (field)=>{
     return {
         uri: netConf.BASE_URL + field
     }
+}
+
+exports.getAgreementUri = (field)=>{
+    return netConf.BASE_URL + field
 }

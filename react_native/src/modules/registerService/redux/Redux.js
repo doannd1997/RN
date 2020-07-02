@@ -3,19 +3,24 @@ import { NativeModules } from "react-native";
 import {QuickToast} from "../../../utils/Toast";
 import { ActivityIndicator } from "react-native-paper";
 
-BUS_TYPE = {
+const BUS_TYPE = {
   PICK_UP: "PICK_UP",
   DROP_DOWN: "DROP_DOWN"
 }
 
-PICK_TYPE = {
-  HOME: "HOME",
-  PLACE: "PLACE"
+exports.BUS_TYPE = {
+  PICK_UP: "PICK_UP",
+  DROP_DOWN: "DROP_DOWN"
+}
+
+exports.PICK_TYPE = {
+  HOME: 2,
+  PLACE: 1
 };
 
-const PICK_TYPE_METHOD = {
-  WITH_PARENT: "WITH_PARENT",
-  ONLY_STUDENT: "ONLY_STUDENT"
+exports.PICK_TYPE_METHOD = {
+  WITH_PARENT: 0,
+  ONLY_STUDENT: 1
 }
 
 var _curYear = new Date().getFullYear();
@@ -41,13 +46,9 @@ var defaultState = {
     longitudeDelta: 0.0171,
   },
 
-  pickTypeMethod: PICK_TYPE_METHOD.WITH_PARENT, // Cách đón trả học sinh {với phụ huynh || học sinh tự lên}
+  // pickTypeMethod: PICK_TYPE_METHOD.WITH_PARENT, // Cách đón trả học sinh {với phụ huynh || học sinh tự lên}
   serviceStartTime: Date.now(),
   isPickingDateStart: false, // Thời gian bắt đầu dịch vụ
-  partners: [
-    {id: 0, name: 'Trần Quang Lợi', checked: false},
-    {id: 1, name: 'Nguyễn Bá Lương', checked: false},
-  ],
   guardianList: [
     
   ],
@@ -70,7 +71,14 @@ const reducer = (state, action)=>{
     case "TOGGLE_PICK_TYPE":
       return {...state, pickType: (state.pickType == PICK_TYPE.HOME) ? PICK_TYPE.PLACE : PICK_TYPE.HOME};
     case "TOGGLE_PICK_TYPE_METHOD":
-      return {...state, pickTypeMethod: (state.pickTypeMethod == PICK_TYPE_METHOD.WITH_PARENT) ? PICK_TYPE_METHOD.ONLY_STUDENT : PICK_TYPE_METHOD.WITH_PARENT};
+      var studentId = state.studentList[state.curStudent].studentId
+      var studentList = state.studentList.map(item=>{
+        if (item.studentId != studentId)
+          return item
+        var student = {...item, pickUpOption: (item.pickUpOption + 1)%2}
+        return student
+      })
+      return {...state, studentList: studentList}
     case "TOGGLE_PICKING":
       var pickingAddress = !state.pickingAddress;
       if (pickingAddress){
@@ -124,14 +132,25 @@ const reducer = (state, action)=>{
     case "CHANGE_SERVICE_DATE_START":
       return {...state, serviceStartTime: action.time};
     case "TOGGLE_SELECT_PARTER":
-      var partnerId = action.partnerId;
-      var partners = state.partners.map((partner)=>{
-        if (partner.id == partnerId){
-          return {...partner, checked: !partner.checked}
-        }
-        return partner;
-      })
-      return {...state, partners: partners};
+      var partnerId = action.partnerId
+      var student = state.studentList[state.curStudent]
+      var studentId = student.studentId
+      var index = student.activePartners.indexOf(partnerId)
+
+      var activePartners = student.activePartners.splice()
+      if (index == -1){
+        activePartners.push(partnerId)
+      }
+      else {
+        activePartners.splice(index, 1)
+      }
+
+      return {...state, studentList: state.studentList.map(item=>{
+        if (item.studentId != studentId)
+          return item
+        var _item = {...item, activePartners: activePartners}
+        return _item
+      })};
     case "TOGGLE_SELECT_GUARDIAN":
       var guardianId = action.guardianId;
       var curGuardiansId = state.studentList[state.curStudent].guardiandsId.slice()
@@ -164,6 +183,15 @@ const reducer = (state, action)=>{
     case "SET_STUDENT_LIST":
       if (typeof action.guardianList == 'object')
         state.guardianList = action.guardianList
+      for (var s in action.studentList){
+        action.studentList[s].partners = []
+      }
+      for (var s in action.studentList){
+        var student = action.studentList[s]
+        if (student.registrationStatus == 1){
+          global.routeData.addPartner(action.studentList, student)
+        }
+      }
       return {...state, studentList: action.studentList, pickingAddress: false}
     case "REQUEST_DATA":
       return {...state, loading: true}

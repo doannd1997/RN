@@ -23,6 +23,7 @@ const ToolBar = require("../../../common/component/Toolbar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("../component/PlacePicker").default;
+const AlreadyRegisteredCom = require("../component/AlreadyRegister").default
 
 const CHANGE_TYPE = {
   HOME: "HOME",
@@ -148,9 +149,15 @@ class RegisterService extends Component {
                 : 
                 <View style={styles.viewDivForm}>
                   <YearPickerCom />
-                  <View style={styles.pageViewContainer}>
-                    <MyPage/>
-                  </View>
+                  {this.props.alreadyRegisterd ? 
+                    <View style={styles.pageViewContainer}>
+                      <AlreadyRegisteredCom/>
+                    </View>
+                    :
+                    <View style={styles.pageViewContainer}>
+                      <MyPage navigation={this.props.navigation}/>
+                    </View>
+                  }
                 </View>
               }
             </View>
@@ -176,6 +183,8 @@ class RegisterService extends Component {
 }
 
 const mapStateToProps = (state)=>{
+  var student = state.studentList[state.curStudent]
+
     return {
       isLoading: state.isLoading,
       curYear: state.curYear,
@@ -192,6 +201,8 @@ const mapStateToProps = (state)=>{
       studentList: state.studentList,
       curStudent: state.curStudent,
       loading: state.loading,
+      // alreadyRegisterd: student.registrationStatus == 1
+      alreadyRegisterd: student.registrationStatus == 0
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

@@ -99,8 +99,13 @@ class MapViewComponent extends Component {
           ) : null}
           <Marker
             coordinate={this.props.schoolLocation}
-          >
-              <Image source={require('../../../../res/image/StudenTracking/school.png')} style={styles.imgPin}/>
+          > 
+            <Image source={require('../../../../res/image/StudenTracking/school.png')} style={styles.imgPin}/>
+            <Callout>
+              <Text style={{fontWeight: "bold"}}>
+                {global.localization.getLang("lang_school")}
+              </Text>
+            </Callout>
           </Marker>
         </MapView>
         {BubbleBtn(BTN_TYPE.CLOSE, ()=>{

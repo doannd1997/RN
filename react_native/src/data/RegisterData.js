@@ -12,17 +12,38 @@ var RegisterData = {
             student.homeLatitude = info.HomeLat
             student.homeLongitude = info.HomeLong
             student.effectDate = info.EffectiveDate
-            student.monthFee = info.MonthlyFee
+            student.monthlyFee = info.MonthlyFee
             student.placeSelected = {
                 latitude: student.homeLatitude,
                 longitude: student.homeLongitude,
                 title: student.homeAddress
             },
             student.distanceToSchool = info.StopToSchool
-            student.guardiandsId = info.Supervisorids.split(',')
+            student.guardiandsId = (info.Supervisorids != null) ? info.Supervisorids.split(',') : []
+            student.registerSuccessMgs = info.ConfirmRegisterPopupMessage
+            student.pickUpOption = info.PickupOption || PICK_TYPE_METHOD.WITH_PARENT
+            student.pickUpMethod = info.PickupMethod || PICK_TYPE.HOME
         }
         return studentList
     }
 }
 
 export default RegisterData
+
+
+
+exports.BUS_TYPE = {
+    PICK_UP: "PICK_UP",
+    DROP_DOWN: "DROP_DOWN"
+  }
+  
+exports.PICK_TYPE = {
+    HOME: 2,
+    PLACE: 1
+  };
+  
+exports.PICK_TYPE_METHOD = {
+    WITH_PARENT: 0,
+    ONLY_STUDENT: 1
+  }
+  

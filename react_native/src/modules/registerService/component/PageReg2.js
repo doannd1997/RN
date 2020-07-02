@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import EStyleSheet from "react-native-extended-stylesheet";
 import CheckBox from 'react-native-check-box'
-import DateTimePicker from "@react-native-community/datetimepicker";
+
+import {withNavigation} from "react-navigation"
 
 const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../color/Colors").default;
 const styless = require("../style/styles").default;
 import {QuickToast} from "../../../utils/Toast";
+
+const Networking = require("../networking/Networking").default
 
 const TimeUtils = require("../../../utils/Times").default;
 
@@ -50,10 +53,13 @@ const CHANGE_TYPE = {
   PLACE: "PLACE"
 }
 
+const getNavigation = ()=>{
+  var use
+}
+
 class PageReg2 extends Component {
   render() {
     var self = this;
-
     return (
       <View style={styles.page}>
         <View style={styles.guardianHeaderContainer}>
@@ -129,34 +135,40 @@ class PageReg2 extends Component {
               style={commonStyles.formBtnConfirm}
               onPress={() => {
                 if (self.props.policyAgree){
-                  var cost = 250000;
-                  var header = global.localization.getLang("lang_confirm_register_service_header");
-                  var content = global.localization.getLang("lang_confirm_register_service_content").replace("@value@", cost)
-                  var okLabel = global.localization.getLang(
-                    'lang_confirm_ok',
-                  );
-                  var cancelLabel = global.localization.getLang(
-                    'lang_confirm_cancel',
-                  );
-                  Alert.alert(
-                    header,
-                    content,
-                    [
-                      {
-                        text: okLabel,
-                        onPress: () => {
-                          QuickToast.show("Success");
+                  Networking.apiSendRegisterService(self.props, (json)=>{
+                    var cost = json.BusFee
+
+                    var header = global.localization.getLang("lang_confirm_register_service_header");
+                    var content = global.localization.getLang("lang_confirm_register_service_content").replace("@value@", cost)
+                    var okLabel = global.localization.getLang(
+                      'lang_confirm_ok',
+                    );
+                    var cancelLabel = global.localization.getLang(
+                      'lang_confirm_cancel',
+                    );
+                    Alert.alert(
+                      header,
+                      content,
+                      [
+                        {
+                          text: okLabel,
+                          onPress: () => {
+                            Networking.apiConfirmRegister(self.props, ()=>{
+                              QuickToast.show(self.props.student.registerSuccessMgs);
+                              self.props.navigation.navigate("HomeScreen")
+                            })
+                          },
                         },
-                      },
-                      {
-                        text: cancelLabel,
-                        onPress: () => {
-                          QuickToast.show("Canceled");
+                        {
+                          text: cancelLabel,
+                          onPress: () => {
+                            QuickToast.show("Canceled");
+                          },
                         },
-                      },
-                    ],
-                    {cancelable: true},
-                  );
+                      ],
+                      {cancelable: true},
+                    );
+                    })
                 }
                 else {
                   QuickToast.show(global.localization.getLang("lang_please_agree_policy"))
@@ -184,7 +196,8 @@ const mapStateToProps = (state)=>{
       guardianList: state.guardianList,
       policyAgree: state.policyAgree,
       studentList: state.studentList,
-      curStudent: state.curStudent
+      curStudent: state.curStudent,
+      student: student
     }
 }
 

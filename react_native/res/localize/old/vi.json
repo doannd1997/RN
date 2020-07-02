@@ -101,7 +101,7 @@
     "lang_record": "_from_ đến _to_",
     "lang_pick_type_UP": "Tuyến Đón",
     "lang_pick_type_DOWN": "Tuyến Trả",
-    "lang_confirm_delete_mail": "Xác nhận xóa thư ?",
+    "lang_confirm_delete_mail": "Xác nhận xóa tin nhắn ?",
     "lang_bus_name": "Tên tuyến",
     "lang_bks": "Biển Kiểm Soát",
     "lang_driver": "Tài Xế",
@@ -131,5 +131,6 @@
     "lang_noti_fill": "Vui lòng điền thông tin hợp lệ",
     "REQUEST_CODE_FAIL": "Kết nốt gián đoạn",
     "REQUEST_LOGIN_FAIL": "Kết nối gián đoạn/sai tài khoản mật khẩu",
-    "pick_up_option_not_available_1": "Hiện chưa có danh sách điển đón cố định. Vui lòng chọn đón trả tại nhà"
+    "pick_up_option_not_available_1": "Hiện chưa có danh sách điển đón cố định. Vui lòng chọn đón trả tại nhà",
+    "already_registered": "Học sinh đã đăng kí xe buýt cho năm nay."
 }

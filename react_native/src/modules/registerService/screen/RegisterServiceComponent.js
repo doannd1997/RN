@@ -15,6 +15,7 @@ const resultCallback = (props)=>{
 export default class LogInScreen extends Component{
     constructor(props){
         super(props);
+        // global.navigation = props.navigation
     }
     componentWillMount(){
         var studentList = global.routeData.getTrackingBatch()
