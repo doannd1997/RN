@@ -23,8 +23,6 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
     // http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");
 
-    console.log(params)
-
     if (token != undefined){
         http.setRequestHeader("Authorization", "Bearer " + token)
     }

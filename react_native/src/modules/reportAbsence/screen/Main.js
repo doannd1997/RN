@@ -18,6 +18,8 @@ const Times = require("../../../utils/Times").default;
 
 import {StoreDefault} from "../../home/redux/Redux"
 
+const Networking = require("../networking/Networking").default
+
 class ReportAbsenceCom extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,7 @@ class ReportAbsenceCom extends Component {
     }
   }
   onConfirm(){
+    var self = this
     var header = global.localization.getLang("lang_noti_header");
     var content = global.localization.getLang("lang_confirm_send_report_absence_content");
     const okLabel = global.localization.getLang(
@@ -63,7 +66,13 @@ class ReportAbsenceCom extends Component {
         {
           text: okLabel,
           onPress: () => {
-            QuickToast.show(global.localization.getLang('lang_report_absence_success'));
+            Networking.apiReportAbsence(self.props, ()=>{
+                QuickToast.show(global.localization.getLang("lang_report_absence_success"))
+            },
+            ()=>{
+
+            })
+            // QuickToast.show(global.localization.getLang('lang_report_absence_success'));
           },
         },
         {
@@ -235,6 +244,7 @@ class ReportAbsenceCom extends Component {
 }
 
 const mapStateToProps = (state)=>{
+  var student = state.studentList[state.curStudent]
   return {
       busType: state.busType,
       isPickingDateStart: state.isPickingDateStart,
@@ -243,6 +253,7 @@ const mapStateToProps = (state)=>{
       endDate: state.endDate,
       studentList: state.studentList,
       curStudent: state.curStudent,
+      student: student
   }
 }
 

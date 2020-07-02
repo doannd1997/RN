@@ -1,9 +1,9 @@
 import {createStore} from "redux";
 
 BUS_TYPE = {
-  PICK_UP: "PICK_UP",
-  DROP_DOWN: "DROP_DOWN",
-  BOTH: "BOTH"
+  PICK_UP: "Pickup",
+  DROP_DOWN: "Delivery",
+  BOTH: "Both"
 }
 const defaultState = {
   busType: BUS_TYPE.BOTH,
