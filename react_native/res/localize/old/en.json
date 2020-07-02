@@ -50,7 +50,7 @@
     "lang_report_absence_success": "Success",
     "lang_confirm_send_report_absence_content": "Confirm Report Absence From @from@ To @to@ ?",
     "lang_pick_at_home": "At Home",
-    "lang_pick_at_place": "Other Place",
+    "lang_pick_at_place": "At Bus Stop",
     "lang_change": "Change",
     "lang_blank": "Blank",
     "lang_send_register": "Submit",
@@ -130,5 +130,6 @@
     "lang_check_in": "Check In",
     "lang_noti_fill": "Please fill correctly",
     "REQUEST_CODE_FAIL": "Connection interupted",
-    "REQUEST_LOGIN_FAIL": "Connection interupted/wrong account or password"
+    "REQUEST_LOGIN_FAIL": "Connection interupted/wrong account or password",
+    "pick_up_option_not_available_1": "Pick up place is now NOT avaiable, please select pick up at home"
 }

@@ -23,7 +23,8 @@ export default class LogInScreen extends Component{
         NetWorking.aipGetRegisterInfo({}, (json)=>{
             global.registerData.setData(json)
             studentList = global.registerData.getMergeStudent(studentList)
-            store.dispatch({type: "SET_STUDENT_LIST", studentList: studentList})
+            var guardianList = global.guardianData.getGuardianList()
+            store.dispatch({type: "SET_STUDENT_LIST", studentList: studentList, guardianList: guardianList})
             resultCallback(store)
         }, ()=>{
             

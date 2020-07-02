@@ -19,6 +19,7 @@ var RegisterData = {
                 title: student.homeAddress
             },
             student.distanceToSchool = info.StopToSchool
+            student.guardiandsId = info.Supervisorids.split(',')
         }
         return studentList
     }

@@ -1,6 +1,7 @@
 import {createStore} from "redux";
 import { NativeModules } from "react-native";
 import {QuickToast} from "../../../utils/Toast";
+import { ActivityIndicator } from "react-native-paper";
 
 BUS_TYPE = {
   PICK_UP: "PICK_UP",
@@ -47,16 +48,8 @@ var defaultState = {
     {id: 0, name: 'Trần Quang Lợi', checked: false},
     {id: 1, name: 'Nguyễn Bá Lương', checked: false},
   ],
-  guardians: [
-    {id: 0, name: 'Trần Quang Khải', checked: false},
-    {id: 1, name: 'Trần Quang Long', checked: false},
-    {id: 2, name: 'Trần Quang Linh', checked: false},
-    {id: 3, name: 'Trần Quang Lưu', checked: false},
-    {id: 4, name: 'Trần Quang Hưng', checked: false},
-    {id: 5, name: 'Trần Quang Quốc', checked: false},
-    {id: 6, name: 'Trần Quang Bình', checked: false},
-    {id: 7, name: 'Trần Quang Minh', checked: false},
-    {id: 8, name: 'Trần Quang Vũ', checked: false},
+  guardianList: [
+    
   ],
   policyAgree: false,
   showAgreement: false,
@@ -141,25 +134,23 @@ const reducer = (state, action)=>{
       return {...state, partners: partners};
     case "TOGGLE_SELECT_GUARDIAN":
       var guardianId = action.guardianId;
-
-      var guardian = state.guardians.find((item)=>item.id == guardianId);
-
-      if (!guardian.checked){
-        var numSelected = state.guardians.filter((item)=>item.checked).length;
+      var curGuardiansId = state.studentList[state.curStudent].guardiandsId.slice()
+      var index = curGuardiansId.indexOf(guardianId)
+      if (index == -1){
+        var numSelected = curGuardiansId.length
         if (numSelected >= GUARDIAN_MAX){
-          var noti = global.localization.getLang("lang_select_guardians_max").replace("@max@", GUARDIAN_MAX);
+          var noti = global.localization.getLang("lang_select_guardianList_max").replace("@max@", GUARDIAN_MAX);
           QuickToast.show(noti);
           return state;
         }
+        curGuardiansId.push(guardianId)
       }
-    
-      var guardians = state.guardians.map((guardian)=>{
-        if (guardian.id == guardianId)
-          return {...guardian, checked: !guardian.checked}
-        else 
-          return guardian;
-      })
-      return {...state, guardians: guardians};
+      else {
+        curGuardiansId.splice(index, 1)
+      }
+      var studentList = state.studentList.slice()
+      studentList[state.curStudent].guardiandsId = curGuardiansId
+      return {...state, studentList: studentList};
     case "TOGGLE_POLICY_AGREE":
       return {...state, policyAgree: !state.policyAgree};
     case "TOGGLE_SHOW_AGREEMENT":
@@ -171,6 +162,8 @@ const reducer = (state, action)=>{
     case "SELECT_CHILD":
       return {...state, curStudent: action.curStudent}
     case "SET_STUDENT_LIST":
+      if (typeof action.guardianList == 'object')
+        state.guardianList = action.guardianList
       return {...state, studentList: action.studentList, pickingAddress: false}
     case "REQUEST_DATA":
       return {...state, loading: true}

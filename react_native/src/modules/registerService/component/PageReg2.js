@@ -23,9 +23,9 @@ const GUARDIAN_MAX = 4;
 
 var GuardianContainer = (props)=>{
   var guardian = props.guardian;
-  var guardianId = guardian.id;
+  var guardianId = guardian.ID;
 
-  var _checked = props.guardians.filter((guardian)=>guardianId == guardian.id)[0].checked
+  var _checked = props.studentList[props.curStudent].guardiandsId.indexOf(guardianId) != -1
   return (
     <View style={styles.optionContainer}>
       <CheckBox
@@ -40,7 +40,7 @@ var GuardianContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{guardian.name}</Text>
+      <Text style={styless.labelMethodItem}>{guardian.Name}</Text>
     </View>
   );
 }
@@ -64,8 +64,7 @@ class PageReg2 extends Component {
             <Text style={[styless.lblHeaderGuardians, {color: '#fff'}]}>
               &nbsp; (
               {
-                self.props.guardians.filter(guardian => guardian.checked)
-                  .length
+                self.props.studentList[self.props.curStudent].guardiandsId.length
               }
               /{GUARDIAN_MAX})
             </Text>
@@ -75,7 +74,7 @@ class PageReg2 extends Component {
           <FlatList
             showsVerticalScrollIndicator={false}
             bounces={true}
-            data={self.props.guardians}
+            data={self.props.guardianList}
             renderItem={data => {
               return (
                 <GuardianContainer {...self.props} guardian={data.item} />
@@ -176,13 +175,18 @@ class PageReg2 extends Component {
 
 
 const mapStateToProps = (state)=>{
+  var student = state.studentList[state.curStudent]
+  console.log("11")
+  console.log(student.guardiandsId)
     return {
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,
       isPickingDateStart: state.isPickingDateStart,
       curYear: state.curYear,
-      guardians: state.guardians,
-      policyAgree: state.policyAgree
+      guardianList: state.guardianList,
+      policyAgree: state.policyAgree,
+      studentList: state.studentList,
+      curStudent: state.curStudent
     }
 }
 
