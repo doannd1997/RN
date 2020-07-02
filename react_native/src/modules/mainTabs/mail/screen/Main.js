@@ -11,6 +11,8 @@ const ButtonCreate = require("../component/BtnCreate").default;
 const PopupComposeCom = require("../component/PopUpConmpose").default;
 const MailDetailCom = require("../component/MailDetail").default;
 
+const Indicator = require("../../../../common/component/Indicator").default
+
 class Main extends Component{
     render(){
         return (
@@ -21,6 +23,7 @@ class Main extends Component{
               <ButtonCreate/>
               <MailDetailCom/>
               <PopupComposeCom/>
+              {this.props.mail_loading ? <Indicator/> : null}
             </View>
           </View>
         );
@@ -30,7 +33,8 @@ class Main extends Component{
 const mapStateToProps = (state)=>{
     return {
         curTab: state.mail_curTab,
-        isDisplayPopup: state.mail_isDisplayPopUp
+        isDisplayPopup: state.mail_isDisplayPopUp,
+        mail_loading: state.mail_loading
     }
 }
 

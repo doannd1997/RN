@@ -219,8 +219,9 @@ export default EStyleSheet.create({
     txtMailDetail: {    
         width: "100%",
         flex: 1,
-        fontSize: "10rem",
-        color: "#333"
+        fontSize: "7rem",
+        color: "#333",
+        fontWeight: "bold"
     },
     newMail: {
         borderRightWidth: "3rem",

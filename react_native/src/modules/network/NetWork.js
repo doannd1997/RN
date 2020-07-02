@@ -44,9 +44,9 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
                         QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
                     }
                     break
-                case 500:
+                default:
+                    console.log("request err " + http.status)
                     console.log(http.responseText)
-                    break
             }
         }
     }

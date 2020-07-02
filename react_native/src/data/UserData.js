@@ -3,7 +3,7 @@ import { NativeModules, Platform } from "react-native"
 
 const asynStorage = require("../storage/asyncStore").default;
 
- userData = {
+userData = {
     logedIn: false,
     userName: "null",
     displayName: "Developer",
@@ -76,6 +76,10 @@ const asynStorage = require("../storage/asyncStore").default;
             },
         ]
         return listCoor[busIndex]
+    },
+
+    getAppType: function(){
+        return APP_TYPE
     }
 }
 
@@ -87,3 +91,5 @@ userData.KEY_USER_NAME = "KEY_USER_NAME";
 userData.KEY_PASS_WORD = "PASS_WORD";
 
 export default userData;
+
+const APP_TYPE = "Parent"

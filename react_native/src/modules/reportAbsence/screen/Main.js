@@ -67,6 +67,7 @@ class ReportAbsenceCom extends Component {
           text: okLabel,
           onPress: () => {
             Networking.apiReportAbsence(self.props, ()=>{
+                self.props.navigation.navigate("HomeScreen")
                 QuickToast.show(global.localization.getLang("lang_report_absence_success"))
             },
             ()=>{

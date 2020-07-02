@@ -7,6 +7,34 @@ const styles = require("../style/styles").default;
 const Mail = require("../component/Mail").default;
 const colors = require("../../../../color/Colors").default;
 
+const NetWorking = require("../networking/NetWorking").default
+
+const resultLoadMail = function(props){
+    props.dispatch({type: "MAIL_STOP_LOAD"})
+}
+
+const updateMail = function(props){
+    props.dispatch({type: "MAIL_START_LOAD"})
+    NetWorking.apiRequestGetMessages(props, (responseText)=>{
+        var json = JSON.parse(responseText)
+        global.mailData.setData(json)
+
+        var inboxs = global.mailData.getInboxs()
+        var sents = global.mailData.getSents()
+        props.dispatch({
+            type: "SET_MAIL",
+            inboxs: inboxs,
+            sents: sents
+        })
+
+        resultLoadMail(props)
+    }, 
+    ()=>{
+        resultLoadMail(props)
+    })
+}
+
+
 class MailListCom extends Component{
     render(){
         return (
@@ -20,7 +48,7 @@ class MailListCom extends Component{
                 }}
                 refreshing={false}
                 onRefresh={()=>{
-                    
+                    updateMail(this.props)
                 }}
                 ref={"mailList"}
             />

@@ -6,10 +6,9 @@ import style from "../../../../common/style";
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
-const colors = require("../../../../color/Colors").default;
 const QuickToast = require("../../../../utils/Toast").QuickToast;
 
-const TimeUtils = require("../../../../utils/Times").default;
+const NetWorking = require("../networking/NetWorking").default
 
 class MailDetail extends Component {
     render(){
@@ -26,7 +25,7 @@ class MailDetail extends Component {
             <SafeAreaView style={styles.modalContentContainer}>
                 <View style={styles.mailDetailContainer} >
                     <Text style={styles.txtMailDetail}>
-                        {this.props.mailIndex == null ? null : this.props.curTab == 0 ? this.props.inbox[this.props.mailIndex].content : this.props.sentMail[this.props.mailIndex].content}
+                        {this.props.mailIndex == null ? null : this.props.curTab == 0 ? this.props.inbox[this.props.mailIndex].MessageBody : this.props.sentMail[this.props.mailIndex].MessageBody}
                     </Text>
                 </View>
               <View style={styles.bottomButtonMailContentContainer}>
@@ -49,6 +48,10 @@ class MailDetail extends Component {
                             {
                             text: okLabel,
                             onPress: () => {
+                                var mail = this.props.curTab == 0 
+                                  ? this.props.inbox[this.props.mailIndex] 
+                                  : this.props.sentMail[this.props.mailIndex]
+                                NetWorking.apiDeleteMail(mail.MessageID)
                                 this.props.dispatch({
                                     type: "MAIL_DELETE_MAIL"
                                 })

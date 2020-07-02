@@ -69,6 +69,7 @@ const defaultState = {
   mail_showing: false,
   mail_mailIndex: null,
   mail_curMonitor: 0,
+  mail_loading: false,
 }
 
 const ONE_DAY = 1000 * 60 * 60 * 24;
@@ -80,34 +81,6 @@ for (var i = 0; i < 12; i++) {
   last.date -= ONE_DAY;
   defaultState.history.push(last)
 }
-
-for (var i = 0; i < 5; i++) {
-  var mail = {
-    header: "From VinGroup",
-    // content: "Thư báo",
-    time: new Date().getTime(),
-    isNew: true
-  };
-  defaultState.mail_inbox.push({ ...mail, content: "Thư Đến" });
-  defaultState.mail_sentMail.push({ ...mail, content: "Thư Đi", isNew: false });
-}
-
-const createDefaultGuardian = (i) => {
-  return {
-    id: i,
-    name: "Giám Hộ " + (i + 1),
-    phoneNumber: Math.floor(Math.random() * 10000000),
-    avatarSource: require("../../../../res/image/guardians/police.png"),
-    role: "Mẹ",
-    assigned: Array.from(Array(defaultState.studentList.length), () => 0)
-  };
-}
-
-// for (var i = 0; i < 3; i++) {
-//   var guardian = createDefaultGuardian(i)
-
-//   defaultState.guardians.push(guardian);
-// }
 
 
 const reducer = (state, action) => {
@@ -180,7 +153,7 @@ const reducer = (state, action) => {
         _state = {
           ..._state, mail_inbox: state.mail_inbox.map((item, index) => {
             if (index == action.mail_mailIndex)
-              return { ...item, isNew: false }
+              return { ...item, isRead: true }
             return item;
           })
         }
@@ -188,7 +161,7 @@ const reducer = (state, action) => {
         _state = {
           ..._state, mail_sentMail: state.mail_sentMail.map((item, index) => {
             if (index == action.mail_mailIndex)
-              return { ...item, isNew: false }
+              return { ...item, isRead: true }
             return item;
           })
         }
@@ -206,7 +179,7 @@ const reducer = (state, action) => {
     case "MAIL_CHANGE_MONITOR":
       return { ...state, mail_curMonitor: action.mail_curMonitor }
 
-    // count info
+    // acount info
     case "GET_INFO_STUDENT":
       return {...state, loadingStudentInfomation: true}
     case "RESULT_GET_INFO_STUDENT":
@@ -215,6 +188,16 @@ const reducer = (state, action) => {
       var studentInfomation = state.studentInfomation
       studentInfomation[state.curStudent] = action.studentInfo
       return {...state, studentInfomation: studentInfomation}
+
+    // mail
+    case "SET_MAIL":
+      var inboxs = action.inboxs
+      var sents = action.sents
+      return {...state, mail_inbox: inboxs, mail_sentMail: sents}
+    case "MAIL_START_LOAD":
+      return {...state, mail_loading: true}        
+    case "MAIL_STOP_LOAD":
+      return {...state, mail_loading: false}
   }
 
   return state;

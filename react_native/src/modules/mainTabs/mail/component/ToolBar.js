@@ -29,7 +29,7 @@ const ToolBar = props=>{
             <Text
               style={commonStyles.toolBarBtnHeader}
             >
-              {global.localization.getLang('lang_inbox') + (props.mail_inbox.filter((item)=>item.isNew).length > 0 ? (" (" + props.mail_inbox.filter((item)=>item.isNew).length + ")") : "")}
+              {global.localization.getLang('lang_inbox') + (props.mail_inbox.filter((item)=>!item.isRead).length > 0 ? (" (" + props.mail_inbox.filter((item)=>!item.isRead).length + ")") : "")}
             </Text>
           </TouchableOpacity>
         </View>

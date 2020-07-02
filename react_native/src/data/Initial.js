@@ -9,6 +9,7 @@ const AccountData = require("./Account").default;
 const RouteData = require("./Route").default;
 const RegisterData = require("./RegisterData").default
 const GuardianData = require("./GuardianData").default
+const MailData = require("./MailData").default
 
 const Cacher = require("./Cacher");
 
@@ -28,7 +29,8 @@ export default initial = {
         global.routeData = RouteData
         global.registerData = RegisterData
         global.guardianData = GuardianData
-
+        global.mailData = MailData
+        
         if (typeof callback == "function")
             setTimeout(callback, DELAY)
 
