@@ -12,8 +12,6 @@ const RegisterData = require("./RegisterData").default
 const GuardianData = require("./GuardianData").default
 const MailData = require("./MailData").default
 
-const firebase = require("../firebase/Firebase").default
-
 const Cacher = require("./Cacher");
 
 const DELAY = 100; //ms loading -> main screen
@@ -35,12 +33,10 @@ export default initial = {
         global.registerData = RegisterData
         global.guardianData = GuardianData
         global.mailData = MailData
-        global.firebase = firebase
+        global.firebase = fcmClient
         
         if (typeof callback == "function")
             setTimeout(callback, DELAY)
-
-        fcmClient.start();
     }
 }
 

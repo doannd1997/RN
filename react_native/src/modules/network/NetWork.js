@@ -53,6 +53,45 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
     http.send(params);
 }
 
+
+exports.networkRequestPostMultipart = (url, params, token, successCallback, failCalllback)=>{
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    // http.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    http.setRequestHeader("Content-type", netConf.CONTENT_TYPE_MULTI_PART);
+    // http.setRequestHeader("Content-length", params.length);
+    http.setRequestHeader("Connection", "close");
+
+    if (token != undefined){
+        http.setRequestHeader("Authorization", "Bearer " + token)
+    }
+
+    http.onreadystatechange = function() {
+        if (http.readyState == 4) {
+            switch (http.status){
+                case 200:
+                    if (typeof successCallback == 'function'){
+                        successCallback(http.responseText, http.getAllResponseHeaders());
+                    }
+                    break
+                case 408:
+                case 204:
+                    if (typeof failCalllback == 'function'){
+                        failCalllback();
+                    }
+                    else {
+                        QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
+                    }
+                    break
+                default:
+                    console.log("request err " + http.status)
+                    console.log(http.responseText)
+            }
+        }
+    }
+    http.send(params);
+}
+
 exports.createUrl = (field, options)=>{
     var url = netConf.protocol + "://" + netConf.ip + ":" + netConf.port + "/" + field;
     if (typeof options == 'object' && Object.keys(options).length > 0){

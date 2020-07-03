@@ -28,5 +28,8 @@ export default GuardianData = {
                 return guardian
             return item
         })
+    },
+    addGuardian: (guardian)=>{
+        data.push(guardian)
     }
 }

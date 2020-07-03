@@ -10,6 +10,7 @@ const colors = require("../../../color/Colors").default;
 
 const TimeUtils = require("../../../utils/Times").default;
 import {QuickToast} from "../../../utils/Toast";
+import Networking from "../networking/Networking";
 
 const defaultAvatar =  require("../../../../res/image/guardians/police.png");
 
@@ -23,7 +24,7 @@ class PopUpConmpose extends Component {
         skipBackup: true,
         path: 'images',
       },
-      no65Data: false,
+      noData: false,
       maxWidth: 128,
       maxHeight: 128,
       quality: 1,
@@ -105,6 +106,8 @@ class PopUpConmpose extends Component {
                                   isStatic: true,
                                 };
                               }
+
+                              source.data = response.data
 
                               // const source = { uri: response.uri };
 
@@ -230,6 +233,12 @@ class PopUpConmpose extends Component {
                       style={styles.btnCreateForm}
                       onPress={() => {
                         var guardian = this.props.pseudoGuardian;
+                        Networking.apiCreateGuardian(guardian.item, ()=>{
+                          global.guardianData.addGuardian(guardian.item)
+                        },
+                        ()=>{
+
+                        })
                         this.props.dispatch(
                           {
                             type:

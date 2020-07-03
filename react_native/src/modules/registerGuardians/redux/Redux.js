@@ -11,6 +11,17 @@ var defaultState = {
   editAvatarSource: require("../../../../res/image/guardians/police.png"),
 };
 
+
+const createDefaultGuardian = (i)=>{
+  return {
+    id: i,
+    name: "Giám Hộ " + (i+1),
+    phoneNumber: Math.floor(Math.random()*10000000),
+    avatarSource: require("../../../../res/image/guardians/police.png"),
+    role: "Mẹ"
+  };
+}
+
 const reducer = (state, action) => {
   if (Object.keys(state).length == 0) state = defaultState;
   switch (action.type) {
