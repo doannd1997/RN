@@ -59,7 +59,7 @@ exports.createUrl = (field, options)=>{
         var extras = []
         for (var o in options){
             var data = options[o]
-            var p = o + "=" + data.toString().replace(/ /gi, "%20@")
+            var p = o + "=" + data.toString().replace(/ /gi, "%20")
             extras.push(p)
         }
         extras = "?" + extras.join("&")

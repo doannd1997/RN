@@ -4,12 +4,15 @@ const userData = require("./UserData").default;
 const localize = require("../localization/localize").default;
 const fcmClient = require("../firebase/Firebase").default;
 const authenData = require("../data/AuthenData").default;
+const deviceInfo = require("./DeviceInfo").default
 
 const AccountData = require("./Account").default;
 const RouteData = require("./Route").default;
 const RegisterData = require("./RegisterData").default
 const GuardianData = require("./GuardianData").default
 const MailData = require("./MailData").default
+
+const firebase = require("../firebase/Firebase").default
 
 const Cacher = require("./Cacher");
 
@@ -23,13 +26,16 @@ export default initial = {
         await global.localization.initConfigLang();
         global.authenData = authenData;
         await authenData.initial();
-        
+        global.deviceInfo = deviceInfo
+        await deviceInfo.init()
+
         global.cacher = Cacher
         global.accountData = AccountData
         global.routeData = RouteData
         global.registerData = RegisterData
         global.guardianData = GuardianData
         global.mailData = MailData
+        global.firebase = firebase
         
         if (typeof callback == "function")
             setTimeout(callback, DELAY)

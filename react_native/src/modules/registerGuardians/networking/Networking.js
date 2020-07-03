@@ -15,7 +15,6 @@ export default Networking = {
         }        
 
         var url = createUrl(ROUTE.UPDATE_GUARDIAN, extras)
-        return console.log(url)
         var params = PARAM.UPDATE_GUARDIAN
 
         const token = global.authenData.getToken()
@@ -37,7 +36,6 @@ export default Networking = {
         }        
 
         var url = createUrl(ROUTE.DELETE_GUARDIAN, extras)
-        return console.log(url)
         var params = PARAM.DELETE_GUARDIAN
 
         const token = global.authenData.getToken()

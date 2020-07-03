@@ -20,6 +20,8 @@ export default Networking = {
             this.apiGetGuardiansInfo()
             this.apiGetStudentStatus()
 
+            global.firebase.start()
+            
             props.navigation.navigate("HomeScreen", {logedIn: true})
             await global.authenData.setPhoneNumber(props.phoneNumber)
             await global.authenData.setPassword(props.password)

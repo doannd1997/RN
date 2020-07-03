@@ -21,5 +21,12 @@ export default GuardianData = {
     },
     getGuardianList: function(){
         return data
+    },
+    updateGuardian: (guardian)=>{
+        data = data.map(item=>{
+            if (item.id == guardian.id)
+                return guardian
+            return item
+        })
     }
 }

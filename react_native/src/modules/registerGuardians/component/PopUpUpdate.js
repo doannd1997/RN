@@ -298,7 +298,9 @@ class PopUpUpdate extends Component {
                                 onPress: () => {
                                   var index = this.props.curGuardian.index
                                   var pGuardian = this.props.pseudoGuardian.item
-                                  NetWorking.apiUpdateGuardian(pGuardian)
+                                  NetWorking.apiUpdateGuardian(pGuardian, ()=>{
+                                    global.guardianData.updateGuardian(pGuardian)
+                                  })
                                   this.props.dispatch({type: "UPDATE_GUARDIAN", guardian: pGuardian, index: index});
                                 },
                               },
