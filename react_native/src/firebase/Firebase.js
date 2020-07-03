@@ -101,7 +101,8 @@ const sendToken = async(pushToken)=>{
     .replace(/@token@/gi, pushToken)
     .replace(/@deviceId@/gi, deviceId)
 
-    console.log(params)
+    console.log("push token")
+    console.log(pushToken)
     const token = global.authenData.getToken()
     networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
         if (typeof resultCallback == 'function')

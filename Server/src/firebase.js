@@ -1,16 +1,14 @@
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("../public/appparent-firebase-adminsdk-cugj6-027f9922db.json");
+var serviceAccount = require("../public/appparent-firebase-adminsdk.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://appparent.firebaseio.com"
 });
 
-// This registration token comes from the client FCM SDKs.
-var registrationToken = 'fP8TsROoSOu1MpxKXfAPaM:APA91bElq4PvxueYjHFCQU4qasuCJ2eXh-NlvJi6r-K2yuSlIM-JN_kpVzh2jWJkia5g0NJkPUquLhmyxtkYMfWM9nVNBDKTC4Nf0ogMarCfBqN7M1CvM6hUEb2YWTarpsTm_IcwuA81';
-// var registrationToken = 'fPROoSOu1MpxKXfAPaM:APA91bElq4PvxueYjHFCQU4qasuCJ2eXh-NlvJi6r-K2yuSlIM-JN_kpVzh2jWJkia5g0NJkPUquLhmyxtkYMfWM9nVNBDKTC4Nf0ogMarCfBqN7M1CvM6hUEb2YWTarpsTm_IcwuA81';
+var registrationToken = 'eoPPgrAfSn6IljJ8nOuPsw:APA91bGJuMT824v2sRzRrcifBRLPIuLGiepk5nDhvlOWtakxnLzFh27PBxqPo_MHUpyFO8grnn_Hac4g-_BRwlMTheUeYsXBW3LO-1wbF-cZX27cBnEIH8xvq_qA8Est5q75TIXIUM8A';
 
 var message = {
     notification: {
