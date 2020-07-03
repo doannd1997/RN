@@ -14,6 +14,8 @@ function Student(route){
     this.schoolLongitude = route.schoolLongitude
     this.activePartners = route.activePartners
     this.agreementUri = route.agreementUri
+    this.schoolLevel = route.schoolLevel
+
     this.routes = {}
     
     // var route = new Route(route)
@@ -73,7 +75,7 @@ export default RouteData = {
                 // for info
                 studentId: student.Id,
                 studentCode: student.StudentCode,
-                studentGrade: student.SchoolLevel,
+                schoolLevel: student.SchoolLevel,
                 studentSchool: student.StudentSchool,
                 pickUpOption: student.PickupPoint.Type,
                 pickUpPlace: student.PickupPoint.Name,

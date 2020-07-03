@@ -73,6 +73,10 @@ export default Times = {
         var d = date.getDate()
         d = (d<10) ? ("0" + d) : d
         return y + '-' + m + '-' +d
+    },
+    yy_mm_dd_toTimeStamp: yy_mm_dd=>{
+        // 2020-08-17
+        return new Date(yy_mm_dd).getTime()
     }
 }
 

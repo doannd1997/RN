@@ -38,9 +38,11 @@ const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
 const AgreementCom = require("../component/AgreeMent").default;
+const TimeUtils = require("../../../utils/Times").default
 
 const Indicator = require("../../../common/component/Indicator").default
 
+const Networking = require("../networking/Networking").default
 
 class MyPageCom extends Component{
   selectPageReg0(){
@@ -201,8 +203,8 @@ const mapStateToProps = (state)=>{
       studentList: state.studentList,
       curStudent: state.curStudent,
       loading: state.loading,
-      // alreadyRegisterd: student.registrationStatus == 1
-      alreadyRegisterd: student.registrationStatus == 0
+      alreadyRegisterd: student.registrationStatus == 0,
+      student: student
     }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);

@@ -4,10 +4,10 @@ const TimeUtils = require("../../../utils/Times").default
 
 export default Networking = {
     aipGetRegisterInfo: (props, sucessCallback, failCallback)=>{
-        var url = createUrl(ROUTE.UPDATE_TRACKING)
+        var url = createUrl(ROUTE.REGISTER_CUR_YEAR)
 
         var parentId = global.accountData.getId()
-        var params = PARAM.UPDATE_TRACKING.replace(/@parentId@/gi, parentId)
+        var params = PARAM.REGISTER_CUR_YEAR.replace(/@parentId@/gi, parentId)
         const token = global.authenData.getToken()
         networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             var json = JSON.parse(responseText)
@@ -18,6 +18,27 @@ export default Networking = {
                 failCallback(json);
             QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
         })
+    },
+    apiGetAvaiableDate: (props, sucessCallback, failCallback)=>{
+        var url = createUrl(ROUTE.GET_AVAIABLE_DATE)
+
+        var schoolLevel = props.student.schoolLevel
+        var token = global.authenData.getToken()
+
+        var params = PARAM.GET_AVAIABLE_DATE
+        .replace(/@schoolLevel@/gi, schoolLevel)
+        .replace(/@year@/gi, "CurrentYear")
+
+        networkRequestPost(url, params, token, 
+        async (responseText)=>{
+            if (typeof sucessCallback == 'function')
+                sucessCallback(responseText)
+        },
+        async ()=>{
+            if (typeof failCallback == 'function')
+                failCallback()
+        })
+
     },
     apiSendRegisterService: (props, sucessCallback, failCallback)=>{
         var url = createUrl(ROUTE.REGISTER_SERVICE)
@@ -86,13 +107,15 @@ export default Networking = {
 };
 
 const ROUTE = {
-    UPDATE_TRACKING: "api/values/GetRegister4CurrentYear",
+    REGISTER_CUR_YEAR: "api/values/GetRegister4CurrentYear",
     REGISTER_SERVICE: "api/values/RegisterStopPoint",
-    CONFIRM_REGISTER: "api/values/ConfirmRegistration"
+    CONFIRM_REGISTER: "api/values/ConfirmRegistration",
+    GET_AVAIABLE_DATE: "api/values/GetAvailableDate"
 }
 
 const PARAM = {
-    UPDATE_TRACKING: "parentId=@parentId@",
+    REGISTER_CUR_YEAR: "parentId=@parentId@",
     REGISTER_SERVICE: "studentID=@studentID@&stopPointID=@stopPointID@&address=@address@&latitude=@latitude@&longitude=@longitude@&option=@option@&togetherids=@togetherids@&hometostop=@hometostop@&stoptoschool=@stoptoschool@&date=@date@&supervisorIDs=@supervisorIDs@&homeaddress=@homeaddress@&homelat=@homelat@&homelong=@homelong@",
-    CONFIRM_REGISTER: "studentID=@studentId@"
+    CONFIRM_REGISTER: "studentID=@studentId@",
+    GET_AVAIABLE_DATE: "SchoolLevel=@schoolLevel@&Year=@year@"
 }

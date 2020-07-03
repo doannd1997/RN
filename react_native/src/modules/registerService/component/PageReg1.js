@@ -15,6 +15,7 @@ import {QuickToast} from "../../../utils/Toast";
 const TimeUtils = require("../../../utils/Times").default;
 
 import {PICK_TYPE_METHOD} from "../redux/Redux"
+import Networking from "../networking/Networking";
 
 var OptionContainer = (props)=>{
   var pickUpOption = props.student.pickUpOption
@@ -101,7 +102,29 @@ class PageReg1 extends Component {
         QuickToast.show(toast);
       }
     }
-  };
+  }
+  componentWillUpdate(nextProps){
+    if (nextProps.curStudent != this.props.curStudent){
+      Networking.apiGetAvaiableDate(nextProps, (responseText)=>{
+        var json = JSON.parse(responseText)
+        this.props.dispatch({type: "CHANGE_SERVICE_DATE_START",
+        time: TimeUtils.yy_mm_dd_toTimeStamp(json.effectiveDate)})
+      },
+      ()=>{
+  
+      })
+    }
+  }
+  componentWillMount(){
+    Networking.apiGetAvaiableDate(this.props, (responseText)=>{
+      var json = JSON.parse(responseText)
+      this.props.dispatch({type: "CHANGE_SERVICE_DATE_START",
+      time: TimeUtils.yy_mm_dd_toTimeStamp(json.effectiveDate)})
+    },
+    ()=>{
+
+    })
+  }
   render() {
     var self = this;
     return (
