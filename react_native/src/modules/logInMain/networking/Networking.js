@@ -35,7 +35,7 @@ export default Networking = {
             ParentId: parentId
         }
         var url = createUrl(ROUTE.GET_GUARDIANS, extra)
-        var params = ""
+        var params = PARAM.GET_GUARDIANS
         const token = global.authenData.getToken()
         networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             if (typeof resultCallback == 'function')
@@ -77,7 +77,7 @@ const ROUTE = {
 
 const PARAM = {
     LOG_IN: "username=@user_name@&password=@pass_word@",
-    GET_GUARDIANS: "ParentID=@parentId@",
+    GET_GUARDIANS: "",
     GET_STUDENT_STATUS: "ParentID=@parentId@",
     ACCESS_TOKEN: "Access_Token: "
 }

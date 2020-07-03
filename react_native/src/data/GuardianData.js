@@ -1,8 +1,23 @@
+import {getAvatarUri} from "../modules/network/NetWork"
+
 var data = {}
 
 export default GuardianData = {
     setData: function(_data){
         data = _data
+        this.parseData()
+    },
+    parseData: function(){
+        data = data.map((item)=>{
+            return {
+                // ...item,
+                name: item.Name,
+                phoneNumber: item.Phone,
+                role: item.Relationship,
+                avatarSource: getAvatarUri(item.Avatar),
+                id: item.ID
+            }
+        })
     },
     getGuardianList: function(){
         return data

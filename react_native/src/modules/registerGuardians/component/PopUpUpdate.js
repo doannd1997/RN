@@ -8,6 +8,8 @@ const styles = require("../style/styles").default;
 const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../color/Colors").default;
 
+const NetWorking = require("../networking/Networking").default
+
 const TimeUtils = require("../../../utils/Times").default;
 import {QuickToast} from "../../../utils/Toast";
 
@@ -248,7 +250,10 @@ class PopUpUpdate extends Component {
                               {
                                 text: okLabel,
                                 onPress: () => {
-                                  this.props.dispatch({type: "DELETE_GUARDIAN", index: this.props.curGuardian.index})
+                                  var index = this.props.curGuardian.index
+                                  var pGuardian = this.props.pseudoGuardian.item
+                                  NetWorking.apiDeleteGuardian(pGuardian)
+                                  this.props.dispatch({type: "DELETE_GUARDIAN", index: index})
                                 },
                               },
                               {
@@ -291,8 +296,10 @@ class PopUpUpdate extends Component {
                               {
                                 text: okLabel,
                                 onPress: () => {
-                                  var guardian = this.props.pseudoGuardian.item;
-                                  this.props.dispatch({type: "UPDATE_GUARDIAN", guardian: guardian, index: this.props.curGuardian.index});
+                                  var index = this.props.curGuardian.index
+                                  var pGuardian = this.props.pseudoGuardian.item
+                                  NetWorking.apiUpdateGuardian(pGuardian)
+                                  this.props.dispatch({type: "UPDATE_GUARDIAN", guardian: pGuardian, index: index});
                                 },
                               },
                               {

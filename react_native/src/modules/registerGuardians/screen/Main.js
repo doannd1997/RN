@@ -31,8 +31,7 @@ class Main extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        curTab: state.curTab,
-        isDisplayPopup: state.isDisplayPopup
+        
     }
 }
 

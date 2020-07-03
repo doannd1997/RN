@@ -6,6 +6,10 @@ const MainCom = require("./Main").default;
 const store = require("../redux/Redux").default;
 
 export default class RegisterGuardians extends Component{
+    componentWillMount(){
+      var guardians = global.guardianData.getGuardianList()
+      store.dispatch({type: "SET_GUARDIANS", guardians: guardians})
+    }
     render(){
         return (
           <Provider store = {store}>
