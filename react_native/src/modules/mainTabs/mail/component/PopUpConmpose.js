@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Modal, TextInput, Image } from "react-nati
 import {redux, connect} from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 import ModalSelector from "react-native-modal-selector";
+import NetWorking from "../networking/NetWorking";
 
 const styles = require("../style/styles").default;
 const commonStyles = require("../../../../common/style/index").default;
@@ -95,10 +96,15 @@ class PopUpConmpose extends Component {
                             content: this.props.composeMailContent,
                             time: new Date().getTime(),
                           };
-                          self.props.dispatch({
-                            type: 'MAIL_SEND_MAIL',
-                            mail: mail,
-                          });
+                          NetWorking.apiSendToSchool(mail.content, ()=>{
+                            self.props.dispatch({
+                              type: 'MAIL_SEND_MAIL',
+                              mail: mail,
+                            })
+                          },
+                          ()=>{
+
+                          })
                         }}>
                         <Image
                           style={styles.imgSendMail}

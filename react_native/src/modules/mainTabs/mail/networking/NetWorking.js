@@ -1,4 +1,4 @@
-import {networkRequestGet, networkRequestPost, createUrl} from "../../../network/NetWork"
+import {netWorkRequestSinglePost, networkRequestPost, createUrl} from "../../../network/NetWork"
 import {QuickToast} from "../../../../utils/Toast";
 const TimeUtils = require("../../../../utils/Times").default
 
@@ -55,16 +55,37 @@ export default Networking = {
             QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
         })
     },
+    apiSendToSchool: (message, sucessCallback, failCallback)=>{
+        var url = createUrl(ROUTE.SEND_TO_SCHOOL)
+
+        var parentId = global.accountData.getId()
+
+        var params = new FormData()
+        params.append("0", parentId)
+        params.append("1", message)
+
+        token = global.authenData.getToken()
+        netWorkRequestSinglePost(url, params, token, async (responseText, responseHeader)=>{
+            if (typeof sucessCallback == 'function')
+                sucessCallback(responseText);
+        }, async ()=>{
+            if (typeof failCallback == 'function')
+                failCallback(json);
+            QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
+        })
+    }
 };
 
 const ROUTE = {
     GET_ALL_MESSAGE: "api/values/GetMessageInOut",
     READ_MAIL: "api/values/UpdateMessageReadStatus",
-    DELETE_MAIL: "api/values/DeleteMessage"
+    DELETE_MAIL: "api/values/DeleteMessage",
+    SEND_TO_SCHOOL: "api/values/Parent2School"
 }
 
 const PARAM = {
     GET_ALL_MESSAGE: "AppType=@AppType@&UserId=@UserId@",
     READ_MAIL: "MessageID=@MessageId@",
-    DELETE_MAIL: "MessageID=@MessageId@"
+    DELETE_MAIL: "MessageID=@MessageId@",
+    SEND_TO_SCHOOL: ""
 }

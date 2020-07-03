@@ -4,6 +4,5 @@
     "protocol": "http",
     "port": 5003,
     "CONTENT_TYPE": "application/x-www-form-urlencoded; charset=utf-8",
-    "CONTENT_TYPE_MULTI_PART": "image/jpeg; charset=utf-8",
     "BASE_URL": "https://bus.vinschool.edu.vn/"
 }

@@ -54,13 +54,9 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
 }
 
 
-exports.networkRequestPostMultipart = (url, params, token, successCallback, failCalllback)=>{
+exports.netWorkRequestSinglePost = (url, params, token, successCallback, failCalllback)=>{
     var http = new XMLHttpRequest();
-    http.open("POST", url, true);
-    // http.setRequestHeader("Content-type", "application/json; charset=utf-8");
-    http.setRequestHeader("Content-type", netConf.CONTENT_TYPE_MULTI_PART);
-    // http.setRequestHeader("Content-length", params.length);
-    http.setRequestHeader("Connection", "close");
+    http.open("POST", url);
 
     if (token != undefined){
         http.setRequestHeader("Authorization", "Bearer " + token)
