@@ -25,8 +25,9 @@ const BusInfoCom = require("../component/BusDetail").default;
 const NetWorking = require("../networking/Networking").default;
 
 const updateUI = (props)=>{
-    var routeBatch = global.routeData.getTrackingBatch();
-    props.dispatch({type: "SET_TRACK_INFO", studentList: routeBatch})
+    var routeBatch = global.routeData.getTrackingBatch()
+    var studentList = global.registerData.getMergeStudent(routeBatch)
+    props.dispatch({type: "SET_TRACK_INFO", studentList: studentList})
     console.log("update tracking ui with loop: " + CONST.TIME_UPDATE + " ms")
 }
 

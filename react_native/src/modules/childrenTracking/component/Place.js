@@ -28,15 +28,17 @@ class DefaultInfo extends Component {
 }
 
 const mapStateToProps = (state)=>{
+    var student = state.studentList[state.curStudent]
     return {
       curStudent: state.curStudent,
       studentList: state.studentList,
-      routeType: state.routeType
+      routeType: state.routeType,
+      student: student
     }
 }
 
 export default connect(mapStateToProps)(DefaultInfo);
 
 const getPlace = (props)=>{
-  return props.studentList[props.curStudent].routes[props.routeType].point.Name
+  return props.student.homeAddress
 }

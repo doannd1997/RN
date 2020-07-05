@@ -1,6 +1,8 @@
 import {networkRequestGet, networkRequestPost, createUrl} from "../../network/NetWork";
 import {QuickToast} from "../../../utils/Toast";
 
+const RegisterNetWorking = require("../../registerService/networking/Networking").default
+
 export default Networking = {
     apiLogIn: function(props, resultCallback){
         var url = createUrl(ROUTE.LOG_IN)
@@ -19,7 +21,8 @@ export default Networking = {
             global.authenData.setToken(getAccessToken(responseHeader))
             this.apiGetGuardiansInfo()
             this.apiGetStudentStatus()
-
+            this.apiGetRegisterInfo()
+            
             global.firebase.start()
             
             props.navigation.navigate("HomeScreen", {logedIn: true})
@@ -67,6 +70,13 @@ export default Networking = {
             if (typeof resultCallback == 'function')
                 resultCallback();
             QuickToast.show(global.localization.getLang("REQUEST_LOGIN_FAIL"));
+        })
+    },
+    apiGetRegisterInfo: function(){
+        RegisterNetWorking.aipGetRegisterInfo({}, (json)=>{
+            global.registerData.setData(json)
+        }, ()=>{
+            
         })
     }
 };

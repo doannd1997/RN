@@ -28,8 +28,12 @@ class BusComponent extends Component {
   }
 }
 
+const checkinImg = require('../../../../res/image/StudenTracking/checkin_place.png')
+const schoolImg = require("../../../../res/image/StudenTracking/school.png")
 class CheckInCom extends Component {
   render(){
+    const lngCheckIn = global.localization.getLang("lang_check_in")
+    const lngSchool = global.localization.getLang("lang_school")
     return (
       <Marker
       // draggable
@@ -37,13 +41,13 @@ class CheckInCom extends Component {
           latitude: this.props.data.Lati,
           longitude: this.props.data.Longi,
         }}
-        title={global.localization.getLang("lang_check_in")}
+        title={this.props.isSchool ? lngSchool : lngCheckIn}
         description={
           this.props.data.Name
         }
         anchor={{x: 0.5, y: 1}}>
         <Image
-          source={require('../../../../res/image/StudenTracking/checkin_place.png')}
+          source={this.props.isSchool ? schoolImg : checkinImg}
           style={styles.checkinImg}
         />
       </Marker>
@@ -61,7 +65,7 @@ class MapViewComponent extends Component {
         style={[styles.map]}
         provider={PROVIDER_DEFAULT}
         initialRegion={{...this.props.studentLocation, latitudeDelta: DefaultRegion.latitudeDelta, longitudeDelta: DefaultRegion.longitudeDelta}}
-        region={{...this.props.studentLocation, latitudeDelta: DefaultRegion.latitudeDelta, longitudeDelta: DefaultRegion.longitudeDelta}}
+        // region={{...this.props.studentLocation, latitudeDelta: DefaultRegion.latitudeDelta, longitudeDelta: DefaultRegion.longitudeDelta}}
         // onRegionChange={region => {
         //   self.props.dispatch({
         //     type: 'MAP_VIEW_UPDATE_REGION',
@@ -86,8 +90,9 @@ class MapViewComponent extends Component {
           />
         </Marker>
         <BusComponent {...self.props} data={this.props.busLocation} />
-        {this.props.checkins.map(item=>{
-          return <CheckInCom {...this.props} data={item} />
+        {this.props.checkins.map((item, index)=>{
+          var _isSchool = isSchool(this.props, index)
+          return <CheckInCom {...this.props} data={item} isSchool = {_isSchool}/>
         })}
       </MapView>
     );
@@ -95,25 +100,38 @@ class MapViewComponent extends Component {
 }
 
 const mapStateToProps = (state)=>{
-  var route = state.studentList[state.curStudent].routes[state.routeType]
-  var studentPoint = route.point;
-    return {
-        region: state.region,
-        mapType: state.mapType,
-        curStudent: state.curStudent,
-        studentList: state.studentList,
-        routeType: state.routeType,
-        studentLocation: {
-          latitude: studentPoint.Lati,
-          longitude: studentPoint.Longi,
-          name: studentPoint.Name
-        },
-        busLocation: {
-          latitude: route.latitude,
-          longitude: route.longitude
-        },
-        checkins: route.checkins
-    }
+  var student = state.studentList[state.curStudent]
+  var route = student.routes[state.routeType]
+  return {
+      region: state.region,
+      mapType: state.mapType,
+      curStudent: state.curStudent,
+      studentList: state.studentList,
+      routeType: state.routeType,
+      studentLocation: {
+        latitude: student.homeLatitude,
+        longitude: student.homeLongitude,
+        name: student.homeAddress
+      },
+      busLocation: {
+        latitude: route.latitude,
+        longitude: route.longitude
+      },
+      checkins: route.checkins,
+      student: student
+  }
+}
+
+const isSchool = (props, index)=>{
+  console.log(props.routeType)
+  var route = props.student.routes[props.routeType]
+  if (props.routeType == "Pickup"){
+      return index == (route.checkins.length - 1)
+  }
+  else {
+      return index == 0
+  }
+  // return true
 }
 
 export default connect(mapStateToProps)(MapViewComponent);
