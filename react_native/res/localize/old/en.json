@@ -132,5 +132,7 @@
     "REQUEST_CODE_FAIL": "Connection interupted",
     "REQUEST_LOGIN_FAIL": "Connection interupted/wrong account or password",
     "pick_up_option_not_available_1": "Pick up place is now NOT avaiable, please select pick up at home",
-    "already_registered": "Registered student of current year"
+    "already_registered": "Registered student of current year",
+    "lang_school": "School",
+    "lang_alert_register_select_date": "Please select date start at @date@, it help setup service effectly"
 }

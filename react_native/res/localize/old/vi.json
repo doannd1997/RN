@@ -132,5 +132,7 @@
     "REQUEST_CODE_FAIL": "Kết nốt gián đoạn",
     "REQUEST_LOGIN_FAIL": "Kết nối gián đoạn/sai tài khoản mật khẩu",
     "pick_up_option_not_available_1": "Hiện chưa có danh sách điển đón cố định. Vui lòng chọn đón trả tại nhà",
-    "already_registered": "Học sinh đã đăng kí xe buýt cho năm nay."
+    "already_registered": "Học sinh đã đăng kí xe buýt cho năm nay.",
+    "lang_school": "Trường Học",
+    "lang_alert_register_select_date": "Thông tin đăng kí cần xác thực và phân tuyến, quý phụ huynh vui lòng chọn ngày bắt đầu sớm nhất vào @date@ để việc xếp tuyến được hiệu quả"
 }

@@ -11,6 +11,7 @@ const RouteData = require("./Route").default;
 const RegisterData = require("./RegisterData").default
 const GuardianData = require("./GuardianData").default
 const MailData = require("./MailData").default
+const HistoryData = require('./HistoryData').default
 
 const Cacher = require("./Cacher");
 
@@ -33,6 +34,8 @@ export default initial = {
         global.registerData = RegisterData
         global.guardianData = GuardianData
         global.mailData = MailData
+        global.historyData = HistoryData
+
         global.firebase = fcmClient
         
         if (typeof callback == "function")

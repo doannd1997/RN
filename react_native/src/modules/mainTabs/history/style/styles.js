@@ -139,6 +139,7 @@ export default EStyleSheet.create({
   },
   childName: {
     fontSize: "7rem",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "#fff"
   }
 });

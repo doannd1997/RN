@@ -158,7 +158,7 @@ const reducer = (state, action)=>{
       if (index == -1){
         var numSelected = curGuardiansId.length
         if (numSelected >= GUARDIAN_MAX){
-          var noti = global.localization.getLang("lang_select_guardianList_max").replace("@max@", GUARDIAN_MAX);
+          var noti = global.localization.getLang("lang_select_guardians_max").replace("@max@", GUARDIAN_MAX);
           QuickToast.show(noti);
           return state;
         }

@@ -93,13 +93,12 @@ class PageReg1 extends Component {
     this.props.dispatch({type: "HIDE_PICKING_SERVICE_DATE_START"})
     if (event.type == "set"){
       var timeStamp = event.nativeEvent.timestamp;
-      // var curYear = this.props.curYear;
-      var curYear = new Date().getFullYear()
-      if (new Date(timeStamp).getFullYear() == curYear)
-        this.props.dispatch({type: "CHANGE_SERVICE_DATE_START", time: timeStamp})
+      if (timeStamp < this.props.serviceStartTime){
+        QuickToast.show(global.localization.getLang("lang_alert_register_select_date")
+        .replace(/@date@/, TimeUtils.formatDate(this.props.serviceStartTime)))          
+      }
       else {
-        var toast = global.localization.getLang("lang_alert_wrong_year").replace("@year@", curYear);
-        QuickToast.show(toast);
+        this.props.dispatch({type: "CHANGE_SERVICE_DATE_START", time: timeStamp})
       }
     }
   }
@@ -169,9 +168,27 @@ class PageReg1 extends Component {
             <TouchableOpacity
               style={styles.btnSelectTime}
               onPress={() => {
-                self.props.dispatch({
-                  type: 'SHOW_PICKING_SERVICE_DATE_START',
-                });
+                var header = global.localization.getLang("lang_noti_header");
+                var content = global.localization.getLang("lang_alert_register_select_date")
+                .replace(/@date@/, TimeUtils.formatDate(this.props.serviceStartTime))
+                var okLabel = global.localization.getLang(
+                  'lang_select',
+                );
+                Alert.alert(
+                  header,
+                  content,
+                  [
+                    {
+                      text: okLabel,
+                      onPress: () => {
+                        self.props.dispatch({
+                          type: 'SHOW_PICKING_SERVICE_DATE_START',
+                        });
+                      },
+                    },
+                  ],
+                  {cancelable: true},
+                );
               }}>
               <Text style={styless.lblBtnTimeStart}>
                 {TimeUtils.formatDate(this.props.serviceStartTime)}

@@ -26,7 +26,7 @@ const GUARDIAN_MAX = 4;
 
 var GuardianContainer = (props)=>{
   var guardian = props.guardian;
-  var guardianId = guardian.ID;
+  var guardianId = guardian.id;
 
   var _checked = props.studentList[props.curStudent].guardiandsId.indexOf(guardianId) != -1
   return (
@@ -43,7 +43,7 @@ var GuardianContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{guardian.Name}</Text>
+      <Text style={styless.labelMethodItem}>{guardian.name}</Text>
     </View>
   );
 }

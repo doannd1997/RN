@@ -28,7 +28,7 @@ class Main extends Component{
               ref={"sectionList"}
               showsVerticalScrollIndicator={false}
               style={styles.sectionList}
-              sections={this.props.history}
+              sections={this.props.history[this.props.curStudent]}
               keyExtractor={(item, index) => item + index}
               renderItem={({item, index}) => (
                 <Item {...this.props} data={item} index={index} />

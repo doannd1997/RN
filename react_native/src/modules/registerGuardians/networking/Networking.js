@@ -91,22 +91,4 @@ const BUS_TYPE = {
     BOTH: "Both"
   }
 
-const getRouteId = (student, busType)=>{
-    switch (busType){
-        case BUS_TYPE.DROP_DOWN:
-            var route = student.routes[BUS_TYPE.DROP_DOWN]
-        default:
-            var route = student.routes[BUS_TYPE.PICK_UP]
-    }
-    return route.id
-}
 
-const getStopId = (student, busType)=>{
-    switch (busType){
-        case BUS_TYPE.DROP_DOWN:
-            var route = student.routes[BUS_TYPE.DROP_DOWN]
-        default:
-            var route = student.routes[BUS_TYPE.PICK_UP]
-    }
-    return route.point.id
-}

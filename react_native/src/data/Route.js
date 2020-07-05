@@ -72,6 +72,9 @@ export default RouteData = {
                 activePartners: student.LstPickupPeople,
                 agreementUri: getAgreementUri(student.AgreementLink),
                 
+                startPoint: {...routeInfo.LstStopPoints[0]},
+                endPoint: {...routeInfo.LstStopPoints[routeInfo.LstStopPoints.length-1]},
+                
                 // for info
                 studentId: student.Id,
                 studentCode: student.StudentCode,

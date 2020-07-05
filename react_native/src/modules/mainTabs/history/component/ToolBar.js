@@ -55,6 +55,9 @@ const ToolBar = props =>{
           })}
           initValue={props.studentList[props.curStudent].studentName}
           onChange={(option)=>{
+            // var newStudent = props.studentList[option.key]
+            // var histories = global.historyData.getStudentHistories(newStudent)
+            // props.dispatch({type: "SET_HISTORY", histories: histories})
             props.dispatch({type: 'SELECT_CHILD', curStudent: option.key})
           }} />
         </View>
@@ -117,10 +120,12 @@ const ToolBar = props =>{
 }
 
 const mapStateToProps = state => {
+    var student = state.studentList[state.curStudent]
     return {
       histories: state.history,
       studentList: state.studentList,
-      curStudent: state.curStudent
+      curStudent: state.curStudent,
+      student: state.student
     }
 };
   
