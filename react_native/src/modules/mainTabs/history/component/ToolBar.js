@@ -93,14 +93,14 @@ const ToolBar = props =>{
             }}
             onDateChange={date => {
               var sectionIndex = getDateMap(
-                props.histories,
+                props.histories[props.curStudent],
                 date.toString(),
               );
               if (isNaN(sectionIndex)) {
-                if (props.histories.length != 0) {
-                  var start = TimeUtils.formatDate(props.histories[0].date);
+                if (props.histories[props.curStudent].length != 0) {
+                  var start = TimeUtils.formatDate(props.histories[props.curStudent][0].date);
                   var end = TimeUtils.formatDate(
-                    props.histories[props.histories.length - 1].date,
+                    props.histories[props.curStudent][props.histories[props.curStudent].length - 1].date,
                   );
                   Toast.show(end + ' -- ' + start);
                 } else {
