@@ -30,7 +30,7 @@ const updateMail = function(props){
         var numberOfNewMails = inboxs.filter(item=>!item.isRead).length
         if (props.numberOfNewMails != numberOfNewMails){
             props.dispatch({type: "SET_NUM_NEW_MAIL", numberOfNewMails: numberOfNewMails})
-            QuickToast.show(global.localization.getLang("noti_new_mail").replace(/@num@/gi, numberOfNewMails))
+            global.notificationPusher.pushNoti()
         }
 
         resultLoadMail(props)
@@ -46,7 +46,7 @@ class Mail extends Component{
         var self = this
         this.updateScheduler = setInterval(() => {
             updateMail(self.props)
-        }, 5000);
+        }, 15000);
     }
     componentWillUnmount(){
         clearInterval(this.updateScheduler)

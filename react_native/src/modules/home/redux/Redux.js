@@ -122,14 +122,17 @@ const reducer = (state, action) => {
       return { ...state, mail_composeContent: action.mail_composeContent }
     case "MAIL_SHOW_MAIL":
       var _state = { ...state, mail_mailIndex: action.mail_mailIndex, mail_showing: true };
-      if (state.mail_curTab == 0)
+      if (state.mail_curTab == 0){
+        var readMinute = !state.mail_inbox[action.mail_mailIndex].isRead ? -1 : 0
         _state = {
           ..._state, mail_inbox: state.mail_inbox.map((item, index) => {
             if (index == action.mail_mailIndex)
               return { ...item, isRead: true }
             return item;
-          })
+          }),
+          numberOfNewMails: state.numberOfNewMails + readMinute
         }
+      }
       else
         _state = {
           ..._state, mail_sentMail: state.mail_sentMail.map((item, index) => {
@@ -151,6 +154,16 @@ const reducer = (state, action) => {
       return _state;
     case "MAIL_CHANGE_MONITOR":
       return { ...state, mail_curMonitor: action.mail_curMonitor }
+    case "SET_MAIL":
+      var inboxs = action.inboxs
+      var sents = action.sents
+      return {...state, mail_inbox: inboxs, mail_sentMail: sents}
+    case "MAIL_START_LOAD":
+      return {...state, mail_loading: true}        
+    case "MAIL_STOP_LOAD":
+      return {...state, mail_loading: false}
+    case "SET_NUM_NEW_MAIL":
+      return {...state, numberOfNewMails: action.numberOfNewMails}
 
     // acount info
     case "GET_INFO_STUDENT":
@@ -162,17 +175,7 @@ const reducer = (state, action) => {
       studentInfomation[state.curStudent] = action.studentInfo
       return {...state, studentInfomation: studentInfomation}
 
-    // mail
-    case "SET_MAIL":
-      var inboxs = action.inboxs
-      var sents = action.sents
-      return {...state, mail_inbox: inboxs, mail_sentMail: sents}
-    case "MAIL_START_LOAD":
-      return {...state, mail_loading: true}        
-    case "MAIL_STOP_LOAD":
-      return {...state, mail_loading: false}
-    case "SET_NUM_NEW_MAIL":
-      return {...state, numberOfNewMails: action.numberOfNewMails}
+
     // history
     case "SET_HISTORY":
       return {...state, history: action.histories}

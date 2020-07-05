@@ -12,6 +12,7 @@ const RegisterData = require("./RegisterData").default
 const GuardianData = require("./GuardianData").default
 const MailData = require("./MailData").default
 const HistoryData = require('./HistoryData').default
+const NotificationData = require('./Notification').default
 
 const Cacher = require("./Cacher");
 
@@ -37,7 +38,8 @@ export default initial = {
         global.historyData = HistoryData
 
         global.firebase = fcmClient
-        
+        global.notificationPusher = NotificationData
+
         if (typeof callback == "function")
             setTimeout(callback, DELAY)
     }
