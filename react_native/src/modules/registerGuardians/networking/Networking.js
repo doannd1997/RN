@@ -15,8 +15,8 @@ export default Networking = {
         }        
 
         var url = createUrl(ROUTE.UPDATE_GUARDIAN, extras)
-        var params = PARAM.UPDATE_GUARDIAN
 
+        var params = pGuardian.avatarSource
         const token = global.authenData.getToken()
         networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             if (typeof sucessCallback == 'function')
