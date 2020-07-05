@@ -60,13 +60,13 @@ class ChildInfo extends Component{
                      {global.localization.getLang("lang_pick_header")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.PickupMethod)}</Text>
                  </Text>
                  <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                     {global.localization.getLang("lang_pick_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.PickupPointName)}</Text>
+                     {global.localization.getLang("lang_pick_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.pickUpAddress)}</Text>
                  </Text>
                  <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
                      {global.localization.getLang("lang_pick_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.PickupTime)}</Text>
                  </Text>
                  <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
-                     {global.localization.getLang("lang_drop_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.DeliverPointName)}</Text>
+                     {global.localization.getLang("lang_drop_place")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.deliveryAddress)}</Text>
                  </Text>
                  <Text style={[commonStyles.text, commonStyles.textBold, styles.txtInfoHeader]}>
                      {global.localization.getLang("lang_drop_time_estimate")}: {"\t"}<Text style={styles.txtInfoContent}>{getParsedField(this.props.studentInfo.DeliverTime)}</Text>
@@ -100,11 +100,14 @@ const mapStateToProps = (state)=>{
     var studentInfo = state.studentInfomation[state.curStudent]
     if (studentInfo == undefined)
         studentInfo = {}
+    var extraInfo = global.registerData.getMergeStudent()[state.curStudent]
     return {
         studentList: state.studentList,
         curStudent: state.curStudent,
         studentInfo: studentInfo,
-        loadingStudentInfomation: state.loadingStudentInfomation
+        loadingStudentInfomation: state.loadingStudentInfomation,
+        pickUpAddress: extraInfo.homeAddress,
+        deliveryAddress: extraInfo.homeAddress
     }
 }
 

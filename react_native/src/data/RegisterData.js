@@ -5,6 +5,8 @@ var RegisterData = {
         data = _data        
     },
     getMergeStudent: function(studentList){
+        if (studentList == undefined)
+            studentList = global.routeData.getTrackingBatch()
         for (var s in studentList){
             var student = studentList[s]
             var info = data.find(item=>item.StudentID == student.studentId)
