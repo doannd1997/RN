@@ -7,6 +7,8 @@ const NotLogInCom = require("../../../../common/component/NotLogInCom").default;
 
 const NetWorking = require("../networking/NetWorking").default
 
+import {QuickToast} from "../../../../utils/Toast"
+
 const resultLoadMail = function(props){
     props.dispatch({type: "MAIL_STOP_LOAD"})
 }
@@ -25,6 +27,12 @@ const updateMail = function(props){
             sents: sents
         })
 
+        var numberOfNewMails = inboxs.filter(item=>!item.isRead).length
+        if (props.numberOfNewMails != numberOfNewMails){
+            props.dispatch({type: "SET_NUM_NEW_MAIL", numberOfNewMails: numberOfNewMails})
+            QuickToast.show(global.localization.getLang("noti_new_mail").replace(/@num@/gi, numberOfNewMails))
+        }
+
         resultLoadMail(props)
     }, 
     ()=>{
@@ -35,6 +43,13 @@ const updateMail = function(props){
 class Mail extends Component{
     componentWillMount(){
         updateMail(this.props)        
+        var self = this
+        this.updateScheduler = setInterval(() => {
+            updateMail(self.props)
+        }, 5000);
+    }
+    componentWillUnmount(){
+        clearInterval(this.updateScheduler)
     }
     render(){
         return (
@@ -51,7 +66,8 @@ class Mail extends Component{
 
 const mapStateToProps = (state)=>{
     return {
-        logedIn: state.logedIn
+        logedIn: state.logedIn,
+        numberOfNewMails: state.numberOfNewMails
     }
 }
 

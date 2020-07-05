@@ -171,7 +171,8 @@ const reducer = (state, action) => {
       return {...state, mail_loading: true}        
     case "MAIL_STOP_LOAD":
       return {...state, mail_loading: false}
-
+    case "SET_NUM_NEW_MAIL":
+      return {...state, numberOfNewMails: action.numberOfNewMails}
     // history
     case "SET_HISTORY":
       return {...state, history: action.histories}

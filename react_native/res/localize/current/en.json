@@ -134,5 +134,6 @@
     "pick_up_option_not_available_1": "Pick up place is now NOT avaiable, please select pick up at home",
     "already_registered": "Registered student of current year",
     "lang_school": "School",
-    "lang_alert_register_select_date": "Please select date start at @date@, it help setup service effectly"
+    "lang_alert_register_select_date": "Please select date start at @date@, it help setup service effectly",
+    "noti_new_mail": "You have @num@ new mails, please check out"
 }

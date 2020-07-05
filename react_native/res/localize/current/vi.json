@@ -134,5 +134,6 @@
     "pick_up_option_not_available_1": "Hiện chưa có danh sách điển đón cố định. Vui lòng chọn đón trả tại nhà",
     "already_registered": "Học sinh đã đăng kí xe buýt cho năm nay.",
     "lang_school": "Trường Học",
-    "lang_alert_register_select_date": "Thông tin đăng kí cần xác thực và chờ được phân tuyến, quý phụ huynh vui lòng chọn ngày bắt đầu sớm nhất vào @date@ để việc xếp tuyến được hiệu quả"
+    "lang_alert_register_select_date": "Thông tin đăng kí cần xác thực và chờ được phân tuyến, quý phụ huynh vui lòng chọn ngày bắt đầu sớm nhất vào @date@ để việc xếp tuyến được hiệu quả",
+    "noti_new_mail": "Bạn có @num@ thư mới, hãy kiểm tra"
 }

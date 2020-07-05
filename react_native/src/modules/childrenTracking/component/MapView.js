@@ -123,7 +123,6 @@ const mapStateToProps = (state)=>{
 }
 
 const isSchool = (props, index)=>{
-  console.log(props.routeType)
   var route = props.student.routes[props.routeType]
   if (props.routeType == "Pickup"){
       return index == (route.checkins.length - 1)
