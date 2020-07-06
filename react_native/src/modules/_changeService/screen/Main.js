@@ -5,11 +5,10 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { CheckBox } from 'react-native-elements';
 import ModalSelector from "react-native-modal-selector";
-import LinearGradient from 'react-native-linear-gradient';
-
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
 const colors = require("../../../color/Colors").default;
+import LinearGradient from 'react-native-linear-gradient';
 
 const MapViewCom = require("../component/MapView").default;
 const YearPickerCom = require("../component/YearPicker").default;
@@ -23,7 +22,6 @@ const ToolBar = require("../../../common/component/Toolbar").default;
 const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("../component/PlacePicker").default;
-const AlreadyRegisteredCom = require("../component/AlreadyRegister").default
 
 const CHANGE_TYPE = {
   HOME: "HOME",
@@ -37,12 +35,8 @@ const PLACE_SEARCH = "@place_search@";
 const HERE_API_KEY = "91DuZMDSNvUjpx-CV1Qb9qp6H2FK8yPIePkG98fjUL4";
 
 var URL = "https://discover.search.hereapi.com/v1/discover?at=" + CENTER_POINT + "&q=" + PLACE_SEARCH + "&countryCode:" + COUNTRY_CODE + "&lang=" + LANG + "&apikey=" + HERE_API_KEY;
-const AgreementCom = require("../component/AgreeMent").default;
-const TimeUtils = require("../../../utils/Times").default
 
 const Indicator = require("../../../common/component/Indicator").default
-
-const NetWorking = require("../networking/Networking").default
 
 class MyPageCom extends Component{
   selectPageReg0(){
@@ -57,12 +51,6 @@ class MyPageCom extends Component{
     // Trang chọn người giám hộ
     this.refs.pageViews.scrollToPage(2);
   }
-
-  componentWillMount(){
-    // var studentList = global.routeData.getTrackingBatch()
-    // this.props.dispatch({type: "SET_STUDENT_LIST", studentList: studentList})
-  }
-
   render(){
     return (
       <Pages
@@ -93,7 +81,9 @@ class MyPageCom extends Component{
 
 
 class RegisterService extends Component {
+  
   render() {
+    
     return (
       <View
         style={[
@@ -132,7 +122,7 @@ class RegisterService extends Component {
                   style={styles.childNameContainer}
                   selectStyle={styles.childNameContent}
                   initValueTextStyle={styles.childName}
-                  cancelText={global.localization.getLang("lang_confirm_cancel")}
+                  cancelText={global.localization.getLang("lanlang_confirm_cancelg_cancel")}
                   data={this.props.studentList.map((item, index)=>{
                     return {
                       label: item.studentName,
@@ -151,27 +141,18 @@ class RegisterService extends Component {
                 : 
                 <View style={styles.viewDivForm}>
                   <YearPickerCom />
-                  {this.props.alreadyRegisterd ? 
-                    <View style={styles.pageViewContainer}>
-                      <AlreadyRegisteredCom/>
-                    </View>
-                    :
-                    <View style={styles.pageViewContainer}>
-                      <MyPage navigation={this.props.navigation}/>
-                    </View>
-                  }
+                  <View style={styles.pageViewContainer}>
+                    <MyPage/>
+                  </View>
                 </View>
               }
             </View>
             </View>)}
-          {!this.props.searchResultShown && this.props.pickingAddress ? (
+          {!this.props.searchResultShown && this.props.pickingAddress && this.props.placeSelected != null ? (
             <View style={styles.selectPlaceContainer}>
               <TouchableOpacity
                 style={commonStyles.formBtnConfirm}
                 onPress={() => {
-                  NetWorking.apiGetRouteDistance(this.props, (response)=>{
-                    
-                  })
                   this.props.dispatch({type: 'CHOOSE_PLACE'});
                 }}>
                 <Text style={[commonStyles.formBtnOkText, styles.txtBtnSelectPlace]}>
@@ -181,38 +162,29 @@ class RegisterService extends Component {
             </View>
           ) : null}
         </View>
-        {this.props.showAgreement ? <AgreementCom/> : null}
       </View>
     );
   }
 }
 
 const mapStateToProps = (state)=>{
-  var student = state.studentList[state.curStudent]
-  var schoolLocation = {
-    latitude: student.schoolLatitude,
-    longitude: student.schoolLongitude,
-  }
-  return {
-    isLoading: state.isLoading,
-    curYear: state.curYear,
-    yearList: state.yearList,
-    pickType: state.pickType,
-    homeAddress: state.homeAddress,
-    placeAddress: state.placeAddress,
-    homeSetted: state.homeSetted,
-    placeSetted: state.placeSetted,
-    pickingAddress: state.pickingAddress,
-    searchResultShown: state.searchResultShown,
-    placeSelected: student.placeSelected,
-    showAgreement: state.showAgreement,
-    studentList: state.studentList,
-    curStudent: state.curStudent,
-    loading: state.loading,
-    alreadyRegisterd: student.registrationStatus == 0,
-    student: student,
-    schoolLocation: schoolLocation
-  }
+    return {
+      isLoading: state.isLoading,
+      curYear: state.curYear,
+      yearList: state.yearList,
+      pickType: state.pickType,
+      homeAddress: state.homeAddress,
+      placeAddress: state.placeAddress,
+      homeSetted: state.homeSetted,
+      placeSetted: state.placeSetted,
+      pickingAddress: state.pickingAddress,
+      searchResultShown: state.searchResultShown,
+      placeSelected: state.placeSelected,
+      showAgreement: state.showAgreement,
+      studentList: state.studentList,
+      curStudent: state.curStudent,
+      loading: state.loading
+    }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);
 

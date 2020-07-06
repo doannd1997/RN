@@ -27,55 +27,29 @@ const PlaceItem = (props, name)=>{
     )
 }
 
-// const onPress=(text, props)=>{
-//     text = text.split(" ").join("+");
-//     var request = new XMLHttpRequest();
-//     request.onreadystatechange = e => {
-//       if (request.readyState !== 4) {
-//         return;
-//       }
-//       if (request.status === 200) {
-//           var res = JSON.parse(request.responseText).items;
-//           var listPlace = res.map((place)=>{
-//               return {
-//                 title: place.title,
-//                 position: place.position
-//               }
-//           });
-//           props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
-//       } else {
-        
-//       }
-//     };
-
-//     request.open('GET', URL.replace(PLACE_SEARCH, text));
-//     request.send();
-
-//   }
-
 const missCallback = (text, props)=>{
-  var _text = text.split(" ").join("+");
-  var request = new XMLHttpRequest();
-  request.onreadystatechange = e => {
-    if (request.readyState !== 4) {
-      return;
-    }
-    if (request.status === 200) {
-        var res = JSON.parse(request.responseText).items;
-        var listPlace = res.map((place)=>{
-            return {
-              title: place.title,
-              position: place.position
-            }
-        });
-        global.cacher.storeTempPlace(text, listPlace);
-        props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
-    } else {
-    }
-  };
+    var _text = text.split(" ").join("+");
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = e => {
+      if (request.readyState !== 4) {
+        return;
+      }
+      if (request.status === 200) {
+          var res = JSON.parse(request.responseText).items;
+          var listPlace = res.map((place)=>{
+              return {
+                title: place.title,
+                position: place.position
+              }
+          });
+          global.cacher.storeTempPlace(text, listPlace);
+          props.dispatch({type: "SET_SEARCH_RESULT", listPlace: listPlace})
+      } else {
+      }
+    };
 
-  request.open('GET', URL.replace(PLACE_SEARCH, _text));
-  request.send();
+    request.open('GET', URL.replace(PLACE_SEARCH, _text));
+    request.send();
 }
 
 const onPress=(text, props)=>{

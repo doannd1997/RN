@@ -1,26 +1,20 @@
 import {createStore} from "redux";
 import { NativeModules } from "react-native";
 import {QuickToast} from "../../../utils/Toast";
-import { ActivityIndicator } from "react-native-paper";
 
-const BUS_TYPE = {
+BUS_TYPE = {
   PICK_UP: "PICK_UP",
   DROP_DOWN: "DROP_DOWN"
 }
 
-exports.BUS_TYPE = {
-  PICK_UP: "PICK_UP",
-  DROP_DOWN: "DROP_DOWN"
-}
-
-exports.PICK_TYPE = {
-  HOME: 2,
-  PLACE: 1
+PICK_TYPE = {
+  HOME: "HOME",
+  PLACE: "PLACE"
 };
 
-exports.PICK_TYPE_METHOD = {
-  WITH_PARENT: 0,
-  ONLY_STUDENT: 1
+const PICK_TYPE_METHOD = {
+  WITH_PARENT: "WITH_PARENT",
+  ONLY_STUDENT: "ONLY_STUDENT"
 }
 
 var _curYear = new Date().getFullYear();
@@ -29,7 +23,8 @@ var defaultState = {
   yearList: [_curYear, _curYear + 1],
   curYearIdx: 0,
   pickType: 'HOME', // Radio Button hiển thị chọn nhà hay địa chỉ mới
-  placeAddress: '---', // Địa chỉ mới hiển thị
+  homeAddress: 'Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội', // Địa chỉ nhà hiển thị
+  placeAddress: 'Trống', // Địa chỉ mới hiển thị
   homeSetted: false, // Chọn địa chỉ nhà
   placeSetted: false, // Chọn địa chỉ mới
 
@@ -46,11 +41,23 @@ var defaultState = {
     longitudeDelta: 0.0171,
   },
 
-  // pickTypeMethod: PICK_TYPE_METHOD.WITH_PARENT, // Cách đón trả học sinh {với phụ huynh || học sinh tự lên}
+  pickTypeMethod: PICK_TYPE_METHOD.WITH_PARENT, // Cách đón trả học sinh {với phụ huynh || học sinh tự lên}
   serviceStartTime: Date.now(),
   isPickingDateStart: false, // Thời gian bắt đầu dịch vụ
-  guardianList: [
-    
+  partners: [
+    {id: 0, name: 'Trần Quang Lợi', checked: false},
+    {id: 1, name: 'Nguyễn Bá Lương', checked: false},
+  ],
+  guardians: [
+    {id: 0, name: 'Trần Quang Khải', checked: false},
+    {id: 1, name: 'Trần Quang Long', checked: false},
+    {id: 2, name: 'Trần Quang Linh', checked: false},
+    {id: 3, name: 'Trần Quang Lưu', checked: false},
+    {id: 4, name: 'Trần Quang Hưng', checked: false},
+    {id: 5, name: 'Trần Quang Quốc', checked: false},
+    {id: 6, name: 'Trần Quang Bình', checked: false},
+    {id: 7, name: 'Trần Quang Minh', checked: false},
+    {id: 8, name: 'Trần Quang Vũ', checked: false},
   ],
   policyAgree: false,
   showAgreement: false,
@@ -58,7 +65,7 @@ var defaultState = {
 
   ],
   curStudent: 0,
-  loading: false,
+  loading: false
 };
 
 
@@ -71,31 +78,9 @@ const reducer = (state, action)=>{
     case "TOGGLE_PICK_TYPE":
       return {...state, pickType: (state.pickType == PICK_TYPE.HOME) ? PICK_TYPE.PLACE : PICK_TYPE.HOME};
     case "TOGGLE_PICK_TYPE_METHOD":
-      var studentId = state.studentList[state.curStudent].studentId
-      var studentList = state.studentList.map(item=>{
-        if (item.studentId != studentId)
-          return item
-        var student = {...item, pickUpOption: (item.pickUpOption + 1)%2}
-        return student
-      })
-      return {...state, studentList: studentList}
+      return {...state, pickTypeMethod: (state.pickTypeMethod == PICK_TYPE_METHOD.WITH_PARENT) ? PICK_TYPE_METHOD.ONLY_STUDENT : PICK_TYPE_METHOD.WITH_PARENT};
     case "TOGGLE_PICKING":
       var pickingAddress = !state.pickingAddress;
-      if (pickingAddress){
-          var student = state.studentList[state.curStudent]
-          var region = {
-            ...state.region,
-            latitude: student.placeSelected.latitude,
-            longitude: student.placeSelected.longitude
-          }
-          state.region = region
-          var placeSelected = {
-            latitude: student.homeLatitude,
-            longitude: student.homeLongitude,
-            title: student.homeAddress
-          }
-          state.placeSelected = placeSelected
-      }
       return {...state, pickingAddress: pickingAddress, searchResultShown: false, changeType: action.changeType};
     case "TYPING_SEARCH":
       return {...state, searchResultShown: true, placeSelected: null};
@@ -104,9 +89,9 @@ const reducer = (state, action)=>{
     case "SET_SEARCH_RESULT":
       return {...state, listPlace: action.listPlace};
     case "SELECT_PLACE":
-      state.studentList[state.curStudent].placeSelected = action.placeSelected
       return {
         ...state,
+        placeSelected: action.placeSelected,
         searchResultShown: false,
         region: {
           ...state.region,
@@ -116,10 +101,11 @@ const reducer = (state, action)=>{
         isLoading: false
       };
     case "CHOOSE_PLACE":
+      var title = state.placeSelected.title;
       if (state.changeType == CHANGE_TYPE.HOME)
-        return {...state, pickingAddress: false}
+        return {...state, homeAddress: title, pickingAddress: false}
       else
-        return {...state, pickingAddress: false};
+        return {...state, placeAddress: title, pickingAddress: false};
     case "START_LOADING":
       return {...state, isLoading: true};
     case "STOP_LOADING":
@@ -132,44 +118,35 @@ const reducer = (state, action)=>{
     case "CHANGE_SERVICE_DATE_START":
       return {...state, serviceStartTime: action.time};
     case "TOGGLE_SELECT_PARTER":
-      var partnerId = action.partnerId
-      var student = state.studentList[state.curStudent]
-      var studentId = student.studentId
-      var index = student.activePartners.indexOf(partnerId)
-
-      var activePartners = student.activePartners.splice()
-      if (index == -1){
-        activePartners.push(partnerId)
-      }
-      else {
-        activePartners.splice(index, 1)
-      }
-
-      return {...state, studentList: state.studentList.map(item=>{
-        if (item.studentId != studentId)
-          return item
-        var _item = {...item, activePartners: activePartners}
-        return _item
-      })};
+      var partnerId = action.partnerId;
+      var partners = state.partners.map((partner)=>{
+        if (partner.id == partnerId){
+          return {...partner, checked: !partner.checked}
+        }
+        return partner;
+      })
+      return {...state, partners: partners};
     case "TOGGLE_SELECT_GUARDIAN":
       var guardianId = action.guardianId;
-      var curGuardiansId = state.studentList[state.curStudent].guardiandsId.slice()
-      var index = curGuardiansId.indexOf(guardianId)
-      if (index == -1){
-        var numSelected = curGuardiansId.length
+
+      var guardian = state.guardians.find((item)=>item.id == guardianId);
+
+      if (!guardian.checked){
+        var numSelected = state.guardians.filter((item)=>item.checked).length;
         if (numSelected >= GUARDIAN_MAX){
           var noti = global.localization.getLang("lang_select_guardians_max").replace("@max@", GUARDIAN_MAX);
           QuickToast.show(noti);
           return state;
         }
-        curGuardiansId.push(guardianId)
       }
-      else {
-        curGuardiansId.splice(index, 1)
-      }
-      var studentList = state.studentList.slice()
-      studentList[state.curStudent].guardiandsId = curGuardiansId
-      return {...state, studentList: studentList};
+    
+      var guardians = state.guardians.map((guardian)=>{
+        if (guardian.id == guardianId)
+          return {...guardian, checked: !guardian.checked}
+        else 
+          return guardian;
+      })
+      return {...state, guardians: guardians};
     case "TOGGLE_POLICY_AGREE":
       return {...state, policyAgree: !state.policyAgree};
     case "TOGGLE_SHOW_AGREEMENT":
@@ -181,25 +158,7 @@ const reducer = (state, action)=>{
     case "SELECT_CHILD":
       return {...state, curStudent: action.curStudent}
     case "SET_STUDENT_LIST":
-      if (typeof action.guardianList == 'object')
-        state.guardianList = action.guardianList
-      for (var s in action.studentList){
-        action.studentList[s].partners = []
-      }
-      for (var s in action.studentList){
-        var student = action.studentList[s]
-        if (student.registrationStatus == 1){
-          global.routeData.addPartner(action.studentList, student)
-        }
-      }
       return {...state, studentList: action.studentList, pickingAddress: false}
-    case "REQUEST_DATA":
-      return {...state, loading: true}
-    case "RESULT_DATA":
-      return {...state, loading: false}
-    case "SET_DISTANCE_TO_SCHOOL":
-      state.studentList[state.curStudent].distanceToSchool = action.distanceToSchool
-      return {...state}
     default:
       return state;
   }

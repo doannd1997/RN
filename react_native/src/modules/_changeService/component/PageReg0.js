@@ -7,8 +7,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CheckBox from 'react-native-check-box'
 const commonStyles = require("../../../common/style/index").default;
 const styles = require("../style/styles").default;
+const colors = require("../../../color/Colors").default;
 
-import {QuickToast} from "../../../utils/Toast"
+const MapViewCom = require("./MapView").default;
+const YearPickerCom = require("./YearPicker").default;
+import { Pages } from 'react-native-pages';
+const Times = require("../../../utils/Times").default;
 
 const PlacePickerCom = require("./PlacePicker").default;
 
@@ -37,9 +41,9 @@ class PageReg0 extends Component {
               <CheckBox
                 // style={styles.checkbox}
                 onClick={() => {
-                  // this.props.dispatch({
-                  //   type: 'TOGGLE_PICK_TYPE',
-                  // });
+                  this.props.dispatch({
+                    type: 'TOGGLE_PICK_TYPE',
+                  });
                 }}
                 isChecked={this.props.pickType == 'HOME'}
                 checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
@@ -48,7 +52,7 @@ class PageReg0 extends Component {
             </View>
             <View style={styles.pickCell1}>
               <Text style={styles.txtPick}>
-                {global.localization.getLang('lang_pick_at_home') + " (" + this.props.distanceToSchool + " km)"}
+                {global.localization.getLang('lang_pick_at_home')}
               </Text>
             </View>
           </View>
@@ -74,10 +78,9 @@ class PageReg0 extends Component {
               <CheckBox
                 style={{flex: 1, padding: 3, justifyContent: 'center'}}
                 onClick={() => {
-                  // this.props.dispatch({
-                  //   type: 'TOGGLE_PICK_TYPE',
-                  // });
-                  QuickToast.show(global.localization.getLang("pick_up_option_not_available_1"))
+                  this.props.dispatch({
+                    type: 'TOGGLE_PICK_TYPE',
+                  });
                 }}
                 isChecked={this.props.pickType == 'PLACE'}
                 checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styles.imgCheckBox}/>}
@@ -98,9 +101,7 @@ class PageReg0 extends Component {
               </Text>
               <TouchableOpacity
                 style={styles.btnChangeAddress}
-                onPress={()=>{
-                  QuickToast.show(global.localization.getLang("pick_up_option_not_available_1"))
-                }}>
+                onPress={this.changePlace.bind(this)}>
                 <Text style={styles.txtBtn}>
                   {global.localization.getLang('lang_change')}
                 </Text>
@@ -125,20 +126,12 @@ class PageReg0 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
-  var student = state.studentList[state.curStudent]
-  if (student.placeSelected.latitude == student.homeLatitude && student.placeSelected.longitude == student.homeLongitude){
-    var distanceToSchool = student.distanceToSchool
-  }
-  else {
-    var distanceToSchool = student.distanceToSchool
-  }
-  return {
-    pickType: state.pickType,
-    homeAddress: student.placeSelected.title,
-    placeAddress: state.placeAddress,
-    distanceToSchool: distanceToSchool
-  }
+const mapStateToProps = function(state){
+    return {
+      pickType: state.pickType,
+      homeAddress: state.homeAddress,
+      placeAddress: state.placeAddress,
+    }
 }
 
 export default connect(mapStateToProps)(PageReg0)

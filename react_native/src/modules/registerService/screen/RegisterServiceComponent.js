@@ -12,7 +12,7 @@ const resultCallback = (props)=>{
     props.dispatch({type: "RESULT_DATA"})
 }
 
-export default class LogInScreen extends Component{
+export default class RegisterServiceComponent extends Component{
     constructor(props){
         super(props);
         // global.navigation = props.navigation

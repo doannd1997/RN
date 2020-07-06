@@ -5,15 +5,12 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import EStyleSheet from "react-native-extended-stylesheet";
 import CheckBox from 'react-native-check-box'
-
-import {withNavigation} from "react-navigation"
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const commonStyles = require("../../../common/style/index").default;
 const colors = require("../../../color/Colors").default;
 const styless = require("../style/styles").default;
 import {QuickToast} from "../../../utils/Toast";
-
-const Networking = require("../networking/Networking").default
 
 const TimeUtils = require("../../../utils/Times").default;
 
@@ -24,11 +21,11 @@ const PICK_TYPE = {
 
 const GUARDIAN_MAX = 4;
 
-var GuardianContainer = (props)=>{
+var GuardianContainer = function(props){
   var guardian = props.guardian;
   var guardianId = guardian.id;
 
-  var _checked = props.studentList[props.curStudent].guardiandsId.indexOf(guardianId) != -1
+  var _checked = props.guardians.filter((guardian)=>guardianId == guardian.id)[0].checked
   return (
     <View style={styles.optionContainer}>
       <CheckBox
@@ -53,13 +50,10 @@ const CHANGE_TYPE = {
   PLACE: "PLACE"
 }
 
-const getNavigation = ()=>{
-  var use
-}
-
 class PageReg2 extends Component {
   render() {
     var self = this;
+
     return (
       <View style={styles.page}>
         <View style={styles.guardianHeaderContainer}>
@@ -70,7 +64,8 @@ class PageReg2 extends Component {
             <Text style={[styless.lblHeaderGuardians, {color: '#fff'}]}>
               &nbsp; (
               {
-                self.props.studentList[self.props.curStudent].guardiandsId.length
+                self.props.guardians.filter(guardian => guardian.checked)
+                  .length
               }
               /{GUARDIAN_MAX})
             </Text>
@@ -80,7 +75,7 @@ class PageReg2 extends Component {
           <FlatList
             showsVerticalScrollIndicator={false}
             bounces={true}
-            data={self.props.guardianList}
+            data={self.props.guardians}
             renderItem={data => {
               return (
                 <GuardianContainer {...self.props} guardian={data.item} />
@@ -110,12 +105,52 @@ class PageReg2 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <View style={styles.singleBtnContainer}>
+        <View style={styles.singleBtnContainer}>
             <TouchableOpacity
               style={commonStyles.formBtnCancel}
-              onPress={this.props.toPrevPage}>
+              onPress={()=>{
+                self.props.toPrevPage();
+              }}>
               <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_prev')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        
+          <View style={styles.singleBtnContainer}>
+            <TouchableOpacity
+              style={commonStyles.formBtnRemove}
+              onPress={()=>{
+                var header = global.localization.getLang("lang_confirm_remove_service_header");
+                var content = global.localization.getLang("lang_confirm_remove_service_content");
+                var okLabel = global.localization.getLang(
+                  'lang_confirm_ok',
+                );
+                var cancelLabel = global.localization.getLang(
+                  'lang_confirm_cancel',
+                );
+                Alert.alert(
+                  header,
+                  content,
+                  [
+                    {
+                      text: okLabel,
+                      onPress: () => {
+                        QuickToast.show("Success");
+                      },
+                    },
+                    {
+                      text: cancelLabel,
+                      onPress: () => {
+                        QuickToast.show("Canceled");
+                      },
+                    },
+                  ],
+                  {cancelable: true},
+                );
+              }}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
+                {global.localization.getLang('lang_remove_service')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -123,48 +158,37 @@ class PageReg2 extends Component {
             <TouchableOpacity
               style={commonStyles.formBtnConfirm}
               onPress={() => {
-                if (self.props.policyAgree){
-                  Networking.apiSendRegisterService(self.props, (json)=>{
-                    var cost = json.BusFee
-
-                    var header = global.localization.getLang("lang_confirm_register_service_header");
-                    var content = global.localization.getLang("lang_confirm_register_service_content").replace("@value@", cost)
-                    var okLabel = global.localization.getLang(
-                      'lang_confirm_ok',
-                    );
-                    var cancelLabel = global.localization.getLang(
-                      'lang_confirm_cancel',
-                    );
-                    Alert.alert(
-                      header,
-                      content,
-                      [
-                        {
-                          text: okLabel,
-                          onPress: () => {
-                            Networking.apiConfirmRegister(self.props, ()=>{
-                              QuickToast.show(self.props.student.registerSuccessMgs);
-                              self.props.navigation.navigate("HomeScreen")
-                            })
-                          },
-                        },
-                        {
-                          text: cancelLabel,
-                          onPress: () => {
-                            QuickToast.show("Canceled");
-                          },
-                        },
-                      ],
-                      {cancelable: true},
-                    );
-                    })
-                }
-                else {
-                  QuickToast.show(global.localization.getLang("lang_please_agree_policy"))
-                }
+                var cost = 250000;
+                var header = global.localization.getLang("lang_confirm_change_service_header");
+                var content = global.localization.getLang("lang_confirm_change_service_content");
+                var okLabel = global.localization.getLang(
+                  'lang_confirm_ok',
+                );
+                var cancelLabel = global.localization.getLang(
+                  'lang_confirm_cancel',
+                );
+                Alert.alert(
+                  header,
+                  content,
+                  [
+                    {
+                      text: okLabel,
+                      onPress: () => {
+                        QuickToast.show("Success");
+                      },
+                    },
+                    {
+                      text: cancelLabel,
+                      onPress: () => {
+                        QuickToast.show("Canceled");
+                      },
+                    },
+                  ],
+                  {cancelable: true},
+                );
               }}>
               <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
-                {global.localization.getLang('lang_confirm')}
+                {global.localization.getLang('lang_change')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -175,18 +199,14 @@ class PageReg2 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
-  var student = state.studentList[state.curStudent]
+const mapStateToProps = function(state){
     return {
       pickTypeMethod: state.pickTypeMethod,
       serviceStartTime: state.serviceStartTime,
       isPickingDateStart: state.isPickingDateStart,
       curYear: state.curYear,
-      guardianList: state.guardianList,
-      policyAgree: state.policyAgree,
-      studentList: state.studentList,
-      curStudent: state.curStudent,
-      student: student
+      guardians: state.guardians,
+      policyAgree: state.policyAgree
     }
 }
 
@@ -228,7 +248,7 @@ const styles = EStyleSheet.create({
     flex: 2
   },
   btnContainer: {
-    flex: 1.9,
+    flex: 1.6,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",

@@ -14,12 +14,22 @@ import {QuickToast} from "../../../utils/Toast";
 
 const TimeUtils = require("../../../utils/Times").default;
 
-import {PICK_TYPE_METHOD} from "../redux/Redux"
-import Networking from "../networking/Networking";
+const PICK_TYPE = {
+  WITH_PARENT: "WITH_PARENT",
+  ONLY_STUDENT: "ONLY_STUDENT"
+}
 
-var OptionContainer = (props)=>{
-  var pickUpOption = props.student.pickUpOption
-  var checked = pickUpOption == props.arg
+var OptionContainer = function(props){
+  switch (props.arg){
+    case PICK_TYPE.WITH_PARENT:
+      var pickTypeStr = global.localization.getLang("lang_pick_method_with_parent");
+      var checked = props.pickTypeMethod == PICK_TYPE.WITH_PARENT;
+      break;
+    case PICK_TYPE.ONLY_STUDENT:
+      var pickTypeStr = global.localization.getLang("lang_pick_method_by_student");
+      var checked = props.pickTypeMethod == PICK_TYPE.ONLY_STUDENT;
+      break;
+  };
   return (
     <View style={styles.optionContainer}>
       <CheckBox
@@ -33,27 +43,18 @@ var OptionContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{getOptionStr(props.arg)}</Text>
+      <Text style={styless.labelMethodItem}>{pickTypeStr}</Text>
     </View>
   );
 }
 
-const getOptionStr = (pickType)=>{
-  switch (pickType){
-    case PICK_TYPE_METHOD.WITH_PARENT:
-      return global.localization.getLang("lang_pick_method_with_parent")
-    case PICK_TYPE_METHOD.ONLY_STUDENT:
-      return global.localization.getLang("lang_pick_method_by_student")
-  }
-}
-
-var PartnerContainer = (props)=>{
+var PartnerContainer = function(props){
   var partner = props.partner;
-  var partnerId = partner.studentId;
+  var partnerId = partner.id;
 
-  var _checked = props.student.activePartners.filter((item=>{
-    return item == partnerId
-  })).length != 0
+  var _checked = props.partners.filter((partner)=>{
+    return partner.id == partnerId;
+  })[0].checked;
   
   return (
     <View style={styles.optionContainer}>
@@ -69,7 +70,7 @@ var PartnerContainer = (props)=>{
         checkedImage={<Image source={require("../../../../res/image/service/checked.png")} style={styless.imgCheckBox}/>}
         unCheckedImage={<Image source={require("../../../../res/image/service/unchecked.png")} style={styless.imgCheckBox}/>}
       />
-      <Text style={styless.labelMethodItem}>{partner.studentName}</Text>
+      <Text style={styless.labelMethodItem}>{partner.name}</Text>
     </View>
   );
 }
@@ -93,44 +94,22 @@ class PageReg1 extends Component {
     this.props.dispatch({type: "HIDE_PICKING_SERVICE_DATE_START"})
     if (event.type == "set"){
       var timeStamp = event.nativeEvent.timestamp;
-      if (timeStamp < this.props.serviceStartTime){
-        QuickToast.show(global.localization.getLang("lang_alert_register_select_date")
-        .replace(/@date@/, TimeUtils.formatDate(this.props.serviceStartTime)))          
-      }
-      else {
+      var curYear = this.props.curYear;
+      if (new Date(timeStamp).getFullYear() == curYear)
         this.props.dispatch({type: "CHANGE_SERVICE_DATE_START", time: timeStamp})
+      else {
+        var toast = global.localization.getLang("lang_alert_wrong_year").replace("@year@", curYear);
+        QuickToast.show(toast);
       }
     }
-  }
-  componentWillUpdate(nextProps){
-    if (nextProps.curStudent != this.props.curStudent){
-      Networking.apiGetAvaiableDate(nextProps, (responseText)=>{
-        var json = JSON.parse(responseText)
-        this.props.dispatch({type: "CHANGE_SERVICE_DATE_START",
-        time: TimeUtils.yy_mm_dd_toTimeStamp(json.effectiveDate)})
-      },
-      ()=>{
-  
-      })
-    }
-  }
-  componentWillMount(){
-    Networking.apiGetAvaiableDate(this.props, (responseText)=>{
-      var json = JSON.parse(responseText)
-      this.props.dispatch({type: "CHANGE_SERVICE_DATE_START",
-      time: TimeUtils.yy_mm_dd_toTimeStamp(json.effectiveDate)})
-    },
-    ()=>{
-
-    })
-  }
+  };
   render() {
     var self = this;
     return (
       <View style={styles.page}>
         <View style={styles.pickUpMethodContainer}>
-          <OptionContainer {...this.props} arg={PICK_TYPE_METHOD.WITH_PARENT} />
-          <OptionContainer {...this.props} arg={PICK_TYPE_METHOD.ONLY_STUDENT} />
+          <OptionContainer {...this.props} arg={PICK_TYPE.WITH_PARENT} />
+          <OptionContainer {...this.props} arg={PICK_TYPE.ONLY_STUDENT} />
         </View>
         <View style={styles.partnerHeaderContainer}>
           <Text style={styless.lblHeaderPartner}>
@@ -159,42 +138,6 @@ class PageReg1 extends Component {
               return index;
             }}
           />
-        </View>
-        <View style={styles.timeStartContainer}>
-          {/* <Text style={styless.lblStartDateService}>
-            {global.localization.getLang('lang_service_start_date')}
-          </Text>
-          <View style={styles.btnTimeContainer}>
-            <TouchableOpacity
-              style={styles.btnSelectTime}
-              onPress={() => {
-                var header = global.localization.getLang("lang_noti_header");
-                var content = global.localization.getLang("lang_alert_register_select_date")
-                .replace(/@date@/, TimeUtils.formatDate(this.props.serviceStartTime))
-                var okLabel = global.localization.getLang(
-                  'lang_select',
-                );
-                Alert.alert(
-                  header,
-                  content,
-                  [
-                    {
-                      text: okLabel,
-                      onPress: () => {
-                        self.props.dispatch({
-                          type: 'SHOW_PICKING_SERVICE_DATE_START',
-                        });
-                      },
-                    },
-                  ],
-                  {cancelable: true},
-                );
-              }}>
-              <Text style={styless.lblBtnTimeStart}>
-                {TimeUtils.formatDate(this.props.serviceStartTime)}
-              </Text>
-            </TouchableOpacity>
-          </View> */}
         </View>
         <View style={styles.btnContainer}>
           <View style={styles.singleBtnContainer}>
@@ -237,16 +180,14 @@ class PageReg1 extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
-  var student = state.studentList[state.curStudent]
-  return {
-    pickTypeMethod: state.pickTypeMethod,
-    serviceStartTime: state.serviceStartTime,
-    isPickingDateStart: state.isPickingDateStart,
-    curYear: state.curYear,
-    partners: student.partners,
-    student: student
-  }
+const mapStateToProps = function(state){
+    return {
+      pickTypeMethod: state.pickTypeMethod,
+      serviceStartTime: state.serviceStartTime,
+      isPickingDateStart: state.isPickingDateStart,
+      curYear: state.curYear,
+      partners: state.partners
+    }
 }
 
 export default connect(mapStateToProps)(PageReg1)
@@ -259,16 +200,16 @@ const styles = EStyleSheet.create({
     height: "100%"
   },
   pickUpMethodContainer: {
-    flex: 1.5,
+    flex: 3,
   },
   partnerHeaderContainer: {
-    flex: 0.5,
+    flex: 2,
     justifyContent: "center",
     paddingLeft: "17rem",
     alignItems: "flex-start"
   },  
   partnerContainer: {
-    flex: 1.5,
+    flex: 3,
     // backgroundColor: "cyan"
   },
   timeStartContainer: {
@@ -280,7 +221,7 @@ const styles = EStyleSheet.create({
     alignItems: "center"
   },
   btnContainer: {
-    flex: 0.81,
+    flex: 1.6,
     width: "100%",
     flexDirection: "row",
     // justifyContent: "center",

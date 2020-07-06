@@ -52,6 +52,17 @@ export default (styles = EStyleSheet.create({
     flex: 1.05,
     marginBottom: "2rem",
     padding: "1rem",
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: "blue"
+    margin: "1rem",
+    borderWidth: "1rem",
+    borderColor: "#999",
+    borderRadius: "2rem"
+  },
+  lblCurYear: {
+    color: "#fff",
+    fontSize: "7rem",
     // backgroundColor: "red"
   },
   defaultInfo: {
@@ -304,7 +315,9 @@ export default (styles = EStyleSheet.create({
     fontSize: "7rem"
   },
   txtBottomButton: {
-      fontSize: "7rem"
+      fontSize: "7rem",
+      textAlign: "center",
+      textAlignVertical: "center"
   },
   lblHeaderGuardians: {
     color: "#444",
@@ -337,23 +350,10 @@ export default (styles = EStyleSheet.create({
     width: "10rem",
     height: "10rem"
   },
-  YearPickerContainer: {
-    width: "40%",
-    flex: 1.05,
-    marginBottom: "2rem",
-    padding: "1rem",
-    alignItems: "center",
-    justifyContent: "center",
-    // backgroundColor: "blue"
-    margin: "1rem",
-    borderWidth: "1rem",
-    borderColor: "#999",
-    borderRadius: "2rem"
-  },
-  lblCurYear: {
-    color: "#fff",
-    fontSize: "7rem",
-    // backgroundColor: "red"
+  yearTxt: {
+    fontSize: "6rem",
+    fontWeight: "bold",
+    color: "#fff"
   },
   childNameContainer: {
     height: "18rem",
