@@ -9,6 +9,12 @@ const AccountComponent = require("./Main").default;
 const commonStyles = require("../../../../common/style/index").default;
 
 class Account extends Component{
+  componentWillMount(){
+    var studentList = global.routeData.getTrackingBatch()
+    studentList = global.registerData.getMergeStudent(studentList)
+    var guardianList = global.guardianData.getGuardianList()
+    this.props.dispatch({type: "SET_STUDENT_LIST", studentList: studentList, guardians: guardianList})
+  }
     render(){
         return (
           <View style={[commonStyles.fullViewVerticalCenter, {backgroundColor: "cyan"}]}>

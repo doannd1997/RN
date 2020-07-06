@@ -19,7 +19,7 @@ var GuardianContainer = (props)=>{
   var guardian = props.guardian;
   var guardianId = guardian.id;
 
-  var _checked = props.guardians.filter((guardian)=>guardianId == guardian.id)[0].assigned[props.curChild] == 1;
+  var _checked = props.student.guardiandsId.indexOf(guardianId) != -1
 
   return (
     <View style={styles.optionContainer}>
@@ -42,9 +42,10 @@ var GuardianContainer = (props)=>{
 }
 
 const mapStateToProps = (state)=>{
+    var student = state.studentList[state.curStudent]
     return {
         guardians: state.guardians,
-        curChild: state.curChild
+        student: student
     }
 }
 

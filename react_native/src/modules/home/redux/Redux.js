@@ -94,19 +94,8 @@ const reducer = (state, action) => {
       return { ...state, curStudent: action.curStudent }
     case "TOGGLE_PICKING":
       return { ...state, isPickingDate: !state.isPickingDate }
-    case "TOGGLE_ENABLE_GUARDIAN_ACC_INFO":
-      var _guardians = state.guardians.map((guardian, index) => {
-        if (guardian.id != action.guardianId)
-          return guardian;
-        var _assigned = guardian.assigned.map((item) => item);
-        _assigned[state.curStudent] = (_assigned[state.curStudent] + 1) % 2;
-        return { ...guardian, assigned: _assigned }
-      });
-      return { ...state, guardians: _guardians }
-    case "SWITCH_CHILD_TAB_MODE":
-      return { ...state, childWatchMode: action.childWatchMode };
-
-    // mail
+    
+      // mail
     case "MAIL_SET_TAB":
       return { ...state, mail_curTab: action.mail_curTab };
     case "MAIL_OPEN_SEND_MAIL":
@@ -174,8 +163,29 @@ const reducer = (state, action) => {
       var studentInfomation = state.studentInfomation
       studentInfomation[state.curStudent] = action.studentInfo
       return {...state, studentInfomation: studentInfomation}
-
-
+    case "TOGGLE_ENABLE_GUARDIAN_ACC_INFO":
+      var guardianId = action.guardianId
+      var student = state.studentList[state.curStudent]
+      var idx = student.guardiandsId.indexOf(guardianId)
+      if (idx == -1){
+        student.guardiandsId.push(guardianId)
+      }
+      else {
+        student.guardiandsId.splice(idx, idx+1)
+      }
+      var studentList = state.studentList.map((item, idx)=>{
+        if (state.curStudent == idx)
+          return student
+        return item
+      })
+      return {...state, studentList: studentList}
+    case "SWITCH_CHILD_TAB_MODE":
+      return { ...state, childWatchMode: action.childWatchMode };
+    case "SET_STUDENT_LIST":
+      var _state = {...state}
+      _state.studentList = action.studentList
+      _state.guardians = action.guardians
+      return {..._state}
     // history
     case "SET_HISTORY":
       return {...state, history: action.histories}

@@ -26,6 +26,7 @@ var RegisterData = {
             student.pickUpOption = info.PickupOption || PICK_TYPE_METHOD.WITH_PARENT
             student.pickUpMethod = info.PickupMethod || PICK_TYPE.HOME
         }
+        this.studentList = studentList
         return studentList
     }
 }
