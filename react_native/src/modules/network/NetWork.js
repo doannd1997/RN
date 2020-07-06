@@ -1,18 +1,19 @@
 const netConf = require("../../../res/Network/Network.json");
 import {QuickToast} from "../../utils/Toast";
 
-exports.networkRequestGet = (url, successCallback, failCalllback)=>{
+exports.networkRequestGet = (url, params, token, successCallback, failCalllback)=>{
     var http = new XMLHttpRequest();
     http.open("GET", url, true);
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-            successCallback(http.readyState);
+            console.log(http._response.getElementsByTagName("Response").childNodes[1])
+            successCallback(http._response);
         }
         else 
             failCalllback();
     }
-    http.send();
+    http.send(params);
 }
 
 exports.networkRequestPost = (url, params, token, successCallback, failCalllback)=>{

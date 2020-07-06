@@ -59,6 +59,8 @@ var defaultState = {
   ],
   curStudent: 0,
   loading: false,
+
+  distanceToSchool: 0
 };
 
 
@@ -197,6 +199,8 @@ const reducer = (state, action)=>{
       return {...state, loading: true}
     case "RESULT_DATA":
       return {...state, loading: false}
+    case "SET_DISTANCE_TO_SCHOOL":
+      return {...state, distanceToSchool: action.distanceToSchool}
     default:
       return state;
   }

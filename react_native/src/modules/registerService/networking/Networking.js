@@ -2,6 +2,8 @@ import {networkRequestGet, networkRequestPost, createUrl} from "../../network/Ne
 import {QuickToast} from "../../../utils/Toast";
 const TimeUtils = require("../../../utils/Times").default
 
+const mapConf = require("../../../../res/map/Here.json")
+
 export default Networking = {
     aipGetRegisterInfo: (props, sucessCallback, failCallback)=>{
         var url = createUrl(ROUTE.REGISTER_CUR_YEAR)
@@ -104,13 +106,34 @@ export default Networking = {
             QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
         })
     },
+    apiGetRouteDistance: (loc0, loc1, successCallback, failCallback)=>{
+        var _loc0 = loc0.latitude + "," + loc0.longitude
+        var _loc1 = loc1.latitude + "," + loc1.longitude
+        var url = ROUTE.DISTANCE
+        .replace(/@apiKey@/gi, mapConf.API_KEY)
+        .replace(/@loc0@/gi, _loc0)
+        .replace(/@loc1@/gi, _loc1)
+
+        var http = new XMLHttpRequest();
+        http.open("GET", url);
+
+        networkRequestGet(url, "", null, 
+        (response)=>{
+            
+        },
+        ()=>{
+            
+        })
+    }
 };
 
 const ROUTE = {
     REGISTER_CUR_YEAR: "api/values/GetRegister4CurrentYear",
     REGISTER_SERVICE: "api/values/RegisterStopPoint",
     CONFIRM_REGISTER: "api/values/ConfirmRegistration",
-    GET_AVAIABLE_DATE: "api/values/GetAvailableDate"
+    GET_AVAIABLE_DATE: "api/values/GetAvailableDate",
+
+    DISTANCE: "https://route.ls.hereapi.com/routing/7.2/calculateroute.xml?apiKey=@apiKey@&waypoint0=geo!@loc0@&waypoint1=geo!@loc1@&mode=fastest;car;traffic:disabled"
 }
 
 const PARAM = {

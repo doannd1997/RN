@@ -42,7 +42,7 @@ const TimeUtils = require("../../../utils/Times").default
 
 const Indicator = require("../../../common/component/Indicator").default
 
-const Networking = require("../networking/Networking").default
+const NetWorking = require("../networking/Networking").default
 
 class MyPageCom extends Component{
   selectPageReg0(){
@@ -169,6 +169,9 @@ class RegisterService extends Component {
               <TouchableOpacity
                 style={commonStyles.formBtnConfirm}
                 onPress={() => {
+                  NetWorking.apiGetRouteDistance(this.props.placeSelected, this.props.schoolLocation, (response)=>{
+                    
+                  })
                   this.props.dispatch({type: 'CHOOSE_PLACE'});
                 }}>
                 <Text style={[commonStyles.formBtnOkText, styles.txtBtnSelectPlace]}>
@@ -186,26 +189,30 @@ class RegisterService extends Component {
 
 const mapStateToProps = (state)=>{
   var student = state.studentList[state.curStudent]
-
-    return {
-      isLoading: state.isLoading,
-      curYear: state.curYear,
-      yearList: state.yearList,
-      pickType: state.pickType,
-      homeAddress: state.homeAddress,
-      placeAddress: state.placeAddress,
-      homeSetted: state.homeSetted,
-      placeSetted: state.placeSetted,
-      pickingAddress: state.pickingAddress,
-      searchResultShown: state.searchResultShown,
-      placeSelected: state.placeSelected,
-      showAgreement: state.showAgreement,
-      studentList: state.studentList,
-      curStudent: state.curStudent,
-      loading: state.loading,
-      alreadyRegisterd: student.registrationStatus == 0,
-      student: student
-    }
+  var schoolLocation = {
+    latitude: student.schoolLatitude,
+    longitude: student.schoolLongitude,
+  }
+  return {
+    isLoading: state.isLoading,
+    curYear: state.curYear,
+    yearList: state.yearList,
+    pickType: state.pickType,
+    homeAddress: state.homeAddress,
+    placeAddress: state.placeAddress,
+    homeSetted: state.homeSetted,
+    placeSetted: state.placeSetted,
+    pickingAddress: state.pickingAddress,
+    searchResultShown: state.searchResultShown,
+    placeSelected: student.placeSelected,
+    showAgreement: state.showAgreement,
+    studentList: state.studentList,
+    curStudent: state.curStudent,
+    loading: state.loading,
+    alreadyRegisterd: student.registrationStatus == 0,
+    student: student,
+    schoolLocation: schoolLocation
+  }
 }
 const MyPage = connect(mapStateToProps)(MyPageCom);
 
