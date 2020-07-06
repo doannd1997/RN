@@ -10,13 +10,12 @@ const commonStyles = require("../../../../common/style/index").default;
 
 const GuardianCom = require("../component/Guardian").default;
 const ChildInfoCom = require("../component/ChildInfo").default;
-const NetWorking = require("../networking/Networking").default;
+const NetWorking = require("../networking/Networking").default
 
 const Indicator = require("../../../../common/component/Indicator").default
 
 const options = {
   title: global.localization.getLang("lang_select_image"),
-  // customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
   storageOptions: {
     skipBackup: true,
     path: 'images',
@@ -26,6 +25,17 @@ const options = {
   maxHeight: 128,
   quality: 1,
 };
+
+const updateGuardian = (props)=>{
+  props.dispatch({type: "GET_INFO_GUARDIAN"})
+  NetWorking.apiGetGuardiansInfo(props, (response)=>{
+    var guardians = JSON.parse(response)
+    guardians = global.guardianData.getParseData(guardians)
+    props.dispatch({type: "SET_GUARDIANS", guardians: guardians})
+  }, ()=>{
+    props.dispatch({type: "RESULT_GET_INFO_STUDENT"})
+  })
+}
 
 class ChildTab extends Component{
     render(){
@@ -95,6 +105,7 @@ class ChildTab extends Component{
                       .studentName
                   }
                   onChange={option => {
+
                     this.props.dispatch({
                       type: 'SELECT_CHILD',
                       curStudent: option.key,
@@ -165,22 +176,7 @@ class ChildTab extends Component{
                     </View>
                   </View>
                   {this.props.childWatchMode == TAB_GUARDIANS ? (
-                    <FlatList
-                      style={styles.guardiansList}
-                      showsVerticalScrollIndicator={false}
-                      data={this.props.guardians}
-                      renderItem={({item}) => {
-                        return (
-                          <GuardianCom
-                            guardian={item}
-                            style={styles.optionContainer}
-                          />
-                        );
-                      }}
-                      keyExtractor={(item, index) => {
-                        return index + '';
-                      }}
-                    />
+                    <GuardianCom/>
                   ) : (
                      <ChildInfoCom /> 
                   )}

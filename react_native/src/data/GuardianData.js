@@ -19,6 +19,19 @@ export default GuardianData = {
             }
         })
     },
+    getParseData: function(data){
+        data = data.map((item)=>{
+            return {
+                // ...item,
+                name: item.Name,
+                phoneNumber: item.Phone,
+                role: item.Relationship,
+                avatarSource: getAvatarUri(item.Avatar),
+                id: item.ID
+            }
+        })
+        return data
+    },
     getGuardianList: function(){
         return data
     },

@@ -32,7 +32,8 @@ const styles = EStyleSheet.create({
         width: "100%",
         height: "100%",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flex: 1
     }
 })
 

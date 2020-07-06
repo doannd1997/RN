@@ -31,7 +31,7 @@ const defaultState = {
 
   ],
   loadingStudentInfomation: false,
-
+  loadingGuardianInfomation: false,
   // history
   history: [
 
@@ -159,6 +159,10 @@ const reducer = (state, action) => {
       return {...state, loadingStudentInfomation: true}
     case "RESULT_GET_INFO_STUDENT":
       return {...state, loadingStudentInfomation: false}
+    case "GET_INFO_GUARDIAN":
+      return {...state, loadingGuardianInfomation: true}
+    case "RESULT_GET_INFO_STUDENT":
+      return {...state, loadingGuardianInfomation: false}
     case "SET_STUDENT_INFO":
       var studentInfomation = state.studentInfomation
       studentInfomation[state.curStudent] = action.studentInfo
@@ -171,21 +175,24 @@ const reducer = (state, action) => {
         student.guardiandsId.push(guardianId)
       }
       else {
-        student.guardiandsId.splice(idx, idx+1)
+        student.guardiandsId.splice(idx, 1)
       }
       var studentList = state.studentList.map((item, idx)=>{
         if (state.curStudent == idx)
           return student
         return item
       })
+
       return {...state, studentList: studentList}
     case "SWITCH_CHILD_TAB_MODE":
       return { ...state, childWatchMode: action.childWatchMode };
     case "SET_STUDENT_LIST":
       var _state = {...state}
       _state.studentList = action.studentList
-      _state.guardians = action.guardians
       return {..._state}
+    case "SET_GUARDIANS":
+      return {...state, guardians: action.guardians, loadingGuardianInfomation: false}
+
     // history
     case "SET_HISTORY":
       return {...state, history: action.histories}
