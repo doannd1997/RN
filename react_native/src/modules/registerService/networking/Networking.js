@@ -1,8 +1,8 @@
 import {networkRequestGet, networkRequestPost, createUrl} from "../../network/NetWork"
 import {QuickToast} from "../../../utils/Toast";
 const TimeUtils = require("../../../utils/Times").default
-
 const mapConf = require("../../../../res/map/Here.json")
+var parseString = require('react-native-xml2js').parseString
 
 export default Networking = {
     aipGetRegisterInfo: (props, sucessCallback, failCallback)=>{
@@ -61,7 +61,6 @@ export default Networking = {
         var homeLat = student.placeSelected.latitude
         var homeLong = student.placeSelected.longitude
 
-
         var parentId = global.accountData.getId()
         var params = PARAM.REGISTER_SERVICE
         .replace(/@studentID@/gi, studentId)
@@ -72,7 +71,7 @@ export default Networking = {
         .replace(/@option@/gi, option)
         .replace(/@togetherids@/gi, partnersId)
         .replace(/@hometostop@/gi, distanceFromHome)
-        .replace(/@stoptoschool@/gi, distanceFromStop)
+        .replace(/@stoptoschool@/gi, distanceFromHome)
         .replace(/@date@/gi, date)
         .replace(/@supervisorIDs@/gi, guardiansId)
         .replace(/@homeaddress@/gi, homeAddress)
@@ -106,7 +105,9 @@ export default Networking = {
             QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
         })
     },
-    apiGetRouteDistance: (loc0, loc1, successCallback, failCallback)=>{
+    apiGetRouteDistance: (props, successCallback, failCallback)=>{
+        var loc0 = props.placeSelected
+        var loc1 = props.schoolLocation
         var _loc0 = loc0.latitude + "," + loc0.longitude
         var _loc1 = loc1.latitude + "," + loc1.longitude
         var url = ROUTE.DISTANCE
@@ -119,7 +120,10 @@ export default Networking = {
 
         networkRequestGet(url, "", null, 
         (response)=>{
-            
+            parseString(response, (err, result)=>{
+                var distance = result["rtcr:CalculateRoute"]["Response"][0]["Route"][0]["Summary"][0]["Distance"][0]
+                props.dispatch({type: "SET_DISTANCE_TO_SCHOOL", distanceToSchool: parseFloat(distance)/1000})
+            })
         },
         ()=>{
             

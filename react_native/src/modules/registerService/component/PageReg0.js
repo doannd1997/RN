@@ -131,7 +131,7 @@ const mapStateToProps = (state)=>{
     var distanceToSchool = student.distanceToSchool
   }
   else {
-    var distanceToSchool = state.distanceToSchool
+    var distanceToSchool = student.distanceToSchool
   }
   return {
     pickType: state.pickType,

@@ -169,7 +169,7 @@ class RegisterService extends Component {
               <TouchableOpacity
                 style={commonStyles.formBtnConfirm}
                 onPress={() => {
-                  NetWorking.apiGetRouteDistance(this.props.placeSelected, this.props.schoolLocation, (response)=>{
+                  NetWorking.apiGetRouteDistance(this.props, (response)=>{
                     
                   })
                   this.props.dispatch({type: 'CHOOSE_PLACE'});

@@ -7,7 +7,6 @@ exports.networkRequestGet = (url, params, token, successCallback, failCalllback)
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-            console.log(http._response.getElementsByTagName("Response").childNodes[1])
             successCallback(http._response);
         }
         else 
