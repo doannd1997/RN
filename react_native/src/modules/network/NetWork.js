@@ -19,8 +19,6 @@ exports.networkRequestPost = (url, params, token, successCallback, failCalllback
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     
-    console.log(url)
-
     http.setRequestHeader("Content-type", netConf.CONTENT_TYPE);
     // http.setRequestHeader("Content-length", params.length);
     http.setRequestHeader("Connection", "close");

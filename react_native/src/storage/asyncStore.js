@@ -16,12 +16,12 @@ export default asyncStore = {
             if (typeof successCallback == 'funciton')
                 successCallback();
             if (ASYNC_STORAGE.LOG_INFO_SET_GET)
-                console.log("store data success: " + key + " : " + data);
+                console.log("store data success: " + key);
             return true;
         }
         catch (e){
             if (ASYNC_STORAGE.LOG_INFO_SET_GET)
-                console.log("set data to storage failed: " + key + " -> " + value);
+                console.log("set data to storage failed: " + key);
             if (typeof failCallback == 'function')
                 failCallback();
             return false;

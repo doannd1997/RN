@@ -135,5 +135,6 @@
     "already_registered": "Registered student of current year",
     "lang_school": "School",
     "lang_alert_register_select_date": "Please select date start at @date@, it help setup service effectly",
-    "noti_new_mail": "You have @num@ new mails, please check out"
+    "noti_new_mail": "You have @num@ new mails, please check out",
+    "lang_remove_service_success": "Remove service success"
 }

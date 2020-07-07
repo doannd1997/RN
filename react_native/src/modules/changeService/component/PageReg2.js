@@ -110,12 +110,58 @@ class PageReg2 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-          <View style={styles.singleBtnContainer}>
+        <View style={styles.singleBtnContainer}>
             <TouchableOpacity
               style={commonStyles.formBtnCancel}
-              onPress={this.props.toPrevPage}>
+              onPress={()=>{
+                self.props.toPrevPage();
+              }}>
               <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
                 {global.localization.getLang('lang_prev')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        
+          <View style={styles.singleBtnContainer}>
+            <TouchableOpacity
+              style={commonStyles.formBtnRemove}
+              onPress={()=>{
+                var header = global.localization.getLang("lang_confirm_remove_service_header");
+                var content = global.localization.getLang("lang_confirm_remove_service_content")
+                .replace(/@date@/gi, TimeUtils.formatDate(this.props.serviceStartTime))
+                var okLabel = global.localization.getLang(
+                  'lang_confirm_ok',
+                );
+                var cancelLabel = global.localization.getLang(
+                  'lang_confirm_cancel',
+                );
+                Alert.alert(
+                  header,
+                  content,
+                  [
+                    {
+                      text: okLabel,
+                      onPress: () => {
+                        Networking.apiUnregister(this.props, (response)=>{
+                          QuickToast.show("Báo nghỉ thành công")
+                        },
+                        ()=>{
+
+                        })
+                      },
+                    },
+                    {
+                      text: cancelLabel,
+                      onPress: () => {
+                        QuickToast.show("Canceled");
+                      },
+                    },
+                  ],
+                  {cancelable: true},
+                );
+              }}>
+              <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
+                {global.localization.getLang('lang_remove_service')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -123,48 +169,43 @@ class PageReg2 extends Component {
             <TouchableOpacity
               style={commonStyles.formBtnConfirm}
               onPress={() => {
-                if (self.props.policyAgree){
-                  Networking.apiSendRegisterService(self.props, (json)=>{
-                    var cost = json.BusFee
+                Networking.apiSendRegisterService(self.props, (json)=>{
+                  var cost = json.BusFee
 
-                    var header = global.localization.getLang("lang_confirm_register_service_header");
-                    var content = global.localization.getLang("lang_confirm_register_service_content").replace("@value@", cost)
-                    var okLabel = global.localization.getLang(
-                      'lang_confirm_ok',
-                    );
-                    var cancelLabel = global.localization.getLang(
-                      'lang_confirm_cancel',
-                    );
-                    Alert.alert(
-                      header,
-                      content,
-                      [
-                        {
-                          text: okLabel,
-                          onPress: () => {
-                            Networking.apiConfirmRegister(self.props, ()=>{
-                              QuickToast.show(self.props.student.registerSuccessMgs);
-                              self.props.navigation.navigate("HomeScreen")
-                            })
-                          },
+                  var header = global.localization.getLang("lang_confirm_change_service_header");
+                  var content = global.localization.getLang("lang_confirm_change_service_content").replace("@value@", cost)
+                  var okLabel = global.localization.getLang(
+                    'lang_confirm_ok',
+                  );
+                  var cancelLabel = global.localization.getLang(
+                    'lang_confirm_cancel',
+                  );
+                  Alert.alert(
+                    header,
+                    content,
+                    [
+                      {
+                        text: okLabel,
+                        onPress: () => {
+                          Networking.apiConfirmRegister(self.props, ()=>{
+                            QuickToast.show(self.props.student.registerSuccessMgs);
+                            self.props.navigation.navigate("HomeScreen")
+                          })
                         },
-                        {
-                          text: cancelLabel,
-                          onPress: () => {
-                            QuickToast.show("Canceled");
-                          },
+                      },
+                      {
+                        text: cancelLabel,
+                        onPress: () => {
+                          QuickToast.show("Canceled");
                         },
-                      ],
-                      {cancelable: true},
-                    );
-                    })
-                }
-                else {
-                  QuickToast.show(global.localization.getLang("lang_please_agree_policy"))
-                }
+                      },
+                    ],
+                    {cancelable: true},
+                  );
+                  })
               }}>
               <Text style={[commonStyles.formBtnOkText, styless.txtBottomButton]}>
-                {global.localization.getLang('lang_confirm')}
+                {global.localization.getLang('lang_change')}
               </Text>
             </TouchableOpacity>
           </View>

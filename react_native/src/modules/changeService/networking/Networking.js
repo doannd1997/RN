@@ -55,7 +55,7 @@ export default Networking = {
         var partnersId = student.activePartners.join(',')
         var distanceFromHome = student.distanceToSchool
         var distanceFromStop = 0
-        var date = TimeUtils.formatYYYY_MM_DD(props.serviceStartTime)
+        var date = TimeUtils.formatYYYY_MM_DD(new Date().getTime())
         var guardiansId = student.guardiandsId.join(',')
         var homeAddress = student.placeSelected.title
         var homeLat = student.placeSelected.latitude
@@ -128,6 +128,27 @@ export default Networking = {
         ()=>{
             
         })
+    },
+    apiUnregister: (props, sucessCallback, failCallback)=>{
+        var url = createUrl(ROUTE.UN_REGISTER)
+
+        var studentId = props.student.studentId
+        var date = TimeUtils.formatYYYY_MM_DD(new Date().getTime())
+
+        var params = PARAM.UN_REGISTER
+        .replace(/@studentId@/gi, studentId)
+        .replace(/@checkedDate@/gi, date)
+        .replace(/@date@/gi, date)
+        
+        const token = global.authenData.getToken()
+        networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
+            if (typeof sucessCallback == 'function')
+                sucessCallback(responseText);
+        }, async ()=>{
+            if (typeof failCallback == 'function')
+                failCallback(responseText);
+            QuickToast.show(global.localization.getLang("REQUEST_CODE_FAIL"));
+        })
     }
 };
 
@@ -136,7 +157,7 @@ const ROUTE = {
     REGISTER_SERVICE: "api/values/RegisterStopPoint",
     CONFIRM_REGISTER: "api/values/ConfirmRegistration",
     GET_AVAIABLE_DATE: "api/values/GetAvailableDate",
-
+    UN_REGISTER: "api/values/UnRegisterStopPoint",
     DISTANCE: "https://route.ls.hereapi.com/routing/7.2/calculateroute.xml?apiKey=@apiKey@&waypoint0=geo!@loc0@&waypoint1=geo!@loc1@&mode=fastest;car;traffic:disabled"
 }
 
@@ -144,5 +165,6 @@ const PARAM = {
     REGISTER_CUR_YEAR: "parentId=@parentId@",
     REGISTER_SERVICE: "studentID=@studentID@&stopPointID=@stopPointID@&address=@address@&latitude=@latitude@&longitude=@longitude@&option=@option@&togetherids=@togetherids@&hometostop=@hometostop@&stoptoschool=@stoptoschool@&date=@date@&supervisorIDs=@supervisorIDs@&homeaddress=@homeaddress@&homelat=@homelat@&homelong=@homelong@",
     CONFIRM_REGISTER: "studentID=@studentId@",
-    GET_AVAIABLE_DATE: "SchoolLevel=@schoolLevel@&Year=@year@"
+    GET_AVAIABLE_DATE: "SchoolLevel=@schoolLevel@&Year=@year@",
+    UN_REGISTER: "studentID=@studentId@&checkedDate=@checkedDate@&date=@date@"
 }
