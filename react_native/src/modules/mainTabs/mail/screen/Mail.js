@@ -28,7 +28,7 @@ const updateMail = function(props){
         })
 
         var numberOfNewMails = inboxs.filter(item=>!item.isRead).length
-        if (props.numberOfNewMails != numberOfNewMails){
+        if (props.numberOfNewMails != numberOfNewMails && numberOfNewMails != 0){
             props.dispatch({type: "SET_NUM_NEW_MAIL", numberOfNewMails: numberOfNewMails})
             global.notificationPusher.pushNoti()
         }
