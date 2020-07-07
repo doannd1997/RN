@@ -1,7 +1,7 @@
 const TimeUtils = require("../utils/Times").default
 import  {randomRange, toFixedRange} from "../utils/Number"
 
-const History = function(routes, index){
+const History = function(routes, index, homeAddress){
     var date = new Date() - index * CONST.ONE_DAY_IN_MS
 
     var day = new Date(date).getDay()
@@ -17,12 +17,12 @@ const History = function(routes, index){
 
     var a0 = {
         time: "06:" + toFixedRange(2, 45, 59) + ":" + toFixedRange(2, 0, 59),
-        place: pickUpRoute.endPoint.Name,
+        place: homeAddress,
         action: "UP"
     }
     var a1 = {
         time: "07:" + toFixedRange(2, 0, 30) + ":" + toFixedRange(2, 0, 59),
-        place: pickUpRoute.startPoint.Name,
+        place: dropOffRoute.startPoint.Name,
         action: "DOWN"
     }
     var a2 = {
@@ -32,7 +32,7 @@ const History = function(routes, index){
     }
     var a3 = {
         time: "17:" + toFixedRange(2, 0, 30) + ":" + toFixedRange(2, 0, 59),
-        place: dropOffRoute.endPoint.Name,
+        place: homeAddress,
         action: "DOWN"
     }
 
@@ -88,12 +88,12 @@ export default HistoryData = {
         for(var s in studentList){
             var _student = studentList[s]
             var studentId = _student.studentId
-            var trackingBatch = global.routeData.getTrackingBatch()
+            var trackingBatch = global.registerData.getMergeStudent()
             var student = trackingBatch.filter(item=>item.studentId == studentId)[0]
             var routes = student.routes
             var historyList = []
-            for (var h=0; h<CONST.HISTORIES_LENGTH; h++){
-                var history = new History(routes, h)
+            for (var h=4; h<CONST.HISTORIES_LENGTH; h++){
+                var history = new History(routes, h, student.homeAddress)
                 if (Object.keys(history).length != 0)
                 historyList.push(history)
             }
