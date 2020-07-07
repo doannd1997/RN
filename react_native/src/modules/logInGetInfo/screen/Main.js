@@ -4,6 +4,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 import {withNavigation} from "react-navigation"
 
+import {QuickToast} from "../../../utils/Toast"
+
 const Indicator = require("../../../common/component/Indicator").default;
 
 import { Fumi } from 'react-native-textinput-effects';
@@ -104,7 +106,11 @@ class Main extends Component{
                 Validator.validateLength(params, ()=>{
                   startApiCallback(self.props);
                   Networking.apiRequestInfo(self.props, ()=>{
-                    resultApiCallback(self.props);
+                    resultApiCallback(self.props)
+                    QuickToast.show(global.localization.getLang("lang_check_otp_and_mail"))
+                    self.props.navigation.navigate('MainLogin', {
+                  
+                    })
                   })
                 })
               }}>

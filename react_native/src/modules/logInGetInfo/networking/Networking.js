@@ -3,14 +3,22 @@ import {QuickToast} from "../../../utils/Toast";
 
 export default Networking = {
     apiRequestInfo: (props, resultCallback)=>{
-        var url = createUrl(ROUTE.LOG_IN)
+        var url = createUrl(ROUTE.CONFIRM_LOG_IN)
 
         var email = props.email;
         var phoneNumber = props.phoneNumber;
         var studentId = props.phoneNumber;
 
-        var params = PARAM.LOG_IN.replace(/@phone_number@/gi, phoneNumber).replace(/@email@/gi, email).replace(/@studentId@/, studentId);
+        var params = PARAM.CONFIRM_LOG_IN
+        .replace(/@phone@/gi, phoneNumber)
+        .replace(/@email@/gi, email)
+        .replace(/@studentID@/, studentId);
+        
 
+        // for test
+        resultCallback()
+        return
+        
         networkRequestPost(url, params, async (responseText)=>{
             if (typeof resultCallback == 'function')
                 resultCallback();
@@ -24,9 +32,11 @@ export default Networking = {
 };
 
 const ROUTE = {
-    LOG_IN: "api/values/ParentGetLogInInfo"
+    LOG_IN: "api/values/ParentGetLogInInfo",
+    CONFIRM_LOG_IN: "api/values/ConfirmLoginInfo"
 }
 
 const PARAM = {
-    LOG_IN: "phoneNumber=@phone_number@&email=@email@&studentId=@studentId@"
+    LOG_IN: "phoneNumber=@phone_number@&email=@email@&studentId=@studentId@",
+    CONFIRM_LOG_IN: "phone=@phone@&email=@email@&studentID=@studentID@"
 }

@@ -135,5 +135,7 @@
     "already_registered": "Học sinh đã đăng kí xe buýt cho năm nay.",
     "lang_school": "Trường Học",
     "lang_alert_register_select_date": "Thông tin đăng kí cần xác thực và chờ được phân tuyến, quý phụ huynh vui lòng chọn ngày bắt đầu sớm nhất vào @date@ để việc xếp tuyến được hiệu quả",
-    "noti_new_mail": "Bạn có @num@ thư mới, hãy kiểm tra"
+    "noti_new_mail": "Bạn có @num@ thư mới, hãy kiểm tra",
+    "lang_remove_service_success": "Hủy dịch vụ thành công",
+    "lang_check_otp_and_mail": "Vui lòng kiểm tra tin nhắn và email để nhận mật khẩu"
 }
