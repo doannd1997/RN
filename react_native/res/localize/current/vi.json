@@ -73,7 +73,7 @@
     "lang_accept": "Đồng Ý",
     "lang_reject": "Từ Chối",
     "lang_confirm_register_service_header": "Xác Nhận Đăng Kí",
-    "lang_confirm_register_service_content": "Phí dịch vụ xe buýt là @value@ Đồng, bạn có đồng ý đăng kí không ?",
+    "lang_confirm_register_service_content": "Phí dịch vụ xe buýt là @value@ đ/ tháng, bạn có đồng ý đăng kí không ?",
     "lang_select_date_remove_service": "Chọn ngày hủy dịch vụ",
     "lang_remove_service": "Hủy Dịch Vụ",
     "lang_confirm_change_service_header": "Xác Nhận Thay Đổi",

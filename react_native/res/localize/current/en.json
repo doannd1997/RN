@@ -73,7 +73,7 @@
     "lang_accept": "Accept",
     "lang_reject": "Reject",
     "lang_confirm_register_service_header": "Confirm Register Service",
-    "lang_confirm_register_service_content": "Service Price is @value@ VND, do you want to register ?",
+    "lang_confirm_register_service_content": "Service Price is @value@ VND/month, do you want to register ?",
     "lang_select_date_remove_service": "Choose Date remove Service",
     "lang_remove_service": "Remove Service",
     "lang_confirm_change_service_header": "Confirm Change Service",

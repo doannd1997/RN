@@ -6,7 +6,7 @@ export default Networking = {
     apiGetStudentHistories: (props, sucessCallback, failCallback)=>{
 
         var studentId = props.student.studentId
-        var checkedDate = TimeUtils.formatYYYY_MM_DD(new Date().getTime())
+        var checkedDate = props.checkedDate || TimeUtils.formatYYYY_MM_DD(new Date().getTime())
 
         var url = createUrl(ROUTE.GET_HISTORY)
         var params = PARAM.GET_HISTORY
