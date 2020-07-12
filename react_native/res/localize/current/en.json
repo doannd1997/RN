@@ -139,5 +139,7 @@
     "lang_remove_service_success": "Remove service success",
     "lang_check_otp_and_mail": "Please check email and message to get password",
     "lang_system_noti_header": "System notification",
-    "lang_noti_register_off_date_valid": "Please select date valid"
+    "lang_noti_register_off_date_valid": "Please select date valid",
+    "lang_history_event_header": "System notification",
+    "lang_history_event_content": "Student just take off or drop down"
 }

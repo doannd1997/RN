@@ -139,5 +139,7 @@
     "lang_remove_service_success": "Hủy dịch vụ thành công",
     "lang_check_otp_and_mail": "Thành công, vui lòng kiểm tra tin nhắn và email để nhận mật khẩu",
     "lang_system_noti_header": "Thông báo hệ thống",
-    "lang_noti_register_off_date_valid": "Vui lòng chọn ngày nghỉ hợp lệ"
+    "lang_noti_register_off_date_valid": "Vui lòng chọn ngày nghỉ hợp lệ",
+    "lang_history_event_header": "Thông báo hệ thống",
+    "lang_history_event_content": "Học sinh mới lên xuống xe hoặc nghỉ xe, vui lòng kiểm tra"
 }

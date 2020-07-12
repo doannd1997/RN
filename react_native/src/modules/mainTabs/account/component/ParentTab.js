@@ -118,6 +118,7 @@ const ParentTab = (props)=>{
                       {
                         text: okLabel,
                         onPress: () => {
+                          global.scheduler.stop()
                           props.dispatch({type: "LOG_OUT"})
                         },
                       },

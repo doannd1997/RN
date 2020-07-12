@@ -8,5 +8,13 @@ export default NotificationData = {
             title: header, // (optional)
             message: msg, // (required)
         })
+    },
+    pushNotiHistory: ()=>{
+        var header = global.localization.getLang("lang_history_event_header")
+        var msg = global.localization.getLang("lang_history_event_content")
+        PushNotification.localNotification({
+            title: header, // (optional)
+            message: msg, // (required)
+        })
     }
 }

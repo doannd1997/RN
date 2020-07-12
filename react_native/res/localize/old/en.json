@@ -138,5 +138,6 @@
     "noti_new_mail": "You have @num@ new mails, please check out",
     "lang_remove_service_success": "Remove service success",
     "lang_check_otp_and_mail": "Please check email and message to get password",
-    "lang_system_noti_header": "System notification"
+    "lang_system_noti_header": "System notification",
+    "lang_noti_register_off_date_valid": "Please select date valid"
 }

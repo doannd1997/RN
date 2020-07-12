@@ -125,6 +125,9 @@ export default RouteData = {
             if (pId != student.studentId)
                 student.partners.push(partner)
         }
+    },
+    getStudentIds: function(){
+        return trackingBatch.map(item=>item.studentId)
     }
 }
 

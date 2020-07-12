@@ -6,17 +6,17 @@ export default Networking = {
     apiGetStudentHistories: (props, sucessCallback, failCallback)=>{
 
         var studentId = props.student.studentId
-        var checkedDate = "2020-06-12"
+        var checkedDate = TimeUtils.formatYYYY_MM_DD(new Date().getTime())
 
-        var url = createUrl(ROUTE.UPDATE_GUARDIAN, extras)
-        var params = PARAM.UPDATE_GUARDIAN
-        .replace(/@studentId/gi, studentId)
-        .replace(/@checkedDate/gi, checkedDate)
+        var url = createUrl(ROUTE.GET_HISTORY)
+        var params = PARAM.GET_HISTORY
+        .replace(/@studentId@/gi, studentId)
+        .replace(/@checkedDate@/gi, checkedDate)
 
         const token = global.authenData.getToken()
         networkRequestPost(url, params, token, async (responseText, responseHeader)=>{
             if (typeof sucessCallback == 'function')
-                sucessCallback(responseText);
+                sucessCallback(responseText, studentId);
         }, async ()=>{
             if (typeof failCallback == 'function')
                 failCallback(json);
