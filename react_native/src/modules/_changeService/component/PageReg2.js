@@ -105,7 +105,7 @@ class PageReg2 extends Component {
           </View>
         </View>
         <View style={styles.btnContainer}>
-        <View style={styles.singleBtnContainer}>
+          <View style={styles.singleBtnContainer}>
             <TouchableOpacity
               style={commonStyles.formBtnCancel}
               onPress={()=>{

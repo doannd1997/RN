@@ -1,10 +1,12 @@
 const  PushNotification = require("react-native-push-notification")
 
 export default NotificationData = {
-    pushNoti: ()=>{
+    pushNotiMail: (num)=>{
+        var header = global.localization.getLang("lang_system_noti_header")
+        var msg = global.localization.getLang("noti_new_mail").replace(/@num@/gi, num)
         PushNotification.localNotification({
-            title: "Thông báo hệ thống", // (optional)
-            message: "Bạn vừa có Thư mới hoặc hoạt động mới", // (required)
+            title: header, // (optional)
+            message: msg, // (required)
         })
     }
 }

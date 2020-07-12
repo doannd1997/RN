@@ -24,6 +24,7 @@ export default Networking = {
             this.apiGetRegisterInfo()
             
             global.firebase.start()
+            global.scheduler.start()
             
             props.navigation.navigate("HomeScreen", {logedIn: true})
             await global.authenData.setPhoneNumber(props.phoneNumber)

@@ -14,39 +14,23 @@ const resultLoadMail = function(props){
 }
 
 const updateMail = function(props){
-    props.dispatch({type: "MAIL_START_LOAD"})
-    NetWorking.apiRequestGetMessages(props, (responseText)=>{
-        var json = JSON.parse(responseText)
-        global.mailData.setData(json)
-
-        var inboxs = global.mailData.getInboxs()
-        var sents = global.mailData.getSents()
-        props.dispatch({
-            type: "SET_MAIL",
-            inboxs: inboxs,
-            sents: sents
-        })
-
-        var numberOfNewMails = inboxs.filter(item=>!item.isRead).length
-        if (props.numberOfNewMails != numberOfNewMails && numberOfNewMails != 0){
-            props.dispatch({type: "SET_NUM_NEW_MAIL", numberOfNewMails: numberOfNewMails})
-            global.notificationPusher.pushNoti()
-        }
-
-        resultLoadMail(props)
-    }, 
-    ()=>{
-        resultLoadMail(props)
+    var inboxs = global.mailData.getInboxs()
+    var sents = global.mailData.getSents()
+    props.dispatch({
+        type: "SET_MAIL",
+        inboxs: inboxs,
+        sents: sents
     })
+
+    var numberOfNewMails = inboxs.filter(item=>!item.isRead).length
+    if (props.numberOfNewMails != numberOfNewMails && numberOfNewMails != 0){
+        props.dispatch({type: "SET_NUM_NEW_MAIL", numberOfNewMails: numberOfNewMails})
+    }
 }
 
 class Mail extends Component{
     componentWillMount(){
         updateMail(this.props)        
-        var self = this
-        this.updateScheduler = setInterval(() => {
-            updateMail(self.props)
-        }, 15000);
     }
     componentWillUnmount(){
         clearInterval(this.updateScheduler)
