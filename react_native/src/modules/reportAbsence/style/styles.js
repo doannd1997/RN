@@ -162,7 +162,7 @@ export default styles = EStyleSheet.create({
     avatar: {
         height: "100%",
         aspectRatio: 1,
-        backgroundColor: "red",
+        // backgroundColor: "red",
         borderRadius: "20rem"
     },
     childName: {

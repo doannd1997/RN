@@ -67,5 +67,5 @@ const getStopId = (student, busType)=>{
         default:
             var route = student.routes[BUS_TYPE.PICK_UP]
     }
-    return route.point.id
+    return route.point.Id
 }

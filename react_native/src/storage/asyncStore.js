@@ -1,7 +1,7 @@
 import {AsyncStorage} from "react-native";
 
 const ASYNC_STORAGE = {
-    LOG_INFO_SET_GET: true,          //  display in console data store and get
+    LOG_INFO_SET_GET: false,          //  display in console data store and get
     PHONE_NUMBER: "PHONE_NUMBER",
     EMAIL: "EMAIL",
     PASSWORD: "PASSWORD"

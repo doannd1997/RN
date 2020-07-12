@@ -66,7 +66,7 @@ export default Times = {
         })
     },
     formatYYYY_MM_DD: timeStamp=>{
-        var date = new Date()
+        var date = new Date(timeStamp)
         var y = date.getFullYear()
         var m = date.getMonth() + 1
         m = (m<10) ? ("0" + m) : m

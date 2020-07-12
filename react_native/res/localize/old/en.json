@@ -137,5 +137,6 @@
     "lang_alert_register_select_date": "Please select date start at @date@, it help setup service effectly",
     "noti_new_mail": "You have @num@ new mails, please check out",
     "lang_remove_service_success": "Remove service success",
-    "lang_check_otp_and_mail": "Please check email and message to get password"
+    "lang_check_otp_and_mail": "Please check email and message to get password",
+    "lang_system_noti_header": "System notification"
 }

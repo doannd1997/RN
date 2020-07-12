@@ -2,8 +2,6 @@ import BackgroundTimer from 'react-native-background-timer'
 
 const MailNetWork = require("../modules/mainTabs/mail/networking/NetWorking").default
 
-var numberOfNewMails = 0
-
 const updateMail = ()=>{
     MailNetWork.apiRequestGetMessages(null, (responseText)=>{
         var json = JSON.parse(responseText)
@@ -12,19 +10,26 @@ const updateMail = ()=>{
         var inboxs = global.mailData.getInboxs()
 
         var _numberOfNewMails = inboxs.filter(item=>!item.isRead).length
-        if (_numberOfNewMails > 0 && _numberOfNewMails != numberOfNewMails){
+        if (_numberOfNewMails > 0 && _numberOfNewMails != global.scheduler.numberOfNewMails){
             global.notificationPusher.pushNotiMail(_numberOfNewMails)
-            numberOfNewMails = _numberOfNewMails
+            global.scheduler.numberOfNewMails = _numberOfNewMails
         }
     })
 }
 
 export default Scheduler = {
+    init: function(){
+        this.numberOfNewMails = 0
+    },
     start: function(){
+        this.init()
         updateMail()
         BackgroundTimer.runBackgroundTimer(() => { 
                 updateMail()
             }, 
         2000);
+    },
+    readMail: function(){
+        this.numberOfNewMails --
     }
 }

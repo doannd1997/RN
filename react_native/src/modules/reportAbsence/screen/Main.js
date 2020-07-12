@@ -27,7 +27,7 @@ class ReportAbsenceCom extends Component {
   onSelectDateStart(event, date){
     this.props.dispatch({type: "TOGGLE_PICKING_DATE_START", isPicking: false});
     if (date != undefined){
-      var timeStamp = new Date(date.toString().slice(0, 10) + "").getTime();
+      var timeStamp = new Date(date.toString()).getTime()
       this.props.dispatch({type: "UPDATE_DATE_START", startDate: timeStamp})
     }
     
@@ -35,11 +35,16 @@ class ReportAbsenceCom extends Component {
   onSelectDateEnd(event, date){
     this.props.dispatch({type: "TOGGLE_PICKING_DATE_END", isPicking: false});
     if (date != undefined){
-      var timeStamp = new Date(date.toString().slice(0, 10) + "").getTime();
+      var timeStamp = new Date(date.toString()).getTime()
       this.props.dispatch({type: "UPDATE_DATE_END", endDate: timeStamp})
     }
   }
   onConfirm(){
+    if (this.props.startDate > this.props.endDate){
+      QuickToast.show(global.localization.getLang("lang_noti_register_off_date_valid"))
+      return
+    }
+
     var self = this
     var header = global.localization.getLang("lang_noti_header");
     var content = global.localization.getLang("lang_confirm_send_report_absence_content");
@@ -148,23 +153,23 @@ class ReportAbsenceCom extends Component {
                             label: (global.localization.getLang(
                               'lang_bus_both',
                             )),
-                            key: 'BOTH',
+                            key: 'Both',
                           },
                           {
                             label: (global.localization.getLang(
                               'lang_bus_pick_up',
                             )),
-                            key: 'PICK_UP',
+                            key: 'Pickup',
                           },
                           {
                             label: (global.localization.getLang(
                               'lang_bus_drop_down',
                             )),
-                            key: 'DROP_DOWN',
+                            key: 'Delivery',
                           },
                           
                         ]}
-                        initValue={global.localization.getLang("lang_bus_" + this.props.busType.toLowerCase())}
+                        initValue={global.localization.getLang("lang_bus_" + parseBusType(this.props.busType))}
                         onChange={(option)=>{
                           this.props.dispatch({type: 'TOGGLE_BUS_TYPE', busType: option.key})
                         }} />
@@ -187,9 +192,9 @@ class ReportAbsenceCom extends Component {
                       <DatePicker
                         showIcon={false}
                         hideText={true}
-                        date={Times.formatDate(new Date().getTime())}
+                        date={Times.formatYYYY_MM_DD(new Date().getTime())}
                         mode="date"
-                        format="DD-MM-YYYY"
+                        format="YYYY-MM-DD"
                         confirmBtnText="Confirm"
                         cancelBtnText="Cancel"
                         style={{width: "100%", height: "100%", alignSelf: "center", position: "absolute"}} 
@@ -212,10 +217,10 @@ class ReportAbsenceCom extends Component {
                       <DatePicker
                         showIcon={false}
                         hideText={true}
-                        date={"05-06-2020"}
+                        date={Times.formatYYYY_MM_DD(new Date().getTime())}
                         mode="date"
                         // placeholder="select date"
-                        format="DD-MM-YYYY"
+                        format="YYYY-MM-DD"
                         // minDate="2016-05-01"
                         // maxDate="2016-06-01"
                         confirmBtnText="Confirm"
@@ -265,3 +270,15 @@ const eStyles = EStyleSheet.create({
     fontSize: "10rem"
   }
 })
+
+
+const parseBusType = (busType)=>{
+  switch (busType){
+    case "Pickup":
+      return "pick_up"
+    case "Delivery":
+      return "drop_down"
+    case "Both":
+      return "both"
+  }
+}

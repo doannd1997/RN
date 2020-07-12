@@ -18,8 +18,10 @@ class Mail extends Component{
                 <TouchableOpacity 
                     style={styles.btnOneMail}
                     onPress={()=>{
-                        if (!this.props.data.item.isRead)
+                        if (!this.props.data.item.isRead){
                           NetWorking.apiReadMail(this.props.data.item.MessageID)
+                          global.scheduler.readMail()
+                        }
                         this.props.dispatch({type: "MAIL_SHOW_MAIL", mail_mailIndex: this.props.data.index});
                     }}
                     >
